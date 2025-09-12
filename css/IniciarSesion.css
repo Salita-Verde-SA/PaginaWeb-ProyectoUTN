@@ -1,9 +1,90 @@
+   body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #111;
+      color: white;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+ .Verde {
+      background: linear-gradient(135deg, #2ecc71, #0c7a2c);
+      margin: 30px;
+      border-radius: 20px;
+      padding: 50px;
+      min-height: 500px;
+      position: relative;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .inicio {
+      background: rgba(255, 255, 255, 0.95);
+      padding: 40px;
+      border-radius: 25px;
+      box-shadow: 0 25px 50px rgba(0, 0, 0, 0.15);
+      width: 100%;
+      max-width: 400px;
+      backdrop-filter: blur(15px);
+      border: 1px solid rgba(255, 255, 255, 0.3);
+      text-align: center;
+      color: black;
+    }
+
+    .inicio h1 {
+      margin-bottom: 20px;
+      font-size: 24px;
+      color: #0c7a2c;
+    }
+
+    .formulario input {
+      width: 100%;
+      padding: 15px;
+      border: 2px solid #e5e7eb;
+      border-radius: 15px;
+      margin: 10px 0;
+      font-size: 16px;
+      background: rgba(255, 255, 255, 0.9);
+      transition: all 0.3s ease;
+      color: #374151;
+    }
+
+    .formulario input:focus {
+      border-color: #2ecc71;
+      outline: none;
+      box-shadow: 0 0 8px rgba(46, 204, 113, 0.6);
+    }
+
+    .formulario p {
+      text-align: right;
+      font-size: 12px;
+      color: #444;
+      cursor: pointer;
+    }
+
+    .formulario button {
+      width: 100%;
+      padding: 12px;
+      border: none;
+      border-radius: 15px;
+      background: #2ecc71;
+      color: white;
+      font-size: 16px;
+      margin-top: 15px;
+      cursor: pointer;
+      transition: background 0.3s ease;
+    }
+
+    .formulario button:hover {
+      background: #27ae60;
+    }
 
 footer {
   padding: 30px 40px;
   display: flex;
-  justify-content: center;  /* centra horizontalmente */
-  align-items: flex-start;  /* alinea al inicio verticalmente */
+  justify-content: center;
+  align-items: flex-start; 
   
   background-color: black;
 
