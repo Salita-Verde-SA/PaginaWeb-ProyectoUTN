@@ -1,59 +1,60 @@
 body {
+    margin: 0;
     background-color: #111;
     color: #fffc;
     font-family: arial;
 }
-.eventos-destacados {
+.contenedor-eventos {
     width: 650px;
     height: 1300px;
-    background-color: #444;
+    background-color: #4446;
     margin: auto;
     border-radius: 25px;
+    box-sizing: border-box;
+    padding: 4px;
 
 }
-.contenedor-imagen-destacada {
-    margin-left: 30px;
-    width: 590px;
-    height: 290px;
-    border-radius: 25px;
-    background-color: #fff;
+.box-evento-destacado {
+    position: relative;
+    width: 100%;
+    height: 260px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 20px 0 50px 0;
 }
 .imagen-destacada {
-    margin-top: 10px;
-    width: 100%;
-    height: 100%;
-    border-radius: 25px;
+    display: block;
+    min-width: 90%;
+    min-height: 90%;
+    max-width: 100%;
+    max-height: 100%;
+    margin: auto;
     box-sizing: border-box;
+    border-radius: 25px;
 }
-.destacada {
-    width: 600px;
-    height: 400px;
-    position: absolute;
-    font-size: 30px;
-    padding: 20px;
-    margin: 25px;
-    line-height: 1.8;
-}
-.descripcion-imagen-destacada {
-    top: 60px;
-}
-.ubicacion-imagen-destacada {
-    right: 10px;
-    top: 60px
-}
-.fecha-imagen-destacada {
-    right: 5px;
-    top: 260px
 
+.boton-esquina {
+  position: absolute;
+  padding: 6px 12px;
+  border: none;
+  background: rgba(0,0,0,0.6);
+  color: white;
+  cursor: pointer;
+  border-radius: 15px;
 }
-.nombre-imagen-destacada {
-    top: 260px;
-}
+
+.boton-top-left    { top: 25px; left: 55px; }
+.boton-top-right   { top: 25px; right: 55px; }
+.boton-bottom-left { bottom: 10px; left: 55px; }
+.boton-bottom-right{ bottom: 10px; right: 55px; }
+
 .carrusel {
-    width: auto;
+    margin-top: 50px;
+    width: 100%;
     height: 250px;
     display: flex;
-    justify-content: center; /* al centro horizontal /
+     /* al centro horizontal /
     align-items: center;     / al centro vertical (si querés) /
     height: 100vh;           / ocupa toda la pantalla */
     background: #222;
