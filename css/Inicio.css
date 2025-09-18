@@ -5,12 +5,10 @@ body {
 }
 .eventos-destacados {
     width: 650px;
-    height: 330px;
+    height: 1300px;
     background-color: #444;
     margin: auto;
     border-radius: 25px;
-    justify-content: center;
-    align-content: center;
 
 }
 .contenedor-imagen-destacada {
@@ -19,9 +17,9 @@ body {
     height: 290px;
     border-radius: 25px;
     background-color: #fff;
-    box-sizing: border-box;
 }
 .imagen-destacada {
+    margin-top: 10px;
     width: 100%;
     height: 100%;
     border-radius: 25px;
@@ -50,4 +48,24 @@ body {
 }
 .nombre-imagen-destacada {
     top: 260px;
+}
+.carrusel {
+    width: auto;
+    height: 250px;
+    display: flex;
+    justify-content: center; /* al centro horizontal /
+    align-items: center;     / al centro vertical (si querés) /
+    height: 100vh;           / ocupa toda la pantalla */
+    background: #222;
+}
+.box-event {
+    width: 200px;
+    height: 230px;
+    background: tomato;
+    color: white;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 8px;
+    margin: 10px;
 }
