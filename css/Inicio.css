@@ -1,0 +1,53 @@
+body {
+    background-color: #111;
+    color: #fffc;
+    font-family: arial;
+}
+.eventos-destacados {
+    width: 650px;
+    height: 330px;
+    background-color: #444;
+    margin: auto;
+    border-radius: 25px;
+    justify-content: center;
+    align-content: center;
+
+}
+.contenedor-imagen-destacada {
+    margin-left: 30px;
+    width: 590px;
+    height: 290px;
+    border-radius: 25px;
+    background-color: #fff;
+    box-sizing: border-box;
+}
+.imagen-destacada {
+    width: 100%;
+    height: 100%;
+    border-radius: 25px;
+    box-sizing: border-box;
+}
+.destacada {
+    width: 600px;
+    height: 400px;
+    position: absolute;
+    font-size: 30px;
+    padding: 20px;
+    margin: 25px;
+    line-height: 1.8;
+}
+.descripcion-imagen-destacada {
+    top: 60px;
+}
+.ubicacion-imagen-destacada {
+    right: 10px;
+    top: 60px
+}
+.fecha-imagen-destacada {
+    right: 5px;
+    top: 260px
+
+}
+.nombre-imagen-destacada {
+    top: 260px;
+}
