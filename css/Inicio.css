@@ -6,7 +6,7 @@ body {
 }
 .contenedor-eventos {
     width: 650px;
-    height: 1300px;
+    height: auto;
     background-color: #4446;
     margin: auto;
     border-radius: 25px;
