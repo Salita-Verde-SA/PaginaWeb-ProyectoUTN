@@ -148,11 +148,10 @@ body {
   border-radius: 20px;
   padding-bottom: 50px;
   padding-left: 10px;
-  min-height: 500px;
+  min-height: 520px;
   position: relative;
   display: flex;
   flex-direction: column;
-  /* align-items: center; */
   justify-content: space-between;
   /* Empuja los elementos a los extremos */
 }
