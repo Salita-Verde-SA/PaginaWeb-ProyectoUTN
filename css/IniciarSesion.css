@@ -10,8 +10,10 @@ body {
 
 .header {
   display: flex;
-  align-items: center; /* Centra los elementos verticalmente */
-  justify-content: space-between; /* Empuja los elementos a los extremos */
+  align-items: center;
+  /* Centra los elementos verticalmente */
+  justify-content: space-between;
+  /* Empuja los elementos a los extremos */
   /* background-color: #155c18; */
   padding: 15px;
 }
@@ -31,16 +33,22 @@ body {
 
 .tema-claro-oscuro-header {
   display: flex;
-  align-items: center; /* Centra los elementos verticalmente */
-  justify-content: left; /* Centra el grupo horizontalmente */
-  gap: 10px; /* Agrega espacio entre los íconos y el interruptor */
+  align-items: center;
+  /* Centra los elementos verticalmente */
+  justify-content: left;
+  /* Centra el grupo horizontalmente */
+  gap: 10px;
+  /* Agrega espacio entre los íconos y el interruptor */
 }
 
 .inicio-cuenta-header {
   display: flex;
-  align-items: center; /* Centra los elementos verticalmente */
-  justify-content: right; /* Centra el grupo horizontalmente */
-  gap: 10px; /* Agrega espacio entre los íconos y el interruptor */
+  align-items: center;
+  /* Centra los elementos verticalmente */
+  justify-content: right;
+  /* Centra el grupo horizontalmente */
+  gap: 10px;
+  /* Agrega espacio entre los íconos y el interruptor */
 }
 
 /* Estilo para el contenedor del interruptor */
@@ -50,12 +58,14 @@ body {
   width: 60px;
   height: 30px;
 }
+
 /* Se oculta el checkbox por defecto */
 .interruptor input {
   opacity: 0;
   width: 0;
   height: 0;
 }
+
 /* Estilo para el deslizador (el círculo) */
 .deslizador {
   position: absolute;
@@ -69,6 +79,7 @@ body {
   border-radius: 10px;
   border: 2px solid #797979;
 }
+
 /* Estilo para el círculo del deslizador */
 .deslizador:before {
   position: absolute;
@@ -81,13 +92,15 @@ body {
   transition: 0.4s ease-in-out;
   border-radius: 50%;
 }
+
 /* Cuando el checkbox está marcado, cambia el color de fondo */
-input:checked + .deslizador {
-  background-color: #6efd0f; /* Color cuando está encendido */
+input:checked+.deslizador {
+  background-color: #6efd0f;
+  /* Color cuando está encendido */
 }
 
 /* Cuando el checkbox está marcado, mueve el círculo a la derecha */
-input:checked + .deslizador:before {
+input:checked+.deslizador:before {
   transform: translateX(28px);
 }
 
@@ -102,8 +115,10 @@ input:checked + .deslizador:before {
   display: flex;
   flex-direction: column;
   /* align-items: center; */
-  justify-content: space-between; /* Empuja los elementos a los extremos */
+  justify-content: space-between;
+  /* Empuja los elementos a los extremos */
 }
+
 .inicio {
   background: #fffa;
   padding: 40px;
@@ -116,6 +131,7 @@ input:checked + .deslizador:before {
   text-align: center;
   margin-left: 70px;
 }
+
 .logo-inicio {
   width: 200px;
   height: 200px;
@@ -165,13 +181,16 @@ input:checked + .deslizador:before {
 }
 
 .formulario a {
-      display: block;        /* obliga a ocupar toda la línea */
-      margin: 10px 0;        /* espacio arriba y abajo */
-      text-align: right;     /* alineado a la derecha */
-      font-size: 12px;
-      color: #444;
-      cursor: pointer;
-    }
+  display: block;
+  /* obliga a ocupar toda la línea */
+  margin: 10px 0;
+  /* espacio arriba y abajo */
+  text-align: right;
+  /* alineado a la derecha */
+  font-size: 12px;
+  color: #444;
+  cursor: pointer;
+}
 
 /* .formulario a {
   text-align: right;
@@ -181,31 +200,60 @@ input:checked + .deslizador:before {
 } */
 
 
+
 .formulario button {
+  margin-left: auto;
+  display: block;
+  padding: 6px 6px;
+  /* más pequeño */
+  font-size: 15px;
+  /* texto más chico */
+  border: 2px solid #00c853;
+  /* borde verde */
+  border-radius: 12px;
+  /* esquinas redondeadas */
+  background-color: transparent;
+  /* fondo transparente */
+  color: #000000;
+  /* texto verde */
+  cursor: pointer;
+  /* mano al pasar */
+  transition: all 0.3s ease;
+  /* animación suave */
+  text-align: center;
 
   display: block;
-  padding: 6px 6px;            /* más pequeño */
-  font-size: 15px;              /* texto más chico */
-  border: 2px solid #00c853;    /* borde verde */
-  border-radius: 12px;           /* esquinas redondeadas */
-  background-color: transparent; /* fondo transparente */
-  color: #000000;               /* texto verde */
-  cursor: pointer;              /* mano al pasar */
-  transition: all 0.3s ease;    /* animación suave */
+  padding: 6px 6px;
+  /* más pequeño */
+  font-size: 15px;
+  /* texto más chico */
+  border: 2px solid #00c853;
+  /* borde verde */
+  border-radius: 12px;
+  /* esquinas redondeadas */
+  background-color: transparent;
+  /* fondo transparente */
+  color: #000000;
+  /* texto verde */
+  cursor: pointer;
+  /* mano al pasar */
+  transition: all 0.3s ease;
+  /* animación suave */
   text-align: center;
-} 
+}
 
 /* Hover: cuando paso el mouse encima */
 .formulario button:hover {
   text-align: right;
-  background-color: #00c853;   /* fondo verde */
-  color: white;      
+  background-color: #00c853;
+  /* fondo verde */
+  color: white;
 }
 
 /* .formulario button {
   /* width: 100%; */
-  /* padding: 12px; */
-  /* border: none;
+/* padding: 12px; */
+/* border: none;
   border-radius: 15px;
   background: #2ecc71;
   color: white;
@@ -217,7 +265,7 @@ input:checked + .deslizador:before {
 
 .formulario button:hover {
   background: #27ae60;
-} */ 
+} */
 
 footer {
   padding: 30px 40px;
