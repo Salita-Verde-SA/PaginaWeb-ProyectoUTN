@@ -72,6 +72,7 @@ body {
   text-decoration: none; /* Quita el subrayado de los links */
 }
 
+
 .header button {
   margin-left: auto; /* Empuja el botón hacia la derecha */
   display: block;
