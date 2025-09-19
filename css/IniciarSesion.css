@@ -123,7 +123,7 @@ body {
   content: "";
   height: 13px;
   width: 13px;
-  left: 10%;
+  left: 9%;
   background-color: #999999;
   transition: 0.4s ease-in-out;
   border-radius: 75%;
@@ -131,9 +131,17 @@ body {
   top: 50%;
 }
 
+input:checked + .deslizador:before {
+
+  height: 15px;   /* más grande */
+  width: 15px;
+  background-color: #000000; /* opcional: cambia color al activarse */
+  left: 0.1%;
+}
+
 /* Cuando el checkbox está marcado, cambia el color de fondo */
 .header input:checked + .deslizador {
-  background-color: #6efd0f;
+  background-color: #ffffff;
   /* Color cuando está encendido */
 }
 
