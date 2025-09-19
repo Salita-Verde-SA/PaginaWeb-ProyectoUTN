@@ -182,7 +182,7 @@ input:checked + .deslizador:before {
 
 
    .formulario button {
-    
+      margin-left: auto;
       display: block;
       padding: 6px 6px;            /* más pequeño */
       font-size: 15px;              /* texto más chico */
