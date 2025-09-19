@@ -181,26 +181,26 @@ input:checked + .deslizador:before {
 } */
 
 
-   .formulario button {
-    
-      display: block;
-      padding: 6px 6px;            /* más pequeño */
-      font-size: 15px;              /* texto más chico */
-      border: 2px solid #00c853;    /* borde verde */
-      border-radius: 12px;           /* esquinas redondeadas */
-      background-color: transparent; /* fondo transparente */
-      color: #000000;               /* texto verde */
-      cursor: pointer;              /* mano al pasar */
-      transition: all 0.3s ease;    /* animación suave */
-      text-align: center;
-    } 
+.formulario button {
 
-    /* Hover: cuando paso el mouse encima */
-    .formulario button:hover {
-      text-align: right;
-      background-color: #00c853;   /* fondo verde */
-      color: white;      
-    }
+  display: block;
+  padding: 6px 6px;            /* más pequeño */
+  font-size: 15px;              /* texto más chico */
+  border: 2px solid #00c853;    /* borde verde */
+  border-radius: 12px;           /* esquinas redondeadas */
+  background-color: transparent; /* fondo transparente */
+  color: #000000;               /* texto verde */
+  cursor: pointer;              /* mano al pasar */
+  transition: all 0.3s ease;    /* animación suave */
+  text-align: center;
+} 
+
+/* Hover: cuando paso el mouse encima */
+.formulario button:hover {
+  text-align: right;
+  background-color: #00c853;   /* fondo verde */
+  color: white;      
+}
 
 /* .formulario button {
   /* width: 100%; */
