@@ -11,20 +11,40 @@ body {
 .header .bx {
   color: #000000;
   font-size: 24px;
-  margin: 2%, 5%
+  margin: 2% 5%; /* ✅ corregido */
 }
 
 .header .bx-moon {
   font-size: 22px;
 }
 
+/* 🌞 Animación del sol girando */
+@keyframes girar {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+
+/* 🌙 Animación de la luna meciéndose */
+@keyframes mecer {
+  0%   { transform: rotate(0deg); }
+  25%  { transform: rotate(-15deg); }
+  50%  { transform: rotate(15deg); }
+  75%  { transform: rotate(-10deg); }
+  100% { transform: rotate(0deg); }
+}
+
+.bx-sun.girar {
+  animation: girar 1s linear;
+}
+
+.bx-moon.mecer {
+  animation: mecer 1s ease-in-out;
+}
+
 .header {
   display: flex;
   align-items: center;
-  /* Centra los elementos verticalmente */
   justify-content: space-between;
-  /* Empuja los elementos a los extremos */
-  /* background-color: #155c18; */
   padding: 15px;
 }
 
@@ -46,20 +66,14 @@ body {
   margin-left: auto;
   display: block;
   padding: 5px 10px 5px 10px;
-  /* más pequeño */
   font-size: 15px;
-  /* texto más chico */
   border: 0px;
-  /* sin borde */
   border-radius: 10px;
-  /* esquinas redondeadas */
   cursor: pointer;
-  /* mano al pasar */
   transition: all 0.3s ease;
-  /* animación suave */
   text-align: center;
 }
-/* Hover: cuando paso el mouse encima */
+
 .header .white-btn:hover {
   background-color: #ffffffaa;
 }
@@ -71,39 +85,30 @@ body {
 .tema-claro-oscuro-header {
   display: flex;
   align-items: center;
-  /* Centra los elementos verticalmente */
-  justify-content: left;
-  /* Centra el grupo horizontalmente */
   gap: 10px;
-  /* Agrega espacio entre los íconos y el interruptor */
 }
 
 .inicio-cuenta-header {
   display: flex;
   align-items: center;
-  /* Centra los elementos verticalmente */
   justify-content: right;
-  /* Centra el grupo horizontalmente */
   gap: 10px;
-  /* Agrega espacio entre los íconos y el interruptor */
 }
 
-/* Estilo para el contenedor del interruptor */
+/* 🔘 Switch */
 .interruptor {
   position: relative;
   display: inline-block;
-  width: 46px;
-  height: 30px;
+  width: 73px;
+  height: 29px;
 }
 
-/* Se oculta el checkbox por defecto */
 .interruptor input {
   opacity: 0;
   width: 0;
   height: 0;
 }
 
-/* Estilo para el deslizador (el círculo) */
 .deslizador {
   position: absolute;
   cursor: pointer;
@@ -117,7 +122,6 @@ body {
   border: 2.3px solid #999999;
 }
 
-/* Estilo para el círculo del deslizador */
 .deslizador:before {
   position: absolute;
   content: "";
@@ -132,36 +136,38 @@ body {
 }
 
 input:checked + .deslizador:before {
-
-  height: 15px;   /* más grande */
+  height: 15px;
   width: 15px;
-  background-color: #000000; /* opcional: cambia color al activarse */
-  left: 0.1%;
+  background-color: #000000;
+  left: 5%;
 }
 
-/* Cuando el checkbox está marcado, cambia el color de fondo */
 .header input:checked + .deslizador {
   background-color: #ffffff;
-  /* Color cuando está encendido */
 }
 
-/* Cuando el checkbox está marcado, mueve el círculo a la derecha */
 .header input:checked + .deslizador:before {
   transform: translateX(160%) translateY(-50%);
 }
 
+.tema-claro-oscuro-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5px;   /* 🔹 distancia entre luna, switch y sol */
+}
+
+
+/* 🎨 Contenido */
 .fondo {
   background: linear-gradient(to right, #6efd0f, rgb(50, 125, 50));
-  margin: 30px 30px 30px 30px;
+  margin: 30px;
   border-radius: 20px;
   padding-bottom: 50px;
   padding-left: 10px;
   min-height: 520px;
-  position: relative;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  /* Empuja los elementos a los extremos */
 }
 
 .inicio {
@@ -184,9 +190,6 @@ input:checked + .deslizador:before {
   margin: 0;
   position: absolute;
   z-index: 10;
-  /* top y left se posicionan en relación al elemento padre, usando porcentajes para
-     establecer su posición inicial. transform: translate(-50%, -50%) ajusta la posición
-     final restando el 50% del ancho y alto del elemento, centrando perfectamente */
   top: 5%;
   left: 95%;
   transform: translate(-50%, -50%);
@@ -196,7 +199,7 @@ input:checked + .deslizador:before {
   width: 35px;
   height: 35px;
   padding-right: 30px;
-  margin: 0px, 10px;
+  margin: 0px 10px;
   position: absolute;
   z-index: 10;
   transform: translate(-50%, -50%);
@@ -227,11 +230,8 @@ input:checked + .deslizador:before {
 
 .formulario a {
   display: block;
-  /* obliga a ocupar toda la línea */
   margin: 5px 7px 10px 0px;
-  /* espacio arriba y abajo */
   text-align: right;
-  /* alineado a la derecha */
   font-size: 12px;
   color: #444;
   cursor: pointer;
@@ -240,44 +240,33 @@ input:checked + .deslizador:before {
 
 .formulario button {
   margin-left: auto;
-  /* alinea a la derecha */
   margin-top: 10px;
   margin-right: 5px;
   display: block;
   padding: 6px 6px;
-  /* más pequeño */
   font-size: 15px;
-  /* texto más chico */
   border: 2px solid #00c853;
-  /* borde verde */
   border-radius: 12px;
-  /* esquinas redondeadas */
   background-color: transparent;
-  /* fondo transparente */
   color: #000000;
-  /* texto verde */
   cursor: pointer;
-  /* mano al pasar */
   transition: all 0.3s ease;
-  /* animación suave */
   text-align: center;
 }
 
 .formulario button:hover {
   text-align: right;
   background-color: #00c853;
-  /* fondo verde */
   color: white;
 }
 
+/* 📌 Footer */
 footer {
   padding: 30px 40px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
   background-color: black;
-
   gap: 100px;
   font-size: 14px;
   border-top: 1px solid #333;
