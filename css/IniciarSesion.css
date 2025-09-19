@@ -1,7 +1,10 @@
 /* 🌍 --------- CONFIGURACIÓN GENERAL DEL BODY --------- */
+/* Importar Inter desde Google Fonts */
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&display=swap');
+
 body {
   margin: 0; /* Saca los márgenes por defecto de la página */
-  font-family: Arial, sans-serif; /* Fuente de todo el sitio */
+  font-family: 'Inter', Arial, sans-serif; /* Fuente de todo el sitio */
   background: #111; /* Fondo negro */
   color: white; /* Texto blanco */
   display: flex; /* Hace que los elementos hijos se acomoden con flexbox */
