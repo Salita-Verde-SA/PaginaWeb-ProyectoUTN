@@ -19,7 +19,7 @@
     <!--Titulo que va a figurar en la pestaña-->
     <link
       rel="stylesheet"
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
     <link rel="stylesheet" href="css/IniciarSesion.css" />
   </head>
@@ -27,12 +27,23 @@
     <div class="fondo">
       <header class="header">
         <div class="tema-claro-oscuro-header">
-          <i class="bx bx-moon"></i>
-          <label class="interruptor">
+          <i class="fa-regular fa-moon" style="font-size: 24px"></i>
+          <label class="interruptor" id="toggle">
             <input type="checkbox" />
             <span class="deslizador"></span>
           </label>
-          <i class="bx bx-sun"></i>
+          <script>
+              const boton = document.getElementById("toggle");
+              const body = document.body;
+              
+              boton.addEventListener("click", () => {
+              body.classList.toggle("claro");
+            });
+            </script>
+          <i
+            class="fa-regular fa-sun"
+            style="font-size: 24px; margin: 2%, 5%"
+          ></i>
         </div>
 
         <div class="inicio-cuenta-header">
@@ -43,12 +54,8 @@
               alt="Logo paleta"
           /></a>
 
-          <a href="IniciarSesion.html"
-            ><button class="white-btn">Iniciar sesión</button></a
-          >
-          <a href="IniciarSesion.html"
-            ><button class="dark-btn">Registrarse</button></a
-          >
+          <a href="IniciarSesion.html"><button>Iniciar sesión</button></a>
+          <a href="IniciarSesion.html"><button>Registrarse</button></a>
         </div>
       </header>
       <div class="inicio">
@@ -69,7 +76,7 @@
             type="password"
             placeholder="Contraseña"
           />
-          <a href="./RecuperarCuenta.html">Olvidé mi contraseña</a>
+                <a href="./RecuperarCuenta.html">Olvdé mi contraseña</a>
           <button>Iniciar sesión</button>
         </div>
       </div>

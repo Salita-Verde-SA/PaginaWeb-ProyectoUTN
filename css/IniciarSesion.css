@@ -42,6 +42,7 @@ body {
   text-decoration: none;
 }
 
+
 .header button {
   margin-left: auto;
   display: block;
@@ -67,7 +68,10 @@ body {
 .header .dark-btn:hover {
   background-color: #272727ff;
 }
-
+body.claro {
+  background: #f0f0f0;
+  color: #000;
+}
 .tema-claro-oscuro-header {
   display: flex;
   align-items: center;
@@ -133,7 +137,7 @@ body {
 
 /* Cuando el checkbox está marcado, cambia el color de fondo */
 .header input:checked + .deslizador {
-  background-color: #6efd0f;
+  background-color: #59ffb2;
   /* Color cuando está encendido */
 }
 
@@ -269,7 +273,6 @@ footer {
   justify-content: center;
   align-items: flex-start;
 
-  background-color: black;
 
   gap: 100px;
   font-size: 14px;
