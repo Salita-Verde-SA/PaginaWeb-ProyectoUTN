@@ -20,7 +20,10 @@
       rel="stylesheet"
       href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
     />
-    <link rel="stylesheet"href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"/>
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    />
     <link rel="stylesheet" href="css/IniciarSesion.css" />
     <link rel="stylesheet" href="css/footer.css" />
   </head>
@@ -28,12 +31,13 @@
     <div class="fondo">
       <header class="header">
         <div class="tema-claro-oscuro-header">
-          <i class="fa-regular fa-moon" style="font-size: 24px"></i>
+          <i class="bx bx-moon"></i>
+
           <label class="interruptor" id="toggle">
             <input type="checkbox" />
             <span class="deslizador"></span>
           </label>
-          
+
           <i class="bx bx-sun"></i>
         </div>
 
@@ -45,8 +49,12 @@
               alt="Logo paleta"
           /></a>
 
-          <a href="IniciarSesion.html"><button>Iniciar sesión</button></a>
-          <a href="IniciarSesion.html"><button>Registrarse</button></a>
+          <a href="IniciarSesion.html"
+            ><button class="white-btn">Iniciar sesión</button></a
+          >
+          <a href="IniciarSesion.html"
+            ><button class="dark-btn">Registrarse</button></a
+          >
         </div>
       </header>
       <div class="inicio">
@@ -67,12 +75,12 @@
             type="password"
             placeholder="Contraseña"
           />
-                <a href="./RecuperarCuenta.html">Olvdé mi contraseña</a>
+          <a href="./RecuperarCuenta.html">Olvidé mi contraseña</a>
           <button>Iniciar sesión</button>
         </div>
       </div>
     </div>
-    <footer>
+    <footer class="footer">
       <div class="social">
         <a href="#"><i title="Twitter" class="fa-brands fa-twitter"></i></a>
         <a href="#"><i title="Instagram" class="fa-brands fa-instagram"></i></a>
@@ -105,6 +113,6 @@
     </footer>
 
     <!-- Script para que funcione el giro -->
-    <script src="js/interruptor.js"></script>
+    <script src="js/Interruptor.js"></script>
   </body>
 </html>

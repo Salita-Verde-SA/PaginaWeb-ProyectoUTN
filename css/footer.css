@@ -1,16 +1,15 @@
+/* --------- FOOTER --------- */
 .footer {
   padding: 30px 40px;
   display: flex;
   justify-content: center;
   align-items: flex-start;
-
-  background-color: black;
-
-  gap: 100px;
+  gap: 100px; /* Espacio entre columnas */
   font-size: 14px;
   border-top: 1px solid #333;
 }
 
+/* Redes sociales */
 .footer .social {
   display: flex;
   gap: 20px;
@@ -28,6 +27,7 @@
   color: #00c851 !important;
 }
 
+/* Columnas del footer */
 .footer .colum {
   display: flex;
   gap: 60px;
