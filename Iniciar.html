@@ -7,8 +7,7 @@
     <link rel="stylesheet" href="css/Inicio.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="icon" type="image/png" href="img/paletaenverde.png" />
-    <link rel="stylesheet" href="css/ModoOscuro.css">
-    
+
     <link
       rel="stylesheet"
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
@@ -28,8 +27,17 @@
       </select>
     
       <!-- Switch dark/light -->
-      <script src="js/footer.js"></script>
-        <div id="modo-oscuro"></div>
+
+       <div class="tema-claro-oscuro-header">
+    
+          <i class="bx bx-moon"></i>
+          <label class="interruptor" id="toggle">
+            <input type="checkbox" />
+            <span class="deslizador"></span>
+          </label>
+          <i class="bx bx-sun"></i>
+    
+        </div>
     
       <!-- Íconos -->
       <span class="icon">🛒</span>
@@ -157,7 +165,7 @@
       <a href="Luga">Cine</a>
       <a href="Luga">Fiesta</a>
     </div>
-
+    <script src="js/Interruptor.js"></script>
     <!-- Insercion del archivo footer.html en la etiqueta footer a traves de un script de js-->
     <footer id="footer"></footer>
     <script src="js/footer.js"></script>
