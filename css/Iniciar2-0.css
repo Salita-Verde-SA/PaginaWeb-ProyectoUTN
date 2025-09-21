@@ -104,10 +104,9 @@ body.claro {
 
 /* --------- BARRA LATERAL IZQUIERDA CON FONDO --------- */
 .barra-lateral-izquierda {
-    width: 20%;
+      width: 20%;
     display: flex;
     flex-direction: column;
-    align-items: center;
     gap: 15px;
     background-color: #171717;
     border-radius: 10px;
@@ -115,8 +114,9 @@ body.claro {
 }
 
 .elemento-barra-lateral {
+    display: flex;
+    
 
-    flex-direction: column;
     align-items: center;
     text-align: center;
     color: #ffffff;
@@ -132,6 +132,7 @@ body.claro {
 
 .elemento-barra-lateral span {
     font-size: 15px;
+    margin-left: 5%;
 }
 
 /* --------- CONTENIDO PRINCIPAL --------- */
@@ -272,7 +273,9 @@ body.claro {
 }
 
 .elemento-barra-lateral-derecha span {
-    font-size: 15px;
+    
+    font-size: 100%;
+    margin-left: 5%;
 }
 
 /* --------- SWITCH DE TEMA --------- */
