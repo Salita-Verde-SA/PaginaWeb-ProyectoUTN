@@ -1,4 +1,4 @@
-/* Estilos globales */
+/* --------- ESTILOS GLOBALES --------- */
 * {
     margin: 0;
     padding: 0;
@@ -10,9 +10,48 @@ body {
     background-color: #121212;
     color: #ffffff;
     min-height: 100vh;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
-/* Barra de navegación */
+body.claro {
+    background: #f5f5f5;
+    color: #333;
+}
+
+/* --------- ICONOS DEL HEADER --------- */
+.header .bx {
+    color: #000000;
+    font-size: 24px;
+    margin: 2% 5%;
+}
+
+.header .bx-moon {
+    font-size: 22px;
+}
+
+/* --------- ANIMACIONES --------- */
+@keyframes girar {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(180deg); }
+}
+
+@keyframes mecer {
+    0% { transform: rotate(0deg); }
+    25% { transform: rotate(-15deg); }
+    50% { transform: rotate(15deg); }
+    75% { transform: rotate(-10deg); }
+    100% { transform: rotate(0deg); }
+}
+
+.header .bx-sun.girar {
+    animation: girar 0.7s linear;
+}
+
+.header .bx-moon.mecer {
+    animation: mecer 1s ease-in-out;
+}
+
+/* --------- ESTILOS DEL HEADER --------- */
 .barra-navegacion {
     display: flex;
     align-items: center;
@@ -55,19 +94,24 @@ body {
     cursor: pointer;
 }
 
-/* Contenedor principal */
-.contenedor {
+/* --------- CONTENEDOR PRINCIPAL CON FONDOS --------- */
+.contenedor-principal-fondo {
     display: flex;
     padding: 20px;
     gap: 20px;
+    border-radius: 15px;
+    margin: 20px;
 }
 
-/* Barra lateral izquierda */
+/* --------- BARRA LATERAL IZQUIERDA CON FONDO --------- */
 .barra-lateral-izquierda {
     width: 80px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    background-color: #171717;
+    border-radius: 10px;
+    padding: 15px;
 }
 
 .elemento-barra-lateral {
@@ -75,7 +119,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: #aaa;
+    color: #333;
     text-decoration: none;
 }
 
@@ -90,15 +134,18 @@ body {
     font-size: 10px;
 }
 
-/* Contenido principal */
+/* --------- CONTENIDO PRINCIPAL --------- */
 .contenido-principal {
     flex: 1;
     display: flex;
     flex-direction: column;
     gap: 20px;
+    background-color: #171717;
+    border-radius: 10px;
+    padding: 20px;
 }
 
-/* Banner principal */
+/* --------- BANNER --------- */
 .banner {
     position: relative;
     border-radius: 15px;
@@ -123,7 +170,7 @@ body {
     opacity: 0.9;
 }
 
-/* Tarjetas de eventos destacados */
+/* --------- EVENTOS DESTACADOS --------- */
 .eventos-destacados {
     display: flex;
     gap: 15px;
@@ -161,7 +208,7 @@ body {
     opacity: 0.9;
 }
 
-/* Sección de recomendados */
+/* --------- RECOMENDADOS --------- */
 .recomendados {
     margin-top: 10px;
 }
@@ -197,12 +244,15 @@ body {
     font-size: 12px;
 }
 
-/* Barra lateral derecha */
+/* --------- BARRA LATERAL DERECHA CON FONDO --------- */
 .barra-lateral-derecha {
     width: 120px;
     display: flex;
     flex-direction: column;
     gap: 15px;
+    background-color: #171717;
+    border-radius: 10px;
+    padding: 15px;
 }
 
 .elemento-barra-lateral-derecha {
@@ -210,7 +260,7 @@ body {
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: #aaa;
+    color: #333;
     text-decoration: none;
 }
 
@@ -223,4 +273,64 @@ body {
 
 .elemento-barra-lateral-derecha span {
     font-size: 10px;
+}
+
+/* --------- SWITCH DE TEMA --------- */
+.tema-claro-oscuro-header {
+    display: flex;
+    align-items: center;
+    gap: 0.5px;
+}
+
+.interruptor {
+    position: relative;
+    display: inline-block;
+    width: 76px;
+    height: 29px;
+}
+
+.interruptor input {
+    opacity: 0;
+    width: 0;
+    height: 0;
+}
+
+.deslizador {
+    position: absolute;
+    cursor: pointer;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: #dadada;
+    transition: 0.4s;
+    border-radius: 11px;
+    border: 2.3px solid #999999;
+}
+
+.deslizador:before {
+    position: absolute;
+    content: "";
+    height: 13px;
+    width: 13px;
+    left: 9%;
+    background-color: #999999;
+    transition: 0.4s ease-in-out;
+    border-radius: 75%;
+    transform: translateY(-50%);
+    top: 50%;
+}
+
+input:checked + .deslizador:before {
+    background-color: #000000CC;
+    left: 5%;
+}
+
+input:checked + .deslizador {
+    border: 2.3px solid #000000AA;
+    background-color: #ffffff;
+}
+
+input:checked + .deslizador:before {
+    transform: translateX(210%) translateY(-50%);
 }
