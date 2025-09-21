@@ -7,6 +7,7 @@
     <link rel="stylesheet" href="css/Inicio.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="icon" type="image/png" href="img/paletaenverde.png" />
+
     <link
       rel="stylesheet"
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
@@ -17,17 +18,35 @@
     />
   </head>
   <body>
-    <div class="Categorias">
-      <a href="Cate"></a>
-    </div>
-    <div class="navegacion">
-      <div class="logo">Grove</div>
-      <input type="text" placeholder="Buscar eventos..." />
-      <div class="Iconos">
-        🔔 🔍 🛒
-        <div class="Perfil"></div>
-      </div>
-    </div>
+   <header class="header">
+        <div class="tema-claro-oscuro-header">
+    
+          <i class="bx bx-moon"></i>
+          <label class="interruptor" id="toggle">
+            <input type="checkbox" />
+            <span class="deslizador"></span>
+          </label>
+          <i class="bx bx-sun"></i>
+    
+        </div>
+
+        <div class="inicio-cuenta-header">
+          <a href="Iniciar.html"
+            ><img
+              class="logo-inicio-header"
+              src="img/paletaenverde.png"
+              alt="Logo paleta"
+          /></a>
+
+          <a href="IniciarSesion.html"
+            ><button class="white-btn">Iniciar sesión</button></a
+          >
+          <a href="IniciarSesion.html"
+            ><button class="dark-btn">Registrarse</button></a
+          >
+        </div>
+    </header>
+  </div>
     <div class="Principal">
       <div class="contenedor-eventos">
         <div class="box-evento-destacado">
@@ -146,7 +165,7 @@
       <a href="Luga">Cine</a>
       <a href="Luga">Fiesta</a>
     </div>
-
+    <script src="js/Interruptor.js"></script>
     <!-- Insercion del archivo footer.html en la etiqueta footer a traves de un script de js-->
     <footer id="footer"></footer>
     <script src="js/footer.js"></script>
