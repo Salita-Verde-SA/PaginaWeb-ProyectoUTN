@@ -105,9 +105,10 @@ body.claro {
 
 /* --------- BARRA LATERAL IZQUIERDA CON FONDO --------- */
 .barra-lateral-izquierda {
-    width: 80px;
+    width: 20%;
     display: flex;
     flex-direction: column;
+    align-items: center;
     gap: 15px;
     background-color: #171717;
     border-radius: 10px;
@@ -246,7 +247,7 @@ body.claro {
 
 /* --------- BARRA LATERAL DERECHA CON FONDO --------- */
 .barra-lateral-derecha {
-    width: 120px;
+    width: 20%;
     display: flex;
     flex-direction: column;
     gap: 15px;
