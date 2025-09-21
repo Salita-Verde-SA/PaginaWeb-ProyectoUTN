@@ -7,6 +7,8 @@
     <link rel="stylesheet" href="css/Inicio.css" />
     <link rel="stylesheet" href="css/footer.css" />
     <link rel="icon" type="image/png" href="img/paletaenverde.png" />
+    <link rel="stylesheet" href="css/ModoOscuro.css">
+    
     <link
       rel="stylesheet"
       href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
@@ -17,17 +19,26 @@
     />
   </head>
   <body>
-    <div class="Categorias">
-      <a href="Cate"></a>
-    </div>
-    <div class="navegacion">
-      <div class="logo">Grove</div>
-      <input type="text" placeholder="Buscar eventos..." />
-      <div class="Iconos">
-        🔔 🔍 🛒
-        <div class="Perfil"></div>
-      </div>
-    </div>
+    <div class="topbar">
+      <!-- Selector localidad -->
+      <select>
+        <option>Localidad</option>
+        <option>Buenos Aires</option>
+        <option>Córdoba</option>
+      </select>
+    
+      <!-- Switch dark/light -->
+      <script src="js/footer.js"></script>
+        <div id="modo-oscuro"></div>
+    
+      <!-- Íconos -->
+      <span class="icon">🛒</span>
+      <input type="text" placeholder="Buscar..." class="search">
+      <span class="icon">🎤</span>
+    
+      <!-- Foto perfil -->
+      <img src="https://via.placeholder.com/40" alt="Perfil" class="profile">
+  </div>
     <div class="Principal">
       <div class="contenedor-eventos">
         <div class="box-evento-destacado">

@@ -1,8 +1,9 @@
 /* --------- FOOTER --------- */
 .footer {
+  
   padding: 30px 40px;
   display: flex;
-  justify-content: center;
+    justify-content: center;
   align-items: flex-start;
   gap: 100px; /* Espacio entre columnas */
   font-size: 14px;
@@ -49,4 +50,21 @@
 
 .footer .colum div a:hover {
   color: #fff;
+}
+@media (max-width: 768px) {
+  .footer {
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  .footer .colum {
+    flex-direction: column;
+    gap: 20px;
+    text-align: center;
+  }
+
+  .footer .social {
+    margin-right: 0;
+  }
 }
