@@ -1,54 +1,74 @@
 body {
-    margin: 0;
-    background: #111;
-    color: #fffc;
-    font-family: arial;
+  margin: 0;
+  background: #111;
+  color: #fffc;
+  font-family: arial;
 }
 
 body.claro {
-  background: #f5f5f5; /* Fondo gris claro */
+  background: #f5f5f5;
+  /* Fondo gris claro */
   color: #333;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 
 }
+
 /* --------- ICONOS DEL HEADER --------- */
 .header .bx {
-  color: #000000; /* Iconos en negro */
-  font-size: 24px; /* Tamaño del icono */
-  margin: 2% 5%; /* Espaciado: 2% arriba/abajo y 5% izquierda/derecha */
+  color: #000000;
+  /* Iconos en negro */
+  font-size: 24px;
+  /* Tamaño del icono */
+  margin: 2% 5%;
+  /* Espaciado: 2% arriba/abajo y 5% izquierda/derecha */
 }
 
 .header .bx-moon {
-  font-size: 22px; /* La luna un poquito más chica */
+  font-size: 22px;
+  /* La luna un poquito más chica */
 }
 
 /* 🌞 --------- ANIMACIÓN DEL SOL --------- */
 @keyframes girar {
   from {
     transform: rotate(0deg);
-  } /* Empieza sin girar */
+  }
+
+  /* Empieza sin girar */
   to {
     transform: rotate(180deg);
-  } /* Gira 180 grados */
+  }
+
+  /* Gira 180 grados */
 }
 
 /* 🌙 --------- ANIMACIÓN DE LA LUNA --------- */
 @keyframes mecer {
   0% {
     transform: rotate(0deg);
-  } /* Recta */
+  }
+
+  /* Recta */
   25% {
     transform: rotate(-15deg);
-  } /* Se inclina a la izquierda */
+  }
+
+  /* Se inclina a la izquierda */
   50% {
     transform: rotate(15deg);
-  } /* Se inclina a la derecha */
+  }
+
+  /* Se inclina a la derecha */
   75% {
     transform: rotate(-10deg);
-  } /* Se inclina menos */
+  }
+
+  /* Se inclina menos */
   100% {
     transform: rotate(0deg);
-  } /* Vuelve recta */
+  }
+
+  /* Vuelve recta */
 }
 
 /* Cuando al sol le damos la clase "girar" se anima */
@@ -63,22 +83,30 @@ body.claro {
 
 /* --------- ESTILOS DEL HEADER --------- */
 .header {
-  display: flex; /* Activa flexbox */
-  align-items: center; /* Centra verticalmente los elementos */
-  justify-content: space-between; /* Espacia: uno a la izquierda y otro a la derecha */
-  padding: 15px; /* Espaciado interno */
+  display: flex;
+  /* Activa flexbox */
+  align-items: center;
+  /* Centra verticalmente los elementos */
+  justify-content: space-between;
+  /* Espacia: uno a la izquierda y otro a la derecha */
+  padding: 15px;
+  /* Espaciado interno */
 }
 
 /* Botón claro en el header */
 .header .white-btn {
-  background-color: #ffffff88; /* Fondo blanco semitransparente */
-  color: #000000cc; /* Texto negro semitransparente */
+  background-color: #ffffff88;
+  /* Fondo blanco semitransparente */
+  color: #000000cc;
+  /* Texto negro semitransparente */
 }
 
 /* Botón oscuro en el header */
 .header .dark-btn {
-  background-color: #000000ff; /* Fondo negro */
-  color: #ffffffcc; /* Texto blanco semitransparente */
+  background-color: #000000ff;
+  /* Fondo negro */
+  color: #ffffffcc;
+  /* Texto blanco semitransparente */
 }
 
 /* Efecto hover en botón claro */
@@ -92,18 +120,25 @@ body.claro {
 }
 
 .header a {
-  text-decoration: none; /* Quita el subrayado de los links */
+  text-decoration: none;
+  /* Quita el subrayado de los links */
 }
 
 .header button {
-  margin-left: auto; /* Empuja el botón hacia la derecha */
+  margin-left: auto;
+  /* Empuja el botón hacia la derecha */
   display: block;
-  padding: 5px 10px; /* Espaciado interno */
+  padding: 5px 10px;
+  /* Espaciado interno */
   font-size: 15px;
-  border: 0px; /* Sin borde */
-  border-radius: 10px; /* Bordes redondeados */
-  cursor: pointer; /* Cursor de manito */
-  transition: all 0.3s ease; /* Animación suave en hover */
+  border: 0px;
+  /* Sin borde */
+  border-radius: 10px;
+  /* Bordes redondeados */
+  cursor: pointer;
+  /* Cursor de manito */
+  transition: all 0.3s ease;
+  /* Animación suave en hover */
   text-align: center;
 }
 
@@ -111,7 +146,8 @@ body.claro {
 .tema-claro-oscuro-header {
   display: flex;
   align-items: center;
-  gap: 0.5px; /* Espacio entre cada elemento */
+  gap: 0.5px;
+  /* Espacio entre cada elemento */
 }
 
 /* Contenedor de inicio de sesión */
@@ -126,13 +162,16 @@ body.claro {
 .interruptor {
   position: relative;
   display: inline-block;
-  width: 76px; /* Ancho */
-  height: 29px; /* Alto */
+  width: 76px;
+  /* Ancho */
+  height: 29px;
+  /* Alto */
 }
 
 /* Ocultamos el checkbox real */
 .interruptor input {
-  opacity: 0; /* Lo hace invisible */
+  opacity: 0;
+  /* Lo hace invisible */
   width: 0;
   height: 0;
 }
@@ -140,14 +179,18 @@ body.claro {
 /* Estilos de la "cajita" del switch */
 .deslizador {
   position: absolute;
-  cursor: pointer; /* Cursor manito */
+  cursor: pointer;
+  /* Cursor manito */
   top: 0px;
   left: 0;
   right: 0;
   bottom: 0;
-  background-color: #dadada; /* Gris de fondo */
-  transition: 0.4s; /* Transición suave */
-  border-radius: 11px; /* Bordes redondeados */
+  background-color: #dadada;
+  /* Gris de fondo */
+  transition: 0.4s;
+  /* Transición suave */
+  border-radius: 11px;
+  /* Bordes redondeados */
   border: 2.3px solid #999999;
 }
 
@@ -157,45 +200,51 @@ body.claro {
   content: "";
   height: 13px;
   width: 13px;
-  left: 9%; /* Ubicación inicial */
-  background-color: #999999; /* Gris */
-  transition: 0.4s ease-in-out; /* Movimiento suave */
-  border-radius: 75%; /* Redondito */
+  left: 9%;
+  /* Ubicación inicial */
+  background-color: #999999;
+  /* Gris */
+  transition: 0.4s ease-in-out;
+  /* Movimiento suave */
+  border-radius: 75%;
+  /* Redondito */
   transform: translateY(-50%);
-  top: 50%; /* Centrado vertical */
+  top: 50%;
+  /* Centrado vertical */
 }
 
 /* Cuando el switch está activo */
-input:checked + .deslizador:before{
+input:checked+.deslizador:before {
   /* height: 16px; */
   /* width: 16px; */
-  background-color: #000000CC; /* Se pone negro */
+  background-color: #000000CC;
+  /* Se pone negro */
   left: 5%;
 }
 
-input:checked + .deslizador {
+input:checked+.deslizador {
   border: 2.3px solid #000000AA;
 }
 
 /* Cuando está activo, el fondo cambia a blanco */
-.header input:checked + .deslizador {
+.header input:checked+.deslizador {
   background-color: #ffffff;
 }
 
 /* Movimiento del circulito al prender */
-.header input:checked + .deslizador:before {
+.header input:checked+.deslizador:before {
   transform: translateX(210%) translateY(-50%);
 }
 
 /* --------- CONTENEDOR PRINCIPAL --------- */
 .fondo {
-  background: linear-gradient(
-    to right,
-    #6efd0f,
-    rgb(50, 125, 50)
-  ); /* Degradado verde */
+  background: linear-gradient(to right,
+      #6efd0f,
+      rgb(50, 125, 50));
+  /* Degradado verde */
   margin: 30px;
-  border-radius: 20px; /* Bordes redondeados */
+  border-radius: 20px;
+  /* Bordes redondeados */
   padding-bottom: 50px;
   padding-left: 10px;
   min-height: 520px;
@@ -206,13 +255,18 @@ input:checked + .deslizador {
 
 /* Caja de inicio de sesión */
 .inicio {
-  background: #fffa; /* Blanco translúcido */
+  background: #fffa;
+  /* Blanco translúcido */
   padding: 40px;
-  border-radius: 25px; /* Bordes redondeados */
-  box-shadow: 0 0 30px #222a; /* Sombra */
+  border-radius: 25px;
+  /* Bordes redondeados */
+  box-shadow: 0 0 30px #222a;
+  /* Sombra */
   width: 100%;
-  max-width: 400px; /* Máximo ancho */
-  backdrop-filter: blur(15px); /* Fondo borroso */
+  max-width: 400px;
+  /* Máximo ancho */
+  backdrop-filter: blur(15px);
+  /* Fondo borroso */
   border: 1px solid rgba(255, 255, 255, 0.3);
   text-align: center;
   margin-left: 70px;
@@ -241,91 +295,119 @@ input:checked + .deslizador {
   z-index: 10;
   transform: translate(-50%, -50%);
 }
-.contenedor-eventos {
-    width: 50%;
-    height: auto;
-    background-color: #fff1;
-    margin: auto;
-    border-radius: 25px;
-    box-sizing: border-box;
-    padding: 4px;
 
+.contenedor-eventos {
+  width: 50%;
+  max-width: 1280px;
+  height: auto;
+  background-color: #fff1;
+  margin: auto;
+  border-radius: 19px;
+  box-sizing: border-box;
+  padding: 10px;
 }
+
 .box-evento-destacado {
-    position: relative;
-    width: 100%;
-    height: 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    margin: 20px 0 20px 0;
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
+
 .imagen-destacada {
-    display: block;
-    min-width: 98%;
-    min-height: 95%;
-    max-width: 100%;
-    max-height: 100%;
-    margin: auto;
-    box-sizing: border-box;
-    border-radius: 25px;
+  width: 100%;
+  /* ocupa todo el ancho del contenedor */
+  height: auto;
+  /* altura proporcional */
+  object-fit: cover;
+  /* recorta sin deformar */
+  border-radius: 15px;
 }
 
 .boton-esquina {
   position: absolute;
   padding: 6px 12px;
   border: none;
-  background: rgba(0,0,0,0.6);
+  background: rgba(0, 0, 0, 0.6);
   color: white;
   cursor: pointer;
   border-radius: 15px;
 }
 
-.boton-top-left    { top: 25px; left: 55px; }
-.boton-top-right   { top: 25px; right: 55px; }
-.boton-bottom-left { bottom: 10px; left: 55px; }
-.boton-bottom-right{ bottom: 10px; right: 55px; }
+.boton-top-left {
+  top: 25px;
+  left: 55px;
+}
+
+.boton-top-right {
+  top: 25px;
+  right: 55px;
+}
+
+.boton-bottom-left {
+  bottom: 10px;
+  left: 55px;
+}
+
+.boton-bottom-right {
+  bottom: 10px;
+  right: 55px;
+}
 
 .carrusel {
-    margin-top: 15px;
-    width: 100%;
-    height: auto;
-    display: flex;
-    box-sizing: border-box;
-    
+  margin-top: 10px;
+  width: 100%;
+  height: auto;
+  display: flex;
+  box-sizing: border-box;
+  gap: 5px;
+
 }
+
 .box-event {
-    width: 60%;
-    height: auto;
-    border-radius: 8px;
-    margin: 5px;
-    box-sizing: border-box;
-    display: block;
-    overflow: hidden;  /* evita que algo sobresalga */
+  flex: 1 1 250px;
+  /* se adapta al espacio, mínimo 250px */
+  width: 60%;
+  max-width: 400px;
+  height: auto;
+  border-radius: 12px;
+  margin: 5px;
+  box-sizing: border-box;
+  display: block;
+  overflow: hidden;
+  /* evita que algo sobresalga */
+  flex-wrap: wrap;
 
 }
+
 .img-box-event {
-    width: 100%;
-    height: auto;
-    margin: 0;
-    border-radius: 8px;
-    margin: 0;
-    padding: 0;
-    aspect-ratio: 1 / 1;      /* cuadrado (1:1) */
-    object-fit: cover;        /* recorta sin deformar */
-    
-}
-.contenido-box-event {
-    width: 100%;
-    height: auto;
-    padding: 4px;
-}
-.titulo-contenido {
-    box-sizing: border-box;
-    margin: 0;
-}
-.descripcion-contenido {
-    box-sizing: border-box;
-    margin: 0;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  border-radius: 8px;
+  margin: 0;
+  padding: 0;
+  aspect-ratio: 1 / 1;
+  /* cuadrado (1:1) */
+  object-fit: cover;
+  /* recorta sin deformar */
+
 }
 
+.contenido-box-event {
+  width: 100%;
+  height: auto;
+  padding: 4px;
+}
+
+.titulo-contenido {
+  box-sizing: border-box;
+  margin: 0;
+}
+
+.descripcion-contenido {
+  box-sizing: border-box;
+  margin: 0;
+}
