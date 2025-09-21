@@ -116,11 +116,11 @@ body.claro {
 }
 
 .elemento-barra-lateral {
-    display: flex;
+
     flex-direction: column;
     align-items: center;
     text-align: center;
-    color: #333;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -132,7 +132,7 @@ body.claro {
 }
 
 .elemento-barra-lateral span {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 /* --------- CONTENIDO PRINCIPAL --------- */
@@ -258,10 +258,10 @@ body.claro {
 
 .elemento-barra-lateral-derecha {
     display: flex;
-    flex-direction: column;
+
     align-items: center;
     text-align: center;
-    color: #333;
+    color: #ffffff;
     text-decoration: none;
 }
 
@@ -273,7 +273,7 @@ body.claro {
 }
 
 .elemento-barra-lateral-derecha span {
-    font-size: 10px;
+    font-size: 15px;
 }
 
 /* --------- SWITCH DE TEMA --------- */
