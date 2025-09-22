@@ -55,3 +55,15 @@ document.addEventListener("headerContentLoaded", function () {
     }, 125);
   });
 });
+document.querySelector('.menos').addEventListener('click', () => {
+  let valor = parseInt(document.querySelector('.valor').textContent);
+  if (valor > 0) {
+    document.querySelector('.valor').textContent = valor - 1;
+  }
+});
+
+document.querySelector('.mas').addEventListener('click', () => {
+  let valor = parseInt(document.querySelector('.valor').textContent);
+  document.querySelector('.valor').textContent = valor + 1;
+});
+

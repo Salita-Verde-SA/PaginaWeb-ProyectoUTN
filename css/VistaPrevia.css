@@ -91,19 +91,39 @@ body.claro {
 }
 
 /* Contenedor de opciones de tickets */
+/* Contenedor de opciones de tickets */
 .opciones-tickets {
   display: flex;
   justify-content: space-between;
   align-items: center;
   margin-bottom: 20px;
   padding-bottom: 10px;
- /* Línea verde */
+  border-bottom: 2px solid #00ff00; 
+  width: 100%; /
 }
-
-/* Tipo de ticket */
-.tipo-ticket label {
+.tipo-ticket select option {
+  background-color: #fff; /* Fondo blanco */
+  color: #000; /* Texto negro */
+}
+/* Estilo del selector de tickets */
+.selector-ticket {
+  background-color: transparent;
+  color: white;
   font-size: 16px;
-  font-weight: bold;
+  padding: 10px;
+  border: none;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 16px;
+  padding-right: 30px;
+  cursor: pointer;
+  width: 100%; 
+  max-width: 200px; /* Opcional: limita el ancho máximo */
 }
 
 /* Contenedor de cantidad */
@@ -112,7 +132,6 @@ body.claro {
   align-items: center;
   gap: 10px;
 }
-
 /* Contador de cantidad */
 .contador {
   display: flex;
