@@ -31,13 +31,16 @@ body.claro {
   border-radius: 10px;
   padding: 20px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 15px;
 }
 
 .banner-eventos {
-  width: 100%;
-  border-radius: 10px;
+  width: 300px;     /* Ancho del cuadrado */
+  height: 300px;    /* Alto del cuadrado */
+  object-fit: cover; /* Recorta la imagen sin deformarla */
+  border-radius: 5%; /* Si quieres esquinas rectas */
+
 }
 
 .descripcion-eventos {
