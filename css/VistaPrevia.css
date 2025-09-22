@@ -20,7 +20,7 @@ body.claro {
 /* Contenedor principal */
 .contenedor-principal {
   display: flex;
-
+  
   padding: 20px 20px 25px 20px;
   gap: 20px;
   
@@ -45,6 +45,19 @@ body.claro {
   border-radius: 10px;
   padding: 20px;
   background-color: #2d2d2d;
+}
+.ubicacion-boton{
+  background-color: #000; /* Fondo negro */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  border-radius: 25px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  display: flex; /* Para alinear el icono y el texto */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  gap: 8px; /* Espacio entre el texto y el icono */
 }
 
 .banner-eventos {
