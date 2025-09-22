@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wabi - Eventos</title>
+    <link rel="stylesheet" href="css/VistaPrevia.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+     <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
+
+
+    <link rel="icon" type="image/png" href="img/paletaenverde.png" />
+    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+  </head>
+  <body>
+    <!-- Header -->
+    <header id="header"></header>
+    <script src="js/header.js"></script>
+
+
+    <!-- Contenedor principal -->
+    <div class="main-container">
+      <!-- Detalle del evento -->
+      <div class="event-detail">
+        <img src="img/img-eventos/fiesta.jpg" alt="Wabi Event" class="event-banner" />
+        <div class="event-description">
+          <p>Descripción:</p>
+          <p>¡Disfruta de una noche única con los mejores DJs y un espectáculo de luces!</p>
+        </div>
+        <div class="ticket-selection">
+          <p><strong>Seleccione los tickets</strong></p>
+          <div class="ticket-options">
+            <select>
+              <option>VIP - $32.000,00 ARS</option>
+            </select>
+            <div class="quantity-selector">
+              <label>Cantidad:</label>
+              <input type="number" min="0" value="0" />
+            </div>
+          </div>
+          <button class="add-to-cart">Agregar al carrito</button>
+        </div>
+      </div>
+
+      <!-- Eventos recomendados -->
+      <div class="recommended-events">
+        <h2>Eventos Recomendados</h2>
+        <div class="events-grid">
+          <div class="event-card">
+            <img src="https://via.placeholder.com/200x150/FF5733/FFFFFF?text=Los+Auténticos+Decadentes" alt="Los Auténticos Decadentes" />
+            <p>07 SEP - MENDOZA 2025<br>AUDITORIO BUSTELO</p>
+          </div>
+          <div class="event-card">
+            <img src="https://via.placeholder.com/200x150/C70039/FFFFFF?text=Santiago+Motorizado" alt="Santiago Motorizado" />
+            <p>TEATRO GRAN REX</p>
+          </div>
+          <div class="event-card">
+            <img src="https://via.placeholder.com/200x150/900C3F/FFFFFF?text=TED+Talks" alt="TED Talks" />
+            <p>EDUCATION</p>
+          </div>
+          <div class="event-card">
+            <img src="https://via.placeholder.com/200x150/FFC300/FFFFFF?text=Tomorrowland" alt="Tomorrowland" />
+            <p>FESTIVAL</p>
+          </div>
+        </div>
+        <div class="events-grid">
+          <div class="event-card">
+            <img src="https://via.placeholder.com/200x150/DAF7A6/FFFFFF?text=Morat" alt="Morat" />
+            <p>20/02 - MENDOZA 2025<br>REPROGRAMADO</p>
+          </div>
+          <div class="event-card">
+            <img src="https://via.placeholder.com/200x150/FF6347/FFFFFF?text=Showcito+Namuncia" alt="Showcito Namuncia" />
+            <p>TEATRO INDEPENDENCIA</p>
+          </div>
+          <div class="event-card">
+            <img src="https://via.placeholder.com/200x150/FFD700/FFFFFF?text=Mendoza" alt="Mendoza" />
+            <p>TEATRO DEL BICENTENARIO</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Footer -->
+    <footer id="footer"></footer>
+    <script src="js/footer.js"></script>
+    
+  </body>
+     
+</html>
