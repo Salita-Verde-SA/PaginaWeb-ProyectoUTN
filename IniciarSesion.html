@@ -31,14 +31,12 @@
     <div class="fondo">
       <header class="header">
         <div class="tema-claro-oscuro-header">
-    
           <i class="bx bx-moon"></i>
           <label class="interruptor" id="toggle">
             <input type="checkbox" />
             <span class="deslizador"></span>
           </label>
           <i class="bx bx-sun"></i>
-    
         </div>
 
         <div class="inicio-cuenta-header">
@@ -48,7 +46,6 @@
               src="img/paletaenverde.png"
               alt="Logo paleta"
           /></a>
-
           <a href="IniciarSesion.html"
             ><button class="white-btn">Iniciar sesión</button></a
           >
@@ -84,6 +81,12 @@
     <script src="js/footer.js"></script>
 
     <!-- Script para que funcione el giro -->
+    <!-- No borren este script incrustado, si no, no anda el tema claro -->
+    <script>
+      document.addEventListener("DOMContentLoaded", function () {
+        document.dispatchEvent(new Event("headerContentLoaded"));
+      });
+    </script>
     <script src="js/Interruptor.js"></script>
   </body>
 </html>

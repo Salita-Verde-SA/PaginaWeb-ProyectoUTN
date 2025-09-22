@@ -125,9 +125,10 @@ header button {
 
 /* Contenedor de inicio de sesión */
 .inicio-cuenta-header {
+  margin-left: 50px;
   display: flex;
   align-items: center;
-  justify-content: right;
+  justify-content: center;
   gap: 10px;
 }
 
@@ -244,11 +245,9 @@ header input:checked + .deslizador:before {
 .logo-inicio-header {
   width: 35px;
   height: 35px;
-  padding-right: 50px;
-  margin: 0px 10px;
-  position: absolute;
+  margin-right: 5px;
+  position: relative;
   z-index: 10;
-  transform: translate(-50%, -50%);
 }
 
 /* Título de inicio */
