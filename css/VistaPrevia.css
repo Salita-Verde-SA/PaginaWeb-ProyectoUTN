@@ -28,115 +28,51 @@ body.claro {
   margin: 20px;
   background-color: #2d2d2d;
 }
+.contenedor-principal {
+  display: flex;
+  flex-direction: column; /* Las secciones se apilan verticalmente */
+  gap: 20px; /* Espacio entre las secciones */
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px;
+  background-color: #2d2d2d;
+}
 
-/* Detalle del evento */
 .detalle-eventos {
+  display: flex;
+  flex-direction: row; /* Imagen y detalles en fila */
+  gap: 15px;
   border-radius: 10px;
   padding: 20px;
-  display: flex;
-  
-  flex-direction: row;
-  gap: 15px;
-}
-.lugar{
-  margin-top: 20px;
-  margin-bottom: 20px;
-
-}
-.ubicacion-boton {
-  background-color: #000; /* Fondo negro */
-  color: white; /* Texto blanco */
-  border: none; /* Sin borde */
-  border-radius: 25px; /* Bordes redondeados */
-  padding: 10px 20px; /* Espaciado interno */
-  font-size: 16px; /* Tamaño del texto */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  display: flex; /* Para alinear el icono y el texto */
-  align-items: center; /* Centrar verticalmente */
-  justify-content: center; /* Centrar horizontalmente */
-  gap: 8px; /* Espacio entre el texto y el icono */
-}
-
-.ubicacion-boton i {
-  font-size: 16px; /* Tamaño del icono */
+  background-color: #2d2d2d;
 }
 
 .banner-eventos {
-  width: 300px;     /* Ancho del cuadrado */
-  height: 300px;    /* Alto del cuadrado */
-  object-fit: cover; /* Recorta la imagen sin deformarla */
-  border-radius: 5%; /* Si quieres esquinas rectas */
-
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5%;
 }
 
 .descripcion-eventos {
+  flex: 1; /* Ocupa el espacio restante */
   font-size: 14px;
-
-
 }
 
-.seleccion-entradas {
-  display: flex;
-  flex-direction: column;
-  gap: 10px;
-  
-}
-
-.opciones-entradas {
-  
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-
-.opciones-entradas select {
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #555;
-  background-color: #333;
-  color: #ffffff;
-}
-
-.selector-cantidad input {
-  width: 50px;
-  padding: 8px;
-  border-radius: 5px;
-  border: 1px solid #555;
-  background-color: #333;
-  color: #ffffff;
-  text-align: center;
-}
-
-.agregar-al-carrito {
-  background-color: #4CAF50;
-  color: white;
-  border: none;
-  padding: 10px 20px;
-  border-radius: 5px;
-  cursor: pointer;
-  font-size: 16px;
-  width: fit-content;
-}
-
-/* Eventos recomendados */
 .eventos-recomendados {
   border-radius: 10px;
   padding: 20px;
+  background-color: #2d2d2d;
 }
-
-.eventos-recomendados h2 {
-  margin-bottom: 15px;
-}
-
 .cuadrícula-eventos {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 15px;
+  grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual ancho */
+  gap: 15px; /* Espacio entre las tarjetas */
   margin-bottom: 20px;
 }
 
 .tarjeta-evento {
-  background-color: #2d2d2d;
+  background-color: #3d3d3d;
   border-radius: 10px;
   overflow: hidden;
 }
@@ -150,6 +86,32 @@ body.claro {
 .tarjeta-evento p {
   padding: 10px;
   font-size: 14px;
+  text-align: center;
+  margin: 0;
+}
+
+@media (max-width: 768px) {
+  .detalle-eventos {
+    flex-direction: column; 
+  }
+
+  .banner-eventos {
+    width: 100%; 
+    height: 250px;
+  }
+
+  .descripcion-eventos {
+    width: 100%; 
+  }
+  .cuadrícula-eventos {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+  }
+
+}
+@media (max-width: 480px) {
+  .cuadrícula-eventos {
+    grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+  }
 }
 
 /* --------- SWITCH DE TEMA --------- */
@@ -211,17 +173,4 @@ input:checked + .deslizador {
 input:checked + .deslizador:before {
   transform: translateX(210%) translateY(-50%);
 }
-@media (max-width: 768px) {
-  .detalle-eventos {
-    flex-direction: column; 
-  }
 
-  .banner-eventos {
-    width: 100%; 
-    height: 250px;
-  }
-
-  .descripcion-eventos {
-    width: 100%; 
-  }
-}
