@@ -35,7 +35,9 @@ document.addEventListener("headerContentLoaded", function () {
     // Alterna la clase 'claro' en el body para cambiar el modo
     body.classList.toggle("claro");
     header.classList.toggle("claro");
-    barrabusqueda.classList.toggle("claro");
+    if (barrabusqueda != null) {
+      barrabusqueda.classList.toggle("claro");
+    }
     if (localidad != null) {
       localidad.classList.toggle("claro");
     }
