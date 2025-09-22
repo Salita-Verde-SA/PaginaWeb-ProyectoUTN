@@ -62,6 +62,94 @@ body.claro {
   flex: 1; /* Ocupa el espacio restante */
   font-size: 14px;
 }
+/* Estilo general del contenedor */
+.seleccion-tickets {
+
+  color: white;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+/* Título */
+.seleccion-tickets h3 {
+  margin-top: 0;
+  margin-bottom: 20px;
+  font-size: 18px;
+}
+
+/* Contenedor de opciones de tickets */
+.opciones-tickets {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #22c55e; /* Línea verde */
+}
+
+/* Tipo de ticket */
+.tipo-ticket label {
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Contenedor de cantidad */
+.cantidad-ticket {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Contador de cantidad */
+.contador {
+  display: flex;
+  align-items: center;
+  border: 1px solid #555;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.contador button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.contador button:hover {
+  background-color: #444;
+}
+
+.contador .valor {
+  padding: 5px 10px;
+  background-color: #555;
+  color: white;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Botón de agregar al carrito */
+.agregar-carrito {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.agregar-carrito:hover {
+  background-color: #444;
+}
 
 .eventos-recomendados {
   border-radius: 10px;
