@@ -16,8 +16,9 @@ body.claro {
   background: #f5f5f5;
   color: #333;
 }
+
 /* Contenedor principal */
-.main-container {
+.contenedor-principal {
   padding: 20px;
   display: flex;
   flex-direction: column;
@@ -25,7 +26,7 @@ body.claro {
 }
 
 /* Detalle del evento */
-.event-detail {
+.detalle-eventos {
   background-color: #1e1e1e;
   border-radius: 10px;
   padding: 20px;
@@ -34,28 +35,28 @@ body.claro {
   gap: 15px;
 }
 
-.event-banner {
+.banner-eventos {
   width: 100%;
   border-radius: 10px;
 }
 
-.event-description {
+.descripcion-eventos {
   font-size: 14px;
 }
 
-.ticket-selection {
+.seleccion-entradas {
   display: flex;
   flex-direction: column;
   gap: 10px;
 }
 
-.ticket-options {
+.opciones-entradas {
   display: flex;
   align-items: center;
   gap: 10px;
 }
 
-.ticket-options select {
+.opciones-entradas select {
   padding: 8px;
   border-radius: 5px;
   border: 1px solid #555;
@@ -63,7 +64,7 @@ body.claro {
   color: #ffffff;
 }
 
-.quantity-selector input {
+.selector-cantidad input {
   width: 50px;
   padding: 8px;
   border-radius: 5px;
@@ -73,7 +74,7 @@ body.claro {
   text-align: center;
 }
 
-.add-to-cart {
+.agregar-al-carrito {
   background-color: #4CAF50;
   color: white;
   border: none;
@@ -85,36 +86,36 @@ body.claro {
 }
 
 /* Eventos recomendados */
-.recommended-events {
+.eventos-recomendados {
   background-color: #1e1e1e;
   border-radius: 10px;
   padding: 20px;
 }
 
-.recommended-events h2 {
+.eventos-recomendados h2 {
   margin-bottom: 15px;
 }
 
-.events-grid {
+.cuadrícula-eventos {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
   gap: 15px;
   margin-bottom: 20px;
 }
 
-.event-card {
+.tarjeta-evento {
   background-color: #2d2d2d;
   border-radius: 10px;
   overflow: hidden;
 }
 
-.event-card img {
+.tarjeta-evento img {
   width: 100%;
   height: 150px;
   object-fit: cover;
 }
 
-.event-card p {
+.tarjeta-evento p {
   padding: 10px;
   font-size: 14px;
 }
