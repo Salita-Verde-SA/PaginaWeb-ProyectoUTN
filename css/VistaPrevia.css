@@ -19,20 +19,46 @@ body.claro {
 
 /* Contenedor principal */
 .contenedor-principal {
-  padding: 20px;
   display: flex;
-  flex-direction: column;
+
+  padding: 20px 20px 25px 20px;
   gap: 20px;
+  
+  border-radius: 15px;
+  margin: 20px;
+  background-color: #2d2d2d;
 }
 
 /* Detalle del evento */
 .detalle-eventos {
-  background-color: #1e1e1e;
   border-radius: 10px;
   padding: 20px;
   display: flex;
+  
   flex-direction: row;
   gap: 15px;
+}
+.lugar{
+  margin-top: 20px;
+  margin-bottom: 20px;
+
+}
+.ubicacion-boton {
+  background-color: #000; /* Fondo negro */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  border-radius: 25px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  display: flex; /* Para alinear el icono y el texto */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  gap: 8px; /* Espacio entre el texto y el icono */
+}
+
+.ubicacion-boton i {
+  font-size: 16px; /* Tamaño del icono */
 }
 
 .banner-eventos {
@@ -45,15 +71,19 @@ body.claro {
 
 .descripcion-eventos {
   font-size: 14px;
+
+
 }
 
 .seleccion-entradas {
   display: flex;
   flex-direction: column;
   gap: 10px;
+  
 }
 
 .opciones-entradas {
+  
   display: flex;
   align-items: center;
   gap: 10px;
@@ -90,7 +120,6 @@ body.claro {
 
 /* Eventos recomendados */
 .eventos-recomendados {
-  background-color: #1e1e1e;
   border-radius: 10px;
   padding: 20px;
 }
