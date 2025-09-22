@@ -105,15 +105,19 @@ body.claro {
 
 /* --------- BARRA LATERAL IZQUIERDA CON FONDO --------- */
 .barra-lateral-izquierda {
-      width: 20%;
+    width: 20%;
     display: flex;
     flex-direction: column;
     gap: 15px;
     background-color: #171717;
     border-radius: 10px;
     padding: 15px;
+    position: sticky;
+    top: 70px; /* Ajusta este valor según la altura de tu barra de navegación */
+    align-self: flex-start;
+    max-height: calc(100vh - 80px); /* Ajusta según la altura de tu barra de navegación */
+    overflow-y: auto;
 }
-
 .elemento-barra-lateral {
     display: flex;
     
@@ -255,10 +259,16 @@ body.claro {
     background-color: #171717;
     border-radius: 10px;
     padding: 15px;
+    position: sticky;
+    top: 70px; /* Ajusta este valor según la altura de tu barra de navegación */
+    align-self: flex-start;
+    max-height: calc(100vh - 80px); /* Ajusta según la altura de tu barra de navegación */
+    overflow-y: auto;
 }
 
-.elemento-barra-lateral-derecha {
+.elemento-barra-lateral-derecha{
     display: flex;
+    
 
     align-items: center;
     text-align: center;
@@ -267,17 +277,17 @@ body.claro {
 }
 
 .elemento-barra-lateral-derecha img {
-    width: 50px;
-    height: 50px;
+    width: 40px;
+    height: 40px;
     border-radius: 8px;
     margin-bottom: 5px;
 }
 
 .elemento-barra-lateral-derecha span {
-    
-    font-size: 100%;
+    font-size: 15px;
     margin-left: 5%;
 }
+
 
 /* --------- SWITCH DE TEMA --------- */
 .tema-claro-oscuro-header {
