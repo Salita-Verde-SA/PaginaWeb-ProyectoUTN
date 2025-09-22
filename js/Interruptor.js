@@ -1,7 +1,7 @@
-// Espera a que el DOM esté completamente cargado antes de ejecutar 
-// el script para garantizar que todos los elementos HTML estén 
-// disponibles y listos para ser manipulados, evitando errores 
-// como elementos no encontrados o interacciones prematuras que podrían 
+// Espera a que el DOM esté completamente cargado antes de ejecutar
+// el script para garantizar que todos los elementos HTML estén
+// disponibles y listos para ser manipulados, evitando errores
+// como elementos no encontrados o interacciones prematuras que podrían
 // afectar la experiencia del usuario.
 document.addEventListener("DOMContentLoaded", function () {
   // Selecciona el interruptor de modo claro/oscuro
