@@ -25,7 +25,7 @@ body.claro {
   gap: 20px; /* Espacio entre las secciones */
   padding: 20px;
   border-radius: 15px;
-  margin: 20px;
+  margin: 20px 100px 20px 100px;
   background-color: rgba(42, 42, 42, 0.8);
 }
 
