@@ -6,7 +6,7 @@
   align-items: center;
   gap: 100px; /* Espacio entre columnas */
   font-size: 14px;
-  border-top: 1px solid #333;
+  border-top: 1px solid #5559;
 }
 
 /* Redes sociales */
@@ -80,6 +80,7 @@ footer.claro .colum a,
 footer.claro i {
   color: #333;
 }
+
 
 /* Cambia el color de los iconos sociales en modo claro */
 footer .social.claro {
