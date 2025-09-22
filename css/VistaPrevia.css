@@ -63,19 +63,31 @@ body.claro {
   font-size: 14px;
 }
 /* Estilo general del contenedor */
-.seleccion-tickets {
-
+.selector-ticket {
+  /* Estilo del texto y fondo */
+  background-color: transparent;
   color: white;
-  padding: 20px;
-  border-radius: 8px;
-  font-family: Arial, sans-serif;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  appearance: none; /* Oculta la flecha predeterminada en algunos navegadores */
+  -webkit-appearance: none; /* Para navegadores basados en WebKit */
+  -moz-appearance: none; /* Para navegadores basados en Mozilla */
+
+  /* Estilo de la línea inferior */
+  border-bottom: 2px solid #00ff00; /* Línea verde */
+  width: 200px; /* Ancho del selector */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
 }
 
-/* Título */
-.seleccion-tickets h3 {
-  margin-top: 0;
-  margin-bottom: 20px;
-  font-size: 18px;
+/* Estilo de la flecha personalizada */
+.selector-ticket {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 16px;
+  padding-right: 30px; /* Espacio para la flecha */
 }
 
 /* Contenedor de opciones de tickets */
@@ -85,7 +97,7 @@ body.claro {
   align-items: center;
   margin-bottom: 20px;
   padding-bottom: 10px;
-  border-bottom: 2px solid #22c55e; /* Línea verde */
+ /* Línea verde */
 }
 
 /* Tipo de ticket */
