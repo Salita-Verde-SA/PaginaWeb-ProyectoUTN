@@ -20,7 +20,7 @@
   color: #fff;
   font-size: 22px;
   text-decoration: none;
-  transition: color 0.3s ease;
+  transition: color 1s ease-in-out;
 }
 
 .footer .social a:hover {
@@ -37,7 +37,7 @@
   color: #fff;
   font-size: 18px;
   margin-bottom: 10px;
-  transition: color 0.3s ease;
+  transition: color 1s ease-in-out;
 }
 
 .footer .colum div a {
@@ -45,7 +45,7 @@
   color: #ccc;
   text-decoration: none;
   margin: 5px 0;
-  transition: color 0.3s ease;
+  transition: color 1s ease-in-out;
 }
 
 .footer .colum div a:hover {
@@ -62,19 +62,26 @@
     flex-direction: column;
     gap: 20px;
     text-align: center;
-    transition: color 0.3s ease;
+  transition: color 1s ease-in-out;
   }
 
   .footer .social {
     margin-right: 0;
-    transition: color 0.3s ease;
+  transition: color 1s ease-in-out;
   }
 }
 
 /* Modo claro para el footer */
 
 
-footer.claro .social a,
+.footer.claro .social a {
+  color: #333;
+}
+footer.claro .social a:hover {
+  color: #00c851 !important;
+}
+
+
 footer.claro .colum h4,
 footer.claro .colum a,
 footer.claro i {
