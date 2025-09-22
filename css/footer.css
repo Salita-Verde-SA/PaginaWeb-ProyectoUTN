@@ -38,6 +38,7 @@
   color: #fff;
   font-size: 18px;
   margin-bottom: 10px;
+  transition: color 0.3s ease;
 }
 
 .footer .colum div a {
@@ -62,10 +63,12 @@
     flex-direction: column;
     gap: 20px;
     text-align: center;
+    transition: color 0.3s ease;
   }
 
   .footer .social {
     margin-right: 0;
+    transition: color 0.3s ease;
   }
 }
 
@@ -78,6 +81,7 @@ footer.claro .colum a,
 footer.claro h4,
 footer.claro i {
   color: #000 !important;
+
 }
 
 /* Cambia el color de los iconos sociales en modo claro */
