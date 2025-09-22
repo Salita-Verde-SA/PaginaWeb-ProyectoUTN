@@ -33,7 +33,7 @@ header button {
   border: 0px; /* Sin borde */
   border-radius: 10px; /* Bordes redondeados */
   cursor: pointer; /* Cursor de manito */
-  transition: all 0.3s ease; /* Animación suave en hover */
+  transition: all 0.3s ease-in-out; /* Animación suave en hover */
   text-align: center;
 }
 
@@ -52,13 +52,27 @@ header .bx-moon {
 }
 
 header {
+  top: 0;
+  position: sticky;
   display: flex; /* Activa flexbox */
   flex-direction: row;
   align-items: center; /* Centra verticalmente los elementos */
   justify-content: space-between; /* Espacia: uno a la izquierda y otro a la derecha */
-  padding: 20px 35px 0px 45px; /* Espaciado interno */
+  padding: 10px 35px 10px 45px; /* Espaciado interno */
   gap: 15px;
   width: 100%;
+  z-index: 100;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+  background: #00000088;
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid #333;
+  transition: all 0.5s ease-in-out;
+}
+
+header.claro {
+  background-color: #ffffff88;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  border-bottom: 1px solid #999;
 }
 
 /* --------- ANIMACIONES --------- */
@@ -114,20 +128,32 @@ header .bx-moon.mecer {
   padding: 8px 30px; /* Espacio a la izquierda para la flechita */
   border-radius: 20px;
   border: none;
-  background-color: #333;
+  background-color: #3338;
   height: auto;
   width: auto;
-  color: white;
+  color: #ffffff;
   font-size: 14px;
+  transition: all 0.5s ease-out;
 }
 
-.barra-navegacion-centro input {
+.barra-navegacion-izquierda.claro {
+  background-color: #cccccccc;
+  color: #000000cc;
+}
+
+.barra-navegacion-centro .barra-busqueda {
   padding: 8px 15px;
   border-radius: 20px;
   border: none;
   background-color: #333;
   color: white;
-  width: 200px;
+  width: 400px;
+  transition: all 0.5s ease-out;
+}
+
+.barra-navegacion-centro .barra-busqueda.claro {
+  background-color: #cccccccc;
+  color: #000000cc;
 }
 
 .barra-navegacion-derecha {
@@ -155,6 +181,8 @@ header .bx-moon.mecer {
 }
 
 /* ------- BOTONES ------- */
+
+/* TODO Hacer el tema claro para los botones de iniciar sesión y registro */
 
 /* Botón claro en el header */
 header .white-btn {

@@ -81,14 +81,23 @@ body.claro {
   border-radius: 15px;
   overflow: hidden;
   height: 180px;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://via.placeholder.com/500x180");
+  background: radial-gradient(
+      circle at bottom right,
+      rgba(0, 0, 0, 0),
+      rgba(0, 0, 0, 0.5)
+    ),
+    url(../img/img-eventos/fiesta.jpg);
   background-size: cover;
   display: flex;
   flex-direction: column;
   justify-content: center;
   padding: 20px;
   color: white;
+  transition: transform 0.3s ease;
+}
+
+.banner:hover {
+  transform: perspective(1000px) rotateX(3deg) translateY(-2px) scale(1.05);
 }
 
 .banner h2 {
@@ -141,18 +150,18 @@ body.claro {
 
 /* --------- RECOMENDADOS --------- */
 .secciones {
-    margin-top: 10px;
+  margin-top: 10px;
 }
 
 .secciones h2 {
-    font-size: 24px;
-    margin-bottom: 15px;
+  font-size: 24px;
+  margin-bottom: 15px;
 }
 
 .eventos-recomendados {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 15px;
+  gap: 20px;
 }
 
 .tarjeta-recomendado {
@@ -162,6 +171,14 @@ body.claro {
   position: relative;
   background-size: cover;
   background-position: center;
+}
+
+.tarjeta-recomendado {
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-recomendado:hover {
+  transform: perspective(1000px) rotateX(3deg) translateY(-2px) scale(1.05);
 }
 
 .tarjeta-recomendado .informacion {
