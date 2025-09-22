@@ -1,0 +1,180 @@
+/* --------- ICONOS DEL HEADER --------- */
+
+/* Logo chico en el header */
+.logo-inicio-header {
+  width: 35px;
+  height: 35px;
+  margin: 0px 10px 0px 0px;
+  position: relative;
+  z-index: 10;
+  /* transform: translate(-50%, -50%); */
+}
+
+.header-izquierda {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: auto;
+}
+
+.header-derecha {
+  display: flex;
+  align-items: center;
+  gap: 1px;
+  width: auto;
+  min-width: 200px;
+}
+
+header button {
+  margin-left: auto; /* Empuja el botón hacia la derecha */
+  display: block;
+  padding: 5px 10px; /* Espaciado interno */
+  font-size: 15px;
+  border: 0px; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de manito */
+  transition: all 0.3s ease; /* Animación suave en hover */
+  text-align: center;
+}
+
+header a {
+  text-decoration: none; /* Quita el subrayado de los links */
+}
+
+header .bx {
+  color: #ffffffff;
+  font-size: 24px;
+  margin: 2% 5%;
+}
+
+header .bx-moon {
+  font-size: 22px;
+}
+
+header {
+  display: flex; /* Activa flexbox */
+  flex-direction: row;
+  align-items: center; /* Centra verticalmente los elementos */
+  justify-content: space-between; /* Espacia: uno a la izquierda y otro a la derecha */
+  padding: 20px 35px 0px 45px; /* Espaciado interno */
+  gap: 15px;
+  width: 100%;
+}
+
+/* --------- ANIMACIONES --------- */
+@keyframes girar {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(180deg);
+  }
+}
+
+@keyframes mecer {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-15deg);
+  }
+  50% {
+    transform: rotate(15deg);
+  }
+  75% {
+    transform: rotate(-10deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+header .bx-sun.oscuro,
+header .bx-moon.oscuro {
+  color: #000000cc;
+}
+
+header .bx-sun.girar {
+  animation: girar 0.7s linear;
+}
+
+header .bx-moon.mecer {
+  animation: mecer 1s ease-in-out;
+}
+
+/* --------- ESTILOS DEL HEADER --------- */
+
+.barra-navegacion-izquierda {
+  /* Ocultar la flechita nativa */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  appearance: none;
+  text-align: center;
+  /* Estilo del select */
+  padding: 8px 30px; /* Espacio a la izquierda para la flechita */
+  border-radius: 20px;
+  border: none;
+  background-color: #333;
+  height: auto;
+  width: auto;
+  color: white;
+  font-size: 14px;
+}
+
+.barra-navegacion-centro input {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: #333;
+  color: white;
+  width: 200px;
+}
+
+.barra-navegacion-derecha {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  justify-content: center;
+}
+
+.barra-navegacion-derecha button,
+.barra-navegacion-derecha .boton-icono {
+  background: none;
+  border: none;
+  color: white;
+  font-size: 18px;
+  cursor: pointer;
+}
+
+
+.inicio-cuenta-header {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: auto;
+  margin-left: 10px;
+}
+
+/* ------- BOTONES ------- */
+
+/* Botón claro en el header */
+header .white-btn {
+  background-color: #ffffff88; /* Fondo blanco semitransparente */
+  color: #000000cc; /* Texto negro semitransparente */
+}
+
+/* Botón oscuro en el header */
+header .dark-btn {
+  background-color: #000000ff; /* Fondo negro */
+  color: #ffffffcc; /* Texto blanco semitransparente */
+}
+
+/* Efecto hover en botón claro */
+header .white-btn:hover {
+  background-color: #ffffffaa;
+}
+
+/* Efecto hover en botón oscuro */
+header .dark-btn:hover {
+  background-color: #272727ff;
+}
