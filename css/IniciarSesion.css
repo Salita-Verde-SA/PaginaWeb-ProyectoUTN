@@ -21,13 +21,13 @@ body.claro {
 }
 
 /* --------- ICONOS DEL HEADER --------- */
-.header .bx {
+header .bx {
   color: #000000; /* Iconos en negro */
   font-size: 24px; /* Tamaño del icono */
   margin: 2% 5%; /* Espaciado: 2% arriba/abajo y 5% izquierda/derecha */
 }
 
-.header .bx-moon {
+header .bx-moon {
   font-size: 22px; /* La luna un poquito más chica */
 }
 
@@ -61,17 +61,17 @@ body.claro {
 }
 
 /* Cuando al sol le damos la clase "girar" se anima */
-.header .bx-sun.girar {
+header .bx-sun.girar {
   animation: girar 0.7s linear;
 }
 
 /* Cuando a la luna le damos la clase "mecer" se anima */
-.header .bx-moon.mecer {
+header .bx-moon.mecer {
   animation: mecer 1s ease-in-out;
 }
 
 /* --------- ESTILOS DEL HEADER --------- */
-.header {
+header {
   display: flex; /* Activa flexbox */
   align-items: center; /* Centra verticalmente los elementos */
   justify-content: space-between; /* Espacia: uno a la izquierda y otro a la derecha */
@@ -79,32 +79,32 @@ body.claro {
 }
 
 /* Botón claro en el header */
-.header .white-btn {
+header .white-btn {
   background-color: #ffffff88; /* Fondo blanco semitransparente */
   color: #000000cc; /* Texto negro semitransparente */
 }
 
 /* Botón oscuro en el header */
-.header .dark-btn {
+header .dark-btn {
   background-color: #000000ff; /* Fondo negro */
   color: #ffffffcc; /* Texto blanco semitransparente */
 }
 
 /* Efecto hover en botón claro */
-.header .white-btn:hover {
+header .white-btn:hover {
   background-color: #ffffffaa;
 }
 
 /* Efecto hover en botón oscuro */
-.header .dark-btn:hover {
+header .dark-btn:hover {
   background-color: #272727ff;
 }
 
-.header a {
+header a {
   text-decoration: none; /* Quita el subrayado de los links */
 }
 
-.header button {
+header button {
   margin-left: auto; /* Empuja el botón hacia la derecha */
   display: block;
   padding: 5px 10px; /* Espaciado interno */
@@ -187,12 +187,12 @@ input:checked + .deslizador {
 }
 
 /* Cuando está activo, el fondo cambia a blanco */
-.header input:checked + .deslizador {
+header input:checked + .deslizador {
   background-color: #ffffff;
 }
 
 /* Movimiento del circulito al prender */
-.header input:checked + .deslizador:before {
+header input:checked + .deslizador:before {
   transform: translateX(210%) translateY(-50%);
 }
 
