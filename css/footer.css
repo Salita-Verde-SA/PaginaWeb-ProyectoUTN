@@ -75,15 +75,15 @@
 
 
 footer.claro .social a,
-footer.claro .colum,
+footer.claro .colum h4,
 footer.claro .colum a,
 footer.claro i {
   color: #333;
 }
 
-footer.claro h4 {
+/* footer.claro h4 {
   color: #333;
-}
+} */
 
 /* Cambia el color de los iconos sociales en modo claro */
 footer .social.claro {
