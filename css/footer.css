@@ -77,8 +77,11 @@
 footer.claro .social a,
 footer.claro .colum,
 footer.claro .colum a,
-footer.claro h4,
 footer.claro i {
+  color: #333;
+}
+
+footer.claro h4 {
   color: #333;
 }
 
@@ -87,9 +90,6 @@ footer .social.claro {
   color: #333;
 }
 
-/* footer.claro {
-  border-top: 1px solid #999;
-} */
 
 
 

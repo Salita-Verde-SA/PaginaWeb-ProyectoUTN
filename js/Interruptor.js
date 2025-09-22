@@ -23,14 +23,6 @@ document.addEventListener("headerContentLoaded", function () {
     return;
   }
 
-  // console.log("Variables declaradas:");
-  // console.log("interruptor:", interruptor);
-  // console.log("sun:", sun);
-  // console.log("moon:", moon);
-  // console.log("body:", body);
-  // console.log("header:", header);
-  // console.log("localidad:", localidad);
-
   // Escucha cambios en el interruptor
   interruptor.addEventListener("change", () => {
     // Alterna la clase 'claro' en el body para cambiar el modo
