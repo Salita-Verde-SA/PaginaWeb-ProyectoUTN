@@ -3,8 +3,8 @@
   
   padding: 30px 40px;
   display: flex;
-    justify-content: center;
-  align-items: flex-start;
+  justify-content: center;
+  align-items: center;
   gap: 100px; /* Espacio entre columnas */
   font-size: 14px;
   border-top: 1px solid #333;
