@@ -14,20 +14,11 @@ body {
 
 body.claro {
   background: #f5f5f5;
-  color: #333;
+  color: #000000;
 }
 
 /* Contenedor principal */
-.contenedor-principal {
-  display: flex;
-  
-  padding: 20px 20px 25px 20px;
-  gap: 20px;
-  
-  border-radius: 15px;
-  margin: 20px;
-  background-color: #2d2d2d;
-}
+
 .contenedor-principal {
   display: flex;
   flex-direction: column; /* Las secciones se apilan verticalmente */
@@ -35,7 +26,7 @@ body.claro {
   padding: 20px;
   border-radius: 15px;
   margin: 20px;
-  background-color: #2d2d2d;
+  background-color: rgba(42, 42, 42, 0.8);
 }
 
 .detalle-eventos {
@@ -44,7 +35,7 @@ body.claro {
   gap: 15px;
   border-radius: 10px;
   padding: 20px;
-  background-color: #2d2d2d;
+
 }
 .ubicacion-boton{
   background-color: #000; /* Fondo negro */
@@ -75,7 +66,6 @@ body.claro {
 .eventos-recomendados {
   border-radius: 10px;
   padding: 20px;
-  background-color: #2d2d2d;
 }
 .cuadrícula-eventos {
   display: grid;
