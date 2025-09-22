@@ -25,8 +25,9 @@
   min-width: 200px;
 }
 
-header button {
-  margin-left: auto; /* Empuja el botón hacia la derecha */
+.login-btn,
+.register-btn {
+  position: relative;
   display: block;
   padding: 5px 10px; /* Espaciado interno */
   font-size: 15px;
@@ -63,16 +64,16 @@ header {
   width: 100%;
   z-index: 100;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
-  background: #00000088;
-  backdrop-filter: blur(10px);
-  border-bottom: 1px solid #333;
+  background: #00000077;
+  backdrop-filter: blur(15px);
+  border-bottom: 1px solid #3338;
   transition: all 0.5s ease-in-out;
 }
 
 header.claro {
   background-color: #ffffff88;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  border-bottom: 1px solid #999;
+  border-bottom: 1px solid #9998;
 }
 
 /* --------- ANIMACIONES --------- */
@@ -141,14 +142,28 @@ header .bx-moon.mecer {
   color: #000000cc;
 }
 
+.barra-navegacion-centro {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
 .barra-navegacion-centro .barra-busqueda {
-  padding: 8px 15px;
+  padding: 8px 15px 8px 40px;
   border-radius: 20px;
   border: none;
   background-color: #333;
   color: white;
   width: 400px;
   transition: all 0.5s ease-out;
+}
+
+.barra-navegacion-centro .lupa {
+  position: relative;
+  left: 28px;
+  margin-right: 0px;
+  color: 333;
+  font-size: 14px;
 }
 
 .barra-navegacion-centro .barra-busqueda.claro {
@@ -177,12 +192,39 @@ header .bx-moon.mecer {
   align-items: center;
   gap: 10px;
   width: auto;
-  margin-left: 10px;
+  margin: 0px 0px 0px 10px;
 }
 
 /* ------- BOTONES ------- */
 
 /* TODO Hacer el tema claro para los botones de iniciar sesión y registro */
+
+.boton-cuenta-usuario {
+  position: relative;
+  border-radius: 50%;
+  min-width: 33px;
+  min-height: 33px;
+  padding: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #00000000;
+  border: none;
+}
+
+.foto-perfil {
+  width: 33px;
+  height: 33px;
+  border-radius: 50%;
+  object-fit: cover;
+  box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.3);
+}
+
+header .login-btn,
+.register-btn {
+  display: none;
+  min-width: 50px;
+}
 
 /* Botón claro en el header */
 header .white-btn {

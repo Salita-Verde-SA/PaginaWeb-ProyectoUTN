@@ -1,9 +1,13 @@
+// Interruptor de tema claro/oscuro
+
+
 // Espera a que el DOM esté completamente cargado antes de ejecutar
 // el script para garantizar que todos los elementos HTML estén
 // disponibles y listos para ser manipulados, evitando errores
 // como elementos no encontrados o interacciones prematuras que podrían
 // afectar la experiencia del usuario.
 document.addEventListener("headerContentLoaded", function () {
+  console.log("Interruptor.js");
   // Selecciona el interruptor de modo claro/oscuro
   const interruptor = document.querySelector(".interruptor input");
   // Selecciona el ícono del sol
