@@ -81,8 +81,7 @@ body.claro {
   border-radius: 15px;
   overflow: hidden;
   height: 180px;
-  background: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://via.placeholder.com/500x180");
+  background: radial-gradient(circle at bottom right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(../img/img-eventos/fiesta.jpg);
   background-size: cover;
   display: flex;
   flex-direction: column;
