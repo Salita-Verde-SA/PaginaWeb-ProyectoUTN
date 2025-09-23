@@ -181,58 +181,60 @@ body.claro {
 .agregar-carrito:hover {
   background-color: #444;
 }
-
+/* Contenedor de eventos recomendados */
 .eventos-recomendados {
-  border-radius: 10px;
   padding: 20px;
 }
+
+/* Cuadrícula de eventos */
 .cuadrícula-eventos {
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual ancho */
-  gap: 30px; /* Espacio entre las tarjetas */
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas para que se vean más tarjetas en una fila */
+  gap: 20px; /* Espacio entre las tarjetas */
   margin-bottom: 20px;
 }
 
+/* Tarjeta de evento */
 .tarjeta-evento {
-
+  background-color: transparent;
   border-radius: 10px;
   overflow: hidden;
+
+  transition: transform 0.3s ease;
 }
 
+.tarjeta-evento:hover {
+  transform: scale(1.03);
+}
+
+/* Imagen de la tarjeta */
 .tarjeta-evento img {
   width: 100%;
-  height: 200px;
-  
+  height: 180px; /* Altura fija para mantener la consistencia */
+  object-fit: cover; /* Asegura que la imagen cubra todo el espacio */
 }
 
+/* Texto de la tarjeta */
 .tarjeta-evento p {
   padding: 10px;
   font-size: 14px;
   text-align: center;
   margin: 0;
-}
 
+  color: white;
+}
 @media (max-width: 768px) {
-  .detalle-eventos {
-    flex-direction: column; 
-  }
-
-  .banner-eventos {
-    width: 100%; 
-    height: 250px;
-  }
-
-  .descripcion-eventos {
-    width: 100%; 
-  }
   .cuadrícula-eventos {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas pequeñas */
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
   }
-
+   .detalle-eventos {    flex-direction: column;   }  .banner-eventos {    width: 100%;     height: 250px;  }  
+   .descripcion-eventos {    width: 100%;   }
+   
 }
+
 @media (max-width: 480px) {
   .cuadrícula-eventos {
-    grid-template-columns: 1fr; /* 1 columna en pantallas muy pequeñas */
+    grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
   }
 }
 
