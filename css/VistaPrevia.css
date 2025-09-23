@@ -189,20 +189,20 @@ body.claro {
 .cuadrícula-eventos {
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 3 columnas de igual ancho */
-  gap: 15px; /* Espacio entre las tarjetas */
+  gap: 30px; /* Espacio entre las tarjetas */
   margin-bottom: 20px;
 }
 
 .tarjeta-evento {
-  background-color: #3d3d3d;
+
   border-radius: 10px;
   overflow: hidden;
 }
 
 .tarjeta-evento img {
   width: 100%;
-  height: 150px;
-  object-fit: cover;
+  height: 200px;
+  
 }
 
 .tarjeta-evento p {
