@@ -84,3 +84,125 @@ body {
     margin-left: auto;
     background-color: transparent;
 }
+.selector-ticket {
+  /* Estilo del texto y fondo */
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  appearance: none; /* Oculta la flecha predeterminada en algunos navegadores */
+  -webkit-appearance: none; /* Para navegadores basados en WebKit */
+  -moz-appearance: none; /* Para navegadores basados en Mozilla */
+
+  /* Estilo de la línea inferior */
+  border-bottom: 2px solid #00ff00; /* Línea verde */
+  width: 200px; /* Ancho del selector */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Estilo de la flecha personalizada */
+.selector-ticket {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 16px;
+  padding-right: 30px; /* Espacio para la flecha */
+}
+
+/* Contenedor de opciones de tickets */
+/* Contenedor de opciones de tickets */
+.opciones-tickets {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #00ff00; 
+  width: 100%; /
+}
+.tipo-ticket select option {
+  background-color: #fff; /* Fondo blanco */
+  color: #000; /* Texto negro */
+}
+/* Estilo del selector de tickets */
+.selector-ticket {
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 16px;
+  padding-right: 30px;
+  cursor: pointer;
+  width: 100%; 
+  max-width: 200px; /* Opcional: limita el ancho máximo */
+}
+
+/* Contenedor de cantidad */
+.cantidad-ticket {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* Contador de cantidad */
+.contador {
+  display: flex;
+  align-items: center;
+  border: 1px solid #555;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.contador button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.contador button:hover {
+  background-color: #444;
+}
+
+.contador .valor {
+  padding: 5px 10px;
+  background-color: #555;
+  color: white;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Botón de agregar al carrito */
+.agregar-carrito {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.agregar-carrito:hover {
+  background-color: #444;
+}
+/* Contenedor de eventos recomendados */
+.eventos-recomendados {
+  padding: 20px;
+}
