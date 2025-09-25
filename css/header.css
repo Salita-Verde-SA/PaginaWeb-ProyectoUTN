@@ -232,12 +232,32 @@ input:checked + .deslizador:before {
   font-size: 18px;
   cursor: pointer;
   transition: background 0.3s, color 0.3s;
+  transform: translateX(0) rotate(0deg); /* Estado inicial */
 }
 
 /* Modo claro para el carrito */
 body.claro .barra-navegacion-derecha .boton-icono {
   color: #333;
   border-radius: 8px;
+  transform: translateX(0) rotate(0deg); /* Estado inicial */
+}
+
+
+/* Animación para el carrito al hacer hover */
+@keyframes carritoAcelerar {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(5px) rotate(-5deg); /* Se mueve hacia adelante y levanta la parte delantera */
+  }
+  100% {
+    transform: translateX(0) rotate(0deg); /* Vuelve a la posición original */
+  }
+}
+
+.barra-navegacion-derecha .boton-icono:hover {
+  animation: carritoAcelerar 0.5s ease-in-out; /* Aplica la animación al hacer hover */
 }
 
 .inicio-cuenta-header {
