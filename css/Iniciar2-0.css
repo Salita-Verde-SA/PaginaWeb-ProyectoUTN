@@ -37,13 +37,15 @@ body.claro {
   border-radius: 10px;
   padding: 15px;
   position: sticky;
-  top: 70px; /* Ajusta este valor según la altura de tu barra de navegación */
+  top: 70px;
+  /* Ajusta este valor según la altura de tu barra de navegación */
   align-self: flex-start;
-  max-height: calc(
-    100vh - 80px
-  ); /* Ajusta según la altura de tu barra de navegación */
+  max-height: calc(100vh - 80px);
+  /* Ajusta según la altura de tu barra de navegación */
   overflow-y: auto;
+  transition: all 0.5s ease-in-out;
 }
+
 .elemento-barra-lateral {
   display: flex;
   align-items: center;
@@ -73,6 +75,18 @@ body.claro {
   background-color: #171717;
   border-radius: 10px;
   padding: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+.contenido-principal.claro,
+.barra-lateral-derecha.claro,
+.barra-lateral-izquierda.claro {
+  background-color: #cccccccc;
+  transition: all 0.5s ease-in-out;
+}
+
+h2.claro {
+  color: #333;
 }
 
 /* --------- BANNER --------- */
@@ -81,11 +95,9 @@ body.claro {
   border-radius: 15px;
   overflow: hidden;
   height: 180px;
-  background: radial-gradient(
-      circle at bottom right,
+  background: radial-gradient(circle at bottom right,
       rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.5)
-    ),
+      rgba(0, 0, 0, 0.5)),
     url(../img/img-eventos/fiesta.jpg);
   background-size: cover;
   display: flex;
@@ -202,12 +214,13 @@ body.claro {
   border-radius: 10px;
   padding: 15px;
   position: sticky;
-  top: 70px; /* Ajusta este valor según la altura de tu barra de navegación */
+  top: 70px;
+  /* Ajusta este valor según la altura de tu barra de navegación */
   align-self: flex-start;
-  max-height: calc(
-    100vh - 80px
-  ); /* Ajusta según la altura de tu barra de navegación */
+  max-height: calc(100vh - 80px);
+  /* Ajusta según la altura de tu barra de navegación */
   overflow-y: auto;
+  transition: all 0.5s ease-in-out;
 }
 
 .elemento-barra-lateral-derecha {
