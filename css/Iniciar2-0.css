@@ -66,6 +66,17 @@ body.claro {
   margin-left: 5%;
 }
 
+body.claro .elemento-barra-lateral span {
+  color: #222;
+  transition: all 0.5s ease-in-out;
+}
+
+
+body.claro .elemento-barra-lateral-derecha span {
+  color: #222;
+  transition: all 0.5s ease-in-out;
+}
+
 /* --------- CONTENIDO PRINCIPAL --------- */
 .contenido-principal {
   flex: 1;
@@ -87,6 +98,7 @@ body.claro {
 
 h2.claro {
   color: #333;
+  transition: all 0.5s ease-in-out;
 }
 
 /* --------- BANNER --------- */
@@ -105,7 +117,7 @@ h2.claro {
   justify-content: center;
   padding: 20px;
   color: white;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 .banner:hover {
@@ -138,6 +150,7 @@ h2.claro {
   position: relative;
   background-size: cover;
   background-position: center;
+  transition: all 0.5s ease-in-out;
 }
 
 .tarjeta-eventos .informacion {
@@ -155,9 +168,14 @@ h2.claro {
   margin-bottom: 5px;
 }
 
+.social i, span{
+  transition: color 0.5s ease-in-out;
+}
+
 .tarjeta-eventos p {
   font-size: 12px;
   opacity: 0.9;
+  transition: all 0.5s ease-in-out;
 }
 
 /* --------- RECOMENDADOS --------- */
@@ -168,6 +186,7 @@ h2.claro {
 .secciones h2 {
   font-size: 24px;
   margin-bottom: 15px;
+  transition: all 0.5s ease-in-out;
 }
 
 .eventos-recomendados {
@@ -225,11 +244,11 @@ h2.claro {
 
 .elemento-barra-lateral-derecha {
   display: flex;
-
   align-items: center;
   text-align: center;
   color: #ffffff;
   text-decoration: none;
+  transition: all 0.5s ease-in-out;
 }
 
 .elemento-barra-lateral-derecha img {

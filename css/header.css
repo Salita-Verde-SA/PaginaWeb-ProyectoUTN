@@ -231,6 +231,13 @@ input:checked + .deslizador:before {
   color: white;
   font-size: 18px;
   cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+}
+
+/* Modo claro para el carrito */
+body.claro .barra-navegacion-derecha .boton-icono {
+  color: #222;
+  border-radius: 8px;
 }
 
 .inicio-cuenta-header {
