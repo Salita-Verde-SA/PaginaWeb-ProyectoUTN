@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html lang="es">
 
 <head>
   <!--Codificacion-->
@@ -12,9 +12,9 @@
 
   <link rel="icon" type="image/png" href="img/paletaenverde.png" />
 
-  <title>Fua | Recuperar Cuenta</title>
+  <title>Fua | Registrarse</title>
   <!--Titulo que va a figurar en la pestaña-->
-  <link rel="stylesheet" href="css/IniciarSesion.css" />
+  <link rel="stylesheet" href="css/Registrarse.css" />
   <link rel="stylesheet" href="css/footer.css" />
 
   <!-- Box Icons -->
@@ -27,10 +27,10 @@
 
 <body>
   <div class="fondo">
-    <header>
+    <header class="header">
       <div class="tema-claro-oscuro-header">
         <i class="bx bx-moon"></i>
-        <label class="interruptor">
+        <label class="interruptor" id="toggle">
           <input type="checkbox" />
           <span class="deslizador"></span>
         </label>
@@ -39,53 +39,34 @@
 
       <div class="inicio-cuenta-header">
         <a href="iniciar2.0.html"><img class="logo-inicio-header" src="img/paletaenverde.png" alt="Logo paleta" /></a>
-
-        <a href="IniciarSesion.html"><button class="dark-btn">Iniciar sesión</button></a>
-        <a href="IniciarSesion.html"><button class="dark-btn">Registrarse</button></a>
+        <a href="IniciarSesion.html"><button class="white-btn">Iniciar sesión</button></a>
+        <a href="Registrarse.html"><button class="dark-btn">Registrarse</button></a>
       </div>
     </header>
-
     <div class="inicio">
       <img class="logo-inicio" src="img/paletaenverde.png" alt="Logo paleta" />
       <div class="formulario">
-        <h1>Recuperar cuenta</h1>
+        <h1>Registrarse</h1>
+        <input class="input nombre" type="name" placeholder="Nombre" />
+        <input class="input apellido" type="name" placeholder="Apellido" />
+        <input class="input nombre-de-usuario" type="username" placeholder="Nombre de usuario" />
+        <input class="input dni" type="number" placeholder="DNI" />
+        <input class="input numero-de-celular" type="number" placeholder="Numero de celular" />
         <input class="input input-email" type="email" placeholder="Correo electrónico" />
-        <button>Enviar correo de recuperación</button>
+        <input class="input input-contraseña" type="password" placeholder="Contraseña" />
+        <input class="input input-contraseña" type="password" placeholder="Confirma tu Contraseña" />
+        <a href="./IniciarSesion.html">Ya tengo cuenta</a>
+
+        <a href="./iniciar2.0.html"><button>Crear cuenta</button></a>
+
       </div>
     </div>
   </div>
+  <footer id="footer"></footer>
+  <script src="js/footer.js"></script>
 
-  <footer class="footer">
-    <div class="social">
-      <a href="#"><i title="Twitter" class="fa-brands fa-twitter"></i></a>
-      <a href="#"><i title="Instagram" class="fa-brands fa-instagram"></i></a>
-      <a href="#"><i title="YouTube" class="fa-brands fa-youtube"></i></a>
-      <a href="#"><i title="Spotify" class="fa-brands fa-spotify"></i></a>
-    </div>
-
-    <div class="colum">
-      <div>
-        <h4>Contacto</h4>
-        <a href="">GroovrSupport@gmail.com</a>
-        <a href="">Atencion@gmail.com</a>
-        <a href="#">2616686500</a>
-        <a href="#">Ubicación</a>
-      </div>
-      <div>
-        <h4>Categorías</h4>
-        <a href="#">Techno</a>
-        <a href="#">Cachengue</a>
-        <a href="#">Cumbia</a>
-        <a href="#">Techhouse</a>
-      </div>
-      <div>
-        <h4>Legales</h4>
-        <a href="#">Política de Cambio y Devoluciones</a>
-        <a href="#">Términos de Servicio</a>
-        <a href="#">Quiénes Somos</a>
-      </div>
-    </div>
-  </footer>
+  <!-- Script para que funcione el giro -->
+  <!-- No borren este script incrustado, si no, no anda el tema claro -->
   <script>
     document.addEventListener("DOMContentLoaded", function () {
       document.dispatchEvent(new Event("headerContentLoaded"));

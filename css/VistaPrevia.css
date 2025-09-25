@@ -1,0 +1,300 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+body.claro {
+  background: #f5f5f5;
+  color: #000000;
+}
+
+/* Contenedor principal */
+
+.contenedor-principal {
+  display: flex;
+  flex-direction: column; /* Las secciones se apilan verticalmente */
+  gap: 20px; /* Espacio entre las secciones */
+  padding: 20px;
+  border-radius: 15px;
+  margin: 20px 100px 20px 100px;
+  background-color: rgba(42, 42, 42, 0.8);
+}
+
+.detalle-eventos {
+  display: flex;
+  flex-direction: row; /* Imagen y detalles en fila */
+  gap: 15px;
+  border-radius: 10px;
+  padding: 20px;
+
+}
+.ubicacion-boton{
+  background-color: #000; /* Fondo negro */
+  color: white; /* Texto blanco */
+  border: none; /* Sin borde */
+  border-radius: 25px; /* Bordes redondeados */
+  padding: 10px 20px; /* Espaciado interno */
+  font-size: 16px; /* Tamaño del texto */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+  display: flex; /* Para alinear el icono y el texto */
+  align-items: center; /* Centrar verticalmente */
+  justify-content: center; /* Centrar horizontalmente */
+  gap: 8px; /* Espacio entre el texto y el icono */
+}
+
+.banner-eventos {
+  width: 300px;
+  height: 300px;
+  object-fit: cover;
+  border-radius: 5%;
+}
+
+.descripcion-eventos {
+  flex: 1; /* Ocupa el espacio restante */
+  font-size: 14px;
+}
+/* Estilo general del contenedor */
+.selector-ticket {
+  /* Estilo del texto y fondo */
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  appearance: none; /* Oculta la flecha predeterminada en algunos navegadores */
+  -webkit-appearance: none; /* Para navegadores basados en WebKit */
+  -moz-appearance: none; /* Para navegadores basados en Mozilla */
+
+  /* Estilo de la línea inferior */
+  border-bottom: 2px solid #00ff00; /* Línea verde */
+  width: 200px; /* Ancho del selector */
+  cursor: pointer; /* Cambia el cursor al pasar por encima */
+}
+
+/* Estilo de la flecha personalizada */
+.selector-ticket {
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 16px;
+  padding-right: 30px; /* Espacio para la flecha */
+}
+
+/* Contenedor de opciones de tickets */
+/* Contenedor de opciones de tickets */
+.opciones-tickets {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #00ff00; 
+  width: 100%; /
+}
+.tipo-ticket select option {
+  background-color: #fff; /* Fondo blanco */
+  color: #000; /* Texto negro */
+}
+/* Estilo del selector de tickets */
+.selector-ticket {
+  background-color: transparent;
+  color: white;
+  font-size: 16px;
+  padding: 10px;
+  border: none;
+  outline: none;
+  appearance: none;
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+  background-repeat: no-repeat;
+  background-position: right center;
+  background-size: 16px;
+  padding-right: 30px;
+  cursor: pointer;
+  width: 100%; 
+  max-width: 200px; /* Opcional: limita el ancho máximo */
+}
+
+/* Contenedor de cantidad */
+.cantidad-ticket {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* Contador de cantidad */
+.contador {
+  display: flex;
+  align-items: center;
+  border: 1px solid #555;
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.contador button {
+  background-color: #333;
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.contador button:hover {
+  background-color: #444;
+}
+
+.contador .valor {
+  padding: 5px 10px;
+  background-color: #555;
+  color: white;
+  min-width: 30px;
+  text-align: center;
+}
+
+/* Botón de agregar al carrito */
+.agregar-carrito {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.agregar-carrito:hover {
+  background-color: #444;
+}
+/* Contenedor de eventos recomendados */
+.eventos-recomendados {
+  padding: 20px;
+}
+
+/* Cuadrícula de eventos */
+.cuadrícula-eventos {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr); /* 4 columnas para que se vean más tarjetas en una fila */
+  gap: 20px; /* Espacio entre las tarjetas */
+  margin-bottom: 20px;
+}
+
+/* Tarjeta de evento */
+.tarjeta-evento {
+  background-color: transparent;
+  border-radius: 10px;
+  overflow: hidden;
+
+  transition: transform 0.3s ease;
+}
+
+.tarjeta-evento:hover {
+  transform: scale(1.03);
+}
+
+/* Imagen de la tarjeta */
+.tarjeta-evento img {
+  width: 100%;
+  height: 180px; /* Altura fija para mantener la consistencia */
+  object-fit: cover; /* Asegura que la imagen cubra todo el espacio */
+}
+
+/* Texto de la tarjeta */
+.tarjeta-evento p {
+  padding: 10px;
+  font-size: 14px;
+  text-align: center;
+  margin: 0;
+
+  color: white;
+}
+@media (max-width: 768px) {
+  .cuadrícula-eventos {
+    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+  }
+   .detalle-eventos {    flex-direction: column;   }  .banner-eventos {    width: 100%;     height: 250px;  }  
+   .descripcion-eventos {    width: 100%;   }
+   
+}
+
+@media (max-width: 480px) {
+  .cuadrícula-eventos {
+    grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+  }
+}
+
+/* --------- SWITCH DE TEMA --------- */
+.tema-claro-oscuro-header {
+  display: flex;
+  align-items: center;
+  gap: 0.5px;
+}
+
+.interruptor {
+  position: relative;
+  display: inline-block;
+  width: 76px;
+  height: 29px;
+}
+
+.interruptor input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+}
+
+.deslizador {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: #dadada;
+  transition: 0.4s;
+  border-radius: 11px;
+  border: 2.3px solid #999999;
+}
+
+.deslizador:before {
+  position: absolute;
+  content: "";
+  height: 13px;
+  width: 13px;
+  left: 9%;
+  background-color: #999999;
+  transition: 0.4s ease-in-out;
+  border-radius: 75%;
+  transform: translateY(-50%);
+  top: 50%;
+}
+
+input:checked + .deslizador:before {
+  background-color: #000000cc;
+  left: 5%;
+}
+
+input:checked + .deslizador {
+  border: 2.3px solid #000000aa;
+  background-color: #ffffff;
+}
+
+input:checked + .deslizador:before {
+  transform: translateX(210%) translateY(-50%);
+}
+
