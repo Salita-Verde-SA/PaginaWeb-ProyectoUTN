@@ -23,7 +23,7 @@
   transition: color 1s ease-in-out;
 }
 
-.footer .social a:hover {
+.footer .social i:hover {
   color: #00c851 !important;
 }
 
@@ -48,9 +48,6 @@
   transition: color 1s ease-in-out;
 }
 
-.footer .colum div a:hover {
-  color: #fff;
-}
 @media (max-width: 768px) {
   .footer {
     flex-direction: column;
