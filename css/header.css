@@ -236,7 +236,7 @@ input:checked + .deslizador:before {
 
 /* Modo claro para el carrito */
 body.claro .barra-navegacion-derecha .boton-icono {
-  color: #222;
+  color: #333;
   border-radius: 8px;
 }
 
