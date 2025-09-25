@@ -12,17 +12,17 @@ body {
 }
 /*CONTENEDOR DE LOS BOTONES DE LA PARTE IZQUIERDA*/
 .contenedor-botones {
-    width: 30%;
+    width: 25%;
     height: auto;
     background-color: #ccc1;
     border-radius: 16px;
-    margin: 20px 5px;
+    margin: 20px 2px;
     padding: 10px;
 }
 .button {
     display: flex;
     width: 100%;
-    padding: 4px 5px;
+    padding: 10px 5px;
     border: none;
     border-radius: 14px;
     margin: 4px 0;
@@ -64,6 +64,7 @@ body {
     margin: 0;
     padding: 10px;
     box-sizing: border-box;
+    justify-content: space-between;
 }
 .img-event {
     width: 35%;
@@ -80,6 +81,6 @@ body {
     font-size: 23px;
 }
 .checkbox-event {
-    margin-left: 90px;
+    margin-left: auto;
     background-color: transparent;
 }
