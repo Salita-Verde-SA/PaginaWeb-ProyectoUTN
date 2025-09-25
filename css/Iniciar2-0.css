@@ -37,13 +37,15 @@ body.claro {
   border-radius: 10px;
   padding: 15px;
   position: sticky;
-  top: 70px; /* Ajusta este valor según la altura de tu barra de navegación */
+  top: 70px;
+  /* Ajusta este valor según la altura de tu barra de navegación */
   align-self: flex-start;
-  max-height: calc(
-    100vh - 80px
-  ); /* Ajusta según la altura de tu barra de navegación */
+  max-height: calc(100vh - 80px);
+  /* Ajusta según la altura de tu barra de navegación */
   overflow-y: auto;
+  transition: all 0.5s ease-in-out;
 }
+
 .elemento-barra-lateral {
   display: flex;
   align-items: center;
@@ -64,6 +66,17 @@ body.claro {
   margin-left: 5%;
 }
 
+body.claro .elemento-barra-lateral span {
+  color: #333;
+  transition: all 0.5s ease-in-out;
+}
+
+
+body.claro .elemento-barra-lateral-derecha span {
+  color: #333;
+  transition: all 0.5s ease-in-out;
+}
+
 /* --------- CONTENIDO PRINCIPAL --------- */
 .contenido-principal {
   flex: 1;
@@ -73,6 +86,19 @@ body.claro {
   background-color: #171717;
   border-radius: 10px;
   padding: 20px;
+  transition: all 0.5s ease-in-out;
+}
+
+.contenido-principal.claro,
+.barra-lateral-derecha.claro,
+.barra-lateral-izquierda.claro {
+  background-color: #cccccccc;
+  transition: all 0.5s ease-in-out;
+}
+
+h2.claro {
+  color: #333;
+  transition: all 0.5s ease-in-out;
 }
 
 /* --------- BANNER --------- */
@@ -81,11 +107,9 @@ body.claro {
   border-radius: 15px;
   overflow: hidden;
   height: 180px;
-  background: radial-gradient(
-      circle at bottom right,
+  background: radial-gradient(circle at bottom right,
       rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.5)
-    ),
+      rgba(0, 0, 0, 0.5)),
     url(../img/img-eventos/fiesta.jpg);
   background-size: cover;
   display: flex;
@@ -93,7 +117,7 @@ body.claro {
   justify-content: center;
   padding: 20px;
   color: white;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 .banner:hover {
@@ -126,6 +150,7 @@ body.claro {
   position: relative;
   background-size: cover;
   background-position: center;
+  transition: all 0.5s ease-in-out;
 }
 
 .tarjeta-eventos .informacion {
@@ -143,9 +168,14 @@ body.claro {
   margin-bottom: 5px;
 }
 
+span {
+  transition: color 0.5s ease-in-out;
+}
+
 .tarjeta-eventos p {
   font-size: 12px;
   opacity: 0.9;
+  transition: all 0.5s ease-in-out;
 }
 
 /* --------- RECOMENDADOS --------- */
@@ -156,6 +186,7 @@ body.claro {
 .secciones h2 {
   font-size: 24px;
   margin-bottom: 15px;
+  transition: all 0.5s ease-in-out;
 }
 
 .eventos-recomendados {
@@ -202,21 +233,22 @@ body.claro {
   border-radius: 10px;
   padding: 15px;
   position: sticky;
-  top: 70px; /* Ajusta este valor según la altura de tu barra de navegación */
+  top: 70px;
+  /* Ajusta este valor según la altura de tu barra de navegación */
   align-self: flex-start;
-  max-height: calc(
-    100vh - 80px
-  ); /* Ajusta según la altura de tu barra de navegación */
+  max-height: calc(100vh - 80px);
+  /* Ajusta según la altura de tu barra de navegación */
   overflow-y: auto;
+  transition: all 0.5s ease-in-out;
 }
 
 .elemento-barra-lateral-derecha {
   display: flex;
-
   align-items: center;
   text-align: center;
   color: #ffffff;
   text-decoration: none;
+  transition: all 0.5s ease-in-out;
 }
 
 .elemento-barra-lateral-derecha img {
@@ -231,62 +263,3 @@ body.claro {
   margin-left: 5%;
 }
 
-/* --------- SWITCH DE TEMA --------- */
-.tema-claro-oscuro-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5px;
-}
-
-.interruptor {
-  position: relative;
-  display: inline-block;
-  width: 76px;
-  height: 29px;
-}
-
-.interruptor input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.deslizador {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #dadada;
-  transition: 0.4s;
-  border-radius: 11px;
-  border: 2.3px solid #999999;
-}
-
-.deslizador:before {
-  position: absolute;
-  content: "";
-  height: 13px;
-  width: 13px;
-  left: 9%;
-  background-color: #999999;
-  transition: 0.4s ease-in-out;
-  border-radius: 75%;
-  transform: translateY(-50%);
-  top: 50%;
-}
-
-input:checked + .deslizador:before {
-  background-color: #000000cc;
-  left: 5%;
-}
-
-input:checked + .deslizador {
-  border: 2.3px solid #000000aa;
-  background-color: #ffffff;
-}
-
-input:checked + .deslizador:before {
-  transform: translateX(210%) translateY(-50%);
-}

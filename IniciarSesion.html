@@ -1,100 +1,70 @@
 <!DOCTYPE html>
 <html lang="es">
-  <head>
-    <!--Codificacion-->
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <!--modificador de color cuando lo buscas en algun navegador para que cambie todo de color-->
-    <meta name="Theme-color" content="#7EF134" />
-    <!--Descripcion que va a aparecer cuando lo buscas en el navegador-->
-    <meta
-      name="description"
-      content="Disfuta de los mejores eventos, todo en un mismo lugar."
-    />
 
-    <link rel="icon" type="image/png" href="img/paletaenverde.png" />
+<head>
+  <!--Codificacion-->
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <!--modificador de color cuando lo buscas en algun navegador para que cambie todo de color-->
+  <meta name="Theme-color" content="#7EF134" />
+  <!--Descripcion que va a aparecer cuando lo buscas en el navegador-->
+  <meta name="description" content="Disfuta de los mejores eventos, todo en un mismo lugar." />
 
-    <title>Fua | Iniciar Sesion</title>
-    <!--Titulo que va a figurar en la pestaña-->
-    <link rel="stylesheet" href="css/IniciarSesion.css" />
-    <link rel="stylesheet" href="css/footer.css" />
+  <link rel="icon" type="image/png" href="img/paletaenverde.png" />
 
-    <!-- Box Icons -->
-    <link
-      rel="stylesheet"
-      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
-    />
-    <!-- Font Awesome -->
-    <link
-      rel="stylesheet"
-      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
-    />
-    <!-- Bootstrap Icons -->
-    <link
-      rel="stylesheet"
-      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
-    />
-  </head>
-  <body>
-    <div class="fondo">
-      <header class="header">
-        <div class="tema-claro-oscuro-header">
-          <i class="bx bx-moon"></i>
-          <label class="interruptor" id="toggle">
-            <input type="checkbox" />
-            <span class="deslizador"></span>
-          </label>
-          <i class="bx bx-sun"></i>
-        </div>
+  <title>Fua | Iniciar Sesion</title>
+  <!--Titulo que va a figurar en la pestaña-->
+  <link rel="stylesheet" href="css/IniciarSesion.css" />
+  <link rel="stylesheet" href="css/footer.css" />
 
-        <div class="inicio-cuenta-header">
-          <a href="iniciar2.0.html"
-            ><img
-              class="logo-inicio-header"
-              src="img/paletaenverde.png"
-              alt="Logo paleta"
-          /></a>
-          <a href="IniciarSesion.html"
-            ><button class="white-btn">Iniciar sesión</button></a
-          >
-          <a href="IniciarSesion.html"
-            ><button class="dark-btn">Registrarse</button></a
-          >
-        </div>
-      </header>
-      <div class="inicio">
-        <img
-          class="logo-inicio"
-          src="img/paletaenverde.png"
-          alt="Logo paleta"
-        />
-        <div class="formulario">
-          <h1>Iniciar sesión</h1>
-          <input
-            class="input input-email"
-            type="email"
-            placeholder="Correo electrónico"
-          />
-          <input
-            class="input input-contraseña"
-            type="password"
-            placeholder="Contraseña"
-          />
-          <a href="./RecuperarCuenta.html">Olvidé mi contraseña</a>
-          <button>Iniciar sesión</button>
-        </div>
+  <!-- Box Icons -->
+  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+  <!-- Font Awesome -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+  <!-- Bootstrap Icons -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+</head>
+
+<body>
+  <div class="fondo">
+    <header class="header">
+      <div class="tema-claro-oscuro-header">
+        <i class="bx bx-moon"></i>
+        <label class="interruptor" id="toggle">
+          <input type="checkbox" />
+          <span class="deslizador"></span>
+        </label>
+        <i class="bx bx-sun"></i>
+      </div>
+
+      <div class="inicio-cuenta-header">
+        <a href="iniciar2.0.html"><img class="logo-inicio-header" src="img/paletaenverde.png" alt="Logo paleta" /></a>
+        <a href="IniciarSesion.html"><button class="white-btn">Iniciar sesión</button></a>
+        <a href="Registrarse.html"><button class="dark-btn">Registrarse</button></a>
+      </div>
+    </header>
+    <div class="inicio">
+      <img class="logo-inicio" src="img/paletaenverde.png" alt="Logo paleta" />
+      <div class="formulario">
+        <h1>Iniciar sesión</h1>
+        <input class="input input-email" type="email" placeholder="Correo electrónico" />
+        <input class="input input-contraseña" type="password" placeholder="Contraseña" />
+        <a href="./RecuperarCuenta.html">Olvidé mi contraseña</a>
+        <button>Iniciar sesión</button>
       </div>
     </div>
-    <footer id="footer"></footer>
-    <script src="js/footer.js"></script>
+  </div>
+  <footer id="footer"></footer>
+  <script src="js/footer.js"></script>
 
-    <!-- Script para que funcione el giro -->
-    <!-- No borren este script incrustado, si no, no anda el tema claro -->
-    <script>
-      document.addEventListener("DOMContentLoaded", function () {
-        document.dispatchEvent(new Event("headerContentLoaded"));
-      });
-    </script>
-    <script src="js/Interruptor.js"></script>
-  </body>
+  <!-- Script para que funcione el giro -->
+  <!-- No borren este script incrustado, si no, no anda el tema claro -->
+  <script>
+    document.addEventListener("DOMContentLoaded", function () {
+      document.dispatchEvent(new Event("headerContentLoaded"));
+    });
+  </script>
+  <script src="js/Interruptor.js"></script>
+</body>
+
 </html>
