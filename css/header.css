@@ -1,13 +1,39 @@
+
 /* --------- ICONOS DEL HEADER --------- */
 
 /* Logo chico en el header */
 .logo-inicio-header {
-  width: 35px;
-  height: 35px;
-  margin: 0px 10px 0px 0px;
+  width: 26px;
+  height: 26px;
+  margin: 0px 20px 0px 10px;
   position: relative;
   z-index: 10;
   /* transform: translate(-50%, -50%); */
+  transform: rotate(0deg); /* Estado inicial */
+  transition: transform 0.3s ease; /* Transición suave */
+}
+
+/* Animación para la paletita al hacer hover */
+@keyframes sacudirPaletita {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.logo-inicio-header:hover {
+  animation: sacudirPaletita 0.5s ease-in-out;
 }
 
 .header-izquierda {
@@ -189,8 +215,8 @@ input:checked + .deslizador:before {
   padding: 8px 30px; /* Espacio a la izquierda para la flechita */
   border-radius: 20px;
   border: none;
-  background-color: #3338;
-  height: auto;
+  background-color: #333;
+  height: 35px;
   width: auto;
   color: #ffffff;
   font-size: 14px;
@@ -203,12 +229,13 @@ input:checked + .deslizador:before {
 }
 
 .barra-navegacion-centro .barra-busqueda {
-  padding: 8px 15px;
+  padding: 8px 30px;
   border-radius: 20px;
   border: none;
   background-color: #333;
   color: white;
   width: 400px;
+  height: 35px;
   transition: all 0.5s ease-out;
 }
 
@@ -231,6 +258,33 @@ input:checked + .deslizador:before {
   color: white;
   font-size: 18px;
   cursor: pointer;
+  transition: background 0.3s, color 0.3s;
+  transform: translateX(0) rotate(0deg); /* Estado inicial */
+}
+
+/* Modo claro para el carrito */
+body.claro .barra-navegacion-derecha .boton-icono {
+  color: #333;
+  border-radius: 8px;
+  transform: translateX(0) rotate(0deg); /* Estado inicial */
+}
+
+
+/* Animación para el carrito al hacer hover */
+@keyframes carritoAcelerar {
+  0% {
+    transform: translateX(0) rotate(0deg);
+  }
+  50% {
+    transform: translateX(5px) rotate(-5deg); /* Se mueve hacia adelante y levanta la parte delantera */
+  }
+  100% {
+    transform: translateX(0) rotate(0deg); /* Vuelve a la posición original */
+  }
+}
+
+.barra-navegacion-derecha .boton-icono:hover {
+  animation: carritoAcelerar 0.7s ease-in-out; /* Aplica la animación al hacer hover */
 }
 
 .inicio-cuenta-header {
@@ -247,22 +301,30 @@ input:checked + .deslizador:before {
 
 /* Botón claro en el header */
 header .white-btn {
-  background-color: #ffffff88; /* Fondo blanco semitransparente */
-  color: #000000cc; /* Texto negro semitransparente */
+  background-color: #333; /* Fondo blanco semitransparente */
+  color: #ffffffcc; /* Texto negro semitransparente */
+  transition: all 0.5s ease-in-out;
 }
 
 /* Botón oscuro en el header */
 header .dark-btn {
   background-color: #000000ff; /* Fondo negro */
   color: #ffffffcc; /* Texto blanco semitransparente */
+  transition: all 0.5s ease-in-out;
 }
 
 /* Efecto hover en botón claro */
 header .white-btn:hover {
-  background-color: #ffffffaa;
+  background-color: #7d7d7daa;
 }
 
 /* Efecto hover en botón oscuro */
 header .dark-btn:hover {
   background-color: #272727ff;
+}
+
+header.claro .white-btn {
+  background-color: #cccccccc;
+  color: #333;
+  transition: all 0.5s ease-in-out;
 }

@@ -1,3 +1,59 @@
+/* Contenedor de amigos que asisten */
+.Amigos-que-asistiran {
+  display: flex;
+  gap: 0; /* Elimina el espacio entre imágenes */
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.5px 0 0 0;
+  position: relative; /* Cambia a relative para que el círculo se posicione correctamente */
+  z-index: 1;
+}
+
+/* Imágenes de amigos */
+.Amigos-que-asistiran img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: -10px; /* Superposición de 10px */
+  border: 3px solid #171717; /* Borde blanco para mejor visualización */
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .Amigos-que-asistiran img {
+  border: 3px solid #cccccccc; /* Borde oscuro en modo claro */
+  transition: all 0.5s ease-in-out;
+}
+
+/* La primera imagen no tiene margen negativo */
+.Amigos-que-asistiran img:first-child {
+  margin-left: 0;
+}
+
+/* Círculo de amigos adicionales */
+.circulo-amigos-adicionales {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 3px solid #171717; /* Borde blanco */
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin-left: -10px; /* Superposición con la última imagen */
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .circulo-amigos-adicionales {
+  border: 3px solid #cccccccc; /* Borde oscuro en modo claro */
+  transition: all 0.5s ease-in-out;
+}
+
+
 /* --------- ESTILOS GLOBALES --------- */
 * {
   margin: 0;
@@ -66,6 +122,17 @@ body.claro {
   margin-left: 5%;
 }
 
+body.claro .elemento-barra-lateral span {
+  color: #333;
+  transition: all 0.5s ease-in-out;
+}
+
+
+body.claro .elemento-barra-lateral-derecha span {
+  color: #333;
+  transition: all 0.5s ease-in-out;
+}
+
 /* --------- CONTENIDO PRINCIPAL --------- */
 .contenido-principal {
   flex: 1;
@@ -87,6 +154,7 @@ body.claro {
 
 h2.claro {
   color: #333;
+  transition: all 0.5s ease-in-out;
 }
 
 /* --------- BANNER --------- */
@@ -105,11 +173,11 @@ h2.claro {
   justify-content: center;
   padding: 20px;
   color: white;
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
 .banner:hover {
-  transform: perspective(1000px) rotateX(3deg) translateY(-2px) scale(1.05);
+  transform: perspective(1000px) rotateX(3deg) translateY(-1px) scale(1.01); /* Efecto 3D sutil al pasar el mouse */
 }
 
 .banner h2 {
@@ -138,6 +206,7 @@ h2.claro {
   position: relative;
   background-size: cover;
   background-position: center;
+  transition: all 0.5s ease-in-out;
 }
 
 .tarjeta-eventos .informacion {
@@ -148,6 +217,7 @@ h2.claro {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   padding: 15px 10px 10px;
   color: white;
+  transition: all 0.5s ease-in-out;
 }
 
 .tarjeta-eventos h3 {
@@ -155,9 +225,16 @@ h2.claro {
   margin-bottom: 5px;
 }
 
+
+
+span {
+  transition: color 0.5s ease-in-out;
+}
+
 .tarjeta-eventos p {
   font-size: 12px;
   opacity: 0.9;
+  transition: all 0.5s ease-in-out;
 }
 
 /* --------- RECOMENDADOS --------- */
@@ -168,6 +245,7 @@ h2.claro {
 .secciones h2 {
   font-size: 24px;
   margin-bottom: 15px;
+  transition: all 0.5s ease-in-out;
 }
 
 .eventos-recomendados {
@@ -176,32 +254,37 @@ h2.claro {
   gap: 20px;
 }
 
-.tarjeta-recomendado {
+.tarjeta-recomendado  {
   border-radius: 10px;
   overflow: hidden;
-  height: 150px;
+  min-height: 200px;
   position: relative;
   background-size: cover;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
 }
 
 .tarjeta-recomendado {
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
-.tarjeta-recomendado:hover {
-  transform: perspective(1000px) rotateX(3deg) translateY(-2px) scale(1.05);
-}
 
 .tarjeta-recomendado .informacion {
-  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  /* background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); */
   padding: 10px;
   color: white;
   font-size: 12px;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .tarjeta-recomendado .informacion {
+  color: #333;
+  transition: all 0.5s ease-in-out;
 }
 
 /* --------- BARRA LATERAL DERECHA CON FONDO --------- */
@@ -225,11 +308,11 @@ h2.claro {
 
 .elemento-barra-lateral-derecha {
   display: flex;
-
   align-items: center;
   text-align: center;
   color: #ffffff;
   text-decoration: none;
+  transition: all 0.5s ease-in-out;
 }
 
 .elemento-barra-lateral-derecha img {

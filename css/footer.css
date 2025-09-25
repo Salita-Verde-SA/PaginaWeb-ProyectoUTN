@@ -9,6 +9,11 @@
   border-top: 1px solid #5559;
 }
 
+
+.social i{
+  transition: color 0.5s ease-in-out;
+}
+
 /* Redes sociales */
 .footer .social {
   display: flex;
@@ -20,10 +25,10 @@
   color: #fff;
   font-size: 22px;
   text-decoration: none;
-  transition: color 1s ease-in-out;
+  transition: color 0.5s ease-in-out;
 }
 
-.footer .social a:hover {
+.footer .social i:hover {
   color: #00c851 !important;
 }
 
@@ -37,7 +42,7 @@
   color: #fff;
   font-size: 18px;
   margin-bottom: 10px;
-  transition: color 1s ease-in-out;
+  transition: color 0.5s ease-in-out;
 }
 
 .footer .colum div a {
@@ -45,12 +50,9 @@
   color: #ccc;
   text-decoration: none;
   margin: 5px 0;
-  transition: color 1s ease-in-out;
+  transition: color 0.5s ease-in-out;
 }
 
-.footer .colum div a:hover {
-  color: #fff;
-}
 @media (max-width: 768px) {
   .footer {
     flex-direction: column;
@@ -62,12 +64,12 @@
     flex-direction: column;
     gap: 20px;
     text-align: center;
-  transition: color 1s ease-in-out;
+  transition: color 0.5s ease-in-out;
   }
 
   .footer .social {
     margin-right: 0;
-  transition: color 1s ease-in-out;
+  transition: color 0.5s ease-in-out;
   }
 }
 
