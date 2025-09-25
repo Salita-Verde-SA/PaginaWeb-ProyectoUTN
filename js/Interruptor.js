@@ -32,9 +32,16 @@ document.addEventListener("headerContentLoaded", function () {
     body.classList.toggle("claro");
     header.classList.toggle("claro");
     footer.classList.toggle("claro");
-    contendorGeneros.classList.toggle("claro");
-    contenedorEventos.classList.toggle("claro");
-    contenedorViewAll.classList.toggle("claro");
+
+    if (
+      contendorGeneros != null &&
+      contenedorEventos != null &&
+      contenedorViewAll != null
+    ) {
+      contendorGeneros.classList.toggle("claro");
+      contenedorEventos.classList.toggle("claro");
+      contenedorViewAll.classList.toggle("claro");
+    }
 
     if (barrabusqueda != null) {
       barrabusqueda.classList.toggle("claro");
@@ -102,4 +109,3 @@ document.addEventListener("headerContentLoaded", function () {
 //     userMenu.classList.remove("active");
 //   }
 // });
-
