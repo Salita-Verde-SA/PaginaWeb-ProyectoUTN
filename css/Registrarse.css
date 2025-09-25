@@ -222,7 +222,7 @@ header input:checked + .deslizador:before {
   border-radius: 25px; /* Bordes redondeados */
   box-shadow: 0 0 30px #222a; /* Sombra */
   width: 100%;
-  margin-top: 50px;
+  margin-top: 80px;
   max-width: 400px; /* Máximo ancho */
   backdrop-filter: blur(15px); /* Fondo borroso */
   border: 1px solid rgba(255, 255, 255, 0.3);
