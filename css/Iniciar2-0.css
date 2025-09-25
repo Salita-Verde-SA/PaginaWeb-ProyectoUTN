@@ -168,7 +168,7 @@ h2.claro {
   margin-bottom: 5px;
 }
 
-.social i, span{
+span {
   transition: color 0.5s ease-in-out;
 }
 

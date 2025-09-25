@@ -9,6 +9,11 @@
   border-top: 1px solid #5559;
 }
 
+
+.social i{
+  transition: color 0.5s ease-in-out;
+}
+
 /* Redes sociales */
 .footer .social {
   display: flex;
