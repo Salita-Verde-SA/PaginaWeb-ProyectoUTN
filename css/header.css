@@ -1,3 +1,4 @@
+
 /* --------- ICONOS DEL HEADER --------- */
 
 /* Logo chico en el header */
@@ -214,7 +215,7 @@ input:checked + .deslizador:before {
   padding: 8px 30px; /* Espacio a la izquierda para la flechita */
   border-radius: 20px;
   border: none;
-  background-color: #3338;
+  background-color: #333;
   height: auto;
   width: auto;
   color: #ffffff;
@@ -299,22 +300,30 @@ body.claro .barra-navegacion-derecha .boton-icono {
 
 /* Botón claro en el header */
 header .white-btn {
-  background-color: #ffffff88; /* Fondo blanco semitransparente */
-  color: #000000cc; /* Texto negro semitransparente */
+  background-color: #333; /* Fondo blanco semitransparente */
+  color: #ffffffcc; /* Texto negro semitransparente */
+  transition: all 0.5s ease-in-out;
 }
 
 /* Botón oscuro en el header */
 header .dark-btn {
   background-color: #000000ff; /* Fondo negro */
   color: #ffffffcc; /* Texto blanco semitransparente */
+  transition: all 0.5s ease-in-out;
 }
 
 /* Efecto hover en botón claro */
 header .white-btn:hover {
-  background-color: #ffffffaa;
+  background-color: #7d7d7daa;
 }
 
 /* Efecto hover en botón oscuro */
 header .dark-btn:hover {
   background-color: #272727ff;
+}
+
+header.claro .white-btn {
+  background-color: #cccccc;
+  color: #333;
+  transition: all 0.5s ease-in-out;
 }
