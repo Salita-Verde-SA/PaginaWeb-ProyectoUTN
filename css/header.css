@@ -216,7 +216,7 @@ input:checked + .deslizador:before {
   border-radius: 20px;
   border: none;
   background-color: #333;
-  height: auto;
+  height: 35px;
   width: auto;
   color: #ffffff;
   font-size: 14px;
@@ -229,12 +229,13 @@ input:checked + .deslizador:before {
 }
 
 .barra-navegacion-centro .barra-busqueda {
-  padding: 8px 15px;
+  padding: 8px 30px;
   border-radius: 20px;
   border: none;
   background-color: #333;
   color: white;
   width: 400px;
+  height: 35px;
   transition: all 0.5s ease-out;
 }
 
@@ -323,7 +324,7 @@ header .dark-btn:hover {
 }
 
 header.claro .white-btn {
-  background-color: #cccccc;
+  background-color: #cccccccc;
   color: #333;
   transition: all 0.5s ease-in-out;
 }
