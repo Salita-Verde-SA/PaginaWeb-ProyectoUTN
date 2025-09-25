@@ -2,12 +2,37 @@
 
 /* Logo chico en el header */
 .logo-inicio-header {
-  width: 35px;
-  height: 35px;
+  width: 26px;
+  height: 26px;
   margin: 0px 10px 0px 0px;
   position: relative;
   z-index: 10;
   /* transform: translate(-50%, -50%); */
+  transform: rotate(0deg); /* Estado inicial */
+  transition: transform 0.3s ease; /* Transición suave */
+}
+
+/* Animación para la paletita al hacer hover */
+@keyframes sacudirPaletita {
+  0% {
+    transform: rotate(0deg);
+  }
+  25% {
+    transform: rotate(-10deg);
+  }
+  50% {
+    transform: rotate(10deg);
+  }
+  75% {
+    transform: rotate(-5deg);
+  }
+  100% {
+    transform: rotate(0deg);
+  }
+}
+
+.logo-inicio-header:hover {
+  animation: sacudirPaletita 0.5s ease-in-out;
 }
 
 .header-izquierda {
@@ -257,7 +282,7 @@ body.claro .barra-navegacion-derecha .boton-icono {
 }
 
 .barra-navegacion-derecha .boton-icono:hover {
-  animation: carritoAcelerar 0.5s ease-in-out; /* Aplica la animación al hacer hover */
+  animation: carritoAcelerar 0.7s ease-in-out; /* Aplica la animación al hacer hover */
 }
 
 .inicio-cuenta-header {
