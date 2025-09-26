@@ -284,7 +284,7 @@ body.claro .barra-navegacion-derecha .boton-icono {
 }
 
 .barra-navegacion-derecha .boton-icono:hover {
-  animation: carritoAcelerar 0.7s ease-in-out; /* Aplica la animación al hacer hover */
+  animation: carritoAcelerar 0.5s ease-in-out; /* Aplica la animación al hacer hover */
 }
 
 .inicio-cuenta-header {
