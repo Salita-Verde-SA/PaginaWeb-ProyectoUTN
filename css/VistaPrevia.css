@@ -26,7 +26,14 @@ body.claro {
   padding: 20px;
   border-radius: 15px;
   margin: 20px 100px 20px 100px;
-  background-color: rgba(42, 42, 42, 0.8);
+  background-color: #171717;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .contenedor-principal {
+  background-color: #CCCCCCCC;
+  color: #000000cc;
+  transition: all 0.5s ease-in-out;
 }
 
 .detalle-eventos {
