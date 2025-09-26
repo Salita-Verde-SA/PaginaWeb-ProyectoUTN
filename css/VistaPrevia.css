@@ -42,10 +42,11 @@ body.claro .contenedor-principal {
   gap: 15px;
   border-radius: 10px;
   padding: 20px;
-
 }
+
+
 .ubicacion-boton{
-  background-color: #000; /* Fondo negro */
+  background-color: #33333388; /* Fondo negro */
   color: white; /* Texto blanco */
   border: none; /* Sin borde */
   border-radius: 25px; /* Bordes redondeados */
