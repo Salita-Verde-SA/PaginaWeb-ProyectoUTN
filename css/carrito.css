@@ -1,10 +1,21 @@
-body {
-    background-color: #121212;
-    color: #ffffff;
-    font-family: sans-serif;
-
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
 }
 
+body {
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+body.claro {
+  background: #f5f5f5;
+  color: #000000;
+}
 /*CONTENEDOR PRINCIPAL*/
 .contenedor-principal {
   display: flex;
@@ -13,11 +24,12 @@ body {
 }
 /*CONTENEDOR DE LOS BOTONES DE LA PARTE IZQUIERDA*/
 .contenedor-botones {
-    width: 25%;
+    width: 20%;
+    
     height: auto;
     background-color: #ccc1;
     border-radius: 16px;
-    margin: 20px 2px;
+    margin: 20px 2px 0px 2%;
     padding: 10px;
 }
 .button {
@@ -45,8 +57,8 @@ body {
 /*CONTENEDOR CENTRAL (CARRITO)*/
 
 .contenedor-carrito {
-    flex-grow: 1;
     height: auto;
+    width: 75%;
     background-color: #ccc1;
     margin: 20px 5px;
     padding: 4px;
