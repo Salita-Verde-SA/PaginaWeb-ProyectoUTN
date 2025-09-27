@@ -2,6 +2,7 @@ body {
     background-color: #121212;
     color: #ffffff;
     font-family: sans-serif;
+
 }
 
 /*CONTENEDOR PRINCIPAL*/
@@ -57,94 +58,52 @@ body {
 .titulo-carrito {
     margin-top: none;
 }
+
 .box-event {
+  border-bottom: 2px solid #6efd0f;
+
+  
+}
+.tarjeta-evento {
     display: flex;
     width: 100%;
     height: auto;
     margin: 0;
     padding: 10px;
     box-sizing: border-box;
-    justify-content: space-between;
 }
 .img-event {
     width: 35%;
-    margin: 5px;
+    margin: 5px 20px 5px 5px;
 }
 .description-event {
-    margin: 2px 2px 5px 30px;
+    margin: 2px 2px 5px 0px;
     text-align: left;
-    font-size: 14px;
+    font-size: 12px;
     font-weight: 10px;
 }
 .name-event {
-    margin: 20px 2px 30px 30px;
+    margin: 20px 2px 30px 0px;
     font-size: 23px;
 }
-.checkbox-event {
-    margin-left: auto;
-    background-color: transparent;
-}
-.selector-ticket {
-  /* Estilo del texto y fondo */
-  background-color: transparent;
-  color: white;
-  font-size: 16px;
-  padding: 10px;
-  border: none;
-  outline: none;
-  appearance: none; /* Oculta la flecha predeterminada en algunos navegadores */
-  -webkit-appearance: none; /* Para navegadores basados en WebKit */
-  -moz-appearance: none; /* Para navegadores basados en Mozilla */
 
-  /* Estilo de la línea inferior */
-  border-bottom: 2px solid #00ff00; /* Línea verde */
-  width: 200px; /* Ancho del selector */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
+/*SELCCION DE TICKETS*/
+.seleccion-tickets h3 {
+  text-align: left;
+  font-weight: bold;
+  word-spacing: -1px;
 }
-
-/* Estilo de la flecha personalizada */
-.selector-ticket {
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-size: 16px;
-  padding-right: 30px; /* Espacio para la flecha */
-}
-
-/* Contenedor de opciones de tickets */
-/* Contenedor de opciones de tickets */
 .opciones-tickets {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #00ff00; 
-  width: 100%; /
+  width: 100%;
+  box-sizing: border-box;
+  margin: 5px 15px;
 }
-.tipo-ticket select option {
-  background-color: #fff; /* Fondo blanco */
-  color: #000; /* Texto negro */
-}
-/* Estilo del selector de tickets */
-.selector-ticket {
-  background-color: transparent;
-  color: white;
-  font-size: 16px;
-  padding: 10px;
-  border: none;
-  outline: none;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-size: 16px;
-  padding-right: 30px;
-  cursor: pointer;
-  width: 100%; 
-  max-width: 200px; /* Opcional: limita el ancho máximo */
+.tipo-entrada {
+  font-size: 15px;
+  margin: 0;
 }
 
 /* Contenedor de cantidad */
@@ -157,18 +116,21 @@ body {
 .contador {
   display: flex;
   align-items: center;
-  border: 1px solid #555;
+  border: 1px solid #5551;
   border-radius: 5px;
   overflow: hidden;
 }
-
 .contador button {
-  background-color: #333;
+  width: 25%;
+  background-color: #121212;
   color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 5px 15px;
   cursor: pointer;
   font-size: 16px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
 }
 
 .contador button:hover {
@@ -177,10 +139,12 @@ body {
 
 .contador .valor {
   padding: 5px 10px;
-  background-color: #555;
+  background-color: #121212;
   color: white;
-  min-width: 30px;
+  min-width: 20px;
   text-align: center;
+  border-radius: 15px;
+  margin: 4px;
 }
 
 /* Botón de agregar al carrito */
