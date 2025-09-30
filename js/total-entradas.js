@@ -1,19 +1,11 @@
 document.addEventListener("DOMContentLoaded", function () {
-  function obtenerPrecioDesdeTexto(texto) {
-    // Extrae número desde "32.000,00 ars"
-    const limpio = texto.replace(/[^\d,]/g, "").replace(".", "").replace(",", ".");
-    return parseFloat(limpio);
-  }
-
   function actualizarTotal() {
     let total = 0;
     const bloques = document.querySelectorAll(".opciones-tickets");
 
     bloques.forEach(bloque => {
-      const precioTexto = bloque.querySelector(".precio-entrada").textContent;
-      const cantidadTexto = bloque.querySelector(".valor").textContent;
-      const precio = obtenerPrecioDesdeTexto(precioTexto);
-      const cantidad = parseInt(cantidadTexto) || 0;
+      const precio = parseFloat(bloque.querySelector(".tipo-ticket").dataset.precio);
+      const cantidad = parseInt(bloque.querySelector(".valor").textContent) || 0;
       total += precio * cantidad;
     });
 
@@ -30,13 +22,20 @@ document.addEventListener("DOMContentLoaded", function () {
     const botonMas = contador.querySelector(".mas");
     const botonMenos = contador.querySelector(".menos");
 
-    botonMas.addEventListener("click", () => {
+    // Eliminar listeners previos si existen
+    botonMas.replaceWith(botonMas.cloneNode(true));
+    botonMenos.replaceWith(botonMenos.cloneNode(true));
+
+    const nuevoMas = contador.querySelector(".mas");
+    const nuevoMenos = contador.querySelector(".menos");
+
+    nuevoMas.addEventListener("click", () => {
       let cantidad = parseInt(valor.textContent);
       valor.textContent = cantidad + 1;
       actualizarTotal();
     });
 
-    botonMenos.addEventListener("click", () => {
+    nuevoMenos.addEventListener("click", () => {
       let cantidad = parseInt(valor.textContent);
       if (cantidad > 0) {
         valor.textContent = cantidad - 1;
