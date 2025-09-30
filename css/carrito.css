@@ -24,52 +24,47 @@ body.claro {
 }
 /*CONTENEDOR DE LOS BOTONES DE LA PARTE IZQUIERDA*/
 .contenedor-botones {
-    width: 20%;
-    
+    width: 24%;
     height: auto;
     background-color: #ccc1;
-    border-radius: 16px;
+    border-radius: 40px;
     margin: 20px 2px 0px 2%;
-    padding: 10px;
+    padding: 20px;
 }
 .button {
     display: flex;
     width: 100%;
-    padding: 10px 5px;
+    padding: 13px 5px;
     border: none;
-    border-radius: 14px;
-    margin: 4px 0;
+    border-radius: 19px;
+    margin: 7px 0;
     background-color: #121212;
     justify-content: space-between;
     color: #eee;
     font-weight: bold;
+    font-size: 20px;
 
 }
 .contenido-button {
     margin-left: 8px;
 }
-.button .bi {
+.icono-flecha {
+  margin-right: 20px;
+}
+/*.button .bi {
     padding: 0 10px;
     font-weight: bold;
     font-size: 13px;
-}
-
-
-.contenedor-factura {
-  display: flex;
-  width: 20%;
-  height: 20px;
-  background-color: #900;
-}
+}*/
 /*CONTENEDOR CENTRAL (CARRITO)*/
 
 .contenedor-carrito {
     height: auto;
     width: 75%;
     background-color: #ccc1;
-    margin: 20px 5px;
-    padding: 4px;
-    border-radius: 14px;
+    margin: 20px 20px;
+    padding: 25px;
+    border-radius: 40px;
     text-align: center;
     flex-direction: row;
     align-items: flex-start;
@@ -92,25 +87,25 @@ body.claro {
     box-sizing: border-box;
 }
 .img-event {
-    width: 35%;
+    width: 30%;
     margin: 5px 20px 5px 5px;
 }
 .description-event {
     margin: 2px 2px 5px 0px;
     text-align: left;
-    font-size: 12px;
-    font-weight: 10px;
+    font-weight: 20px;
 }
 .name-event {
     margin: 20px 2px 30px 0px;
-    font-size: 23px;
+    font-size: 40px;
 }
 
 /*SELCCION DE TICKETS*/
-.seleccion-tickets h3 {
+.seleccion-tickets {
   text-align: left;
   font-weight: bold;
   word-spacing: -1px;
+  font-size: 25px;
 }
 .opciones-tickets {
   display: flex;
@@ -121,7 +116,6 @@ body.claro {
   margin: 5px 15px;
 }
 .tipo-entrada {
-  font-size: 15px;
   margin: 0;
 }
 
@@ -171,8 +165,9 @@ body.claro {
 .total {
   width: 100%;
   margin: auto;
-  padding: 10px;
+  padding: 20px;
   box-sizing: border-box;
+  font-size: 25px;
 }
 
 /* Botón de agregar al carrito */
@@ -182,7 +177,7 @@ body.claro {
   border: none;
   border-radius: 5px;
   padding: 12px 20px;
-  font-size: 16px;
+  font-size: 25px;
   cursor: pointer;
   width: 100%;
   display: flex;
@@ -193,6 +188,21 @@ body.claro {
 
 .agregar-carrito:hover {
   background-color: #444;
+}
+
+
+/*CUANDO EL CARRITO ESTÁ VACÍO*/
+
+.contenedor-carrito:empty::before {
+  padding: 0;
+  content: "TU CARRITO ESTÁ VACÍO";
+  font-family: Impact;
+  font-size: 30px;
+  display: block;
+  height: 400px;
+  background-image: url("/img/carrito-vacio6.png");
+  background-position: center;
+  background-repeat: no-repeat;
 }
 /* Contenedor de eventos recomendados */
 .eventos-recomendados {
