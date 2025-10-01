@@ -68,6 +68,7 @@ body.claro .contenedor-principal {
 
 .boton-fav:hover {
   color: #00c851; /* Ajusta el valor para controlar el color de fondo */ /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
+  transition: all 0.5s ease-in-out;
 }
 
 /* Boton FAVORITOOOO MODO CLAROOOO*/
@@ -121,7 +122,7 @@ body.claro .boton-comp :hover{
   border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
   padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
   cursor: pointer; /* Ajusta el valor para controlar el cursor */
-  transition: background-color 0.5s ease; /* Añade una transición suave */
+  transition: all 0.5s ease-in-out; /* Añade una transición suave */
   font-size: 15px; /* Ajusta el valor para controlar el tamaño del texto */
 }
 
