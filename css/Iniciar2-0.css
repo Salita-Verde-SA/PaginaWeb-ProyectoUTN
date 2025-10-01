@@ -320,10 +320,23 @@ body.claro .tarjeta-recomendado .informacion {
   height: 40px;
   border-radius: 8px;
   margin-bottom: 5px;
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
 }
 
 .elemento-barra-lateral-derecha span {
   font-size: 15px;
   margin-left: 5%;
+}
+
+@media (max-width: 768px) {
+  .elemento-barra-lateral span,
+  .elemento-barra-lateral-derecha span {
+    display: none; /* Oculta el texto en pantallas pequeñas */
+  }
+
+  .barra-lateral-izquierda,
+  .barra-lateral-derecha {
+    width: auto; /* Ajusta el ancho de la barra lateral derecha y la izquierda */
+  }
 }
 
