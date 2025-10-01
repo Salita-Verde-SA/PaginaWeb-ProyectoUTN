@@ -44,6 +44,47 @@ body.claro .contenedor-principal {
   padding: 20px;
 }
 
+.contenedor-botones {
+  display: flex; /* Ajusta el valor para controlar la alineación de los botones */
+  gap: 5px; /* Ajusta el valor para controlar el espacio entre los botones */
+  align-items: center; /* Ajusta el valor para controlar la alineación vertical de los botones */
+}
+
+.boton-fav {
+  background-color: #ff0000; /* Ajusta el valor para controlar el color de fondo */
+  color: #ffffff; /* Ajusta el valor para controlar el color del texto */
+  border: none; /* Ajusta el valor para controlar el borde */
+  border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
+  padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
+  cursor: pointer; /* Ajusta el valor para controlar el cursor */
+  transition: background-color 0.3s ease; /* Añade una transición suave */
+  font-size: 12px; /* Ajusta el valor para controlar el tamaño del texto */
+}
+
+.boton-fav:hover {
+  background-color: #cc0000; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
+}
+
+body.claro .boton-fav {
+  color: #333;
+  transition: all 0.5s ease-in-out;
+}
+
+.boton-comp {
+  background-color: #00ff00; /* Ajusta el valor para controlar el color de fondo */
+  color: #ffffff; /* Ajusta el valor para controlar el color del texto */
+  border: none; /* Ajusta el valor para controlar el borde */
+  border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
+  padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
+  cursor: pointer; /* Ajusta el valor para controlar el cursor */
+  transition: background-color 0.3s ease; /* Añade una transición suave */
+  font-size: 12px; /* Ajusta el valor para controlar el tamaño del texto */
+}
+
+.boton-comp:hover {
+  background-color: #00cc00; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
+}
+
 
 .ubicacion-boton{
   background-color: #33333388; /* Fondo negro */
