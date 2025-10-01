@@ -192,10 +192,9 @@ h2.claro {
 
 /* --------- EVENTOS DESTACADOS --------- */
 .eventos-destacados {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  padding-bottom: 10px;
+display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
 }
 
 .tarjeta-eventos {
@@ -208,6 +207,7 @@ h2.claro {
   background-position: center;
   transition: all 0.5s ease-in-out;
 }
+
 
 .tarjeta-eventos .informacion {
   position: absolute;
@@ -264,6 +264,7 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  
 }
 
 .tarjeta-recomendado {
