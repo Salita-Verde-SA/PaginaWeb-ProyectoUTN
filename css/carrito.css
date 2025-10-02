@@ -1,0 +1,210 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+}
+
+body.claro {
+  background: #f5f5f5;
+  color: #000000;
+}
+/*CONTENEDOR PRINCIPAL*/
+.contenedor-principal {
+  display: flex;
+  flex-direction: row; /* Alinea horizontalmente */
+  align-items: flex-start; /* Alinea arriba si los contenidos tienen alturas distintas */
+}
+/*CONTENEDOR DE LOS BOTONES DE LA PARTE IZQUIERDA*/
+.contenedor-botones {
+    width: 24%;
+    height: auto;
+    background-color: #ccc1;
+    border-radius: 40px;
+    margin: 20px 2px 0px 2%;
+    padding: 20px;
+}
+.button {
+    display: flex;
+    width: 100%;
+    padding: 13px 5px;
+    border: none;
+    border-radius: 19px;
+    margin: 7px 0;
+    background-color: #121212;
+    justify-content: space-between;
+    color: #eee;
+    font-weight: bold;
+    font-size: 20px;
+
+}
+.contenido-button {
+    margin-left: 8px;
+}
+.icono-flecha {
+  margin-right: 20px;
+}
+/*.button .bi {
+    padding: 0 10px;
+    font-weight: bold;
+    font-size: 13px;
+}*/
+/*CONTENEDOR CENTRAL (CARRITO)*/
+
+.contenedor-carrito {
+    height: auto;
+    width: 75%;
+    background-color: #ccc1;
+    margin: 20px 20px;
+    padding: 25px;
+    border-radius: 40px;
+    text-align: center;
+    flex-direction: row;
+    align-items: flex-start;
+}
+.titulo-carrito {
+    margin-top: none;
+}
+
+.box-event {
+  border-bottom: 2px solid #6efd0f;
+
+  
+}
+.tarjeta-evento {
+    display: flex;
+    width: 100%;
+    height: auto;
+    margin: 0;
+    padding: 10px;
+    box-sizing: border-box;
+}
+.img-event {
+    width: 30%;
+    margin: 5px 20px 5px 5px;
+}
+.description-event {
+    margin: 2px 2px 5px 0px;
+    text-align: left;
+    font-weight: 20px;
+}
+.name-event {
+    margin: 20px 2px 30px 0px;
+    font-size: 40px;
+}
+
+/*SELCCION DE TICKETS*/
+.seleccion-tickets {
+  text-align: left;
+  font-weight: bold;
+  word-spacing: -1px;
+  font-size: 25px;
+}
+.opciones-tickets {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+  margin: 5px 15px;
+}
+.tipo-entrada {
+  margin: 0;
+}
+
+/* Contenedor de cantidad */
+.cantidad-ticket {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+/* Contador de cantidad */
+.contador {
+  display: flex;
+  align-items: center;
+  border: 1px solid #5551;
+  border-radius: 5px;
+  overflow: hidden;
+}
+.contador button {
+  width: 25%;
+  background-color: #121212;
+  color: white;
+  border: none;
+  padding: 5px 15px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+}
+
+.contador button:hover {
+  background-color: #444;
+}
+
+.contador .valor {
+  padding: 5px 10px;
+  background-color: #121212;
+  color: white;
+  min-width: 20px;
+  text-align: center;
+  border-radius: 15px;
+  margin: 4px;
+}
+
+/*TOTAL*/
+
+.total {
+  width: 100%;
+  margin: auto;
+  padding: 20px;
+  box-sizing: border-box;
+  font-size: 25px;
+}
+
+/* Botón de agregar al carrito */
+.agregar-carrito {
+  background-color: #333;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 12px 20px;
+  font-size: 25px;
+  cursor: pointer;
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+}
+
+.agregar-carrito:hover {
+  background-color: #444;
+}
+
+
+/*CUANDO EL CARRITO ESTÁ VACÍO*/
+
+.contenedor-carrito:empty::before {
+  padding: 0;
+  content: "TU CARRITO ESTÁ VACÍO";
+  font-family: Impact;
+  font-size: 30px;
+  display: block;
+  height: 400px;
+  background-image: url("/img/carrito-vacio6.png");
+  background-position: center;
+  background-repeat: no-repeat;
+}
+/* Contenedor de eventos recomendados */
+.eventos-recomendados {
+  padding: 20px;
+}

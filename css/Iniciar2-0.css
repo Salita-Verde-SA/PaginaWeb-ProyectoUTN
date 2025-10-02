@@ -1,3 +1,59 @@
+/* Contenedor de amigos que asisten */
+.Amigos-que-asistiran {
+  display: flex;
+  gap: 0; /* Elimina el espacio entre imágenes */
+  justify-content: flex-start;
+  align-items: center;
+  margin: 0.5px 0 0 0;
+  position: relative; /* Cambia a relative para que el círculo se posicione correctamente */
+  z-index: 1;
+}
+
+/* Imágenes de amigos */
+.Amigos-que-asistiran img {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  object-fit: cover;
+  margin-left: -10px; /* Superposición de 10px */
+  border: 3px solid #171717; /* Borde blanco para mejor visualización */
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .Amigos-que-asistiran img {
+  border: 3px solid #cccccccc; /* Borde oscuro en modo claro */
+  transition: all 0.5s ease-in-out;
+}
+
+/* La primera imagen no tiene margen negativo */
+.Amigos-que-asistiran img:first-child {
+  margin-left: 0;
+}
+
+/* Círculo de amigos adicionales */
+.circulo-amigos-adicionales {
+  width: 38px;
+  height: 38px;
+  border-radius: 50%;
+  border: 3px solid #171717; /* Borde blanco */
+  background-color: #333;
+  color: white;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 12px;
+  margin-left: -10px; /* Superposición con la última imagen */
+  z-index: 1;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .circulo-amigos-adicionales {
+  border: 3px solid #cccccccc; /* Borde oscuro en modo claro */
+  transition: all 0.5s ease-in-out;
+}
+
+
 /* --------- ESTILOS GLOBALES --------- */
 * {
   margin: 0;
@@ -121,7 +177,7 @@ h2.claro {
 }
 
 .banner:hover {
-  transform: perspective(1000px) rotateX(3deg) translateY(-2px) scale(1.05);
+  transform: perspective(1000px) rotateX(3deg) translateY(-1px) scale(1.01); /* Efecto 3D sutil al pasar el mouse */
 }
 
 .banner h2 {
@@ -136,10 +192,9 @@ h2.claro {
 
 /* --------- EVENTOS DESTACADOS --------- */
 .eventos-destacados {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  padding-bottom: 10px;
+display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
 }
 
 .tarjeta-eventos {
@@ -153,6 +208,7 @@ h2.claro {
   transition: all 0.5s ease-in-out;
 }
 
+
 .tarjeta-eventos .informacion {
   position: absolute;
   bottom: 0;
@@ -161,12 +217,15 @@ h2.claro {
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   padding: 15px 10px 10px;
   color: white;
+  transition: all 0.5s ease-in-out;
 }
 
 .tarjeta-eventos h3 {
   font-size: 14px;
   margin-bottom: 5px;
 }
+
+
 
 span {
   transition: color 0.5s ease-in-out;
@@ -195,32 +254,45 @@ span {
   gap: 20px;
 }
 
-.tarjeta-recomendado {
-  border-radius: 10px;
+.tarjeta-recomendado  {
+
   overflow: hidden;
-  height: 150px;
+  min-height: 200px;
   position: relative;
   background-size: cover;
   background-position: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  
+}
+#Foto-event{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover; /* Hace que la imagen se ajuste sin deformarse */
+  display: block; /* Elimina espacios extra */
 }
 
 .tarjeta-recomendado {
-  transition: transform 0.3s ease;
+  transition: transform 0.5s ease;
 }
 
-.tarjeta-recomendado:hover {
-  transform: perspective(1000px) rotateX(3deg) translateY(-2px) scale(1.05);
-}
 
 .tarjeta-recomendado .informacion {
-  position: absolute;
   bottom: 0;
   left: 0;
   right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
+  /* background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); */
   padding: 10px;
   color: white;
   font-size: 12px;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .tarjeta-recomendado .informacion {
+  color: #333;
+  transition: all 0.5s ease-in-out;
 }
 
 /* --------- BARRA LATERAL DERECHA CON FONDO --------- */
@@ -256,10 +328,23 @@ span {
   height: 40px;
   border-radius: 8px;
   margin-bottom: 5px;
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
 }
 
 .elemento-barra-lateral-derecha span {
   font-size: 15px;
   margin-left: 5%;
+}
+
+@media (max-width: 768px) {
+  .elemento-barra-lateral span,
+  .elemento-barra-lateral-derecha span {
+    display: none; /* Oculta el texto en pantallas pequeñas */
+  }
+
+  .barra-lateral-izquierda,
+  .barra-lateral-derecha {
+    width: auto; /* Ajusta el ancho de la barra lateral derecha y la izquierda */
+  }
 }
 
