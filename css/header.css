@@ -5,7 +5,7 @@
 .logo-inicio-header {
   width: 26px;
   height: 26px;
-  margin: 0px 20px 0px 10px;
+  margin: 0px 7px 0px 0px;
   position: relative;
   z-index: 10;
   /* transform: translate(-50%, -50%); */
@@ -302,12 +302,24 @@ body.claro .barra-navegacion-derecha .boton-icono {
   animation: carritoAcelerar 0.5s ease-in-out; /* Aplica la animación al hacer hover */
 }
 
+.carrito {
+  position: relative;
+  display: inline-block;
+  margin: 0px 20px 0px 0px;
+}
+
 .inicio-cuenta-header {
   display: flex;
   align-items: center;
   gap: 10px;
   width: auto;
-  margin: 0px 0px 0px 10px;
+  margin: 0px 20px 0px 10px;
+}
+
+.campana {
+  position: relative;
+  display: inline-block;
+  margin: 0px 20px 0px 0px;
 }
 
 /* ------- BOTONES ------- */
