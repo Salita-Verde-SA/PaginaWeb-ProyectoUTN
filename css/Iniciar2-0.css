@@ -192,10 +192,9 @@ h2.claro {
 
 /* --------- EVENTOS DESTACADOS --------- */
 .eventos-destacados {
-  display: flex;
-  gap: 15px;
-  overflow-x: auto;
-  padding-bottom: 10px;
+display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  gap: 20px;
 }
 
 .tarjeta-eventos {
@@ -208,6 +207,7 @@ h2.claro {
   background-position: center;
   transition: all 0.5s ease-in-out;
 }
+
 
 .tarjeta-eventos .informacion {
   position: absolute;
@@ -255,7 +255,7 @@ span {
 }
 
 .tarjeta-recomendado  {
-  border-radius: 10px;
+
   overflow: hidden;
   min-height: 200px;
   position: relative;
@@ -264,6 +264,14 @@ span {
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
+  
+}
+#Foto-event{
+  width: 100%;
+  height: 100%;
+  border-radius: 10px;
+  object-fit: cover; /* Hace que la imagen se ajuste sin deformarse */
+  display: block; /* Elimina espacios extra */
 }
 
 .tarjeta-recomendado {
@@ -320,10 +328,23 @@ body.claro .tarjeta-recomendado .informacion {
   height: 40px;
   border-radius: 8px;
   margin-bottom: 5px;
+  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
 }
 
 .elemento-barra-lateral-derecha span {
   font-size: 15px;
   margin-left: 5%;
+}
+
+@media (max-width: 768px) {
+  .elemento-barra-lateral span,
+  .elemento-barra-lateral-derecha span {
+    display: none; /* Oculta el texto en pantallas pequeñas */
+  }
+
+  .barra-lateral-izquierda,
+  .barra-lateral-derecha {
+    width: auto; /* Ajusta el ancho de la barra lateral derecha y la izquierda */
+  }
 }
 
