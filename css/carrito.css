@@ -6,7 +6,7 @@
 }
 
 body {
-  background-color: #121212;
+  background-color: #000000;
   color: #ffffff;
   min-height: 100vh;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
@@ -26,7 +26,7 @@ body.claro {
 .contenedor-botones {
     width: 24%;
     height: auto;
-    background-color: #ccc1;
+    background-color: #171717;
     border-radius: 40px;
     margin: 20px 2px 0px 2%;
     padding: 20px;
@@ -61,7 +61,7 @@ body.claro {
 .contenedor-carrito {
     height: auto;
     width: 75%;
-    background-color: #ccc1;
+    background-color: #171717;
     margin: 20px 20px;
     padding: 25px;
     border-radius: 40px;
