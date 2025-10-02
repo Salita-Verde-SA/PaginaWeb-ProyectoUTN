@@ -126,6 +126,11 @@ body.claro .boton-comp :hover{
   font-size: 15px; /* Ajusta el valor para controlar el tamaño del texto */
 }
 
+  .verde {
+    color: #00c851;/* Cuando está activado */
+    }
+
+
 .boton-megusta:hover {
   color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
   transition: all 0.5s ease-in-out;
@@ -142,6 +147,7 @@ body.claro .boton-megusta:hover {
   color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
   transition: all 0.5s ease-in-out;
 }
+
 
 .ubicacion-boton{
   background-color: #33333388; /* Fondo negro */
