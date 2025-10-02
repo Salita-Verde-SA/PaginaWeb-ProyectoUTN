@@ -50,3 +50,20 @@ document.addEventListener("headerContentLoaded", async function () {
     ).style.boxShadow = `0 0 10px ${resultado}`;
   });
 });
+
+// Ajusta el JavaScript para el menú desplegable
+document.addEventListener('DOMContentLoaded', function() {
+  const botonCuentaUsuario = document.querySelector('.boton-cuenta-usuario');
+  const menuDesplegable = document.querySelector('.menu-desplegable');
+
+  // Muestra u oculta el menú desplegable al hacer clic en la foto de perfil
+  botonCuentaUsuario.addEventListener('click', function(event) {
+    event.stopPropagation(); // Evita que el evento se propague al documento
+    menuDesplegable.style.display = menuDesplegable.style.display === 'block' ? 'none' : 'block';
+  });
+
+  // Oculta el menú desplegable al hacer clic fuera de él
+  document.addEventListener('click', function() {
+    menuDesplegable.style.display = 'none';
+  });
+});

@@ -232,7 +232,6 @@ input:checked + .deslizador:before {
   transition: all 0.5s ease-out;
 }
 
-
 @media (max-width: 768px) {
   .barra-navegacion-centro .barra-busqueda {
     width: 200px;
@@ -366,6 +365,7 @@ body.claro .barra-navegacion-derecha .boton-icono {
 
 .boton-cuenta-usuario {
   position: relative;
+  margin: 0;
   border-radius: 50%;
   min-width: 33px;
   min-height: 33px;
@@ -373,8 +373,22 @@ body.claro .barra-navegacion-derecha .boton-icono {
   display: flex;
   align-items: center;
   justify-content: center;
-  background-color: #00000000;
   border: none;
+  cursor: pointer;
+  transition: all 0.5s ease-in-out;
+  box-shadow: none;
+}
+
+/* Online */
+.boton-cuenta-usuario::after {
+  content: "";
+  position: absolute;
+  bottom: 23px;
+  right: 0;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background-color: #00ff08;
 }
 
 .foto-perfil {
@@ -382,8 +396,48 @@ body.claro .barra-navegacion-derecha .boton-icono {
   height: 33px;
   border-radius: 50%;
   object-fit: cover;
-  /* box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.3); */
+  margin: auto;
+  box-shadow: none;
 }
+
+.menu-desplegable {
+  position: absolute;
+  top: 100%;
+  right: 40px;
+  background-color: #333;
+  border-radius: 22px;
+  padding: 15px;
+  display: none;
+  z-index: 1;
+}
+
+/* Estilos para la lista del menú desplegable */
+.menu-desplegable ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* Estilos para los enlaces del menú desplegable */
+.menu-desplegable a {
+  color: #ffffff;
+  text-decoration: none;
+  display: block;
+  padding: 5px;
+  border-radius: 11px;
+  transition: background-color 0.5s ease;
+}
+
+/* Estilos para los enlaces del menú desplegable al pasar el mouse */
+.menu-desplegable a:hover {
+  background-color: #555;
+}
+
+/* Estilos para los elementos de la lista del menú desplegable */
+.menu-desplegable li {
+  margin-bottom: 1px;
+}
+
 
 .login-btn,
 .register-btn {
@@ -400,10 +454,10 @@ body.claro .barra-navegacion-derecha .boton-icono {
   min-width: 50px;
 }
 
-/* header .login-btn,
+header .login-btn,
 .register-btn {
   display: none;
-} */
+}
 
 header .login-btn,
 .register-btn {
