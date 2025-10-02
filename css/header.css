@@ -1,4 +1,3 @@
-
 /* --------- ICONOS DEL HEADER --------- */
 
 /* Logo chico en el header */
@@ -49,19 +48,6 @@
   gap: 1px;
   width: auto;
   min-width: 200px;
-}
-
-.login-btn,
-.register-btn {
-  position: relative;
-  display: block;
-  padding: 5px 10px; /* Espaciado interno */
-  font-size: 15px;
-  border: 0px; /* Sin borde */
-  border-radius: 10px; /* Bordes redondeados */
-  cursor: pointer; /* Cursor de manito */
-  transition: all 0.3s ease-in-out; /* Animación suave en hover */
-  text-align: center;
 }
 
 header a {
@@ -142,7 +128,6 @@ header .bx-sun.girar {
 header .bx-moon.mecer {
   animation: mecer 1s ease-in-out;
 }
-
 
 /* --------- SWITCH DE TEMA --------- */
 .tema-claro-oscuro-header {
@@ -235,6 +220,7 @@ input:checked + .deslizador:before {
   justify-content: center;
 }
 
+/* BARRA DE BÚSQUEDA */
 .barra-navegacion-centro .barra-busqueda {
   padding: 8px 15px 8px 40px;
   border-radius: 20px;
@@ -245,6 +231,60 @@ input:checked + .deslizador:before {
   height: 35px;
   transition: all 0.5s ease-out;
 }
+
+
+@media (max-width: 768px) {
+  .barra-navegacion-centro .barra-busqueda {
+    width: 200px;
+  }
+
+  .header-derecha {
+    min-width: auto;
+  }
+}
+
+@media (max-width: 1200px) {
+  .barra-navegacion-centro .barra-busqueda {
+    width: 350px;
+  }
+}
+
+@media (max-width: 1100px) {
+  .barra-navegacion-centro .barra-busqueda {
+    width: 300px;
+  }
+}
+
+@media (max-width: 1000px) {
+  .barra-navegacion-centro .barra-busqueda {
+    width: 250px;
+  }
+}
+
+@media (max-width: 900px) {
+  .barra-navegacion-centro .barra-busqueda {
+    width: 200px;
+  }
+}
+
+@media (max-width: 800px) {
+  .barra-navegacion-centro .barra-busqueda {
+    width: 180px;
+  }
+}
+
+@media (max-width: 700px) {
+  .barra-navegacion-centro .barra-busqueda {
+    width: 150px;
+  }
+}
+
+@media (max-width: 600px) {
+  .barra-navegacion-centro .barra-busqueda {
+    width: 120px;
+  }
+}
+
 
 .barra-navegacion-centro .lupa {
   position: relative;
@@ -283,7 +323,6 @@ body.claro .barra-navegacion-derecha .boton-icono {
   border-radius: 8px;
   transform: translateX(0) rotate(0deg); /* Estado inicial */
 }
-
 
 /* Animación para el carrito al hacer hover */
 @keyframes carritoAcelerar {
@@ -335,10 +374,31 @@ body.claro .barra-navegacion-derecha .boton-icono {
   box-shadow: 0 0 5px 5px rgba(255, 255, 255, 0.3);
 }
 
-header .login-btn,
+.login-btn,
+.register-btn {
+  position: relative;
+  display: block;
+  padding: 5px 10px; /* Espaciado interno */
+  /* height: 10px; */
+  font-size: 15px;
+  border: 0px; /* Sin borde */
+  border-radius: 10px; /* Bordes redondeados */
+  cursor: pointer; /* Cursor de manito */
+  transition: all 0.3s ease-in-out; /* Animación suave en hover */
+  text-align: center;
+  min-width: 50px;
+}
+
+/* header .login-btn,
 .register-btn {
   display: none;
-  min-width: 50px;
+} */
+
+header .login-btn,
+.register-btn {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* Botón claro en el header */
