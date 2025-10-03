@@ -100,7 +100,8 @@ body.claro .elemento-barra-lateral-derecha span {
   padding: 20px; /* Añade padding para más espacio */
   border-radius: 20px; /* Añade bordes redondeados */
   flex: 1;
-  padding: 20px;
+  padding: 50px;
+  margin-right: 15px;
 }
 
 .circulo-foto-perfil {
@@ -123,12 +124,16 @@ body.claro .elemento-barra-lateral-derecha span {
   object-fit: cover; /* Asegura que la imagen cubra todo el círculo */
 }
 
+
+/* lapiz de cambiar foto  */
+
+
 .cambiar-foto {
+  position: absolute;
+  
+  background-color: rgba(0, 0, 0, 0.5);
   width: 100%;
   height: 100%;
-  position: absolute;
-  bottom: 0;
-  background-color: rgba(0, 0, 0, 0.5);
   color: white;
   padding: 5px;
   font-size: 14px;
@@ -136,6 +141,13 @@ body.claro .elemento-barra-lateral-derecha span {
   transition: opacity 0.3s ease;
   object-position: center;
   font-size: 24px; /* Tamaño del ícono del lápiz */
+  text-align: center;
+}
+
+.icono-lapiz{
+  color: white;
+  font-size: 24px;
+  padding: 56px;
 }
 
 .circulo-foto-perfil:hover .cambiar-foto {
