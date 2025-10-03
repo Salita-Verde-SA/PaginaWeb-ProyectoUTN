@@ -11,11 +11,18 @@ body {
   color: #ffffff;
   min-height: 100vh;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  margin: 0;
+  padding: 0;
+  width: 100%;
 }
 
 body.claro {
   background: #f5f5f5;
   color: #333;
+}
+
+#footer {
+  width: 100%;
 }
 
 
@@ -26,6 +33,8 @@ body.claro {
   gap: 20px;
   border-radius: 15px;
   margin: 20px;
+  width: 100%;
+  flex: 1;
 }
 
 /* --------- BARRA LATERAL IZQUIERDA CON FONDO --------- */
@@ -81,17 +90,137 @@ body.claro .elemento-barra-lateral-derecha span {
 /* CONTENEDOR PERFIL */
 
 .contenedor-perfil {
-  flex: 1;
+  background-color: #333; /* Añade un fondo */
+  justify-content: space-between;
   display: flex;
   flex-direction: column;
+  align-items: center;
   gap: 20px;
-  background-color: #333;
-  border-radius: 10px;
+  width: 700px; /* Ajusta el ancho del contenedor */
+  padding: 20px; /* Añade padding para más espacio */
+  border-radius: 20px; /* Añade bordes redondeados */
+  flex: 1;
   padding: 20px;
-  transition: all 0.5s ease-in-out;
+  
+}
+
+.circulo-foto-perfil {/* CONTENEDOR PERFIL */
+.contenedor-perfil {
+display: flex;
+flex-direction: column;
+align-items: flex-start; /* Alinea los elementos a la izquierda */
+gap: 20px;
+width: 100%; /* Extiende el ancho del contenedor */
+max-width: 100%; /* Establece un ancho máximo */
+padding: 20px; /* Añade padding para más espacio */
+border-radius: 20px; /* Añade bordes redondeados */
+background-color: #333; /* Añade un fondo */
+}
+.circulo-foto-perfil {
+position: relative;
+width: 200px; /* Aumenta el tamaño del círculo */
+height: 200px; /* Aumenta el tamaño del círculo */
+border-radius: 50%;
+overflow: hidden;
+cursor: pointer;
+transition: transform 0.3s ease;
+}
+.circulo-foto-perfil:hover {
+transform: scale(1.05);
+}
+.foto-perfil {
+width: 100%;
+height: 100%;
+object-fit: cover;
+}
+.cambiar-foto {
+position: absolute;
+bottom: 0;
+left: 0;
+right: 0;
+background-color: rgba(0, 0, 0, 0.5);
+color: white;
+text-align: center;
+padding: 5px;
+font-size: 14px;
+opacity: 0;
+transition: opacity 0.3s ease;
+}
+.circulo-foto-perfil:hover .cambiar-foto {
+opacity: 1;
+}
+  position: relative;
+  width: 150px; /* Aumenta el tamaño del círculo */
+  height: 150px; /* Aumenta el tamaño del círculo */
+  border-radius: 50%;
+  overflow: hidden;
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.circulo-foto-perfil:hover {
+  transform: scale(1.05);
+}
+
+.foto-perfil {
+  width: 100%;
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  opacity: 1;
+}
+
+
+.campo-nombre-usuario {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 10px;
+}
+
+.nombre-usuario {
+  padding: 8px;
+  border-radius: 20px;
+  border: 1px solid #999999;
+  background-color: #333;
+  color: white;
+  width: 250px; /* Aumenta el ancho del campo de texto */
+  height: 35px;
+  text-align: center;
+}
+
+.guardar-nombre {
+  padding: 8px 15px;
+  border-radius: 20px;
+  border: none;
+  background-color: #333;
+  color: white;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.guardar-nombre:hover {
+  background-color: #555;
 }
 
 .contenedor-perfil.claro,
+.barra-lateral-derecha.claro,
 .barra-lateral-izquierda.claro {
   background-color: #cccccccc;
   transition: all 0.5s ease-in-out;
