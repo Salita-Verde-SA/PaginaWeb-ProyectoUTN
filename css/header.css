@@ -232,6 +232,20 @@ input:checked + .deslizador:before {
   transition: all 0.5s ease-out;
 }
 
+.barra-navegacion-centro .barra-busqueda:focus {
+    outline: 2px solid white; /* Línea blanca al hacer clic */
+    outline-offset: 0px; /* Asegura que la línea no esté desplazada */
+}
+
+.barra-navegacion-centro .barra-busqueda {
+  transition: all 0.5s ease-in-out;
+}
+
+.barra-navegacion-centro .barra-busqueda:hover{
+  border: 1px solid #999999;
+}
+
+
 @media (max-width: 768px) {
   .barra-navegacion-centro .barra-busqueda {
     width: 200px;
