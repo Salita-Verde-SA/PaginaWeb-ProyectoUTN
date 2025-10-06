@@ -120,6 +120,9 @@ document.addEventListener("menuTelefonoContentLoaded", function () {
     menuDesplegable.style.display = "none";
   });
 
+
+  // MENÚ DE HAMBURGUESA PARA LA VISTA DE TELÉFONO
+
   function abrirMenuHamburguesa() {
     document.querySelector(".menu-hamburguesa-contenedor").style.display =
       "flex";
