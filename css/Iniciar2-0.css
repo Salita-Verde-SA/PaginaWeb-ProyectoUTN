@@ -328,24 +328,24 @@ body.claro .tarjeta-recomendado .informacion {
   transition: all 0.5s ease-in-out;
   /* Barra de desplazamiento */
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #333 transparent;
-  -ms-overflow-style: auto;
-  &::-webkit-scrollbar {
+  scrollbar-width: thin; /* Estándar CSS para ancho de scrollbar */
+  scrollbar-color: #333 transparent; /* Estándar CSS para color de scrollbar */
+  -ms-overflow-style: auto; /* Estilo específico para navegadores basados en Trident (IE/Edge) */
+  &::-webkit-scrollbar { /* Estilo específico para navegadores basados en WebKit (Chrome, Safari, Edge) */
     width: 8px;
     height: 8px;
   }
-  &::-webkit-scrollbar-track {
+  &::-webkit-scrollbar-track { /* Estilo específico para navegadores basados en WebKit */
     background: transparent;
     border-radius: 4px;
   }
-  &::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb { /* Estilo específico para navegadores basados en WebKit */
     background-color: #333;
     border-radius: 4px;
     border: 2px solid transparent;
     background-clip: padding-box;
   }
-  body.claro &::-webkit-scrollbar-thumb {
+  body.claro &::-webkit-scrollbar-thumb { /* Estilo específico para navegadores basados en WebKit */
     background-color: #cccccccc;
   }
 }
