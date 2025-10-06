@@ -1,31 +1,64 @@
 console.log("header.js");
 console.log("Importando header...");
-fetch("header.html")
-  .then((res) => res.text())
-  .then((data) => {
-    document.getElementById("header").innerHTML = data;
-    document.dispatchEvent(new Event("headerContentLoaded"));
-  });
-console.log("Header importado.");
 
-if (!document.getElementById("menu-telefono")) {
-  console.error(
-    "El elemento con id 'menu-telefono' no existe, " +
-    "no se usará. \nEs normal que pase en una página de " +
-    "inicio de sesión o relacionada."
+// Comprobación de los elementos del header, sirve para que no genere errores
+// al tratar de importar un header si ya existe, como en las páginas de inicio
+// de sesión o registro.
+const header = document.querySelector("header");
+console.log(
+  "Evaluando header:",
+  header,
+  "y header.children.length:",
+  header ? header.children.length : "header no existe"
+);
+if (header && header.children.length === 0) {
+  console.warn(
+    "El header no tiene elementos adentro.\n" + "Se cargará dinámicamente."
   );
-} else {
-  document.addEventListener("headerContentLoaded", function () {
-    console.log("Importando menú de teléfono...");
-    fetch("menu-telefono.html")
-      .then((res) => res.text())
-      .then((data) => {
-        document.getElementById("menu-telefono").innerHTML = data;
-        document.dispatchEvent(new Event("menuTelefonoContentLoaded"));
-      });
-    console.log("Menú de teléfono importado.");
-  });
+  fetch("header.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("header").innerHTML = data;
+      document.dispatchEvent(new Event("headerContentLoaded"));
+    });
+  console.log("Header importado.");
+} else if (header) {
+  console.warn(
+    "El header ya tiene elementos dentro.\nDebe tratarse de una página de inicio de sesión o relacionada."
+  );
 }
+
+function checkMenuTelefono() {
+  // Comprobación de la existencia del elemento correspondiente al menu
+  // de hamburguesa que se usaría en teléfono. Ya que en las páginas de inicio
+  // de sesión y registro no está presente genera errores.
+  if (!document.getElementById("menu-telefono")) {
+    console.warn(
+      "El elemento con id 'menu-telefono' no existe, " +
+        "no se usará. \nEs normal que pase en una página de " +
+        "inicio de sesión o relacionada."
+    );
+    document.dispatchEvent(new Event("sinMenuTelefono"));
+  } else {
+    console.log("El elemento con id 'menu-telefono' existe, se usará.");
+    document.addEventListener("headerContentLoaded", function () {
+      console.log("Importando menú de teléfono...");
+      fetch("menu-telefono.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("menu-telefono").innerHTML = data;
+          document.dispatchEvent(new Event("menuTelefonoContentLoaded"));
+        });
+      console.log("Menú de teléfono importado.");
+    });
+  }
+}
+
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOMContentLoaded");
+  checkMenuTelefono();
+  document.dispatchEvent(new Event("headerContentLoaded"));
+});
 
 // Espera a que el DOM esté completamente cargado antes de ejecutar
 // el script para garantizar que todos los elementos HTML, sobre todo
@@ -37,8 +70,8 @@ if (!document.getElementById("menu-telefono")) {
 // Esta parte se ejecuta después de que se han cargado los contenidos
 // del header y el menú de teléfono, asegurando que todos los elementos
 // necesarios estén disponibles para su manipulación.
-document.addEventListener("menuTelefonoContentLoaded", function () {
-  console.log("header.js");
+document.addEventListener("headerContentLoaded", function () {
+  console.log("Script del header iniciado...");
   // Selecciona el interruptor de modo claro/oscuro
   const interruptor = document.querySelector(".interruptor input");
   // Selecciona el ícono del sol
@@ -104,21 +137,38 @@ document.addEventListener("menuTelefonoContentLoaded", function () {
     }, 125);
   });
 
+  // MENÚ DESPLEGABLE DE USUARIO
+
   // Ajusta el JavaScript para el menú desplegable
   const botonCuentaUsuario = document.querySelector(".boton-cuenta-usuario");
   const menuDesplegable = document.querySelector(".menu-desplegable");
 
-  // Muestra u oculta el menú desplegable al hacer clic en la foto de perfil
-  botonCuentaUsuario.addEventListener("click", function (event) {
-    event.stopPropagation(); // Evita que el evento se propague al documento
-    menuDesplegable.style.display =
-      menuDesplegable.style.display === "block" ? "none" : "block";
-  });
+  if (botonCuentaUsuario && menuDesplegable) {
+    console.log("Elementos del menú desplegable encontrados, inicializando...");
 
-  // Oculta el menú desplegable al hacer clic fuera de él
-  document.addEventListener("click", function () {
-    menuDesplegable.style.display = "none";
-  });
+    // Muestra u oculta el menú desplegable al hacer clic en la foto de perfil
+    botonCuentaUsuario.addEventListener("click", function (event) {
+      event.stopPropagation(); // Evita que el evento se propague al documento
+      menuDesplegable.style.display =
+        menuDesplegable.style.display === "block" ? "none" : "block";
+    });
+
+    // Oculta el menú desplegable al hacer clic fuera de él
+    document.addEventListener("click", function () {
+      menuDesplegable.style.display = "none";
+    });
+
+    console.log("Menú desplegable inicializado correctamente");
+  } else {
+    console.warn(
+      "No se encontraron todos los elementos necesarios para el menú desplegable. " +
+        "Elementos faltantes: " +
+        (botonCuentaUsuario ? "" : ".boton-cuenta-usuario ") +
+        (menuDesplegable ? "" : ".menu-desplegable")
+    );
+  }
+
+  // MENÚ DE HAMBURGUESA PARA LA VISTA DE TELÉFONO
 
   function abrirMenuHamburguesa() {
     document.querySelector(".menu-hamburguesa-contenedor").style.display =
@@ -132,42 +182,43 @@ document.addEventListener("menuTelefonoContentLoaded", function () {
     document.body.style.overflow = "";
   }
 
-  // MENÚ DE HAMBURGUESA PARA LA VISTA DE TELÉFONO
-  if (document.getElementById("menu-telefono")) {
-    document
-      .querySelector(".menu-hamburguesa")
-      .addEventListener("click", abrirMenuHamburguesa);
-    document
-      .querySelector(".cerrar-menu")
-      .addEventListener("click", cerrarMenuHamburguesa);
+  document.addEventListener("menuTelefonoContentLoaded", function () {
+    if (document.getElementById("menu-telefono")) {
+      document
+        .querySelector(".menu-hamburguesa")
+        .addEventListener("click", abrirMenuHamburguesa);
+      document
+        .querySelector(".cerrar-menu")
+        .addEventListener("click", cerrarMenuHamburguesa);
 
-    // Cerrar el menú hamburguesa al hacer clic fuera de él
-    document
-      .querySelector(".menu-hamburguesa-contenedor")
-      .addEventListener("click", function (e) {
-        if (e.target === this) {
+      // Cerrar el menú hamburguesa al hacer clic fuera de él
+      document
+        .querySelector(".menu-hamburguesa-contenedor")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            cerrarMenuHamburguesa();
+          }
+        });
+
+      // Cerrar el menú hamburguesa al presionar la tecla "Escape"
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "Escape" &&
+          document.querySelector(".menu-hamburguesa-contenedor").style
+            .display === "flex"
+        ) {
           cerrarMenuHamburguesa();
         }
       });
 
-    // Cerrar el menú hamburguesa al presionar la tecla "Escape"
-    document.addEventListener("keydown", function (e) {
-      if (
-        e.key === "Escape" &&
-        document.querySelector(".menu-hamburguesa-contenedor").style.display ===
-          "flex"
-      ) {
-        cerrarMenuHamburguesa();
-      }
-    });
+      // Cerrar el menú hamburguesa al hacer clic en un enlace
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 800) {
+          cerrarMenuHamburguesa();
+        }
+      });
 
-    // Cerrar el menú hamburguesa al hacer clic en un enlace
-    window.addEventListener("resize", function () {
-      if (window.innerWidth > 800) {
-        cerrarMenuHamburguesa();
-      }
-    });
-
-    console.log("Script de menu hamburguesa cargado correctamente");
-  }
+      console.log("Script de menu hamburguesa cargado correctamente");
+    }
+  });
 });
