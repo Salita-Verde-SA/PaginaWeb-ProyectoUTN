@@ -1,154 +1,161 @@
 <!DOCTYPE html>
 <html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Wabi - Eventos</title>
+    <link rel="icon" type="image/png" href="img/paletaenverde.png" />
 
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Wabi - Eventos</title>
-  <link rel="icon" type="image/png" href="img/paletaenverde.png" />
+    <link rel="stylesheet" href="css/VistaPrevia.css" />
+    <link rel="stylesheet" href="css/header.css" />
+    <link rel="stylesheet" href="css/footer.css" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    />
 
-  <link rel="stylesheet" href="css/VistaPrevia.css" />
-  <link rel="stylesheet" href="css/header.css" />
-  <link rel="stylesheet" href="css/footer.css" />
-  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
+    <!-- Box Icons -->
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    />
+    <!-- Font Awesome -->
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css"
+    />
+    <!-- Bootstrap Icons -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css"
+    />
 
+    <link rel="icon" type="image/png" href="img/paletaenverde.png" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css"
+    />
+  </head>
 
-  <!-- Box Icons -->
-  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
-  <!-- Font Awesome -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
-  <!-- Bootstrap Icons -->
-  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+  <body>
+    <!-- Header -->
+    <header id="header"></header>
+    <script src="js/header.js"></script>
+    <div class="contenedor-principal">
+      <!-- Contenedor del evento principal -->
 
-  <link rel="icon" type="image/png" href="img/paletaenverde.png" />
-  <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
-</head>
+      <div class="detalle-eventos">
+        <img
+          src="img/img-eventos/fiesta.jpg"
+          alt="Evento Wabi"
+          class="banner-eventos"
+        />
+        <div class="descripcion-eventos">
+          <div class="bootones">
+            <button class="boton-fav" title="Favorito">
+              <i class="bi bi-star"></i>
+            </button>
+            <button class="boton-comp" title="Compartir">
+              <i class="bi bi-share-fill"></i>
+            </button>
+          </div>
+          <h2>WABI</h2>
 
-<body>
-  <!-- Header -->
-  <header id="header"></header>
-  <script src="js/header.js"></script>
-  <div class="contenedor-principal">
-    <!-- Contenedor del evento principal -->
-     
-    <div class="detalle-eventos">
-      <img src="img/img-eventos/fiesta.jpg" alt="Evento Wabi" class="banner-eventos" />
-      <div class="descripcion-eventos">
-        <div class="bootones"> 
-          <button class="boton-fav" title="Favorito">
-         <i class="bi bi-star"></i>
-        </button>
-        <button class="boton-comp" title="Compartir">
-         <i class="bi bi-share-fill"></i>
-        </button>
-      </div>
-        <h2>WABI</h2>
-        
-         
-        <div class="lugar">
-          <p><strong>Fecha y hora:</strong> 25 de diciembre de 2024</p>
-          <p><strong>Lugar:</strong> Club Mendoza de Regatas, Mendoza, Argentina</p>
-          <p><strong>Horario:</strong> 22:30</p>
-        </div>
-        <button class="ubicacion-boton">
-          Ubicación <i class="fa-solid fa-location-dot"></i>
-        </button>
-        <div class="descripcion">
-          <p><strong>Descripción:</strong></p>
-          <p>¡Disfruta de una noche única con los mejores DJs y un espectáculo de luces!</p>
-        </div>
-        <div class="seleccion-tickets">
-          <h3>Seleccione los tickets</h3>
-          <div class="opciones-tickets">
-            <div class="tipo-ticket">
-              <select class="selector-ticket">
-                <option value="vip">VIP - 32.000,00 Ars</option>
-                <option value="general">General - 20.000,00 Ars</option>
-              </select>
-            </div>
-            <div class="cantidad-ticket">
-              <span>Cantidad:</span>
-              <div class="contador">
-                <button class="menos">-</button>
-                <span class="valor">0</span>
-                <button class="mas">+</button>
-                
+          <div class="lugar">
+            <p><strong>Fecha y hora:</strong> 25 de diciembre de 2024</p>
+            <p>
+              <strong>Lugar:</strong> Club Mendoza de Regatas, Mendoza,
+              Argentina
+            </p>
+            <p><strong>Horario:</strong> 22:30</p>
+          </div>
+          <button class="ubicacion-boton">
+            Ubicación <i class="fa-solid fa-location-dot"></i>
+          </button>
+          <div class="descripcion">
+            <p><strong>Descripción:</strong></p>
+            <p>
+              ¡Disfruta de una noche única con los mejores DJs y un espectáculo
+              de luces!
+            </p>
+          </div>
+          <div class="seleccion-tickets">
+            <h3>Seleccione los tickets</h3>
+            <div class="opciones-tickets">
+              <div class="tipo-ticket">
+                <select class="selector-ticket">
+                  <option value="vip">VIP - 32.000,00 Ars</option>
+                  <option value="general">General - 20.000,00 Ars</option>
+                </select>
+              </div>
+              <div class="cantidad-ticket">
+                <span>Cantidad:</span>
+                <div class="contador">
+                  <button class="menos">-</button>
+                  <span class="valor">0</span>
+                  <button class="mas">+</button>
+                </div>
               </div>
             </div>
+            <button class="agregar-carrito">
+              <i class="boton-icono bi-cart3"></i> Agregar al carrito
+            </button>
           </div>
-          <button class="agregar-carrito">
-            <i class="boton-icono bi-cart3"></i> Agregar al carrito
-          </button>
         </div>
       </div>
-    </div>
 
       <!-- Botones de acción -->
-       <div class="contenedor-botones">
+      <div class="contenedor-botones">
         <button class="boton-megusta" title="Me gusta">
-         <i id="likeBtn" class="bi bi-heart"></i>
+          <i id="likeBtn" class="bi bi-heart"></i>
         </button>
-
       </div>
 
-    <!-- Contenedor de eventos recomendados -->
-    <div class="eventos-recomendados">
-      <h2>Eventos Recomendados</h2>
-      <div class="cuadrícula-eventos">
-        <div class="tarjeta-evento">
-          <img src="img/img-eventos/image 24.png" alt="Showman" />
-         
-        </div>
+      <!-- Contenedor de eventos recomendados -->
+      <div class="eventos-recomendados">
+        <h2>Eventos Recomendados</h2>
+        <div class="cuadrícula-eventos">
+          <div class="tarjeta-evento">
+            <img src="img/img-eventos/image 24.png" alt="Showman" />
+          </div>
 
-        <div class="tarjeta-evento">
-          <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
-        </div>
-        <div class="tarjeta-evento">
-          <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
-        </div>
-        <div class="tarjeta-evento">
-          <img src="img/img-eventos/image 24.png" alt="Showman" />
- 
-        </div>
-        <div class="tarjeta-evento">
-          <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
-        </div>
-        <div class="tarjeta-evento">
-          <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
-        </div>
-        <div class="tarjeta-evento">
-          <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
-        </div>
-        <div class="tarjeta-evento">
-          <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
+          <div class="tarjeta-evento">
+            <img src="img/img-eventos/image 24.png" alt="Showman" />
+          </div>
+          <div class="tarjeta-evento">
+            <img src="img/img-eventos/image 24.png" alt="Showman" />
+          </div>
+          <div class="tarjeta-evento">
+            <img src="img/img-eventos/image 24.png" alt="Showman" />
+          </div>
+          <div class="tarjeta-evento">
+            <img src="img/img-eventos/image 24.png" alt="Showman" />
+          </div>
+          <div class="tarjeta-evento">
+            <img src="img/img-eventos/image 24.png" alt="Showman" />
+          </div>
+          <div class="tarjeta-evento">
+            <img src="img/img-eventos/image 24.png" alt="Showman" />
+          </div>
+          <div class="tarjeta-evento">
+            <img src="img/img-eventos/image 24.png" alt="Showman" />
+          </div>
         </div>
       </div>
     </div>
-  </div>
 
+    <footer id="footer"></footer>
+    <script src="js/footer.js"></script>
+    <script>
+      const likeBtn = document.getElementById("likeBtn");
+      likeBtn.addEventListener("click", () => {
+        // Alterna entre los dos íconos
+        likeBtn.classList.toggle("bi-heart");
+        likeBtn.classList.toggle("bi-heart-fill");
+        // Alterna el color
 
-
-  <footer id="footer"></footer>
-  <script src="js/footer.js"></script>
-
-  <script src="js/Interruptor.js"></script>
-  <script> 
-    const likeBtn = document.getElementById("likeBtn");
-    likeBtn.addEventListener("click", () => {
-      // Alterna entre los dos íconos
-      likeBtn.classList.toggle("bi-heart");
-      likeBtn.classList.toggle("bi-heart-fill");
-      // Alterna el color
-
-      likeBtn.classList.toggle("verde");
-    });
+        likeBtn.classList.toggle("verde");
+      });
     </script>
-</body>
-
+  </body>
 </html>
