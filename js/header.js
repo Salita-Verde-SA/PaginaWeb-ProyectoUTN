@@ -52,7 +52,7 @@ document.addEventListener("headerContentLoaded", async function () {
 });
 
 // Ajusta el JavaScript para el menú desplegable
-document.addEventListener('DOMContentLoaded', function() {
+document.addEventListener('headerContentLoaded', function() {
   const botonCuentaUsuario = document.querySelector('.boton-cuenta-usuario');
   const menuDesplegable = document.querySelector('.menu-desplegable');
 
