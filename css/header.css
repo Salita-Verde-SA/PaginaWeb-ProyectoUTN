@@ -396,8 +396,11 @@ se pase a interfaz de teléfono
     right: 20px;
     font-size: 24px;
     color: white;
+    background-color: rgba(255, 255, 255, 0);
+    border: none;
     cursor: pointer;
     transition: transform 0.3s ease;
+    margin: 5px 5px 30px 5px;
   }
 
   .cerrar-menu:hover {
@@ -407,7 +410,7 @@ se pase a interfaz de teléfono
   /* Estilo para el contenedor de búsqueda en móvil */
   .busqueda-movil-contenedor {
     width: 100%;
-    margin: 20px 0;
+    margin: 50px 0;
     position: relative;
   }
 
