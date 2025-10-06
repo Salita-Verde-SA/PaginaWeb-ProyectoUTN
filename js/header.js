@@ -8,67 +8,95 @@ fetch("header.html")
   });
 console.log("Header importado");
 
-document.addEventListener("headerContentLoaded", async function () {
-  async function obtenerColorDeFoto() {
-    const foto = document.querySelector(".foto-perfil");
-    if (!foto) return;
-    console.log("foto:", foto);
+// Interruptor de tema claro/oscuro
 
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = foto.naturalWidth || foto.width;
-    canvas.height = foto.naturalHeight || foto.height;
-    ctx.drawImage(foto, 0, 0, canvas.width, canvas.height);
+// Espera a que el DOM esté completamente cargado antes de ejecutar
+// el script para garantizar que todos los elementos HTML estén
+// disponibles y listos para ser manipulados, evitando errores
+// como elementos no encontrados o interacciones prematuras que podrían
+// afectar la experiencia del usuario.
+document.addEventListener("headerContentLoaded", function () {
+  console.log("Interruptor.js");
+  // Selecciona el interruptor de modo claro/oscuro
+  const interruptor = document.querySelector(".interruptor input");
+  // Selecciona el ícono del sol
+  const sun = document.querySelector(".bx-sun");
+  // Selecciona el ícono de la luna
+  const moon = document.querySelector(".bx-moon");
+  // Selecciona el elemento body
+  const body = document.body;
+  const header = document.querySelector("header");
+  const footer = document.querySelector("footer");
+  const localidad = document.querySelector(".barra-navegacion-izquierda");
+  const contendorGeneros = document.querySelector(".barra-lateral-izquierda");
+  const contenedorEventos = document.querySelector(".barra-lateral-derecha");
+  const contenedorViewAll = document.querySelector(".contenido-principal");
+  const barrabusqueda = document.querySelector(".barra-busqueda");
 
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-    let r = 0,
-      g = 0,
-      b = 0,
-      count = 0;
-
-    for (let i = 0; i < imageData.length; i += 4) {
-      r += imageData[i];
-      g += imageData[i + 1];
-      b += imageData[i + 2];
-      count++;
-    }
-
-    r = Math.floor(r / count);
-    g = Math.floor(g / count);
-    b = Math.floor(b / count);
-    console.log("r:", r, "g:", g, "b:", b);
-
-    resultado = `#${((1 << 24) + (r << 16) + (g << 8) + b)
-      .toString(16)
-      .slice(1)}`;
-    console.log("resultado:", resultado);
+  // Verifica que todos los elementos necesarios existan antes de continuar
+  if (!interruptor || !sun || !moon || !body || !header) {
+    console.error("No se pudieron encontrar todos los elementos necesarios");
+    return;
   }
 
-  obtenerColorDeFoto().then(() => {
-    document.querySelector(
-      ".foto-perfil"
-    ).style.boxShadow = `0 0 10px ${resultado}`;
-  });
-});
+  // Escucha cambios en el interruptor
+  interruptor.addEventListener("change", () => {
+    // Alterna la clase 'claro' en el body para cambiar el modo
+    body.classList.toggle("claro");
+    header.classList.toggle("claro");
+    footer.classList.toggle("claro");
 
-// Ajusta el JavaScript para el menú desplegable
-document.addEventListener('headerContentLoaded', function() {
-  const botonCuentaUsuario = document.querySelector('.boton-cuenta-usuario');
-  const menuDesplegable = document.querySelector('.menu-desplegable');
+    if (
+      contendorGeneros != null &&
+      contenedorEventos != null &&
+      contenedorViewAll != null
+    ) {
+      contendorGeneros.classList.toggle("claro");
+      contenedorEventos.classList.toggle("claro");
+      contenedorViewAll.classList.toggle("claro");
+    }
+
+    if (barrabusqueda != null) {
+      barrabusqueda.classList.toggle("claro");
+    }
+    if (localidad != null) {
+      localidad.classList.toggle("claro");
+    }
+    if (interruptor.checked) {
+      // Activa modo claro → gira el sol
+      sun.classList.add("girar");
+      moon.classList.remove("mecer");
+      setTimeout(() => sun.classList.remove("girar"), 1000);
+    } else {
+      // Activa modo oscuro → mece la luna
+      moon.classList.add("mecer");
+      sun.classList.remove("girar");
+      setTimeout(() => moon.classList.remove("mecer"), 1000);
+    }
+
+    // Cambia el estado de los íconos después de un pequeño retraso
+    setTimeout(() => {
+      sun.classList.toggle("oscuro");
+      moon.classList.toggle("oscuro");
+    }, 125);
+  });
+
+  // Ajusta el JavaScript para el menú desplegable
+  const botonCuentaUsuario = document.querySelector(".boton-cuenta-usuario");
+  const menuDesplegable = document.querySelector(".menu-desplegable");
 
   // Muestra u oculta el menú desplegable al hacer clic en la foto de perfil
-  botonCuentaUsuario.addEventListener('click', function(event) {
+  botonCuentaUsuario.addEventListener("click", function (event) {
     event.stopPropagation(); // Evita que el evento se propague al documento
-    menuDesplegable.style.display = menuDesplegable.style.display === 'block' ? 'none' : 'block';
+    menuDesplegable.style.display =
+      menuDesplegable.style.display === "block" ? "none" : "block";
   });
 
   // Oculta el menú desplegable al hacer clic fuera de él
-  document.addEventListener('click', function() {
-    menuDesplegable.style.display = 'none';
+  document.addEventListener("click", function () {
+    menuDesplegable.style.display = "none";
   });
-});
 
-document.addEventListener("headerContentLoaded", function () {
   function abrirMenuHamburguesa() {
     document.querySelector(".menu-hamburguesa-contenedor").style.display =
       "flex";
@@ -108,4 +136,3 @@ document.addEventListener("headerContentLoaded", function () {
 
   console.log("Script de menu hamburguesa cargado correctamente");
 });
-
