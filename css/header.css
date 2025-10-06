@@ -246,6 +246,8 @@ input:checked + .deslizador:before {
 }
 
 
+/* RESPONSIVIDAD DE LA BARRA DE BÚSQUEDA */
+
 @media (max-width: 768px) {
   .barra-navegacion-centro .barra-busqueda {
     width: 200px;
@@ -280,7 +282,12 @@ input:checked + .deslizador:before {
   }
 }
 
-/* TODO hacer que esto se convierta en un botón */
+/* 
+TODO hacer que lo de abajo se convierta 
+en un botón y que todo el header
+se pase a interfaz de teléfono
+ */
+
 @media (max-width: 800px) {
   .barra-navegacion-centro .barra-busqueda {
     width: 20px;
