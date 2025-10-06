@@ -233,18 +233,17 @@ input:checked + .deslizador:before {
 }
 
 .barra-navegacion-centro .barra-busqueda:focus {
-    outline: 2px solid white; /* Línea blanca al hacer clic */
-    outline-offset: 0px; /* Asegura que la línea no esté desplazada */
+  outline: 2px solid white; /* Línea blanca al hacer clic */
+  outline-offset: 0px; /* Asegura que la línea no esté desplazada */
 }
 
 .barra-navegacion-centro .barra-busqueda {
   transition: all 0.5s ease-in-out;
 }
 
-.barra-navegacion-centro .barra-busqueda:hover{
+.barra-navegacion-centro .barra-busqueda:hover {
   border: 1px solid #999999;
 }
-
 
 /* RESPONSIVIDAD DE LA BARRA DE BÚSQUEDA */
 
@@ -282,15 +281,208 @@ input:checked + .deslizador:before {
   }
 }
 
+@media (min-width: 800px) {
+  /* Desactivar el menú hamburguesa */
+  .menu-hamburguesa {
+    display: none;
+  }
+  .menu-hamburguesa-contenedor {
+    display: none;
+  }
+}
+
 /* 
 TODO hacer que lo de abajo se convierta 
 en un botón y que todo el header
 se pase a interfaz de teléfono
  */
 
+/* Interfaz móvil a partir de 800px */
 @media (max-width: 800px) {
-  .barra-navegacion-centro .barra-busqueda {
-    width: 20px;
+  /* Ocultar elementos del header en modo móvil */
+  .barra-navegacion-centro .barra-busqueda,
+  .barra-navegacion-derecha,
+  .barra-navegacion-izquierda {
+    display: none;
+  }
+
+  /* Mostrar botón de menú hamburguesa */
+  .menu-hamburguesa {
+    display: block;
+    position: relative;
+    font-size: 24px;
+    color: black;
+    cursor: pointer;
+    z-index: 1000;
+    transition: transform 0.5s ease;
+  }
+
+  .menu-hamburguesa:hover {
+    transform: scale(1.1);
+  }
+
+  /* Estilo para el contenedor del menú hamburguesa */
+  .menu-hamburguesa-contenedor {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.9);
+    z-index: 999;
+    display: none;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    padding: 20px;
+    backdrop-filter: blur(5px);
+    overflow-y: auto;
+  }
+
+  /* Estilo para el contenido del menú hamburguesa */
+  .menu-hamburguesa-contenido {
+    width: 90%;
+    max-width: 500px;
+    background-color: #00000077;
+    backdrop-filter: blur(15px);
+    border-radius: 20px;
+    padding: 30px 20px;
+    margin-top: 80px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    border: 1px solid #3338;
+    position: relative;
+    top: 60px; /* Ajuste para que no quede dentro del header */
+  }
+
+  /* Estilo para los elementos del menú hamburguesa */
+  .menu-hamburguesa-contenedor .menu-item {
+    color: white;
+    font-size: 18px;
+    margin: 15px 0;
+    text-align: center;
+    width: 100%;
+    padding: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+    transition: all 0.3s ease;
+  }
+
+  .menu-hamburguesa-contenedor .menu-item:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+    border-radius: 5px;
+  }
+
+  /* Estilo para el botón de cerrar menú */
+  .cerrar-menu {
+    position: absolute;
+    top: 20px;
+    right: 20px;
+    font-size: 24px;
+    color: white;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+  }
+
+  .cerrar-menu:hover {
+    transform: rotate(90deg);
+  }
+
+  /* Estilo para el contenedor de búsqueda en móvil */
+  .busqueda-movil-contenedor {
+    width: 100%;
+    margin: 20px 0;
+    position: relative;
+  }
+
+  /* Estilo para la barra de búsqueda en móvil */
+  .busqueda-movil {
+    width: 100%;
+    padding: 10px 15px 10px 40px;
+    border-radius: 20px;
+    border: none;
+    background-color: #333;
+    color: white;
+    height: 40px;
+    transition: all  0.3s ease;
+  }
+
+  .busqueda-movil:focus {
+    outline: 2px solid white;
+    outline-offset: 0px;
+  }
+
+  .busqueda-movil:hover {
+    border: 1px solid #999999;
+  }
+
+  /* Estilo para el icono de búsqueda en móvil */
+  .busqueda-movil-icono {
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-size: 16px;
+  }
+
+  /* Estilo para el contenedor de botones en móvil */
+  .botones-movil-contenedor {
+    display: flex;
+    justify-content: space-around;
+    width: 100%;
+    margin-top: 20px;
+    gap: 10px;
+  }
+
+  /* Estilo para los botones en móvil */
+  .boton-movil {
+    padding: 10px 20px;
+    border-radius: 20px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    flex: 1;
+    min-width: 120px;
+  }
+
+  .boton-movil:hover {
+    background-color: #555;
+    transform: translateY(-2px);
+  }
+
+  /* Estilo para el modo claro */
+  body.claro .menu-hamburguesa-contenido {
+    background-color: #ffffff88;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    border: 1px solid #9998;
+  }
+
+  body.claro .menu-hamburguesa-contenedor .menu-item {
+    color: #333;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+  }
+
+  body.claro .menu-hamburguesa-contenedor .menu-item:hover {
+    background-color: rgba(0, 0, 0, 0.05);
+  }
+
+  body.claro .busqueda-movil {
+    background-color: #cccccccc;
+    color: #333;
+  }
+
+  body.claro .busqueda-movil-icono {
+    color: #333;
+  }
+
+  body.claro .boton-movil {
+    background-color: #cccccccc;
+    color: #333;
+  }
+
+  body.claro .boton-movil:hover {
+    background-color: #aaaaaa;
   }
 }
 
@@ -367,13 +559,22 @@ body.claro .barra-navegacion-derecha .boton-icono {
   position: relative;
   display: inline-block;
   margin: 0px 20px 0px 0px;
-  transition: transform 0.5s ease; 
+  transition: transform 0.5s ease;
 }
 
 @keyframes shake {
-  0%, 100% { transform: rotate(0deg); }
-  20%, 60% { transform: rotate(-7deg); }
-  40%, 80% { transform: rotate(7deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  20%,
+  60% {
+    transform: rotate(-7deg);
+  }
+  40%,
+  80% {
+    transform: rotate(7deg);
+  }
 }
 
 .campana:hover {
@@ -458,7 +659,6 @@ body.claro .barra-navegacion-derecha .boton-icono {
 .menu-desplegable li {
   margin-bottom: 1px;
 }
-
 
 .login-btn,
 .register-btn {
