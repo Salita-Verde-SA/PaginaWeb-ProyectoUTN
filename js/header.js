@@ -6,17 +6,39 @@ fetch("header.html")
     document.getElementById("header").innerHTML = data;
     document.dispatchEvent(new Event("headerContentLoaded"));
   });
-console.log("Header importado");
+console.log("Header importado.");
 
-// Interruptor de tema claro/oscuro
+if (!document.getElementById("menu-telefono")) {
+  console.error(
+    "El elemento con id 'menu-telefono' no existe, " +
+    "no se usará. \nEs normal que pase en una página de " +
+    "inicio de sesión o relacionada."
+  );
+} else {
+  document.addEventListener("headerContentLoaded", function () {
+    console.log("Importando menú de teléfono...");
+    fetch("menu-telefono.html")
+      .then((res) => res.text())
+      .then((data) => {
+        document.getElementById("menu-telefono").innerHTML = data;
+        document.dispatchEvent(new Event("menuTelefonoContentLoaded"));
+      });
+    console.log("Menú de teléfono importado.");
+  });
+}
 
 // Espera a que el DOM esté completamente cargado antes de ejecutar
-// el script para garantizar que todos los elementos HTML estén
-// disponibles y listos para ser manipulados, evitando errores
+// el script para garantizar que todos los elementos HTML, sobre todo
+// los que se cargan dinámicamente mediante la primera parte del script,
+// estén disponibles y listos para ser manipulados, evitando errores
 // como elementos no encontrados o interacciones prematuras que podrían
 // afectar la experiencia del usuario.
-document.addEventListener("headerContentLoaded", function () {
-  console.log("Interruptor.js");
+
+// Esta parte se ejecuta después de que se han cargado los contenidos
+// del header y el menú de teléfono, asegurando que todos los elementos
+// necesarios estén disponibles para su manipulación.
+document.addEventListener("menuTelefonoContentLoaded", function () {
+  console.log("header.js");
   // Selecciona el interruptor de modo claro/oscuro
   const interruptor = document.querySelector(".interruptor input");
   // Selecciona el ícono del sol
@@ -111,39 +133,41 @@ document.addEventListener("headerContentLoaded", function () {
   }
 
   // MENÚ DE HAMBURGUESA PARA LA VISTA DE TELÉFONO
-  document
-    .querySelector(".menu-hamburguesa")
-    .addEventListener("click", abrirMenuHamburguesa);
-  document
-    .querySelector(".cerrar-menu")
-    .addEventListener("click", cerrarMenuHamburguesa);
+  if (document.getElementById("menu-telefono")) {
+    document
+      .querySelector(".menu-hamburguesa")
+      .addEventListener("click", abrirMenuHamburguesa);
+    document
+      .querySelector(".cerrar-menu")
+      .addEventListener("click", cerrarMenuHamburguesa);
 
-  // Cerrar el menú hamburguesa al hacer clic fuera de él
-  document
-    .querySelector(".menu-hamburguesa-contenedor")
-    .addEventListener("click", function (e) {
-      if (e.target === this) {
+    // Cerrar el menú hamburguesa al hacer clic fuera de él
+    document
+      .querySelector(".menu-hamburguesa-contenedor")
+      .addEventListener("click", function (e) {
+        if (e.target === this) {
+          cerrarMenuHamburguesa();
+        }
+      });
+
+    // Cerrar el menú hamburguesa al presionar la tecla "Escape"
+    document.addEventListener("keydown", function (e) {
+      if (
+        e.key === "Escape" &&
+        document.querySelector(".menu-hamburguesa-contenedor").style.display ===
+          "flex"
+      ) {
         cerrarMenuHamburguesa();
       }
     });
 
-  // Cerrar el menú hamburguesa al presionar la tecla "Escape"
-  document.addEventListener("keydown", function (e) {
-    if (
-      e.key === "Escape" &&
-      document.querySelector(".menu-hamburguesa-contenedor").style.display ===
-        "flex"
-    ) {
-      cerrarMenuHamburguesa();
-    }
-  });
+    // Cerrar el menú hamburguesa al hacer clic en un enlace
+    window.addEventListener("resize", function () {
+      if (window.innerWidth > 800) {
+        cerrarMenuHamburguesa();
+      }
+    });
 
-  // Cerrar el menú hamburguesa al hacer clic en un enlace
-  window.addEventListener("resize", function () {
-    if (window.innerWidth > 800) {
-      cerrarMenuHamburguesa();
-    }
-  });
-
-  console.log("Script de menu hamburguesa cargado correctamente");
+    console.log("Script de menu hamburguesa cargado correctamente");
+  }
 });
