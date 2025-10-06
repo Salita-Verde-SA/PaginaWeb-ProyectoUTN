@@ -64,6 +64,7 @@ body.claro {
   text-align: center;
   color: #ffffff;
   text-decoration: none;
+  transition: all 0.5s ease-in-out;
 }
 
 .elemento-barra-lateral img {
@@ -76,6 +77,7 @@ body.claro {
 .elemento-barra-lateral span {
   font-size: 15px;
   margin-left: 5%;
+  transition: all 0.5s ease-in-out;
 }
 
 body.claro .elemento-barra-lateral span {
@@ -103,6 +105,12 @@ body.claro .elemento-barra-lateral-derecha span {
   flex: 1;
   padding: 50px;
   margin-right: 15px;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .contenedor-perfil {
+  background-color: #CCCCCCCC;
+  transition: all 0.5s ease-in-out;
 }
 
 .circulo-foto-perfil {

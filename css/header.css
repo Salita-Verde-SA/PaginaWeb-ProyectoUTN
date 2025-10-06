@@ -648,6 +648,7 @@ body.claro .barra-navegacion-derecha .boton-icono {
   z-index: 1;
 }
 
+
 /* Estilos para la lista del menú desplegable */
 .menu-desplegable ul {
   list-style: none;
@@ -662,6 +663,11 @@ body.claro .barra-navegacion-derecha .boton-icono {
   display: block;
   padding: 5px;
   border-radius: 11px;
+  transition: background-color 0.5s ease;
+}
+
+.menu-desplegable i {
+  color: #ffffff;
   transition: background-color 0.5s ease;
 }
 
