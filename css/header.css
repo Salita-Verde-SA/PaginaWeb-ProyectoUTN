@@ -319,22 +319,33 @@ se pase a interfaz de teléfono
 
   /* Mostrar botón de menú hamburguesa */
   .menu-hamburguesa {
+    height: 35px;
+    width: 46px;
+    padding: 8px 15px 8px;
+    border-radius: 100px;
+    border: none;
     display: block;
     position: relative;
-    font-size: 24px;
+    font-size: 14px;
     color: rgb(255, 255, 255);
-    background-color: #00ff0800;
+    background-color: #333;
     cursor: pointer;
     z-index: 1000;
     transition: transform, all 0.5s ease;
     border: none
   }
+  
+  .menu-hamburguesa:focus {
+    outline: 2px solid white; /* Línea blanca al hacer clic */
+    outline-offset: 0px; /* Asegura que la línea no esté desplazada */
+  }
 
   .menu-hamburguesa:hover {
-    transform: scale(0.9);
+    border: 0.5px solid #999999;
   }
 
   body.claro .menu-hamburguesa {
+    background-color: #cccccccc;
     color: #333333;
     transition: all 0.5s ease-in-out;
   }
