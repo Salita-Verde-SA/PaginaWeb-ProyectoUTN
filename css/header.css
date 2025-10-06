@@ -322,14 +322,21 @@ se pase a interfaz de teléfono
     display: block;
     position: relative;
     font-size: 24px;
-    color: black;
+    color: rgb(255, 255, 255);
+    background-color: #00ff0800;
     cursor: pointer;
     z-index: 1000;
-    transition: transform 0.5s ease;
+    transition: transform, all 0.5s ease;
+    border: none
   }
 
   .menu-hamburguesa:hover {
-    transform: scale(1.1);
+    transform: scale(0.9);
+  }
+
+  body.claro .menu-hamburguesa {
+    color: #333333;
+    transition: all 0.5s ease-in-out;
   }
 
   /* Estilo para el contenedor del menú hamburguesa */
