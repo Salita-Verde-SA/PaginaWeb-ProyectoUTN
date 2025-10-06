@@ -286,8 +286,19 @@ input:checked + .deslizador:before {
   .menu-hamburguesa {
     display: none;
   }
+
   .menu-hamburguesa-contenedor {
-    display: none;
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+    transition: visibility 0s linear 0.5s, opacity 0.5s linear;
+  }
+
+  .menu-hamburguesa-contenedor.active {
+    display: flex !important;
+    visibility: visible !important;
+    opacity: 1 !important;
+    transition: visibility 0s linear, opacity 0.5s linear;
   }
 }
 
@@ -402,7 +413,7 @@ se pase a interfaz de teléfono
     background-color: #333;
     color: white;
     height: 40px;
-    transition: all  0.3s ease;
+    transition: all 0.3s ease;
   }
 
   .busqueda-movil:focus {
@@ -449,6 +460,10 @@ se pase a interfaz de teléfono
   .boton-movil:hover {
     background-color: #555;
     transform: translateY(-2px);
+  }
+
+  .menu-hamburguesa-contenedor a {
+    text-decoration: none;
   }
 
   /* Estilo para el modo claro */

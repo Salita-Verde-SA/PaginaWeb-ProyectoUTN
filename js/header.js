@@ -39,6 +39,7 @@ document.addEventListener("headerContentLoaded", function () {
     return;
   }
 
+  // EVENTO DE ESCUCHA DEL BOTÓN DE TEMA CLARO/OSCURO
   // Escucha cambios en el interruptor
   interruptor.addEventListener("change", () => {
     // Alterna la clase 'claro' en el body para cambiar el modo
@@ -109,6 +110,7 @@ document.addEventListener("headerContentLoaded", function () {
     document.body.style.overflow = "";
   }
 
+  // MENÚ DE HAMBURGUESA PARA LA VISTA DE TELÉFONO
   document
     .querySelector(".menu-hamburguesa")
     .addEventListener("click", abrirMenuHamburguesa);
@@ -116,6 +118,7 @@ document.addEventListener("headerContentLoaded", function () {
     .querySelector(".cerrar-menu")
     .addEventListener("click", cerrarMenuHamburguesa);
 
+  // Cerrar el menú hamburguesa al hacer clic fuera de él
   document
     .querySelector(".menu-hamburguesa-contenedor")
     .addEventListener("click", function (e) {
@@ -124,12 +127,20 @@ document.addEventListener("headerContentLoaded", function () {
       }
     });
 
+  // Cerrar el menú hamburguesa al presionar la tecla "Escape"
   document.addEventListener("keydown", function (e) {
     if (
       e.key === "Escape" &&
       document.querySelector(".menu-hamburguesa-contenedor").style.display ===
         "flex"
     ) {
+      cerrarMenuHamburguesa();
+    }
+  });
+
+  // Cerrar el menú hamburguesa al hacer clic en un enlace
+  window.addEventListener("resize", function () {
+    if (window.innerWidth > 800) {
       cerrarMenuHamburguesa();
     }
   });
