@@ -326,6 +326,7 @@ se pase a interfaz de teléfono
   .menu-hamburguesa {
     height: 35px;
     width: 46px;
+    margin-left: 10px;
     padding: 8px 15px 8px;
     border-radius: 100px;
     border: none;
@@ -338,6 +339,7 @@ se pase a interfaz de teléfono
     z-index: 1000;
     transition: transform, all 0.5s ease;
     border: none
+
   }
   
   .menu-hamburguesa:focus {
