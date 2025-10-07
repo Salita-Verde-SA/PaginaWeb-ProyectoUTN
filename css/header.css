@@ -241,6 +241,8 @@ input:checked + .deslizador:before {
   transition: all 0.5s ease-in-out;
 }
 
+
+
 .barra-navegacion-centro .barra-busqueda:hover {
   border: 1px solid #999999;
 }
@@ -279,6 +281,7 @@ input:checked + .deslizador:before {
   .barra-navegacion-centro .barra-busqueda {
     width: 100px;
   }
+  
 }
 
 @media (min-width: 800px) {
@@ -286,6 +289,7 @@ input:checked + .deslizador:before {
   .menu-hamburguesa {
     display: none;
   }
+  
 
   .menu-hamburguesa-contenedor {
     display: none !important;
@@ -300,6 +304,7 @@ input:checked + .deslizador:before {
     opacity: 1 !important;
     transition: visibility 0s linear, opacity 0.5s linear;
   }
+  
 }
 
 /* 
@@ -313,7 +318,7 @@ se pase a interfaz de teléfono
   /* Ocultar elementos del header en modo móvil */
   .barra-navegacion-centro .barra-busqueda,
   .barra-navegacion-derecha,
-  .barra-navegacion-izquierda {
+  .barra-navegacion-izquierda, .barra-navegacion-centro i {
     display: none;
   }
 
