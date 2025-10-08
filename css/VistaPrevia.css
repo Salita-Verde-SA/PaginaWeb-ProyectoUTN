@@ -114,8 +114,12 @@ body.claro .boton-comp :hover{
 }
 
 /* Boton ME GUSTAAAAA */
+.bootones{
+  margin-left: 90%;
 
+}
 .boton-megusta {
+
   background: none; /* Ajusta el valor para controlar el color de fondo */
   color: #ffffff; /* Ajusta el valor para controlar el color del texto */
   border: none; /* Ajusta el valor para controlar el borde */
@@ -164,8 +168,8 @@ body.claro .boton-megusta:hover {
 }
 
 .banner-eventos {
-  width: 300px;
-  height: 300px;
+  width: 450px;
+  height: 450px;
   object-fit: cover;
   border-radius: 5%;
 }
@@ -173,6 +177,9 @@ body.claro .boton-megusta:hover {
 .descripcion-eventos {
   flex: 1; /* Ocupa el espacio restante */
   font-size: 14px;
+}
+.descripcion-eventos h2{
+  font-size: 350%;
 }
 /* Estilo general del contenedor */
 .selector-ticket {
@@ -241,6 +248,7 @@ body.claro .boton-megusta:hover {
 
 /* Contenedor de cantidad */
 .cantidad-ticket {
+  margin-top: 50px;
   display: flex;
   align-items: center;
   gap: 10px;
