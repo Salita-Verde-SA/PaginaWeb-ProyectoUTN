@@ -29,6 +29,7 @@ body.claro {
 /* --------- CONTENEDOR PRINCIPAL CON FONDOS --------- */
 
 .contenedor-principal-fondo {
+  flex-direction: column;
   display: flex;
   padding: 0px 20px 25px 20px;
   gap: 20px;
@@ -38,12 +39,12 @@ body.claro {
   flex: 1;
   align-items: center;
   text-align: center;
+  
 }
 
 /* --------- BARRA CENTRAL CUENTA --------- */
 
 .barra-opciones-cuenta {
-  
   width: 100%;
   display: flex;
   flex-direction: column;
@@ -57,13 +58,11 @@ body.claro {
   max-height: calc(100vh - 80px);
   overflow-y: auto;
   transition: all 0.2s ease-in-out;
-
   background-color: #333;
+  margin-right: 40px;
 }
 
 .elemento-barra-lateral {
-  margin: 1px;
-  width: 250px;
   padding: 15px;
   display: flex;
   color: #ffffff;
@@ -96,7 +95,28 @@ h2.claro {
 /* --------- BARRA CENTRAL PAGO --------- */
 
 .barra-opciones-pago {
-  margin: 0px 40px;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  background-color: none;
+  border-radius: 15px;
+  padding: 15px;
+  position: sticky;
+  top: 70px;
+  /* Ajusta este valor según la altura de tu barra de navegación */
+  align-self: flex-start;
+  max-height: calc(100vh - 80px);
+  /* Ajusta según la altura de tu barra de navegación */
+  overflow-y: auto;
+  transition: all 0.2s ease-in-out;
+
+  background-color: #333;
+}
+
+/* --------- BARRA CENTRAL seguridad y priv --------- */
+
+.barra-opciones-seguridadyprivacidad {
   width: 100%;
   display: flex;
   flex-direction: column;
