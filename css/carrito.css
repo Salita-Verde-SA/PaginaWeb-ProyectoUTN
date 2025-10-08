@@ -22,31 +22,47 @@ body.claro {
   flex-direction: row; /* Alinea horizontalmente */
   align-items: flex-start; /* Alinea arriba si los contenidos tienen alturas distintas */
 }
+
+
+
 /*CONTENEDOR DE LOS BOTONES DE LA PARTE IZQUIERDA*/
 .contenedor-botones {
-    width: 24%;
-    height: auto;
-    background-color: var(--color-contenedor);
-    border-radius: 40px;
-    margin: 20px 2px 0px 2%;
-    padding: 20px;
+  width: 24%;
+  height: auto;
+  background-color: var(--color-contenedor);
+  border-radius: 40px;
+  margin: 20px 2px 0px 2%;
+  padding: 20px;
 }
+
+/*CONTENEDOR BOTONES EN CLARO*/
+body.claro .contenedor-botones {
+  background-color: var(--fondo-blanco-contenedor);
+  color: var(--fondo-blanco-color);
+}
+
 .button {
-    display: flex;
-    width: 100%;
-    padding: 13px 5px;
-    border: none;
-    border-radius: 19px;
-    margin: 7px 0;
-    background-color: var(--color-botones-carrito);
-    justify-content: space-between;
-    color: var(--color-letra);
-    font-weight: bold;
-    font-size: 20px;
+  display: flex;
+  width: 100%;
+  padding: 13px 5px;
+  border: none;
+  border-radius: 19px;
+  margin: 7px 0;
+  background-color: var(--color-botones-carrito);
+  justify-content: space-between;
+  color: var(--color-letra);
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
+/*BOTONES EN CLARO*/
+body.claro .button {
+  background-color: var(--color-botones-carrito);
 
 }
 .contenido-button {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 .icono-flecha {
   margin-right: 20px;
@@ -59,15 +75,21 @@ body.claro {
 /*CONTENEDOR CENTRAL (CARRITO)*/
 
 .contenedor-carrito {
-    height: auto;
-    width: 75%;
-    background-color: var(--color-contenedor);
-    margin: 20px 20px;
-    padding: 25px;
-    border-radius: 40px;
-    text-align: center;
-    flex-direction: row;
-    align-items: flex-start;
+  height: auto;
+  width: 75%;
+  background-color: var(--color-contenedor);
+  margin: 20px 20px;
+  padding: 25px;
+  border-radius: 40px;
+  text-align: center;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/*CONTENEDOR CARRITO EN CLARO*/
+body.claro .contenedor-carrito {
+  background-color: var(--fondo-blanco-contenedor);
+  color: var(--fondo-blanco-color);
 }
 .titulo-carrito {
     margin-top: none;
@@ -79,25 +101,25 @@ body.claro {
   
 }
 .tarjeta-evento {
-    display: flex;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 10px;
-    box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
 }
 .img-event {
-    width: 30%;
-    margin: 5px 20px 5px 5px;
+  width: 30%;
+  margin: 5px 20px 5px 5px;
 }
 .description-event {
-    margin: 2px 2px 5px 0px;
-    text-align: left;
-    font-weight: 20px;
+  margin: 2px 2px 5px 0px;
+  text-align: left;
+  font-weight: 20px;
 }
 .name-event {
-    margin: 20px 2px 30px 0px;
-    font-size: 40px;
+  margin: 20px 2px 30px 0px;
+  font-size: 40px;
 }
 
 /*SELCCION DE TICKETS*/
