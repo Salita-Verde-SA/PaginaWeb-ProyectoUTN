@@ -18,7 +18,7 @@ body {
 
 body.claro {
   background: #f5f5f5;
-  color: #333;
+  color: #333333;
   transition: all 0.5s ease-in-out;
 }
 
@@ -59,7 +59,6 @@ i {
 
 .barra-opciones-cuenta {
   width: 700px;
-  /* Ajusta el ancho del contenedor */
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -68,14 +67,13 @@ i {
   max-height: calc(100vh - 80px);
   overflow-y: auto;
   transition: all 0.5s ease-in-out;
-  background-color: #333;
+  background-color: #333333;
 }
 
 /* --------- BARRA CENTRAL PAGO --------- */
 
 .barra-opciones-pago {
   width: 700px;
-  /* Ajusta el ancho del contenedor */
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -84,14 +82,13 @@ i {
   max-height: calc(100vh - 80px);
   overflow-y: auto;
   transition: all 0.5s ease-in-out;
-  background-color: #333;
+  background-color: #333333;
 }
 
 /* --------- BARRA CENTRAL SEG Y PRIV --------- */
 
 .barra-opciones-seguridadyprivacidad {
   width: 700px;
-  /* Ajusta el ancho del contenedor */
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -99,7 +96,7 @@ i {
   position: sticky;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
-  background-color: #333;
+  background-color: #333333;
   transition: all 0.5s ease-in-out;
 }
 
@@ -119,7 +116,7 @@ i {
 
 .elemento-barra-lateral:hover {
   background-color: #282828;
-  border-radius: 10px;
+  border-radius: 5px;
 }
 
 /* WHITE MODE CONTENEDORES */
@@ -136,11 +133,11 @@ body.claro .elemento-barra-lateral:hover {
 }
 
 body.claro i {
-  color: #333;
+  color: #333333;
   transition: all 0.5s ease-in-out;
 }
 
 body.claro .elemento-barra-lateral span {
-  color: #333;
+  color: #333333;
   transition: all 0.5s ease-in-out;
 }
