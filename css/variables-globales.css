@@ -1,10 +1,11 @@
 :root {
     --color-fondo: #000000;
     --color-contenedor: #171717;
-    --border-radius: 15px;
+    --borde-contenedor: 15px;
     --fondo-blanco: #f5f5f5;
     --fondo-blanco-contenedor: #cccccccc;
-    --tipografía-general: "Arial", sans-serif;
+    --fondo-blanco-color: #333;
+    --tipografia-general: "Arial", sans-serif;
     --color-letra: #ffffff;
 
 }

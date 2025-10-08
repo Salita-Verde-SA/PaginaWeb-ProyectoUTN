@@ -59,19 +59,19 @@ body.claro .circulo-amigos-adicionales {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
+  font-family: var(--tipografia-general);
 }
 
 body {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: var(--color-fondo);
+  color: var(--color-letra);
   min-height: 100vh;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 body.claro {
-  background: #f5f5f5;
-  color: #333;
+  background: var(--fondo-blanco);
+  color: var(--fondo-blanco-color);
 }
 
 /* --------- CONTENEDOR PRINCIPAL CON FONDOS --------- */
@@ -89,7 +89,7 @@ body.claro {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background-color: #171717;
+  background-color: var(--color-contenedor);
   border-radius: 10px;
   padding: 15px;
   position: sticky;
@@ -106,7 +106,7 @@ body.claro {
   display: flex;
   align-items: center;
   text-align: center;
-  color: #ffffff;
+  color: var(--color-letra);
   text-decoration: none;
 }
 
@@ -123,13 +123,13 @@ body.claro {
 }
 
 body.claro .elemento-barra-lateral span {
-  color: #333;
+  color: var(--fondo-blanco-color);
   transition: all 0.5s ease-in-out;
 }
 
 
 body.claro .elemento-barra-lateral-derecha span {
-  color: #333;
+  color: var(--fondo-blanco-color);
   transition: all 0.5s ease-in-out;
 }
 
@@ -139,7 +139,7 @@ body.claro .elemento-barra-lateral-derecha span {
   display: flex;
   flex-direction: column;
   gap: 20px;
-  background-color: #171717;
+  background-color: var(--color-contenedor);
   border-radius: 10px;
   padding: 20px;
   transition: all 0.5s ease-in-out;
@@ -148,12 +148,12 @@ body.claro .elemento-barra-lateral-derecha span {
 .contenido-principal.claro,
 .barra-lateral-derecha.claro,
 .barra-lateral-izquierda.claro {
-  background-color: #cccccccc;
+  background-color: var(--fondo-blanco-contenedor);
   transition: all 0.5s ease-in-out;
 }
 
 h2.claro {
-  color: #333;
+  color: var(--fondo-blanco-color);
   transition: all 0.5s ease-in-out;
 }
 
@@ -172,7 +172,7 @@ h2.claro {
   flex-direction: column;
   justify-content: center;
   padding: 20px;
-  color: white;
+  color: var(--color-letra);
   transition: transform 0.5s ease;
 }
 
@@ -192,7 +192,7 @@ h2.claro {
 
 /* --------- EVENTOS DESTACADOS --------- */
 .eventos-destacados {
-display: grid;
+  display: grid;
   grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
   gap: 20px;
 }
@@ -216,7 +216,7 @@ display: grid;
   right: 0;
   background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
   padding: 15px 10px 10px;
-  color: white;
+  color: var(--color-letra);
   transition: all 0.5s ease-in-out;
 }
 
@@ -285,13 +285,13 @@ span {
   right: 0;
   /* background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); */
   padding: 10px;
-  color: white;
+  color: var(--color-letra);
   font-size: 12px;
   transition: all 0.5s ease-in-out;
 }
 
 body.claro .tarjeta-recomendado .informacion {
-  color: #333;
+  color: var(--fondo-blanco-color);
   transition: all 0.5s ease-in-out;
 }
 
@@ -301,7 +301,7 @@ body.claro .tarjeta-recomendado .informacion {
   display: flex;
   flex-direction: column;
   gap: 15px;
-  background-color: #171717;
+  background-color: var(--color-contenedor);
   border-radius: 10px;
   padding: 15px;
   position: sticky;
@@ -318,7 +318,7 @@ body.claro .tarjeta-recomendado .informacion {
   display: flex;
   align-items: center;
   text-align: center;
-  color: #ffffff;
+  color: var(--color-letra);
   text-decoration: none;
   transition: all 0.5s ease-in-out;
 }
