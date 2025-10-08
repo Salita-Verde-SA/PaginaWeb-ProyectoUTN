@@ -48,7 +48,6 @@ body.claro {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
   background-color: none;
   border-radius: 15px;
   padding: 15px;
@@ -78,7 +77,7 @@ body.claro {
 }
 
 .elemento-barra-lateral:hover{
-  background-color: #505050;
+  background-color: #282828;
   border-radius: 10px;
 }
 
@@ -98,7 +97,6 @@ h2.claro {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
   background-color: none;
   border-radius: 15px;
   padding: 15px;
@@ -120,7 +118,6 @@ h2.claro {
   width: 100%;
   display: flex;
   flex-direction: column;
-  gap: 15px;
   background-color: none;
   border-radius: 15px;
   padding: 15px;
