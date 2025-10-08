@@ -48,41 +48,104 @@ body.claro .contenedor-principal {
   display: flex; /* Ajusta el valor para controlar la alineación de los botones */
   gap: 5px; /* Ajusta el valor para controlar el espacio entre los botones */
   align-items: center; /* Ajusta el valor para controlar la alineación vertical de los botones */
+  gap: 15px;
+  border-radius: 10px;
+  padding: 20px;
 }
 
+/* Boton FAVORITOOOO */
+
 .boton-fav {
-  background-color: #ff0000; /* Ajusta el valor para controlar el color de fondo */
+  background: none;
   color: #ffffff; /* Ajusta el valor para controlar el color del texto */
   border: none; /* Ajusta el valor para controlar el borde */
   border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
   padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
   cursor: pointer; /* Ajusta el valor para controlar el cursor */
-  transition: background-color 0.3s ease; /* Añade una transición suave */
-  font-size: 12px; /* Ajusta el valor para controlar el tamaño del texto */
+  transition: 0.5s ease-in-out; /* Añade una transición suave */
+  font-size: 15px; /* Ajusta el valor para controlar el tamaño del texto */
 }
 
 .boton-fav:hover {
-  background-color: #cc0000; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
+  color: #00c851; /* Ajusta el valor para controlar el color de fondo */ /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
+  transition: all 0.5s ease-in-out;
 }
+
+/* Boton FAVORITOOOO MODO CLAROOOO*/
 
 body.claro .boton-fav {
   color: #333;
   transition: all 0.5s ease-in-out;
 }
 
+body.claro .boton-fav :hover{
+  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
+  transition: all 0.5s ease-in-out;
+}
+
+/* Boton COMPARTIRR */
+
 .boton-comp {
-  background-color: #00ff00; /* Ajusta el valor para controlar el color de fondo */
+  background: none; /* Ajusta el valor para controlar el color de fondo */
   color: #ffffff; /* Ajusta el valor para controlar el color del texto */
   border: none; /* Ajusta el valor para controlar el borde */
   border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
   padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
   cursor: pointer; /* Ajusta el valor para controlar el cursor */
-  transition: background-color 0.3s ease; /* Añade una transición suave */
-  font-size: 12px; /* Ajusta el valor para controlar el tamaño del texto */
+  transition: all 0.5s ease-in-out; /* Añade una transición suave */
+  font-size: 15px; /* Ajusta el valor para controlar el tamaño del texto */
 }
 
 .boton-comp:hover {
-  background-color: #00cc00; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
+  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
+  transition: all 0.5s ease-in-out;
+}
+
+/* Boton COMPARTIRR MODO CLAROOOOO*/
+
+body.claro .boton-comp {
+  color: #333;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .boton-comp :hover{
+  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
+  transition: all 0.5s ease-in-out;
+}
+
+/* Boton ME GUSTAAAAA */
+
+.boton-megusta {
+  background: none; /* Ajusta el valor para controlar el color de fondo */
+  color: #ffffff; /* Ajusta el valor para controlar el color del texto */
+  border: none; /* Ajusta el valor para controlar el borde */
+  border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
+  padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
+  cursor: pointer; /* Ajusta el valor para controlar el cursor */
+  transition: all 0.5s ease-in-out; /* Añade una transición suave */
+  font-size: 15px; /* Ajusta el valor para controlar el tamaño del texto */
+}
+
+  .verde {
+    color: #00c851;/* Cuando está activado */
+    }
+
+
+.boton-megusta:hover {
+  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
+  transition: all 0.5s ease-in-out;
+}
+
+/* Boton ME GUSTAAAAA MODO CLAROOOO*/
+
+body.claro .boton-megusta {
+  color: #333;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .boton-megusta:hover {
+  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
+  transition: all 0.5s ease-in-out;
 }
 
 
