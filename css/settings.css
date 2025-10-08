@@ -44,12 +44,22 @@ body.claro {
 
 .barra-opciones-cuenta h3 {
   justify-content: left;
-} 
+}
+
+span {
+  transition: all 0.5s ease-in-out;
+}
+
+i {
+  color: #ffffff;
+  transition: all 0.5s ease-in-out;
+}
 
 /* --------- BARRA CENTRAL CUENTA --------- */
 
 .barra-opciones-cuenta {
-  width: 700px; /* Ajusta el ancho del contenedor */
+  width: 700px;
+  /* Ajusta el ancho del contenedor */
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -57,14 +67,15 @@ body.claro {
   position: sticky;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.5s ease-in-out;
   background-color: #333;
 }
 
 /* --------- BARRA CENTRAL PAGO --------- */
 
 .barra-opciones-pago {
-  width: 700px; /* Ajusta el ancho del contenedor */
+  width: 700px;
+  /* Ajusta el ancho del contenedor */
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -72,14 +83,15 @@ body.claro {
   position: sticky;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.5s ease-in-out;
   background-color: #333;
 }
 
 /* --------- BARRA CENTRAL SEG Y PRIV --------- */
 
 .barra-opciones-seguridadyprivacidad {
-  width: 700px; /* Ajusta el ancho del contenedor */
+  width: 700px;
+  /* Ajusta el ancho del contenedor */
   display: flex;
   flex-direction: column;
   border-radius: 10px;
@@ -87,8 +99,8 @@ body.claro {
   position: sticky;
   max-height: calc(100vh - 80px);
   overflow-y: auto;
-  transition: all 0.2s ease-in-out;
   background-color: #333;
+  transition: all 0.5s ease-in-out;
 }
 
 /* --------- ELEMENTOS DE LAS BARRAS --------- */
@@ -98,22 +110,37 @@ body.claro {
   display: flex;
   color: #ffffff;
   text-decoration: none;
-  transition: all 0.2s ease-in-out;
-  justify-content: space-between; /* Asegura que los elementos se distribuyan a los lados */
-  align-items: center; /* Centra los elementos verticalmente */
+  justify-content: space-between;
+  /* Asegura que los elementos se distribuyan a los lados */
+  align-items: center;
+  /* Centra los elementos verticalmente */ 
+  transition: color 0.5s ease-in-out;
 }
 
-.elemento-barra-lateral:hover{
+.elemento-barra-lateral:hover {
   background-color: #282828;
   border-radius: 10px;
 }
 
-body.claro .elemento-barra-lateral span {
-  color: #333;
-  transition: all 0.2s ease-in-out;
+/* WHITE MODE CONTENEDORES */
+
+body.claro .barra-opciones-cuenta,
+body.claro .barra-opciones-pago,
+body.claro .barra-opciones-seguridadyprivacidad {
+  background-color: #cccccccc;
+  transition: all 0.5s ease-in-out;
 }
 
-h2.claro {
+body.claro .elemento-barra-lateral:hover {
+  background-color: #abaaaacc;
+}
+
+body.claro i {
   color: #333;
-  transition: all 0.2s ease-in-out;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .elemento-barra-lateral span {
+  color: #333;
+  transition: all 0.5s ease-in-out;
 }
