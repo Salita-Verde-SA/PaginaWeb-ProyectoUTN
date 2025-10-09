@@ -1,3 +1,21 @@
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+body.claro {
+  background: #f5f5f5;
+  color: #000000;
+}
+/* --- Reseteo Básico y Estilos Globales --- */
 * {
   margin: 0;
   padding: 0;
@@ -5,30 +23,236 @@
   font-family: "Arial", sans-serif;
 }
 
-body {
-  background-color: #121212;
-  color: #ffffff;
-  min-height: 100vh;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+/* --- Contenedor Principal de la Página --- */
+.contenedor-principal {
+    width: 100%;
+    max-width: 1200px;
+    background-color: #1E1E1E;
+    border-radius: 15px;
+    padding: 25px;
+    margin: 20px 0;
 }
 
-body.claro {
-  background: #f5f5f5;
-  color: #000000;
+/* --- Contenedor de Detalles del Evento (Grid Layout) --- */
+.detalle-eventos {
+    display: grid;
+    grid-template-columns: 450px 1fr;
+    gap: 40px;
+    align-items: start;
+}
+
+/* --- Columna Izquierda: Imagen --- */
+.banner-contenedor {
+    position: relative; /* Necesario para posicionar el overlay */
+    width: 450px;
+    height: 450px;
+}
+
+.banner-eventos {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    border-radius: 10px;
+}
+
+/* Overlay sobre la imagen */
+.imagen-overlay {
+    position: absolute;
+    bottom: 15px;
+    left: 15px;
+    display: flex;
+    align-items: center;
+    gap: 15px;
+    color: #fff;
+}
+
+.asistentes {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background-color: rgba(0, 0, 0, 0.5);
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 14px;
+}
+
+.boton-asistir {
+    background-color: rgba(0, 0, 0, 0.5);
+    color: #fff;
+    border: 1px solid #fff;
+    border-radius: 5px;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 14px;
+}
+
+/* --- Columna Derecha: Información del Evento --- */
+.descripcion-eventos {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+/* Botones de acción: Favorito y Compartir */
+.bootones {
+    display: flex;
+    justify-content: flex-end;
+    gap: 15px;
+}
+
+.boton-accion {
+    background: none;
+    border: none;
+    color: #a0a0a0;
+    cursor: pointer;
+    font-size: 14px;
+    display: flex;
+    align-items: center;
+    gap: 5px;
+}
+
+.boton-accion:hover {
+    color: #ffffff;
+}
+
+/* Título del Evento */
+.descripcion-eventos h1 {
+    font-size: 48px;
+    font-weight: bold;
+    margin: 0;
+}
+
+/* Info de Fecha y Hora */
+.info-horario p {
+    margin: 0;
+    font-size: 16px;
+    color: #dcdcdc;
+}
+
+/* Botón de Ubicación */
+.ubicacion-boton {
+    background-color: #2a2a2a;
+    color: white;
+    border: none;
+    border-radius: 20px;
+    padding: 8px 16px;
+    font-size: 14px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    width: fit-content;
+}
+
+/* Descripción */
+.descripcion p {
+    margin: 0;
+    line-height: 1.5;
+}
+
+/* --- Sección de Selección de Tickets --- */
+.seleccion-tickets {
+    margin-top: 10px;
+}
+
+.seleccion-tickets h3 {
+    font-size: 18px;
+    margin-bottom: 20px;
+}
+
+.opciones-tickets {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
+}
+
+/* Selector de tipo de ticket (Dropdown) */
+.selector-ticket {
+    background-color: transparent;
+    color: white;
+    font-size: 16px;
+    padding: 10px 5px;
+    border: none;
+    outline: none;
+    border-bottom: 2px solid #00c851;
+    width: 450px;
+    cursor: pointer;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+    background-repeat: no-repeat;
+    background-position: right 10px center;
+    background-size: 16px;
+}
+.selector-ticket option {
+    background-color: #2a2a2a;
+    color: white;
+}
+
+/* Selector de cantidad */
+.cantidad-ticket {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #dcdcdc;
+}
+
+.contador {
+    display: flex;
+    align-items: center;
+    background-color: #2a2a2a;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.contador button { /* .menos y .mas */
+    background-color: #333;
+    color: white;
+    border: none;
+    padding: 5px 12px;
+    cursor: pointer;
+    font-size: 18px;
+    font-weight: bold;
+}
+
+.contador button:hover {
+    background-color: #444;
+}
+
+.contador .valor {
+    padding: 5px 15px;
+    background-color: #1E1E1E;
+    color: white;
+    min-width: 40px;
+    text-align: center;
+    font-size: 16px;
+}
+
+/* Botón de Agregar al Carrito */
+.agregar-carrito {
+    background-color: #000000;
+    color: white;
+    border: 1px solid #333;
+    border-radius: 8px;
+    padding: 12px 20px;
+    font-size: 16px;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 30px;
+    margin-left: auto; 
+    float: right;
+}
+
+.agregar-carrito:hover {
+    background-color: #1a1a1a;
 }
 
 /* Contenedor principal */
-
-.contenedor-principal {
-  display: flex;
-  flex-direction: column; /* Las secciones se apilan verticalmente */
-  gap: 20px; /* Espacio entre las secciones */
-  padding: 20px;
-  border-radius: 15px;
-  margin: 20px 100px 20px 100px;
-  background-color: #171717;
-  transition: all 0.5s ease-in-out;
-}
 
 body.claro .contenedor-principal {
   background-color: #CCCCCCCC;
@@ -36,273 +260,14 @@ body.claro .contenedor-principal {
   transition: all 0.5s ease-in-out;
 }
 
-.detalle-eventos {
-  display: flex;
-  flex-direction: row; /* Imagen y detalles en fila */
-  gap: 15px;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-.contenedor-botones {
-  display: flex; /* Ajusta el valor para controlar la alineación de los botones */
-  gap: 5px; /* Ajusta el valor para controlar el espacio entre los botones */
-  align-items: center; /* Ajusta el valor para controlar la alineación vertical de los botones */
-  gap: 15px;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-/* Boton FAVORITOOOO */
-
-.boton-fav {
-  background: none;
-  color: #ffffff; /* Ajusta el valor para controlar el color del texto */
-  border: none; /* Ajusta el valor para controlar el borde */
-  border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
-  padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
-  cursor: pointer; /* Ajusta el valor para controlar el cursor */
-  transition: 0.5s ease-in-out; /* Añade una transición suave */
-  font-size: 15px; /* Ajusta el valor para controlar el tamaño del texto */
-}
-
-.boton-fav:hover {
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo */ /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
-
-/* Boton FAVORITOOOO MODO CLAROOOO*/
-
-body.claro .boton-fav {
-  color: #333;
-  transition: all 0.5s ease-in-out;
-}
-
-body.claro .boton-fav :hover{
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
-
-/* Boton COMPARTIRR */
-
-.boton-comp {
-  background: none; /* Ajusta el valor para controlar el color de fondo */
-  color: #ffffff; /* Ajusta el valor para controlar el color del texto */
-  border: none; /* Ajusta el valor para controlar el borde */
-  border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
-  padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
-  cursor: pointer; /* Ajusta el valor para controlar el cursor */
-  transition: all 0.5s ease-in-out; /* Añade una transición suave */
-  font-size: 15px; /* Ajusta el valor para controlar el tamaño del texto */
-}
-
-.boton-comp:hover {
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
-
-/* Boton COMPARTIRR MODO CLAROOOOO*/
-
-body.claro .boton-comp {
-  color: #333;
-  transition: all 0.5s ease-in-out;
-}
-
-body.claro .boton-comp :hover{
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
-
-/* Boton ME GUSTAAAAA */
-.bootones{
-  margin-left: 90%;
-
-}
-.boton-megusta {
-
-  background: none; /* Ajusta el valor para controlar el color de fondo */
-  color: #ffffff; /* Ajusta el valor para controlar el color del texto */
-  border: none; /* Ajusta el valor para controlar el borde */
-  border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
-  padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
-  cursor: pointer; /* Ajusta el valor para controlar el cursor */
-  transition: all 0.5s ease-in-out; /* Añade una transición suave */
-  font-size: 15px; /* Ajusta el valor para controlar el tamaño del texto */
-}
 
   .verde {
     color: #00c851;/* Cuando está activado */
     }
 
 
-.boton-megusta:hover {
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
-
-/* Boton ME GUSTAAAAA MODO CLAROOOO*/
-
-body.claro .boton-megusta {
-  color: #333;
-  transition: all 0.5s ease-in-out;
-}
-
-body.claro .boton-megusta:hover {
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
 
 
-.ubicacion-boton{
-  background-color: #33333388; /* Fondo negro */
-  color: white; /* Texto blanco */
-  border: none; /* Sin borde */
-  border-radius: 25px; /* Bordes redondeados */
-  padding: 10px 20px; /* Espaciado interno */
-  font-size: 16px; /* Tamaño del texto */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  display: flex; /* Para alinear el icono y el texto */
-  align-items: center; /* Centrar verticalmente */
-  justify-content: center; /* Centrar horizontalmente */
-  gap: 8px; /* Espacio entre el texto y el icono */
-}
-
-.banner-eventos {
-  width: 450px;
-  height: 450px;
-  object-fit: cover;
-  border-radius: 5%;
-}
-
-.descripcion-eventos {
-  flex: 1; /* Ocupa el espacio restante */
-  font-size: 14px;
-}
-.descripcion-eventos h2{
-  font-size: 350%;
-}
-/* Estilo general del contenedor */
-.selector-ticket {
-  /* Estilo del texto y fondo */
-  background-color: transparent;
-  color: white;
-  font-size: 16px;
-  margin-top: 50px;
-  padding: 10px;
-  border: none;
-  outline: none;
-  appearance: none; /* Oculta la flecha predeterminada en algunos navegadores */
-  -webkit-appearance: none; /* Para navegadores basados en WebKit */
-  -moz-appearance: none; /* Para navegadores basados en Mozilla */
-
-  /* Estilo de la línea inferior */
-  border-bottom: 2px solid #00ff00; /* Línea verde */
-  width: 200px; /* Ancho del selector */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-}
-
-/* Estilo de la flecha personalizada */
-.selector-ticket {
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-size: 16px;
-  padding-right: 30px; /* Espacio para la flecha */
-}
-
-/* Contenedor de opciones de tickets */
-/* Contenedor de opciones de tickets */
-.opciones-tickets {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #00ff00; 
-  width: 100%; /
-}
-.tipo-ticket select option {
-  background-color: #fff; /* Fondo blanco */
-  color: #000; /* Texto negro */
-}
-/* Estilo del selector de tickets */
-.selector-ticket {
-  background-color: transparent;
-  color: white;
-  font-size: 16px;
-  padding: 10px;
-  border: none;
-  outline: none;
-  appearance: none;
-  -webkit-appearance: none;
-  -moz-appearance: none;
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-size: 16px;
-  padding-right: 30px;
-  cursor: pointer;
-  width: 100%; 
-  max-width: 200px; /* Opcional: limita el ancho máximo */
-}
-
-/* Contenedor de cantidad */
-.cantidad-ticket {
-  margin-top: 50px;
-  display: flex;
-  align-items: center;
-  gap: 10px;
-}
-/* Contador de cantidad */
-.contador {
-  display: flex;
-  align-items: center;
-  border: 1px solid #555;
-  border-radius: 5px;
-  overflow: hidden;
-}
-
-.contador button {
-  background-color: #333;
-  color: white;
-  border: none;
-  padding: 5px 10px;
-  cursor: pointer;
-  font-size: 16px;
-}
-
-.contador button:hover {
-  background-color: #444;
-}
-
-.contador .valor {
-  padding: 5px 10px;
-  background-color: #555;
-  color: white;
-  min-width: 30px;
-  text-align: center;
-}
-
-/* Botón de agregar al carrito */
-.agregar-carrito {
-  background-color: #000000;
-  color: white;
-  border: none;
-  border-radius: 5px;
-  padding: 12px 20px;
-  font-size: 16px;
-  cursor: pointer;
-  width: 25%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 10px;
-  margin-left: 70%
-}
-
-.agregar-carrito:hover {
-  background-color: #444;
-}
 /* Contenedor de eventos recomendados */
 .eventos-recomendados {
   padding: 20px;
