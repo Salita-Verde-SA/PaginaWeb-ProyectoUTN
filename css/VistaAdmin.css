@@ -5,7 +5,7 @@
   --color-contenedor: #1e1e1e; /* Color de fondo para las cajas o paneles */
   --color-letra: #e0e0e0; /* Color del texto principal */
   --borde-contenedor: 15px; /* Variable para el radio de los bordes (no se usa actualmente) */
-
+  --color-verde: #00c851; /* Color verde para acentos o botones */
   /* Paleta de colores para el modo claro */
   --fondo-blanco: #f5f5f5;
   --fondo-blanco-contenedor: #ffffff;
@@ -16,7 +16,6 @@
   --color-acento: #ffffff; /* Color de acento para botones en modo oscuro (blanco) */
   --color-acento-claro: #1e1e1e; /* Color de acento para botones en modo claro (gris oscuro) */
   --color--border: #333333; /* Color para los bordes */
-  --color-verde: #4CAF50; /* Color verde para textos de éxito */
 }
 
 /* Selector universal para resetear estilos */
@@ -112,9 +111,6 @@ body.claro {
   transition: transform 0.3s ease;
 }
 
-.Menu .button.active .icono-flecha {
-  transform: rotate(90deg); /* Gira la flecha en el botón activo */
-}
 
 
 /* --- SECCIONES DE CONTENIDO --- */
@@ -150,15 +146,15 @@ h2 i {
 /* Enlace para "Volver al Sitio" */
 .volver-al-sitio {
   color: var(--color-letra);
-  opacity: 0.7;
+
   text-decoration: none; /* Sin subrayado */
   font-weight: bold;
   transition: opacity 0.3s ease;
 }
 
 .volver-al-sitio:hover {
-  opacity: 1;
-  color: var(--color-letra);
+
+  color: var(--color-verde);
 }
 
 
@@ -185,7 +181,7 @@ h2 i {
   display: block;
   margin-bottom: 0.5rem;
   font-weight: 600;
-  color: #ccc;
+  color: #ffffff;
 }
 
 /* Estilo para los campos de entrada, áreas de texto y selectores */
@@ -243,14 +239,14 @@ h2 i {
 
 /* Botón de acción peligrosa (ej. "Eliminar") */
 .boton-eliminar {
-  background-color: #000000;
-  color: #fe4949; /* Texto rojo */
+  background-color: #d83737;
+  color: #ffffff; /* Texto rojo */
   padding: 0.5rem 1rem;
-  border: 1px solid #fe4949; /* Borde rojo */
+  border: 1px solid #050505; /* Borde rojo */
 }
 
 .boton-eliminar:hover {
-  background-color: #be0808cc; /* Fondo rojo oscuro */
+  background-color: #ff0000cc; /* Fondo rojo oscuro */
   color: #ffffff;
 }
 
@@ -272,6 +268,7 @@ thead {
 
 th,
 td {
+  color: var(--color-acento);
   padding: 1rem;
   text-align: left;
   border-bottom: 1px solid var(--color--border); /* Línea divisoria entre filas */
@@ -287,7 +284,7 @@ tbody tr:hover {
 }
 
 td img {
-  width: 50px;
+  width: 70px;
   height: 70px;
   object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
   border-radius: 4px;
@@ -328,427 +325,9 @@ td img {
 
 /* --- RESPONSIVIDAD (DISEÑO PARA MÓVILES) --- */
 @media (max-width: 768px) {
-  body {
-    padding: 1rem;
-  }
   .panel-principal {
     flex-direction: column; /* Apila los elementos verticalmente */
-    padding: 0;
-  }
-  .Menu {
-    width: 100%;
-    order: 2; /* Mueve el menú al final del flujo */
-  }
-  .contenedor-admin {
-    padding: 1rem;
-    order: 1; /* Coloca el contenido principal primero */
-    width: 100%;
-  }
-  .encabezado-admin {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-  .grilla-formulario {
-    grid-template-columns: 1fr; /* Una sola columna en la grilla del formulario */
-  }
-}
-
-
-/* --- MODO CLARO (SOBRESCRIBE ESTILOS) --- */
-body.claro {
-  /* Redefine las variables de color para el modo claro */
-  --color-background: var(--fondo-blanco);
-  --color-surface: var(--fondo-blanco-contenedor);
-  --color-text-primary: var(--fondo-blanco-color);
-  --color-text-secondary: #6c757d;
-  --color-border: #dee2e6;
-}
-
-body.claro .contenedor-admin {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  background-color: var(--fondo-blanco-contenedor);
-}
-
-body.claro .Menu {
-  background-color: var(--fondo-blanco-contenedor);
-}
-
-body.claro .Menu .button {
-  background-color: transparent;
-  color: var(--fondo-blanco-color);
-  opacity: 0.7;
-}
-
-body.claro .Menu .button:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  border-color: transparent;
-  opacity: 1;
-}
-
-body.claro .Menu .button.active {
-  background-color: var(--color-acento-claro);
-  color: var(--fondo-blanco);
-  border-color: var(--color-acento-claro);
-  opacity: 1;
-}
-
-body.claro .grupo-formulario input,
-body.claro .grupo-formulario textarea,
-body.claro .grupo-formulario select {
-  background-color: #fdfdfd;
-  border-color: #ced4da;
-  color: var(--color-text-primary);
-}
-
-body.claro .grupo-formulario input:focus,
-body.claro .grupo-formulario textarea:focus,
-body.claro .grupo-formulario select:focus {
-  border-color: var(--color-acento-claro);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
-}
-
-body.claro thead {
-  background-color: #f8f9fa;
-}
-
-body.claro tbody tr:hover {
-  background-color: #f1f3f5;
-}
-
-body.claro .tarjeta-grafico {
-  background-color: #f8f9fa;
-}
-
-/* --- VARIABLES GLOBALES Y ESTILOS BASE --- */
-:root {
-  /* Paleta de colores para el modo oscuro */
-  --color-fondo: #121212; /* Color de fondo general de la página */
-  --color-contenedor: #1e1e1e; /* Color de fondo para las cajas o paneles */
-  --color-letra: #e0e0e0; /* Color del texto principal */
-  --borde-contenedor: 15px; /* Variable para el radio de los bordes (no se usa actualmente) */
-
-  /* Paleta de colores para el modo claro */
-  --fondo-blanco: #f5f5f5;
-  --fondo-blanco-contenedor: #ffffff;
-  --fondo-blanco-color: #121212;
-
-  /* Tipografía y colores de acento */
-  --tipografia-general: "Arial", sans-serif; /* Fuente principal */
-  --color-acento: #ffffff; /* Color de acento para botones en modo oscuro (blanco) */
-  --color-acento-claro: #1e1e1e; /* Color de acento para botones en modo claro (gris oscuro) */
-  --color--border: #333333; /* Color para los bordes */
-}
-
-/* Selector universal para resetear estilos */
-* {
-  margin: 0; /* Elimina todos los márgenes por defecto */
-  padding: 0; /* Elimina todos los rellenos por defecto */
-  box-sizing: border-box; /* Asegura que el padding y borde se incluyan en el tamaño total del elemento */
-  font-family: var(--tipografia-general); /* Aplica la fuente general a todos los elementos */
-}
-
-/* Estilos base para el cuerpo de la página */
-body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif; /* Fuentes de sistema para mejor compatibilidad */
-  background-color: var(--color-fondo); /* Aplica el color de fondo oscuro */
-  color: var(--color-letra); /* Aplica el color de letra claro */
-  line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
-}
-
-/* Estilos para el modo claro */
-
-
-
-/* --- ESTRUCTURA PRINCIPAL (LAYOUT) --- */
-.panel-principal {
-  width: 100%;
-  display: flex; /* Activa Flexbox para alinear el menú y el contenido */
-  align-items: flex-start; /* Alinea los elementos hijos al inicio del eje transversal */
-  gap: 2rem; /* Espacio entre el menú y el contenido */
-  padding: 2rem; /* Relleno alrededor del panel */
-}
-
-.contenedor-admin {
-  flex-grow: 1; /* Hace que el contenedor principal ocupe todo el espacio disponible */
-  max-width: 1200px; /* Ancho máximo para el contenido */
-  margin: 0;
-  padding: 2rem;
-  background-color: var(--color-contenedor); /* Color de fondo del panel */
-  border-radius: 12px; /* Esquinas redondeadas */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
-}
-
-
-/* --- ESTILOS PARA EL MENÚ LATERAL --- */
-.Menu {
-  display: flex;
-  flex-direction: column; /* Apila los botones del menú verticalmente */
-  gap: 1rem; /* Espacio entre los botones */
-  width: 260px; /* Ancho fijo para el menú */
-  background-color: var(--color-contenedor);
-  padding: 1.5rem;
-  border-radius: 12px;
-  flex-shrink: 0; /* Evita que el menú se encoja si no hay espacio */
-}
-
-.Menu .button {
-  display: flex;
-  justify-content: space-between; /* Espacia el texto y la flecha */
-  align-items: center; /* Centra verticalmente los elementos del botón */
-  width: 100%;
-  padding: 1rem 1.2rem;
-  background-color: transparent; /* Fondo transparente por defecto */
-  border: none; /* Sin borde */
-  border-radius: 10px;
-  color: var(--color-letra);
-  opacity: 0.7; /* Ligeramente transparente para que no destaque tanto */
-  font-size: 1rem;
-  font-weight: 500;
-  text-align: left;
-  cursor: pointer; /* Cursor de mano al pasar por encima */
-  transition: background-color 0.2s ease, opacity 0.2s ease; /* Transición suave */
-}
-
-/* Efecto al pasar el ratón sobre los botones del menú */
-.Menu .button:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente blanco */
-  opacity: 1; /* Totalmente opaco */
-}
-
-/* Estilo para el botón de la sección activa */
-.Menu .button.active {
-  background-color: #333; /* Fondo gris oscuro para destacar */
-  color: var(--color-acento); /* Texto blanco */
-  opacity: 1;
-  font-weight: 700; /* Texto en negrita */
-}
-
-.icono-flecha {
-  transition: transform 0.3s ease;
-}
-
-.Menu .button.active .icono-flecha {
-  transform: rotate(90deg); /* Gira la flecha en el botón activo */
-}
-
-
-/* --- SECCIONES DE CONTENIDO --- */
-.seccion {
-  display: none; /* Oculta todas las secciones por defecto */
-}
-
-.seccion.active {
-  display: block; /* Muestra solo la sección que tiene la clase "active" */
-}
-
-/* Encabezado dentro del panel de administración */
-.encabezado-admin {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border-bottom: 1px solid var(--color--border); /* Línea divisoria inferior */
-  padding-bottom: 1.5rem;
-  margin-bottom: 2rem;
-}
-
-h1,
-h2 {
-  color: var(--color-letra);
-}
-
-h1 i,
-h2 i {
-  color: var(--color-letra);
-  margin-right: 0.75rem;
-}
-
-/* Enlace para "Volver al Sitio" */
-.volver-al-sitio {
-  color: var(--color-letra);
-  opacity: 0.7;
-  text-decoration: none; /* Sin subrayado */
-  font-weight: bold;
-  transition: opacity 0.3s ease;
-}
-
-.volver-al-sitio:hover {
-  opacity: 1;
-  color: var(--color-letra);
-}
-
-
-/* --- ESTILOS DEL FORMULARIO --- */
-.seccion-formulario,
-.seccion-tabla {
-  margin-bottom: 3rem;
-}
-
-/* Grilla para organizar los campos del formulario */
-.grilla-formulario {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas automáticas y responsivas */
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-/* Para elementos que ocupan todo el ancho de la grilla */
-.grupo-formulario-completo {
-  grid-column: 1 / -1;
-}
-
-.grupo-formulario label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #ccc;
-}
-
-/* Estilo para los campos de entrada, áreas de texto y selectores */
-.grupo-formulario input,
-.grupo-formulario textarea,
-.grupo-formulario select {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  background-color: #2c2c2c;
-  border: 1px solid var(--color--border);
-  border-radius: 8px;
-  color: var(--color-letra);
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efecto al hacer clic en un campo del formulario */
-.grupo-formulario input:focus,
-.grupo-formulario textarea:focus,
-.grupo-formulario select:focus {
-  outline: none; /* Quita el borde por defecto del navegador */
-  border-color: var(--color-acento); /* Borde blanco */
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2); /* Sombra exterior suave */
-}
-
-
-/* --- ESTILOS DE BOTONES --- */
-.boton {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  text-align: center;
-  transition: transform 0.2s ease, background-color 0.3s ease;
-  font-size: 1rem;
-}
-
-.boton:hover {
-  transform: translateY(-2px); /* Efecto de "levantarse" al pasar el ratón */
-}
-
-/* Botón de acción principal (ej. "Agregar") */
-.boton-primario {
-  background-color: var(--color-acento);
-  color: #000; /* Texto negro sobre fondo blanco */
-  display: block;
-  width: 100%;
-  margin-top: 1.5rem;
-}
-
-.boton-primario:hover {
-  background-color: #cccccc;
-}
-
-/* Botón de acción peligrosa (ej. "Eliminar") */
-.boton-eliminar {
-  background-color: #000000;
-  color: #fe4949; /* Texto rojo */
-  padding: 0.5rem 1rem;
-  border: 1px solid #fe4949; /* Borde rojo */
-}
-
-.boton-eliminar:hover {
-  background-color: #be0808cc; /* Fondo rojo oscuro */
-  color: #ffffff;
-}
-
-
-/* --- ESTILOS DE LA TABLA --- */
-.contenedor-tabla {
-  overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas si la tabla es muy ancha */
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse; /* Une los bordes de las celdas */
-  margin-top: 1.5rem;
-}
-
-thead {
-  background-color: #252525; /* Fondo para la cabecera de la tabla */
-}
-
-th,
-td {
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--color--border); /* Línea divisoria entre filas */
-  vertical-align: middle;
-}
-
-th {
-  font-weight: 600;
-}
-
-tbody tr:hover {
-  background-color: #2a2a2a; /* Color de fondo al pasar el ratón sobre una fila */
-}
-
-td img {
-  width: 50px;
-  height: 70px;
-  object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
-  border-radius: 4px;
-}
-
-.acciones {
-  text-align: right;
-}
-
-
-/* --- ESTILOS PARA GRÁFICOS --- */
-.grid-graficos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.tarjeta-grafico {
-  background-color: #2c2c2c;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--color--border);
-}
-
-.tarjeta-grafico h3 {
-  margin-bottom: 1rem;
-  color: var(--color-letra);
-}
-
-.estadistica {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--color-letra);
-  margin: 1rem 0;
-}
-
-
-/* --- RESPONSIVIDAD (DISEÑO PARA MÓVILES) --- */
-@media (max-width: 768px) {
-
-  .panel-principal {
-    flex-direction: column; /* Apila los elementos verticalmente */
-    padding:1 ;
+    padding: 1;
   }
   .Menu {
     width: 100%;
@@ -767,78 +346,5 @@ td img {
   .grilla-formulario {
     grid-template-columns: 1fr; /* Una sola columna en la grilla del formulario */
   }
-}
-
-
-/* --- MODO CLARO (SOBRESCRIBE ESTILOS) --- */
-body.claro {
-  /* Redefine las variables de color para el modo claro */
-  --color-background: var(--fondo-blanco);
-  --color-surface: var(--fondo-blanco-contenedor);
-  --color-text-primary: var(--fondo-blanco-color);
-  --color-text-secondary: #6c757d;
-  --color-border: #dee2e6;
-}
-
-body.claro .contenedor-admin {
-  box-shadow: 0 4px 20px rgba(0, 0, 0, 0.08);
-  background-color: var(--fondo-blanco-contenedor);
-}
-body.claro .encabezado-admin i, h1, .volver-al-sitio {
-  color: var(--color-acento-claro);
-}
-
-
-body.claro .Menu .button {
-  background-color: transparent;
-  color: var(--fondo-blanco-color);
-  opacity: 0.7;
-}
-
-body.claro .Menu .button:hover {
-  background-color: rgba(0, 0, 0, 0.05);
-  border-color: transparent;
-  opacity: 1;
-}
-
-body.claro .Menu .button.active {
-  background-color: var(--color-acento-claro);
-  color: var(--fondo-blanco);
-  border-color: var(--color-acento-claro);
-  opacity: 1;
-}
-body.claro .grupo-formulario label {
-color: #000;
-}
-body.claro .seccion-formulario i, h2, .seccion-tabla i {
-    color: var(--color-acento-claro);
-}
-
-
-body.claro .grupo-formulario input,
-body.claro .grupo-formulario textarea,
-body.claro .grupo-formulario select {
-  background-color: #fdfdfd;
-  border-color: #ced4da;
-  color: var(--color--bordery);
-}
-
-body.claro .grupo-formulario input:focus,
-body.claro .grupo-formulario textarea:focus,
-body.claro .grupo-formulario select:focus {
-  border-color: var(--color-acento-claro);
-  box-shadow: 0 0 0 3px rgba(0, 0, 0, 0.1);
-}
-
-body.claro thead {
-  background-color: #f8f9fa;
-}
-
-body.claro tbody tr:hover {
-  background-color: #f1f3f5;
-}
-
-body.claro .tarjeta-grafico {
-  background-color: #f8f9fa;
 }
 
