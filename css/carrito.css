@@ -2,19 +2,19 @@
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
+  font-family: var(--tipografia-general);
 }
 
 body {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: var(--color-fondo);
+  color: var(--color-letra);
   min-height: 100vh;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 body.claro {
-  background: #f5f5f5;
-  color: #000000;
+  background: var(--fondo-blanco);
+  color: var(--fondo-blanco-color);
 }
 /*CONTENEDOR PRINCIPAL*/
 .contenedor-principal {
@@ -22,31 +22,47 @@ body.claro {
   flex-direction: row; /* Alinea horizontalmente */
   align-items: flex-start; /* Alinea arriba si los contenidos tienen alturas distintas */
 }
+
+
+
 /*CONTENEDOR DE LOS BOTONES DE LA PARTE IZQUIERDA*/
 .contenedor-botones {
-    width: 24%;
-    height: auto;
-    background-color: #ccc1;
-    border-radius: 40px;
-    margin: 20px 2px 0px 2%;
-    padding: 20px;
+  width: 24%;
+  height: auto;
+  background-color: var(--color-contenedor);
+  border-radius: 40px;
+  margin: 20px 2px 0px 2%;
+  padding: 20px;
 }
+
+/*CONTENEDOR BOTONES EN CLARO*/
+body.claro .contenedor-botones {
+  background-color: var(--fondo-blanco-contenedor);
+  color: var(--fondo-blanco-color);
+}
+
 .button {
-    display: flex;
-    width: 100%;
-    padding: 13px 5px;
-    border: none;
-    border-radius: 19px;
-    margin: 7px 0;
-    background-color: #121212;
-    justify-content: space-between;
-    color: #eee;
-    font-weight: bold;
-    font-size: 20px;
+  display: flex;
+  width: 100%;
+  padding: 13px 5px;
+  border: none;
+  border-radius: 19px;
+  margin: 7px 0;
+  background-color: var(--color-botones-carrito);
+  justify-content: space-between;
+  color: var(--color-letra);
+  font-weight: bold;
+  font-size: 20px;
+
+}
+
+/*BOTONES EN CLARO*/
+body.claro .button {
+  background-color: var(--color-botones-carrito);
 
 }
 .contenido-button {
-    margin-left: 8px;
+  margin-left: 8px;
 }
 .icono-flecha {
   margin-right: 20px;
@@ -59,15 +75,21 @@ body.claro {
 /*CONTENEDOR CENTRAL (CARRITO)*/
 
 .contenedor-carrito {
-    height: auto;
-    width: 75%;
-    background-color: #ccc1;
-    margin: 20px 20px;
-    padding: 25px;
-    border-radius: 40px;
-    text-align: center;
-    flex-direction: row;
-    align-items: flex-start;
+  height: auto;
+  width: 75%;
+  background-color: var(--color-contenedor);
+  margin: 20px 20px;
+  padding: 25px;
+  border-radius: 40px;
+  text-align: center;
+  flex-direction: row;
+  align-items: flex-start;
+}
+
+/*CONTENEDOR CARRITO EN CLARO*/
+body.claro .contenedor-carrito {
+  background-color: var(--fondo-blanco-contenedor);
+  color: var(--fondo-blanco-color);
 }
 .titulo-carrito {
     margin-top: none;
@@ -79,25 +101,25 @@ body.claro {
   
 }
 .tarjeta-evento {
-    display: flex;
-    width: 100%;
-    height: auto;
-    margin: 0;
-    padding: 10px;
-    box-sizing: border-box;
+  display: flex;
+  width: 100%;
+  height: auto;
+  margin: 0;
+  padding: 10px;
+  box-sizing: border-box;
 }
 .img-event {
-    width: 30%;
-    margin: 5px 20px 5px 5px;
+  width: 30%;
+  margin: 5px 20px 5px 5px;
 }
 .description-event {
-    margin: 2px 2px 5px 0px;
-    text-align: left;
-    font-weight: 20px;
+  margin: 2px 2px 5px 0px;
+  text-align: left;
+  font-weight: 20px;
 }
 .name-event {
-    margin: 20px 2px 30px 0px;
-    font-size: 40px;
+  margin: 20px 2px 30px 0px;
+  font-size: 40px;
 }
 
 /*SELCCION DE TICKETS*/
@@ -115,7 +137,7 @@ body.claro {
   box-sizing: border-box;
   margin: 5px 15px;
 }
-.tipo-entrada {
+.tipo-ticket {
   margin: 0;
 }
 
@@ -129,14 +151,13 @@ body.claro {
 .contador {
   display: flex;
   align-items: center;
-  border: 1px solid #5551;
   border-radius: 5px;
   overflow: hidden;
 }
 .contador button {
   width: 25%;
-  background-color: #121212;
-  color: white;
+  background-color: var(--color-botones-carrito);
+  color: var(--color-letra);
   border: none;
   padding: 5px 15px;
   cursor: pointer;
@@ -147,13 +168,13 @@ body.claro {
 }
 
 .contador button:hover {
-  background-color: #444;
+  background-color: #4444;
 }
 
 .contador .valor {
   padding: 5px 10px;
-  background-color: #121212;
-  color: white;
+  background-color: var(--color-botones-carrito);
+  color: var(--color-letra);
   min-width: 20px;
   text-align: center;
   border-radius: 15px;
@@ -161,19 +182,72 @@ body.claro {
 }
 
 /*TOTAL*/
-
-.total {
-  width: 100%;
-  margin: auto;
+.resumen-factura {
+  margin-top: 30px;
   padding: 20px;
-  box-sizing: border-box;
-  font-size: 25px;
+  background-color: var(--color-contenedor);
+  border-radius: 10px;
+  color: var(--color-letra);
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  transition: all 0.5s ease-in-out;
 }
 
+body.claro .resumen-factura {
+  background-color: var(--fondo-blanco-contenedor);
+  color: var(--fondo-blanco-color); /* Asegurate de definir esta variable */
+  box-shadow: 0 0 10px #999;
+
+}
+
+.resumen-factura h3 {
+  font-size: 18px;
+  margin-bottom: 10px;
+}
+
+.detalle-factura p {
+  font-size: 14px;
+  margin: 5px 0;
+}
+
+/*FACTURA*/
+.resumen-factura {
+  margin-bottom: 20px;
+  padding: 10px;
+  background-color: #4442;
+  border-radius: 10px;
+  columns: #0f0;
+  padding: 10px;
+  color: var(--color-letra);
+}
+
+.resumen-factura h3 {
+  font-size: 24px;
+  padding: 20px;
+}
+
+.resumen-factura p {
+  padding: 6px;
+}
+
+.resumen-factura .nombre-evento {
+  font-size: 16px;
+  font-weight: bold;
+  margin-bottom: 8px;
+}
+
+.resumen-factura .tipo-entrada {
+}
+
+.resumen-factura .cantidad-entrada,
+.resumen-factura .subtotal-entrada {
+  border: none;
+}
+
+
 /* Botón de agregar al carrito */
-.agregar-carrito {
-  background-color: #333;
-  color: white;
+.pagar {
+  background-color: var(--color-botones-carrito);
+  color: var(--color-letra);
   border: none;
   border-radius: 5px;
   padding: 12px 20px;
@@ -186,8 +260,8 @@ body.claro {
   gap: 10px;
 }
 
-.agregar-carrito:hover {
-  background-color: #444;
+.pagar:hover {
+  background-color: #4444;
 }
 
 
@@ -203,8 +277,4 @@ body.claro {
   background-image: url("/img/carrito-vacio6.png");
   background-position: center;
   background-repeat: no-repeat;
-}
-/* Contenedor de eventos recomendados */
-.eventos-recomendados {
-  padding: 20px;
 }
