@@ -1,20 +1,38 @@
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+body.claro {
+  background: #f5f5f5;
+  color: #000000;
+}
+/* --- Reseteo Básico y Estilos Globales --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: "Arial", sans-serif;
+  font-family: var(--tipografia-general);
 }
 
 body {
-  background-color: #121212;
-  color: #ffffff;
+  background-color: var(--color-fondo);
+  color: var(--color-letra);
   min-height: 100vh;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
 body.claro {
-  background: #f5f5f5;
-  color: #000000;
+  background: var(--fondo-blanco);
+  color: var(--fondo-blanco-color);
 }
 
 /* Contenedor principal */
@@ -26,13 +44,13 @@ body.claro {
   padding: 20px;
   border-radius: 15px;
   margin: 20px 100px 20px 100px;
-  background-color: #171717;
+  background-color: var(--color-contenedor);
   transition: all 0.5s ease-in-out;
 }
 
 body.claro .contenedor-principal {
-  background-color: #CCCCCCCC;
-  color: #000000cc;
+  background-color: var(--fondo-blanco-contenedor);
+  color: var(--fondo-blanco-color);
   transition: all 0.5s ease-in-out;
 }
 
@@ -43,6 +61,7 @@ body.claro .contenedor-principal {
   border-radius: 10px;
   padding: 20px;
 }
+
 
 .contenedor-botones {
   display: flex; /* Ajusta el valor para controlar la alineación de los botones */
@@ -57,7 +76,7 @@ body.claro .contenedor-principal {
 
 .boton-fav {
   background: none;
-  color: #ffffff; /* Ajusta el valor para controlar el color del texto */
+  color: var(--color-letra); /* Ajusta el valor para controlar el color del texto */
   border: none; /* Ajusta el valor para controlar el borde */
   border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
   padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
@@ -74,7 +93,7 @@ body.claro .contenedor-principal {
 /* Boton FAVORITOOOO MODO CLAROOOO*/
 
 body.claro .boton-fav {
-  color: #333;
+  color: var(--fondo-blanco-color);
   transition: all 0.5s ease-in-out;
 }
 
@@ -87,7 +106,7 @@ body.claro .boton-fav :hover{
 
 .boton-comp {
   background: none; /* Ajusta el valor para controlar el color de fondo */
-  color: #ffffff; /* Ajusta el valor para controlar el color del texto */
+  color: var(--color-letra); /* Ajusta el valor para controlar el color del texto */
   border: none; /* Ajusta el valor para controlar el borde */
   border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
   padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
@@ -104,7 +123,7 @@ body.claro .boton-fav :hover{
 /* Boton COMPARTIRR MODO CLAROOOOO*/
 
 body.claro .boton-comp {
-  color: #333;
+  color: var(--fondo-blanco-color);
   transition: all 0.5s ease-in-out;
 }
 
@@ -117,7 +136,7 @@ body.claro .boton-comp :hover{
 
 .boton-megusta {
   background: none; /* Ajusta el valor para controlar el color de fondo */
-  color: #ffffff; /* Ajusta el valor para controlar el color del texto */
+  color: var(--color-letra); /* Ajusta el valor para controlar el color del texto */
   border: none; /* Ajusta el valor para controlar el borde */
   border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
   padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
@@ -139,7 +158,7 @@ body.claro .boton-comp :hover{
 /* Boton ME GUSTAAAAA MODO CLAROOOO*/
 
 body.claro .boton-megusta {
-  color: #333;
+  color: var(--fondo-blanco-color);
   transition: all 0.5s ease-in-out;
 }
 
@@ -150,8 +169,8 @@ body.claro .boton-megusta:hover {
 
 
 .ubicacion-boton{
-  background-color: #33333388; /* Fondo negro */
-  color: white; /* Texto blanco */
+  background-color: var(--color-botones-vp); /* Fondo negro */
+  color: var(--color-letra); /* Texto blanco */
   border: none; /* Sin borde */
   border-radius: 25px; /* Bordes redondeados */
   padding: 10px 20px; /* Espaciado interno */
@@ -175,12 +194,11 @@ body.claro .boton-megusta:hover {
   font-size: 14px;
 }
 /* Estilo general del contenedor */
-.selector-ticket {
+.tipo-ticket select {
   /* Estilo del texto y fondo */
   background-color: transparent;
-  color: white;
+  color: var(--color-letra);
   font-size: 16px;
-  margin-top: 50px;
   padding: 10px;
   border: none;
   outline: none;
@@ -188,40 +206,40 @@ body.claro .boton-megusta:hover {
   -webkit-appearance: none; /* Para navegadores basados en WebKit */
   -moz-appearance: none; /* Para navegadores basados en Mozilla */
 
-  /* Estilo de la línea inferior */
-  border-bottom: 2px solid #00ff00; /* Línea verde */
-  width: 200px; /* Ancho del selector */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
 }
+.tipo-ticket select {
+  font-family: inherit;
+  font-size: inherit;
+  color: inherit;
+}
+
+
 
 /* Estilo de la flecha personalizada */
 .selector-ticket {
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
   background-position: right center;
-  background-size: 16px;
+  background-size: 6px;
   padding-right: 30px; /* Espacio para la flecha */
 }
 
 /* Contenedor de opciones de tickets */
 /* Contenedor de opciones de tickets */
 .opciones-tickets {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #00ff00; 
-  width: 100%; /
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 .tipo-ticket select option {
-  background-color: #fff; /* Fondo blanco */
-  color: #000; /* Texto negro */
+  background-color: var(--color-botones-vp); /* Fondo blanco */
+  color: var(--color-letra); /* Texto negro */
 }
 /* Estilo del selector de tickets */
 .selector-ticket {
   background-color: transparent;
-  color: white;
+  color: var(--color-letra);
   font-size: 16px;
   padding: 10px;
   border: none;
@@ -239,62 +257,81 @@ body.claro .boton-megusta:hover {
   max-width: 200px; /* Opcional: limita el ancho máximo */
 }
 
-/* Contenedor de cantidad */
+/* Selector de cantidad */
 .cantidad-ticket {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #dcdcdc;
 }
-/* Contador de cantidad */
+
 .contador {
   display: flex;
   align-items: center;
-  border: 1px solid #555;
   border-radius: 5px;
   overflow: hidden;
 }
 
 .contador button {
-  background-color: #333;
-  color: white;
+  background-color: var(--color-botones-vp);
+  color: var(--color-letra);
   border: none;
   padding: 5px 10px;
   cursor: pointer;
   font-size: 16px;
+  margin: 2px;
+  border-radius: 10px;
 }
 
 .contador button:hover {
-  background-color: #444;
+    background-color: #444;
 }
 
 .contador .valor {
   padding: 5px 10px;
-  background-color: #555;
-  color: white;
+  background-color: var(--color-botones-vp);
+  color: var(--color-letra);
   min-width: 30px;
   text-align: center;
+  border-radius: 13px;
 }
 
-/* Botón de agregar al carrito */
+/* Botón de Agregar al Carrito */
 .agregar-carrito {
-  background-color: #000000;
-  color: white;
+  background-color: var(--color-botones-vp);
+  color: var(--color-letra);
   border: none;
   border-radius: 5px;
   padding: 12px 20px;
   font-size: 16px;
   cursor: pointer;
-  width: 25%;
+  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
-  margin-left: 70%
 }
 
 .agregar-carrito:hover {
-  background-color: #444;
+    background-color: #1a1a1a;
 }
+
+/* Contenedor principal */
+
+body.claro .contenedor-principal {
+  background-color: #CCCCCCCC;
+  color: #000000cc;
+  transition: all 0.5s ease-in-out;
+}
+
+
+  .verde {
+    color: #00c851;/* Cuando está activado */
+    }
+
+
+
+
 /* Contenedor de eventos recomendados */
 .eventos-recomendados {
   padding: 20px;
@@ -335,7 +372,7 @@ body.claro .boton-megusta:hover {
   text-align: center;
   margin: 0;
 
-  color: white;
+  color: var(--color-letra);
 }
 @media (max-width: 768px) {
   .cuadrícula-eventos {
@@ -350,65 +387,5 @@ body.claro .boton-megusta:hover {
   .cuadrícula-eventos {
     grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
   }
-}
-
-/* --------- SWITCH DE TEMA --------- */
-.tema-claro-oscuro-header {
-  display: flex;
-  align-items: center;
-  gap: 0.5px;
-}
-
-.interruptor {
-  position: relative;
-  display: inline-block;
-  width: 76px;
-  height: 29px;
-}
-
-.interruptor input {
-  opacity: 0;
-  width: 0;
-  height: 0;
-}
-
-.deslizador {
-  position: absolute;
-  cursor: pointer;
-  top: 0;
-  left: 0;
-  right: 0;
-  bottom: 0;
-  background-color: #dadada;
-  transition: 0.4s;
-  border-radius: 11px;
-  border: 2.3px solid #999999;
-}
-
-.deslizador:before {
-  position: absolute;
-  content: "";
-  height: 13px;
-  width: 13px;
-  left: 9%;
-  background-color: #999999;
-  transition: 0.4s ease-in-out;
-  border-radius: 75%;
-  transform: translateY(-50%);
-  top: 50%;
-}
-
-input:checked + .deslizador:before {
-  background-color: #000000cc;
-  left: 5%;
-}
-
-input:checked + .deslizador {
-  border: 2.3px solid #000000aa;
-  background-color: #ffffff;
-}
-
-input:checked + .deslizador:before {
-  transform: translateX(210%) translateY(-50%);
 }
 
