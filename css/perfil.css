@@ -1,202 +1,220 @@
 /* --------- ESTILOS GLOBALES --------- */
 * {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Arial", sans-serif;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: "Arial", sans-serif;
 }
 
 body {
-  background-color: #121212;
-  color: #ffffff;
-  min-height: 100vh;
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
-  margin: 0;
-  padding: 0;
-  width: 100%;
+    background-color: #121212;
+    color: #ffffff;
+    min-height: 100vh;
+    transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+    margin: 0;
+    padding: 0;
+    width: 100%;
 }
 
 body.claro {
-  background: #f5f5f5;
-  color: #333;
-  transition: all 0.5s ease-in-out;
+    background: #f5f5f5;
+    color: #333;
+    transition: all 0.5s ease-in-out;
 }
 
 #footer {
-  width: 100%;
+    width: 100%;
 }
 
 /* --------- CONTENEDOR PRINCIPAL CON FONDOS --------- */
 
 .contenedor-principal-fondo {
-  display: flex;
-  padding: 0px 20px 25px 20px;
-  gap: 20px;
-  border-radius: 15px;
-  margin: 20px;
-  width: 100%;
-  flex: 1;
+    display: flex;
+    padding: 0px 20px 25px 20px;
+    gap: 20px;
+    border-radius: 15px;
+    margin: 20px;
+    width: 100%;
+    flex: 1;
 }
 
 /* --------- BARRA LATERAL IZQUIERDA CON FONDO --------- */
 
 .barra-lateral-izquierda {
-  width: 20%;
-  display: flex;
-  flex-direction: column;
-  gap: 15px;
-  background-color: none;
-  border-radius: 10px;
-  padding: 15px;
-  position: sticky;
-  top: 70px;
-  /* Ajusta este valor según la altura de tu barra de navegación */
-  align-self: flex-start;
-  max-height: calc(100vh - 80px);
-  /* Ajusta según la altura de tu barra de navegación */
-  overflow-y: auto;
-  transition: all 0.5s ease-in-out;
+    width: 20%;
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    /* background-color: none; se eliminó la propiedad con valor 'none' */
+    border-radius: 10px;
+    padding: 15px;
+    position: sticky;
+    top: 70px;
+    align-self: flex-start;
+    max-height: calc(100vh - 80px);
+    overflow-y: auto;
+    transition: all 0.5s ease-in-out;
 }
 
 .elemento-barra-lateral {
-  display: flex;
-  align-items: center;
-  text-align: center;
-  color: #ffffff;
-  text-decoration: none;
-  transition: all 0.5s ease-in-out;
+    display: flex;
+    align-items: center;
+    text-align: center;
+    color: #ffffff;
+    text-decoration: none;
+    transition: all 0.5s ease-in-out;
 }
 
 .elemento-barra-lateral img {
-  width: 40px;
-  height: 40px;
-  border-radius: 50px;
-  margin-bottom: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 50px;
+    margin-bottom: 5px;
 }
 
 .elemento-barra-lateral span {
-  font-size: 15px;
-  margin-left: 5%;
-  transition: all 0.5s ease-in-out;
+    font-size: 15px;
+    margin-left: 5%;
+    transition: all 0.5s ease-in-out;
 }
 
 body.claro .elemento-barra-lateral span {
-  color: #333;
-  transition: all 0.5s ease-in-out;
+    color: #333;
+    transition: all 0.5s ease-in-out;
 }
 
-body.claro .elemento-barra-lateral-derecha span {
-  color: #333;
-  transition: all 0.5s ease-in-out;
-}
+/* El selector '.elemento-barra-lateral-derecha span' fue eliminado por no estar presente en el HTML */
 
 /* CONTENEDOR PERFIL */
 
 .contenedor-perfil {
-  background-color: #171717; /* Añade un fondo */
-  justify-content: space-between;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 20px;
-  width: 700px; /* Ajusta el ancho del contenedor */
-  padding: 20px; /* Añade padding para más espacio */
-  border-radius: 20px; /* Añade bordes redondeados */
-  flex: 1;
-  padding: 50px;
-  margin-right: 15px;
-  transition: all 0.5s ease-in-out;
+    background-color: #171717;
+    display: flex;
+    /* justify-content: space-between; (Se puede quitar si solo tiene un hijo) */
+    flex-direction: row; /* CAMBIO CLAVE: Usa row para alinear foto y nombre */
+    align-items: center; /* Alineación al inicio, para que los elementos se peguen al center */
+    gap: 30px; /* Espacio entre la foto y el contenedor del nombre */
+    width: 700px;
+    height: auto;
+    padding: 50px;
+    border-radius: 20px;
+    flex: 2;
+    margin-right: 15px;
+    transition: all 0.5s ease-in-out;
 }
 
 body.claro .contenedor-perfil {
-  background-color: #CCCCCCCC;
-  transition: all 0.5s ease-in-out;
+    /* La sintaxis #CCCCCCCC no es válida para RGB/Hex. Se asume que quisiste poner un gris claro válido. */
+    background-color: #ccc; 
+    transition: all 0.5s ease-in-out;
 }
 
 .circulo-foto-perfil {
-  position: relative;
-  width: 150px;
-  height: 150px;
-  border-radius: 50%;
-  cursor: pointer;
-  transition: transform 0.5s ease;
-  display: flex; /* Asegura que la imagen esté centrada */
-  justify-content: center;
-  align-items: center;
-  background-color: #333; /* Fondo temporal si la imagen no carga */
-  overflow: hidden;
+    position: relative;
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: transform 0.5s ease;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #333;
+    overflow: hidden;
+    /* Para asegurar que no interfiera con el Nombre-perfil-container */
+    flex-shrink: 0; 
 }
 
 .circulo-foto-perfil img{
-  width: 100%; /* Asegura que la foto ocupe todo el ancho del círculo */
-  height: 100%; /* Asegura que la foto ocupe toda la altura del círculo */
-  object-fit: cover; /* Asegura que la foto cubra todo el círculo sin distorsionarse */
-  object-position: center; /* Centra la imagen dentro del círculo */
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
 }
 
-
-/* lapiz de cambiar foto  */
+/* lapiz de cambiar foto */
 
 .cambiar-foto {
-  position: absolute;
-  background-color: rgba(0, 0, 0, 0.5);
-  width: 100%;
-  height: 100%;
-  color: white;
-  padding: 5px;
-  font-size: 14px;
-  opacity: 0;
-  transition: opacity 0.3s ease;
-  object-position: center;
-  font-size: 24px; /* Tamaño del ícono del lápiz */
-  text-align: center;
+    position: absolute;
+    background-color: rgba(0, 0, 0, 0.5);
+    width: 100%;
+    height: 100%;
+    color: white;
+    padding: 5px;
+    font-size: 14px;
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    /* object-position: center; (Propiedad CSS inválida aquí) */
+    font-size: 24px;
+    text-align: center;
 }
 
 .icono-lapiz{
-  color: white;
-  font-size: 24px;
-  padding: 56px;
+    color: white;
+    font-size: 24px;
+    padding: 56px;
 }
 
 .circulo-foto-perfil:hover .cambiar-foto {
-  opacity: 1;
-  transform: scale(1.05);
+    opacity: 1;
+    transform: scale(1.05);
 }
 
+/* ------------------- ESTILOS DE EDICIÓN DE NOMBRE ------------------- */
+
+/* Contenedor del nombre (display mode) */
+.nombre-usu-display {
+    /* Inicialmente visible. Contiene H1 (NOMBRE) y el lápiz de edición (si lo agregas) */
+    display: flex; 
+    align-items: center;
+    gap: 15px;
+    cursor: pointer;
+    font-size: 60px;
+}
+
+.nombre-usu-display h1 {
+    margin: 0;
+}
+
+/* Campo de edición (edit mode) */
 .campo-nombre-usuario {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  gap: 10px;
+    /* Por defecto, lo controla JS (style="display: none;") */
+    display: flex; 
+    flex-direction: row; 
+    align-items: center;
+    gap: 10px;
 }
 
-.nombre-usuario {
-  padding: 8px;
-  border-radius: 20px;
-  border: 1px solid #999999;
-  background-color: #333;
-  color: white;
-  width: 250px;
-  /* Aumenta el ancho del campo de texto */
-  height: 35px;
-  text-align: center;
+.nombre-usuario-input-style {
+    padding: 8px;
+    border-radius: 20px;
+    border: 1px solid #999999;
+    background-color: #333;
+    color: white;
+    width: 250px;
+    height: 35px;
+    text-align: center;
 }
 
-.guardar-nombre {
-  padding: 8px 15px;
-  border-radius: 20px;
-  border: none;
-  background-color: #333;
-  color: white;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
+.guardar-nombre-btn {
+    padding: 8px 15px;
+    border-radius: 20px;
+    border: none;
+    background-color: #333;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
 }
 
-.guardar-nombre:hover {
-  background-color: #555;
+.guardar-nombre-btn:hover {
+    background-color: #555;
 }
 
-h2.claro {
-  color: #333;
-  transition: all 0.5s ease-in-out;
-}
+/* * Las siguientes reglas fueron eliminadas por ser redundantes, no tener función o apuntar a selectores inexistentes:
+* .nombre-usu
+* .nombre-usu h1
+* .nombre-usuario (Clase genérica, mejor usar .nombre-usuario-input-style)
+* .nombre-usu-display i (No hay un ícono dentro de este div en tu HTML actual)
+* body.claro .elemento-barra-lateral-derecha span 
+* h2.claro
+*/

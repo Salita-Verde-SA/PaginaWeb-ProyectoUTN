@@ -66,11 +66,19 @@
           </div>
         </div>
       </div>
-      <div class="campo-nombre-usuario">
-        <input type="text" value="Nombre de usuario" class="nombre-usuario">
-        <button class="guardar-nombre">Guardar</button>
+
+      <div class="Nombre-perfil-container">
+        <div class="nombre-usu-display">
+          <h1 onclick="mostrarCampoEditName()" id="nombre-usuario-display">NOMBRE </h1>
+        </div>
+
+        <div class="campo-nombre-usuario" id="campo-nombre-usuario" style="display: none;">
+          <input type="text" id="nombre-usuario-input" value="Nuevo Nombre" class="nombre-usuario-input-style">
+          <button class="guardar-nombre-btn" onclick="guardarNombre()">Guardar</button>
+        </div>
       </div>
     </div>
+  </div>
   </div>
 
 
@@ -81,6 +89,7 @@
   <!-- Scripts -->
   <script src="js/header.js"></script>
   <script src="js/footer.js"></script>
+  <script src="js/perfil.js"></script>
 </body>
 
 </html>
