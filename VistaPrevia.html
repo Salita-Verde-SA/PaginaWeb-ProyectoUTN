@@ -15,7 +15,6 @@
   <link rel="stylesheet" href="css/footer.css" />
   <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
 
-
   <!-- Box Icons -->
   <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
   <!-- Font Awesome -->
@@ -30,25 +29,49 @@
 <body>
   <!-- Header -->
   <header id="header"></header>
+  <div id="menu-telefono"></div>
   <script src="js/header.js"></script>
+
+  <!-- Contenedor del evento principal -->
   <div class="contenedor-principal">
-    <!-- Contenedor del evento principal -->
     <div class="detalle-eventos">
-      <img src="img/img-eventos/fiesta.jpg" alt="Evento Wabi" class="banner-eventos" />
-      <div class="descripcion-eventos">
-        <h2>WABI</h2>
-        <div class="lugar">
-          <p><strong>Fecha y hora:</strong> 25 de diciembre de 2024</p>
-          <p><strong>Lugar:</strong> Club Mendoza de Regatas, Mendoza, Argentina</p>
-          <p><strong>Horario:</strong> 22:30</p>
+      <div class="banner-contenedor">
+        <img src="img/img-eventos/fiesta.jpg" alt="Evento Wabi" class="banner-eventos" />
+        <div class="imagen-overlay">
+          <div class="asistentes">
+            <i class="fa-solid fa-users"></i>
+            <span>12</span>
+          </div>
+          <button class="boton-asistir">Asistiré</button>
         </div>
+      </div>
+
+      <div class="descripcion-eventos">
+        <div class="bootones">
+          <button class="boton-accion">
+            Favorito <i class="fa-regular fa-star"></i>
+          </button>
+          <button class="boton-accion">
+            Compartir <i class="fa-solid fa-share-nodes"></i>
+          </button>
+        </div>
+
+        <h1>WABI</h1>
+
+        <div class="info-horario">
+          <p><strong>VIERNES 22, Agosto</strong></p>
+          <p><strong>Horario: 22:05hs</strong></p>
+        </div>
+
         <button class="ubicacion-boton">
-          Ubicación <i class="fa-solid fa-location-dot"></i>
+          <i class="fa-solid fa-location-dot"></i> Ubicación
         </button>
+
         <div class="descripcion">
           <p><strong>Descripción:</strong></p>
-          <p>¡Disfruta de una noche única con los mejores DJs y un espectáculo de luces!</p>
+          <p>Aaksfnaksfk</p>
         </div>
+
         <div class="seleccion-tickets">
           <h3>Seleccione los tickets</h3>
           <div class="opciones-tickets">
@@ -64,29 +87,16 @@
                 <button class="menos">-</button>
                 <span class="valor">0</span>
                 <button class="mas">+</button>
-                
               </div>
             </div>
           </div>
           <button class="agregar-carrito">
-            <i class="boton-icono bi-cart3"></i> Agregar al carrito
+            <i class="fa-solid fa-cart-shopping"></i> Agregar al carrito
           </button>
         </div>
       </div>
     </div>
 
-      <!-- Botones de acción -->
-       <div class="contenedor-botones">
-        <button class="boton-megusta" title="Me gusta">
-         <i id="likeBtn" class="bi bi-heart"></i>
-        </button>
-    <button class="boton-fav" title="Favorito">
-         <i class="bi bi-star"></i>
-        </button>
-        <button class="boton-comp" title="Compartir">
-         <i class="bi bi-share-fill"></i>
-        </button>
-      </div>
 
     <!-- Contenedor de eventos recomendados -->
     <div class="eventos-recomendados">
@@ -94,48 +104,36 @@
       <div class="cuadrícula-eventos">
         <div class="tarjeta-evento">
           <img src="img/img-eventos/image 24.png" alt="Showman" />
-         
         </div>
 
         <div class="tarjeta-evento">
           <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
         </div>
         <div class="tarjeta-evento">
           <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
         </div>
         <div class="tarjeta-evento">
           <img src="img/img-eventos/image 24.png" alt="Showman" />
- 
         </div>
         <div class="tarjeta-evento">
           <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
         </div>
         <div class="tarjeta-evento">
           <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
         </div>
         <div class="tarjeta-evento">
           <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
         </div>
         <div class="tarjeta-evento">
           <img src="img/img-eventos/image 24.png" alt="Showman" />
-          
         </div>
       </div>
     </div>
   </div>
-
-
-
+  </div>
   <footer id="footer"></footer>
   <script src="js/footer.js"></script>
-
-  <script src="js/Interruptor.js"></script>
-  <script> 
+  <script>
     const likeBtn = document.getElementById("likeBtn");
     likeBtn.addEventListener("click", () => {
       // Alterna entre los dos íconos
@@ -145,7 +143,7 @@
 
       likeBtn.classList.toggle("verde");
     });
-    </script>
+  </script>
 </body>
 
 </html>

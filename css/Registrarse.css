@@ -78,6 +78,13 @@ header {
   padding: 15px; /* Espaciado interno */
 }
 
+header .login-btn,
+.register-btn {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
 /* Botón claro en el header */
 header .white-btn {
   background-color: #ffffff88; /* Fondo blanco semitransparente */

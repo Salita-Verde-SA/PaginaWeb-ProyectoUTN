@@ -1,3 +1,21 @@
+
+body {
+    background-color: #121212;
+    color: #ffffff;
+    font-family: "Arial", sans-serif;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+}
+
+
+body.claro {
+  background: #f5f5f5;
+  color: #000000;
+}
+/* --- Reseteo Básico y Estilos Globales --- */
 * {
   margin: 0;
   padding: 0;
@@ -209,13 +227,10 @@ body.claro .boton-megusta:hover {
 /* Contenedor de opciones de tickets */
 /* Contenedor de opciones de tickets */
 .opciones-tickets {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 20px;
-  padding-bottom: 10px;
-  border-bottom: 2px solid #00ff00; 
-  width: 100%; /
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    width: 100%;
 }
 .tipo-ticket select option {
   background-color: var(--color-botones-vp); /* Fondo blanco */
@@ -242,13 +257,14 @@ body.claro .boton-megusta:hover {
   max-width: 200px; /* Opcional: limita el ancho máximo */
 }
 
-/* Contenedor de cantidad */
+/* Selector de cantidad */
 .cantidad-ticket {
-  display: flex;
-  align-items: center;
-  gap: 10px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    color: #dcdcdc;
 }
-/* Contador de cantidad */
+
 .contador {
   display: flex;
   align-items: center;
@@ -268,7 +284,7 @@ body.claro .boton-megusta:hover {
 }
 
 .contador button:hover {
-  background-color: #444;
+    background-color: #444;
 }
 
 .contador .valor {
@@ -280,7 +296,7 @@ body.claro .boton-megusta:hover {
   border-radius: 13px;
 }
 
-/* Botón de agregar al carrito */
+/* Botón de Agregar al Carrito */
 .agregar-carrito {
   background-color: var(--color-botones-vp);
   color: var(--color-letra);
@@ -297,8 +313,25 @@ body.claro .boton-megusta:hover {
 }
 
 .agregar-carrito:hover {
-  background-color: #444;
+    background-color: #1a1a1a;
 }
+
+/* Contenedor principal */
+
+body.claro .contenedor-principal {
+  background-color: #CCCCCCCC;
+  color: #000000cc;
+  transition: all 0.5s ease-in-out;
+}
+
+
+  .verde {
+    color: #00c851;/* Cuando está activado */
+    }
+
+
+
+
 /* Contenedor de eventos recomendados */
 .eventos-recomendados {
   padding: 20px;

@@ -1,52 +1,224 @@
 console.log("header.js");
 console.log("Importando header...");
-fetch("header.html")
-  .then((res) => res.text())
-  .then((data) => {
-    document.getElementById("header").innerHTML = data;
-    document.dispatchEvent(new Event("headerContentLoaded"));
-  });
-console.log("Header importado");
 
-document.addEventListener("headerContentLoaded", async function () {
-  async function obtenerColorDeFoto() {
-    const foto = document.querySelector(".foto-perfil");
-    if (!foto) return;
-    console.log("foto:", foto);
+// Comprobación de los elementos del header, sirve para que no genere errores
+// al tratar de importar un header si ya existe, como en las páginas de inicio
+// de sesión o registro.
+const header = document.querySelector("header");
+console.log(
+  "Evaluando header:",
+  header,
+  "y header.children.length:",
+  header ? header.children.length : "header no existe"
+);
+if (header && header.children.length === 0) {
+  console.warn(
+    "El header no tiene elementos adentro.\n" + "Se cargará dinámicamente."
+  );
+  fetch("header.html")
+    .then((res) => res.text())
+    .then((data) => {
+      document.getElementById("header").innerHTML = data;
+      document.dispatchEvent(new Event("headerContentLoaded"));
+    });
+  console.log("Header importado.");
+} else if (header) {
+  console.warn(
+    "El header ya tiene elementos dentro.\nDebe tratarse de una página de inicio de sesión o relacionada."
+  );
+}
 
-    const canvas = document.createElement("canvas");
-    const ctx = canvas.getContext("2d");
-    canvas.width = foto.naturalWidth || foto.width;
-    canvas.height = foto.naturalHeight || foto.height;
-    ctx.drawImage(foto, 0, 0, canvas.width, canvas.height);
+function checkMenuTelefono() {
+  // Comprobación de la existencia del elemento correspondiente al menu
+  // de hamburguesa que se usaría en teléfono. Ya que en las páginas de inicio
+  // de sesión y registro no está presente genera errores.
+  if (!document.getElementById("menu-telefono")) {
+    console.warn(
+      "El elemento con id 'menu-telefono' no existe, " +
+        "no se usará. \nEs normal que pase en una página de " +
+        "inicio de sesión o relacionada."
+    );
+    document.dispatchEvent(new Event("sinMenuTelefono"));
+  } else {
+    console.log("El elemento con id 'menu-telefono' existe, se usará.");
+    document.addEventListener("headerContentLoaded", function () {
+      console.log("Importando menú de teléfono...");
+      fetch("menu-telefono.html")
+        .then((res) => res.text())
+        .then((data) => {
+          document.getElementById("menu-telefono").innerHTML = data;
+          document.dispatchEvent(new Event("menuTelefonoContentLoaded"));
+        });
+      console.log("Menú de teléfono importado.");
+    });
+  }
+}
 
-    const imageData = ctx.getImageData(0, 0, canvas.width, canvas.height).data;
-    let r = 0,
-      g = 0,
-      b = 0,
-      count = 0;
+document.addEventListener("DOMContentLoaded", function () {
+  console.log("DOMContentLoaded");
+  checkMenuTelefono();
+  document.dispatchEvent(new Event("headerContentLoaded"));
+});
 
-    for (let i = 0; i < imageData.length; i += 4) {
-      r += imageData[i];
-      g += imageData[i + 1];
-      b += imageData[i + 2];
-      count++;
-    }
+// Espera a que el DOM esté completamente cargado antes de ejecutar
+// el script para garantizar que todos los elementos HTML, sobre todo
+// los que se cargan dinámicamente mediante la primera parte del script,
+// estén disponibles y listos para ser manipulados, evitando errores
+// como elementos no encontrados o interacciones prematuras que podrían
+// afectar la experiencia del usuario.
 
-    r = Math.floor(r / count);
-    g = Math.floor(g / count);
-    b = Math.floor(b / count);
-    console.log("r:", r, "g:", g, "b:", b);
+// Esta parte se ejecuta después de que se han cargado los contenidos
+// del header y el menú de teléfono, asegurando que todos los elementos
+// necesarios estén disponibles para su manipulación.
+document.addEventListener("headerContentLoaded", function () {
+  console.log("Script del header iniciado...");
+  // Selecciona el interruptor de modo claro/oscuro
+  const interruptor = document.querySelector(".interruptor input");
+  // Selecciona el ícono del sol
+  const sun = document.querySelector(".bx-sun");
+  // Selecciona el ícono de la luna
+  const moon = document.querySelector(".bx-moon");
+  // Selecciona el elemento body
+  const body = document.body;
+  const header = document.querySelector("header");
+  const footer = document.querySelector("footer");
+  const localidad = document.querySelector(".barra-navegacion-izquierda");
+  const contendorGeneros = document.querySelector(".barra-lateral-izquierda");
+  const contenedorEventos = document.querySelector(".barra-lateral-derecha");
+  const contenedorViewAll = document.querySelector(".contenido-principal");
+  const barrabusqueda = document.querySelector(".barra-busqueda");
 
-    resultado = `#${((1 << 24) + (r << 16) + (g << 8) + b)
-      .toString(16)
-      .slice(1)}`;
-    console.log("resultado:", resultado);
+  // Verifica que todos los elementos necesarios existan antes de continuar
+  if (!interruptor || !sun || !moon || !body || !header) {
+    console.error("No se pudieron encontrar todos los elementos necesarios");
+    return;
   }
 
-  obtenerColorDeFoto().then(() => {
-    document.querySelector(
-      ".foto-perfil"
-    ).style.boxShadow = `0 0 10px ${resultado}`;
+  // EVENTO DE ESCUCHA DEL BOTÓN DE TEMA CLARO/OSCURO
+  // Escucha cambios en el interruptor
+  interruptor.addEventListener("change", () => {
+    // Alterna la clase 'claro' en el body para cambiar el modo
+    body.classList.toggle("claro");
+    header.classList.toggle("claro");
+    footer.classList.toggle("claro");
+
+    if (
+      contendorGeneros != null &&
+      contenedorEventos != null &&
+      contenedorViewAll != null
+    ) {
+      contendorGeneros.classList.toggle("claro");
+      contenedorEventos.classList.toggle("claro");
+      contenedorViewAll.classList.toggle("claro");
+    }
+
+    if (barrabusqueda != null) {
+      barrabusqueda.classList.toggle("claro");
+    }
+    if (localidad != null) {
+      localidad.classList.toggle("claro");
+    }
+    if (interruptor.checked) {
+      // Activa modo claro → gira el sol
+      sun.classList.add("girar");
+      moon.classList.remove("mecer");
+      setTimeout(() => sun.classList.remove("girar"), 1000);
+    } else {
+      // Activa modo oscuro → mece la luna
+      moon.classList.add("mecer");
+      sun.classList.remove("girar");
+      setTimeout(() => moon.classList.remove("mecer"), 1000);
+    }
+
+    // Cambia el estado de los íconos después de un pequeño retraso
+    setTimeout(() => {
+      sun.classList.toggle("oscuro");
+      moon.classList.toggle("oscuro");
+    }, 125);
+  });
+
+  // MENÚ DESPLEGABLE DE USUARIO
+
+  // Ajusta el JavaScript para el menú desplegable
+  const botonCuentaUsuario = document.querySelector(".boton-cuenta-usuario");
+  const menuDesplegable = document.querySelector(".menu-desplegable");
+
+  if (botonCuentaUsuario && menuDesplegable) {
+    console.log("Elementos del menú desplegable encontrados, inicializando...");
+
+    // Muestra u oculta el menú desplegable al hacer clic en la foto de perfil
+    botonCuentaUsuario.addEventListener("click", function (event) {
+      event.stopPropagation(); // Evita que el evento se propague al documento
+      menuDesplegable.style.display =
+        menuDesplegable.style.display === "block" ? "none" : "block";
+    });
+
+    // Oculta el menú desplegable al hacer clic fuera de él
+    document.addEventListener("click", function () {
+      menuDesplegable.style.display = "none";
+    });
+
+    console.log("Menú desplegable inicializado correctamente");
+  } else {
+    console.warn(
+      "No se encontraron todos los elementos necesarios para el menú desplegable. " +
+        "Elementos faltantes: " +
+        (botonCuentaUsuario ? "" : ".boton-cuenta-usuario ") +
+        (menuDesplegable ? "" : ".menu-desplegable")
+    );
+  }
+
+  // MENÚ DE HAMBURGUESA PARA LA VISTA DE TELÉFONO
+
+  function abrirMenuHamburguesa() {
+    document.querySelector(".menu-hamburguesa-contenedor").style.display =
+      "flex";
+    document.body.style.overflow = "hidden";
+  }
+
+  function cerrarMenuHamburguesa() {
+    document.querySelector(".menu-hamburguesa-contenedor").style.display =
+      "none";
+    document.body.style.overflow = "";
+  }
+
+  document.addEventListener("menuTelefonoContentLoaded", function () {
+    if (document.getElementById("menu-telefono")) {
+      document
+        .querySelector(".menu-hamburguesa")
+        .addEventListener("click", abrirMenuHamburguesa);
+      document
+        .querySelector(".cerrar-menu")
+        .addEventListener("click", cerrarMenuHamburguesa);
+
+      // Cerrar el menú hamburguesa al hacer clic fuera de él
+      document
+        .querySelector(".menu-hamburguesa-contenedor")
+        .addEventListener("click", function (e) {
+          if (e.target === this) {
+            cerrarMenuHamburguesa();
+          }
+        });
+
+      // Cerrar el menú hamburguesa al presionar la tecla "Escape"
+      document.addEventListener("keydown", function (e) {
+        if (
+          e.key === "Escape" &&
+          document.querySelector(".menu-hamburguesa-contenedor").style
+            .display === "flex"
+        ) {
+          cerrarMenuHamburguesa();
+        }
+      });
+
+      // Cerrar el menú hamburguesa al hacer clic en un enlace
+      window.addEventListener("resize", function () {
+        if (window.innerWidth > 800) {
+          cerrarMenuHamburguesa();
+        }
+      });
+
+      console.log("Script de menu hamburguesa cargado correctamente");
+    }
   });
 });
