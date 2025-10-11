@@ -27,15 +27,23 @@ function guardarNombre() {
     var inputElement = document.getElementById('nombre-usuario-input');
     var nuevoNombre = inputElement.value.trim();
     
-    // Validación: No permitir guardar un nombre vacío
+    // 1. Validación: No permitir guardar un nombre vacío
     if (nuevoNombre === "") {
         alert("El nombre de usuario no puede estar vacío.");
         return; 
     }
 
-    // 1. Actualiza el nombre visible
+    // 2. VALIDACIÓN AÑADIDA: No permitir nombres mayores a 11 caracteres
+    if (nuevoNombre.length > 11) {
+        alert("El nombre no puede tener más de 11 caracteres.");
+        return; // Detiene la ejecución si falla la validación
+    }
+
+    // Si pasa ambas validaciones, procede a guardar:
+    
+    // 3. Actualiza el nombre visible
     document.getElementById('nombre-usuario-display').innerText = nuevoNombre;
     
-    // 2. Oculta el campo de edición y muestra el display (llamando al toggle)
+    // 4. Oculta el campo de edición y muestra el display (llamando al toggle)
     mostrarCampoEditName();
 }

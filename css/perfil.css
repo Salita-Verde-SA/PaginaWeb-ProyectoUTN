@@ -101,6 +101,7 @@ body.claro .elemento-barra-lateral span {
     flex: 2;
     margin-right: 15px;
     transition: all 0.5s ease-in-out;
+     flex-wrap: wrap; 
 }
 
 body.claro .contenedor-perfil {
@@ -169,7 +170,12 @@ body.claro .contenedor-perfil {
     align-items: center;
     gap: 15px;
     cursor: pointer;
-    font-size: 55px;
+    /* MEJORA CLAVE: Usa clamp(MIN, IDEAL(VW), MAX) para controlar el tamaño de fuente */
+    font-size: clamp(2.5rem, 5vw, 4rem); 
+    /* Permite que el contenedor del nombre ocupe solo el espacio que necesita */
+    flex-shrink: 1; 
+    /* Asegura que el nombre largo se ajuste si es necesario (generalmente no necesario con h1) */
+    
 }
 
 .nombre-usu-display h1 {
