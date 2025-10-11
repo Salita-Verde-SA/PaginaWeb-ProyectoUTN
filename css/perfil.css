@@ -176,7 +176,7 @@ body.claro .contenedor-perfil {
     /* Permite que el contenedor del nombre ocupe solo el espacio que necesita */
     flex-shrink: 1; 
     /* Asegura que el nombre largo se ajuste si es necesario (generalmente no necesario con h1) */
-    
+    margin-bottom: 5px; /* Separación del contador */
 }
 
 .nombre-usu-display h1 {
@@ -232,17 +232,16 @@ body.claro .contenedor-perfil {
     position: absolute; /* Permite posicionarlo con top/right */
     top: 20px;          /* Separación del borde superior */
     right: 20px;        /* Separación del borde derecho */
-    
     /* Estilos visuales */
     padding: 8px 12px;
-    border-radius: 8px;
+    border-radius: 9px;
     border: none;
-    background-color: #333; /* Fondo oscuro */
+    background-color: #333333; /* Fondo oscuro */
     color: white;
     cursor: pointer;
     font-size: 12px;
     z-index: 10; /* Asegura que esté por encima de otros elementos */
-    transition: background-color 0.3s ease;
+    transition: all 0.5s ease-in-out;
 }
 
 .boton-compartir-perfil:hover {
@@ -253,5 +252,32 @@ body.claro .contenedor-perfil {
 body.claro .boton-compartir-perfil {
     background-color: #f5f5f5;
     color: #333;
-    border: 1px solid #333;
+    transition: all 0.5s ease-in-out;
+}
+
+/* Contenedor Perfil */
+
+.Nombre-perfil-container {
+    position: relative;
+    display: flex;
+    flex-direction: column; /* Apila el nombre y el contador */
+    align-items: flex-start; /* Alinea todo el contenido a la izquierda */
+    justify-content: center; /* Centra el contenido si hay espacio extra */
+}
+
+/* ESTILOS PARA EL CONTADOR DE SEGUIDORES */
+#contador-seguidores {
+    margin-top: 1px; /* Pequeña separación del nombre */
+    font-size: 1.2rem;
+    color: #aaaaaa; /* Un color más sutil que el nombre principal */
+    font-weight: normal;
+    /* Asegurar que el texto se reduzca en pantallas pequeñas */
+    font-size: clamp(1rem, 2vw, 1.2rem); 
+    transition: all 0.5s ease-in-out;
+}
+
+/* Ajuste necesario para el modo claro */
+body.claro #contador-seguidores {
+    color: #666; 
+    transition: all 0.5s ease-in-out;
 }
