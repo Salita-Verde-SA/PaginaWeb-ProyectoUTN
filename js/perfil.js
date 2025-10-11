@@ -47,3 +47,31 @@ function guardarNombre() {
     // 4. Oculta el campo de edición y muestra el display (llamando al toggle)
     mostrarCampoEditName();
 }
+
+function compartirPerfil() {
+    const perfilURL = window.location.href; // Obtiene la URL actual del perfil
+    const perfilTitulo = document.title;
+    
+    // 1. Intentar usar la Web Share API (ideal para móvil)
+    if (navigator.share) {
+        navigator.share({
+            title: perfilTitulo,
+            url: perfilURL
+        }).then(() => {
+            console.log('Perfil compartido con éxito.');
+        }).catch((error) => {
+            console.error('Error al compartir:', error);
+        });
+        
+    } else {
+        // 2. Opción de fallback: Copiar al portapapeles
+        navigator.clipboard.writeText(perfilURL)
+            .then(() => {
+                alert('¡Enlace del perfil copiado al portapapeles!');
+            })
+            .catch(err => {
+                console.error('Error al copiar:', err);
+                alert('No se pudo copiar el enlace automáticamente. URL: ' + perfilURL);
+            });
+    }
+}

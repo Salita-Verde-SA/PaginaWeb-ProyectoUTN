@@ -88,6 +88,7 @@ body.claro .elemento-barra-lateral span {
 /* CONTENEDOR PERFIL */
 
 .contenedor-perfil {
+    position: relative;
     background-color: #171717;
     display: flex;
     /* justify-content: space-between; (Se puede quitar si solo tiene un hijo) */
@@ -101,7 +102,7 @@ body.claro .elemento-barra-lateral span {
     flex: 2;
     margin-right: 15px;
     transition: all 0.5s ease-in-out;
-     flex-wrap: wrap; 
+    flex-wrap: wrap; 
 }
 
 body.claro .contenedor-perfil {
@@ -224,3 +225,33 @@ body.claro .contenedor-perfil {
 * body.claro .elemento-barra-lateral-derecha span 
 * h2.claro
 */
+
+/* BOTON COMPARTIR */
+
+.boton-compartir-perfil {
+    position: absolute; /* Permite posicionarlo con top/right */
+    top: 20px;          /* Separación del borde superior */
+    right: 20px;        /* Separación del borde derecho */
+    
+    /* Estilos visuales */
+    padding: 8px 12px;
+    border-radius: 8px;
+    border: none;
+    background-color: #333; /* Fondo oscuro */
+    color: white;
+    cursor: pointer;
+    font-size: 12px;
+    z-index: 10; /* Asegura que esté por encima de otros elementos */
+    transition: background-color 0.3s ease;
+}
+
+.boton-compartir-perfil:hover {
+    background-color: #555;
+}
+
+/* Estilo para el modo claro */
+body.claro .boton-compartir-perfil {
+    background-color: #f5f5f5;
+    color: #333;
+    border: 1px solid #333;
+}
