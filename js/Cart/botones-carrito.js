@@ -22,17 +22,39 @@ botones.forEach(boton => {
     const textoOriginal = boton.querySelector('.contenido-button').textContent.trim().toLowerCase();
     const textoNormalizado = normalizarTexto(textoOriginal);
 
-    ocultarTodasLasSecciones(); // Oculta todas las secciones
+    ocultarTodasLasSecciones();
 
-    // Muestra la sección correspondiente si existe
+    // Quitar clase 'activo' de todos los botones
+    botones.forEach(b => b.classList.remove('activo'));
+
+    // Agregar clase 'activo' al botón actual
+    boton.classList.add('activo');
+
     const seccionActiva = document.getElementById(textoNormalizado);
     if (seccionActiva) {
       seccionActiva.classList.remove('oculto');
 
-      // ✅ Ejecutar resumen si es la sección de confirmación
       if (textoNormalizado === "confirmacion" && typeof mostrarResumenConfirmacion === "function") {
         mostrarResumenConfirmacion();
       }
     }
   });
 });
+
+
+/*DEJA LA SECCION ORDEN POR DEFECTO*/ 
+document.addEventListener("DOMContentLoaded", () => {
+  const seccionOrden = document.getElementById("orden");
+  if (seccionOrden) {
+    seccionOrden.classList.remove("oculto");
+  }
+
+  // Activar visualmente el botón "Orden"
+  const botonOrden = Array.from(document.querySelectorAll(".button")).find(boton =>
+    normalizarTexto(boton.querySelector(".contenido-button").textContent.trim().toLowerCase()) === "orden"
+  );
+  if (botonOrden) {
+    botonOrden.classList.add("activo");
+  }
+});
+

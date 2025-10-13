@@ -55,7 +55,6 @@ body.claro .contenedor-botones {
   flex-direction: column;
   height: 100%;
   padding: 20px 25px;
-  background-color: white;
   overflow-y: auto;
 }
 
@@ -79,6 +78,14 @@ body.claro .contenedor-botones {
   font-size: 20px;
 
 }
+
+.button.activo {
+  background-color: var(--color-botones-activos); /* definí este color en tus variables */
+  color: var(--color-letra);
+  font-weight: bold;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+}
+
 
 /*BOTONES EN CLARO*/
 body.claro .button {
