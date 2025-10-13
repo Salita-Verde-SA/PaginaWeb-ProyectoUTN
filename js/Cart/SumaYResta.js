@@ -1,5 +1,5 @@
 // Manejo seguro de botones de cantidad
-document.querySelectorAll('.menos').forEach(btn => {
+/*document.querySelectorAll('.menos').forEach(btn => {
   btn.addEventListener('click', () => {
     const valorSpan = btn.parentElement.querySelector('.valor');
     if (valorSpan) {

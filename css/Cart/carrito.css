@@ -370,3 +370,28 @@ body.claro .contenedor-pago {
   background-color: #4444;
 }
 
+
+/*CONTENEDOR CONFIRMACION*/
+.contenedor-confirmacion {
+  flex: 1;
+  padding: 30px;
+  background-color: var(--color-contenedor);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+body.claro .contenedor-confirmacion {
+  background-color: var(--fondo-blanco-contenedor);
+  color: var(--fondo-blanco-color);
+}
+
+#resumen-confirmacion {
+  background-color: #4444;
+  padding: 20px;
+  border-radius: 20px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+

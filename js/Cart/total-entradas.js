@@ -1,4 +1,4 @@
-function actualizarTotal() {
+/*function actualizarTotal() {
   let total = 0;
   let cantidadTotal = 0;
   let tipos = [];

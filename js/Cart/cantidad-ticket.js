@@ -74,6 +74,25 @@ document.addEventListener("DOMContentLoaded", function () {
         maximumFractionDigits: 2
       })}`;
     }
+    const resumenCompra = {
+      entradas: [],
+      total: total
+    };
+
+    Object.entries(eventos).forEach(([evento, entradas]) => {
+      entradas.forEach(e => {
+        resumenCompra.entradas.push({
+          evento,
+          tipo: e.tipo,
+          cantidad: e.cantidad,
+          precio: e.subtotal / e.cantidad
+        });
+      });
+    });
+
+    // Guardar en localStorage
+    localStorage.setItem("resumenCompra", JSON.stringify(resumenCompra));
+
   }
 
   // Activar botones de todos los contadores
