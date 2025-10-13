@@ -14,8 +14,8 @@
 
   <title>Fua | Registrarse</title>
   <!--Titulo que va a figurar en la pestaña-->
-  <link rel="stylesheet" href="css/Registrarse.css" />
-  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/Login-and-Register/Registrarse.css" />
+  <link rel="stylesheet" href="css/Footer/footer.css" />
 
   <!-- Box Icons -->
   <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
@@ -27,7 +27,7 @@
 
 <body>
   <div class="fondo">
-    <header class="header">
+    <header>
       <div class="tema-claro-oscuro-header">
         <i class="bx bx-moon"></i>
         <label class="interruptor" id="toggle">
@@ -39,8 +39,8 @@
 
       <div class="inicio-cuenta-header">
         <a href="iniciar2.0.html"><img class="logo-inicio-header" src="img/paletaenverde.png" alt="Logo paleta" /></a>
-        <a href="IniciarSesion.html"><button class="dark-btn">Iniciar sesión</button></a>
-        <a href="Registrarse.html"><button class="white-btn">Registrarse</button></a>
+        <a href="IniciarSesion.html"><button class="login-btn dark-btn">Iniciar sesión</button></a>
+        <a href="Registrarse.html"><button class="register-btn white-btn">Registrarse</button></a>
       </div>
     </header>
     <div class="inicio">
@@ -58,21 +58,16 @@
         <a href="./IniciarSesion.html">Ya tengo cuenta</a>
 
         <a href="./iniciar2-0.html"><button>Crear cuenta</button></a>
-
       </div>
     </div>
   </div>
-  <footer id="footer"></footer>
-  <script src="js/footer.js"></script>
 
-  <!-- Script para que funcione el giro -->
-  <!-- No borren este script incrustado, si no, no anda el tema claro -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      document.dispatchEvent(new Event("headerContentLoaded"));
-    });
-  </script>
-  <script src="js/Interruptor.js"></script>
+
+  <footer id="footer"></footer>
+  <script src="js/Footer/footer.js"></script>
+  <script src="js/Header/header.js"></script>
+
+
 </body>
 
 </html>

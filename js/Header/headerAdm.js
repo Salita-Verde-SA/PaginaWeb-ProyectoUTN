@@ -1,6 +1,6 @@
-console.log("header.js");
+console.log("headerAdm.js");
 console.log("Importando header...");
-fetch("header.html")
+fetch("headerAdm.html")
   .then((res) => res.text())
   .then((data) => {
     document.getElementById("header").innerHTML = data;

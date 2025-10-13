@@ -13,6 +13,9 @@
 .Amigos-que-asistiran img {
   width: 38px;
   height: 38px;
+  min-width: 38px;  /* CRÍTICO: Fija el ancho mínimo */
+  min-height: 38px; /* CRÍTICO: Fija la altura mínima */
+  flex-shrink: 0;   /* CRÍTICO: Impide que Flexbox encoja el elemento */
   border-radius: 50%;
   object-fit: cover;
   margin-left: -10px; /* Superposición de 10px */
@@ -35,6 +38,9 @@ body.claro .Amigos-que-asistiran img {
 .circulo-amigos-adicionales {
   width: 38px;
   height: 38px;
+  min-width: 38px;  /* CRÍTICO: Fija el ancho mínimo */
+  min-height: 38px; /* CRÍTICO: Fija la altura mínima */
+  flex-shrink: 0;   /* CRÍTICO: Impide que Flexbox encoja el elemento */
   border-radius: 50%;
   border: 3px solid #171717; /* Borde blanco */
   background-color: #333;

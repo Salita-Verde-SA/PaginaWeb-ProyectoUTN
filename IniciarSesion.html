@@ -14,8 +14,8 @@
 
   <title>Fua | Iniciar Sesion</title>
   <!--Titulo que va a figurar en la pestaña-->
-  <link rel="stylesheet" href="css/IniciarSesion.css" />
-  <link rel="stylesheet" href="css/footer.css" />
+  <link rel="stylesheet" href="css/Login-and-Register/IniciarSesion.css" />
+  <link rel="stylesheet" href="css/Footer/footer.css" />
 
   <!-- Box Icons -->
   <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
@@ -27,7 +27,7 @@
 
 <body>
   <div class="fondo">
-    <header class="header">
+    <header>
       <div class="tema-claro-oscuro-header">
         <i class="bx bx-moon"></i>
         <label class="interruptor" id="toggle">
@@ -38,9 +38,9 @@
       </div>
 
       <div class="inicio-cuenta-header">
-        <a href="iniciar2.0.html"><img class="logo-inicio-header" src="img/paletaenverde.png" alt="Logo paleta" /></a>
-        <a href="IniciarSesion.html"><button class="white-btn">Iniciar sesión</button></a>
-        <a href="Registrarse.html"><button class="dark-btn">Registrarse</button></a>
+        <a href="iniciar2-0.html"><img class="logo-inicio-header" src="img/paletaenverde.png" alt="Logo paleta" /></a>
+        <a href="IniciarSesion.html"><button class="login-btn white-btn">Iniciar sesión</button></a>
+        <a href="Registrarse.html"><button class="register-btn dark-btn">Registrarse</button></a>
       </div>
     </header>
     <div class="inicio">
@@ -50,21 +50,13 @@
         <input class="input input-email" type="email" placeholder="Correo electrónico" />
         <input class="input input-contraseña" type="password" placeholder="Contraseña" />
         <a href="./RecuperarCuenta.html">Olvidé mi contraseña</a>
-        <button>Iniciar sesión</button>
+        <a href="iniciar2-0.html"><button>Iniciar sesión</button></a>
       </div>
     </div>
   </div>
   <footer id="footer"></footer>
-  <script src="js/footer.js"></script>
-
-  <!-- Script para que funcione el giro -->
-  <!-- No borren este script incrustado, si no, no anda el tema claro -->
-  <script>
-    document.addEventListener("DOMContentLoaded", function () {
-      document.dispatchEvent(new Event("headerContentLoaded"));
-    });
-  </script>
-  <script src="js/Interruptor.js"></script>
+  <script src="js/Footer/footer.js"></script>
+  <script src="js/Header/header.js"></script>
 </body>
 
 </html>
