@@ -172,7 +172,7 @@ body.claro .contenedor-perfil {
     gap: 15px;
     cursor: pointer;
     /* MEJORA CLAVE: Usa clamp(MIN, IDEAL(VW), MAX) para controlar el tamaño de fuente */
-    font-size: clamp(2.5rem, 5vw, 4rem); 
+    font-size: clamp(1.5rem, 5vw, 4rem); 
     /* Permite que el contenedor del nombre ocupe solo el espacio que necesita */
     flex-shrink: 1; 
     /* Asegura que el nombre largo se ajuste si es necesario (generalmente no necesario con h1) */
@@ -280,4 +280,35 @@ body.claro .boton-compartir-perfil {
 body.claro #contador-seguidores {
     color: #666; 
     transition: all 0.5s ease-in-out;
+}
+
+
+/* ESTILOS PARA PANTALLA CHICA (TABLET/MÓVIL) */
+@media (max-width: 992px) {
+
+  /* 1. Cambiamos el contenedor principal a un diseño de columna */
+  .contenedor-principal-fondo {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center;    /* Centra los hijos (perfil y favoritos) */
+    margin: 10px;           /* Reducimos el margen en pantallas chicas */
+  }
+
+  /* 2. Hacemos que la barra de favoritos ocupe todo el ancho y la mandamos abajo */
+  .barra-lateral-izquierda {
+    position: static;       /* Quitamos el 'sticky' para que fluya con el resto */
+    width: 100%;            /* Ocupa todo el ancho disponible */
+    max-width: 700px;       /* Un ancho máximo para que no se vea mal en tablets */
+    order: 2;               /* MUY IMPORTANTE: La mandamos al final */
+    max-height: none;       /* Quitamos la altura máxima y el scroll interno */
+    margin-top: 25px;       /* Añadimos un espacio arriba para separarla del perfil */
+    top: auto;              /* Reseteamos la posición 'top' */
+  }
+
+  /* 3. Ajustamos el contenedor del perfil para que sea flexible y lo ponemos arriba */
+  .contenedor-perfil {
+    width: 100%;            /* Ocupa todo el ancho disponible */
+    max-width: 700px;       /* Mantenemos la consistencia del ancho máximo */
+    order: 1;               /* MUY IMPORTANTE: Lo ponemos primero */
+    margin-right: 0;        /* Eliminamos el margen derecho que ya no es necesario */
+  }
 }
