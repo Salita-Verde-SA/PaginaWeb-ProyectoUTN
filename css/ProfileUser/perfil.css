@@ -48,6 +48,7 @@ body.claro {
     /* background-color: none; se eliminó la propiedad con valor 'none' */
     border-radius: 10px;
     padding: 15px;
+    min-width: 220px; /* Ancho mínimo para que no se deforme el texto */
     position: sticky;
     top: 70px;
     align-self: flex-start;
@@ -100,6 +101,7 @@ body.claro .elemento-barra-lateral span {
     padding: 50px;
     border-radius: 20px;
     flex: 2;
+    margin-left: 0px;
     margin-right: 15px;
     transition: all 0.5s ease-in-out;
     flex-wrap: wrap; 
