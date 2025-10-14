@@ -1,0 +1,127 @@
+/* --------- ESTILOS GLOBALES --------- */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Arial", sans-serif;
+}
+
+body {
+  background-color: #121212;
+  color: #ffffff;
+  min-height: 100vh;
+  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
+  margin: 0;
+  padding: 0;
+  width: 100%;
+}
+
+body.claro {
+  background: #f5f5f5;
+  color: #333333;
+  transition: all 0.5s ease-in-out;
+}
+
+#footer {
+  width: 100%;
+}
+
+/* --------- CONTENEDOR PRINCIPAL CON FONDOS --------- */
+
+.contenedor-principal-fondo {
+  flex-direction: column;
+  display: flex;
+  padding: 0px 20px 25px 20px;
+  gap: 20px;
+  border-radius: 15px;
+  margin: 20px;
+  width: 100%;
+  flex: 1;
+  align-items: center;
+  text-align: center;
+  
+}
+
+.barra-opciones-cuenta h3 {
+  justify-content: left;
+}
+
+span {
+  transition: all 0.5s ease-in-out;
+}
+
+i {
+  color: #ffffff;
+  transition: all 0.5s ease-in-out;
+}
+
+/* --------- BARRA CENTRAL CUENTA --------- */
+
+.barra-opciones-cuenta {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 15px 0px 15px 0px;
+  position: sticky;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  transition: all 0.5s ease-in-out;
+  background-color: #333333;
+}
+
+/* --------- BARRA CENTRAL SEG Y PRIV --------- */
+
+.barra-opciones-correoRecup {
+  width: 450px;
+  display: flex;
+  flex-direction: column;
+  border-radius: 10px;
+  padding: 15px 0px 15px 0px;
+  position: sticky;
+  max-height: calc(100vh - 80px);
+  overflow-y: auto;
+  background-color: #333333;
+  transition: all 0.5s ease-in-out;
+}
+
+/* --------- ELEMENTOS DE LAS BARRAS --------- */
+
+.elemento-barra-lateral {
+  padding: 15px;
+  display: flex;
+  color: #ffffff;
+  text-decoration: none;
+  justify-content: space-between;
+  /* Asegura que los elementos se distribuyan a los lados */
+  align-items: center;
+  /* Centra los elementos verticalmente */ 
+  transition: color 0.5s ease-in-out;
+}
+
+.elemento-barra-lateral:hover {
+  background-color: #282828;
+  border-radius: 5px;
+}
+
+/* WHITE MODE CONTENEDORES */
+
+body.claro .barra-opciones-cuenta,
+body.claro .barra-opciones-correoRecup {
+  background-color: #cccccccc;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .elemento-barra-lateral:hover {
+  background-color: #abaaaacc;
+}
+
+body.claro i {
+  color: #333333;
+  transition: all 0.5s ease-in-out;
+}
+
+body.claro .elemento-barra-lateral span {
+  color: #333333;
+  transition: all 0.5s ease-in-out;
+}
