@@ -196,11 +196,34 @@
         </div>
       </section>
 
-    
+      <!-- SECCION ENVÍO -->
+
       <section id="envio" class="seccion oculto">
-        <div class="contenedor-dinamico">Opciones de envío</div>
+        <div class="contenedor-envio">
+          <h2 class="titulo-envio">Datos de Envío de Entradas</h2>
+        
+          <form id="form-envio">
+            <!-- Correo principal -->
+            <div class="campo">
+              <label for="correo-principal">Tu correo electrónico (recibirás el comprobante y entradas propias):</label>
+              <input type="email" id="correo-principal" name="correo-principal" required>
+            </div>
+          
+            <!-- Tarjetas de entradas con opción de regalo -->
+            <div id="tarjetas-entradas" class="campo">
+              <!-- Se generan dinámicamente -->
+            </div>
+          
+            <button type="submit" class="button-enviar">Continuar</button>
+          </form>
+        </div>
       </section>
-    
+
+
+
+
+      <!-- SECCION CONFIRMACION -->
+
       <section id="confirmacion" class="seccion oculto">
         <div class="contenedor-confirmacion">
           <h2>Revisión final</h2>

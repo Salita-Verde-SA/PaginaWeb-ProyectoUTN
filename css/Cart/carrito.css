@@ -377,6 +377,165 @@ body.claro .contenedor-pago {
   background-color: #4444;
 }
 
+/* CONTENEDOR ENVÍO */
+.contenedor-envio {
+  flex: 1;
+  padding: 30px;
+  background-color: var(--color-contenedor);
+  border-radius: 30px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+  overflow-y: auto;
+}
+
+body.claro .contenedor-envio {
+  background-color: var(--fondo-blanco-contenedor);
+  color: var(--fondo-blanco-color);
+}
+
+/* TÍTULO */
+.titulo-envio {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+/* FORMULARIO DE ENVÍO */
+#form-envio {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+/* CAMPOS DEL FORMULARIO */
+.campo {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.campo label {
+  font-weight: bold;
+  font-size: 16px;
+}
+
+.campo input,
+.campo textarea {
+  padding: 10px;
+  border-radius: 10px;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  background-color: var(--color-botones-carrito);
+  color: var(--color-letra);
+  resize: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body.claro .campo input,
+body.claro .campo textarea {
+  background-color: var(--fondo-blanco);
+  color: var(--fondo-blanco-color);
+}
+
+/* TARJETAS DE ENTRADA */
+.tarjeta-regalo {
+  border: 2px solid #777;
+  border-radius: 15px;
+  padding: 15px;
+  margin-bottom: 15px;
+  background-color: var(--color-contenedor);
+  transition: all 0.3s ease-in-out;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+body.claro .tarjeta-regalo {
+  background-color: #ccc;
+  color: var(--fondo-blanco-color);
+  border-color: #000;
+}
+
+/* BOTÓN DE REGALO COMPACTO CON ÍCONO */
+.boton-regalo {
+  background-color: #6efd0f;
+  color: #000;
+  border: none;
+  padding: 10px;
+  border-radius: 50%;
+  cursor: pointer;
+  font-size: 18px;
+  width: 42px;
+  height: 42px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: background-color 0.3s ease;
+}
+
+.boton-regalo i {
+  font-size: 20px;
+}
+
+.boton-regalo.activo {
+  background-color: #f33;
+  color: #000;
+}
+
+
+/* CAMPOS EXTRA AL REGALAR */
+.campos-extra {
+  margin-top: 10px;
+  padding-left: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  transition: all 0.3s ease-in-out;
+}
+
+.campos-extra label {
+  font-weight: bold;
+  font-size: 15px;
+}
+
+.campos-extra input,
+.campos-extra textarea {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+body.claro .campos-extra input,
+body.claro .campos-extra textarea {
+  background-color: var(--fondo-blanco);
+  color: var(--fondo-blanco-color);
+  border-color: #111;
+}
+
+/* BOTÓN DE CONTINUAR */
+.button-enviar {
+  background-color: var(--color-botones-carrito);
+  color: var(--color-letra);
+  border: none;
+  border-radius: 10px;
+  padding: 12px 20px;
+  font-size: 18px;
+  cursor: pointer;
+  align-self: flex-start;
+  transition: background-color 0.3s ease;
+}
+
+.button-enviar:hover {
+  background-color: #4444;
+}
+
+/* OCULTAR ELEMENTOS */
+.oculto {
+  display: none;
+}
+
+
 
 /*CONTENEDOR CONFIRMACION*/
 .contenedor-confirmacion {
