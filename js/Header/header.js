@@ -27,7 +27,36 @@ if (header && header.children.length === 0) {
     "El header ya tiene elementos dentro.\nDebe tratarse de una página de inicio de sesión o relacionada."
   );
 }
+// --- LÓGICA PARA EL PANEL DE NOTIFICACIONES ---
 
+// Se ejecuta después de que el contenido del header (incluido el panel) se haya cargado
+document.addEventListener('headerContentLoaded', function () {
+  const bellIcon = document.getElementById('bell-icon');
+  const notificationPanel = document.getElementById('notification-panel');
+
+  if (bellIcon && notificationPanel) {
+    console.log("Elementos de notificación encontrados. Inicializando...");
+
+    bellIcon.addEventListener('click', function (event) {
+      // Detiene la propagación para que el clic no cierre el panel inmediatamente
+      event.stopPropagation();
+      
+      // Muestra u oculta el panel
+      const isVisible = notificationPanel.style.display === 'block';
+      notificationPanel.style.display = isVisible ? 'none' : 'block';
+    });
+
+    // Cierra el panel si se hace clic en cualquier otro lugar de la página
+    document.addEventListener('click', function (event) {
+      if (notificationPanel.style.display === 'block' && !notificationPanel.contains(event.target)) {
+        notificationPanel.style.display = 'none';
+      }
+    });
+
+  } else {
+    console.warn("No se encontraron los elementos para el panel de notificaciones.");
+  }
+});
 function checkMenuTelefono() {
   // Comprobación de la existencia del elemento correspondiente al menu
   // de hamburguesa que se usaría en teléfono. Ya que en las páginas de inicio

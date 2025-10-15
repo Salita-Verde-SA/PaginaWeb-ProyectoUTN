@@ -348,3 +348,19 @@ td img {
   }
 }
 
+/* Mejoras en los botones del menú de admin */
+.Menu .button {
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent; /* Borde izquierdo para indicar estado activo */
+}
+
+.Menu .button:hover {
+  background-color: rgba(255, 255, 255, 0.05);
+  border-left: 3px solid #555;
+}
+
+.Menu .button.active {
+  background-color: #333;
+  border-left: 3px solid #00c851; /* Verde para la pestaña activa */
+  font-weight: 700;
+}

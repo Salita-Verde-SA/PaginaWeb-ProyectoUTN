@@ -265,9 +265,18 @@ body.claro .resumen-factura {
   margin-bottom: 8px;
 }
 
-.resumen-factura .tipo-entrada {
+/* Mejoras en los botones de navegación del carrito */
+.nav-buttons .button {
+  transition: all 0.3s ease;
+  border-bottom: 3px solid transparent;
+  border-radius: 10px; /* Bordes menos pronunciados */
 }
 
+.nav-buttons .button.activo {
+  background-color: var(--color-botones-activos);
+  border-bottom: 3px solid #00c853; /* Indicador verde abajo */
+  color: #fff;
+}
 .resumen-factura .cantidad-entrada,
 .resumen-factura .subtotal-entrada {
   border: none;
@@ -559,5 +568,70 @@ body.claro .contenedor-confirmacion {
   padding: 20px;
   border-radius: 20px;
   box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+/* --- ESTILOS PARA RESPONSIVIDAD DEL CARRITO --- */
+
+/* Para tablets y dispositivos medianos (hasta 992px) */
+@media (max-width: 992px) {
+  .contenedor-principal {
+    flex-direction: column; /* Apila los elementos verticalmente */
+    align-items: center; /* Centra los contenedores */
+  }
+
+  .contenedor-botones {
+    width: 100%;
+    max-width: 600px; /* Un ancho máximo para mantener la consistencia */
+    margin: 20px 0 0 0;
+    order: 1; /* El menú de botones va primero */
+  }
+
+  .seccion {
+    width: 100%;
+    max-width: 600px;
+    order: 2; /* Las secciones del carrito van después */
+    padding: 20px 15px;
+  }
+
+  .name-event {
+    font-size: 32px; /* Reducimos un poco el tamaño del título */
+  }
+}
+
+/* Para teléfonos móviles (hasta 600px) */
+@media (max-width: 600px) {
+  .tarjeta-evento {
+    flex-direction: column; /* La imagen se apila sobre la información */
+    align-items: center;
+    text-align: center;
+  }
+
+  .img-event {
+    width: 50%; /* La imagen ocupa más ancho */
+    margin: 5px 0 15px 0;
+  }
+
+  .description-event, .name-event {
+    text-align: center; /* Centramos todo el texto */
+  }
+  
+  .name-event {
+    font-size: 24px;
+    margin-bottom: 15px;
+  }
+
+  .opciones-tickets {
+    flex-direction: column; /* Apilamos tipo de ticket y cantidad */
+    align-items: flex-start;
+    gap: 10px;
+    margin: 15px 5px;
+  }
+  
+  .seleccion-tickets {
+    font-size: 20px;
+  }
+  
+  .button {
+      font-size: 18px;
+  }
 }
 

@@ -378,14 +378,22 @@ body.claro .tarjeta-recomendado .informacion {
   margin-left: 5%;
 }
 
-@media (max-width: 768px) {
-  .elemento-barra-lateral span,
-  .elemento-barra-lateral-derecha span {
-    display: none; /* Oculta el texto en pantallas pequeñas */
+/* --------- MEDIA QUERIES PARA LA PANTALLA PRINCIPAL --------- */
+
+@media (max-width: 992px) {
+  .contenedor-principal-fondo {
+    flex-direction: column; /* Apila las columnas */
+    margin: 10px;
   }
 
   .barra-lateral-izquierda,
   .barra-lateral-derecha {
-    width: auto; /* Ajusta el ancho de la barra lateral derecha y la izquierda */
+    width: 100%;
+    position: static; 
+    max-height: none; 
+    order: 2; 
+
+  .contenido-principal {
+    order: 1;
   }
-}
+}}

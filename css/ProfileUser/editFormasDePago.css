@@ -103,6 +103,38 @@ i {
   background-color: #282828;
   border-radius: 5px;
 }
+.elemento-barra-lateral.editable {
+  align-items: center;
+}
+.elemento-barra-lateral input {
+  background: transparent;
+  border: none;
+  color: #ccc;
+  text-align: right;
+  font-size: 1em;
+  pointer-events: none; /* No se puede hacer clic por defecto */
+}
+.elemento-barra-lateral input:focus {
+  outline: none;
+  border-bottom: 1px solid #00c851;
+  pointer-events: auto; /* Se puede editar al hacer clic en el lápiz */
+}
+.edit-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  cursor: pointer;
+}
+.guardar-cambios-btn {
+  background-color: #00c853;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 10px;
+  cursor: pointer;
+  margin-top: 20px;
+  align-self: center;
+}
 
 /* WHITE MODE CONTENEDORES */
 
