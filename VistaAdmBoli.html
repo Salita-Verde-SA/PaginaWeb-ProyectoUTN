@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Panel de Boliche - Nombre del Boliche</title>
+
+    <link rel="icon" type="image/png" href="img/paletaenverde.png" />
+
+    <link rel="stylesheet" href="css/AdminDeveloper/VistaAdmBoli.css">
+    <link rel="stylesheet" href="css/variables-globales.css">
+    <link rel="stylesheet" href="css/Header/headerAdminDeveloper.css" />
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
+
+</head>
+
+<body>
+    <header id="header"></header>
+
+    <div class="panel-principal">
+        <div class="menu-lateral">
+            <div class="perfil-boliche">
+                <img src="img/Lugares/Nikki%20Club.jpg" alt="Logo del Boliche">
+                <h3>Nikki Club</h3>
+                <p>Mendoza, Argentina</p>
+            </div>
+            <nav class="navegacion-admin">
+                <a href="#estadisticas" class="nav-link active" data-section="estadisticas">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Estadísticas</span>
+                </a>
+                <a href="#eventos" class="nav-link" data-section="eventos">
+                    <i class="fas fa-calendar-alt"></i>
+                    <span>Gestionar Eventos</span>
+                </a>
+                <a href="#configuracion" class="nav-link" data-section="configuracion">
+                    <i class="fas fa-cog"></i>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+            <div class="footer-menu">
+                <a href="iniciar2-0.html" class="volver-al-sitio">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Volver al Sitio</span>
+                </a>
+            </div>
+        </div>
+
+        <div class="contenido-admin">
+            <section id="estadisticas" class="seccion active">
+                <div class="encabezado-seccion">
+                    <h1><i class="fas fa-chart-line"></i> Resumen de Estadísticas</h1>
+                    <select class="filtro-tiempo">
+                        <option>Últimos 30 días</option>
+                        <option>Últimos 3 meses</option>
+                        <option>Todo el año</option>
+                    </select>
+                </div>
+                <div class="grid-estadisticas">
+                    <div class="tarjeta-estadistica">
+                        <div class="icono-tarjeta" style="background-color: #2a9d8f;">
+                            <i class="fas fa-ticket-alt"></i>
+                        </div>
+                        <div class="info-tarjeta">
+                            <span class="valor">1,250</span>
+                            <span class="descripcion">Tickets Vendidos</span>
+                        </div>
+                    </div>
+                    <div class="tarjeta-estadistica">
+                        <div class="icono-tarjeta" style="background-color: #e76f51;">
+                            <i class="fas fa-dollar-sign"></i>
+                        </div>
+                        <div class="info-tarjeta">
+                            <span class="valor">$ 5,800,000</span>
+                            <span class="descripcion">Ingresos Generados</span>
+                        </div>
+                    </div>
+                    <div class="tarjeta-estadistica">
+                        <div class="icono-tarjeta" style="background-color: #f4a261;">
+                            <i class="fas fa-users"></i>
+                        </div>
+                        <div class="info-tarjeta">
+                            <span class="valor">85%</span>
+                            <span class="descripcion">Ocupación Promedio</span>
+                        </div>
+                    </div>
+                </div>
+                <div class="grafico-container">
+                    <h2><i class="fas fa-chart-bar"></i> Rendimiento de Ventas</h2>
+                    <img src="https://i.imgur.com/4lQ3NXF.png" alt="Gráfico de ventas" style="width:100%; max-width:600px; margin-top: 15px;">
+                </div>
+            </section>
+
+            <section id="eventos" class="seccion">
+                <div class="encabezado-seccion">
+                    <h1><i class="fas fa-calendar-alt"></i> Tus Eventos</h1>
+                    <button class="boton-primario"><i class="fas fa-plus"></i> Crear Nuevo Evento</button>
+                </div>
+                <div class="tabla-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Evento</th>
+                                <th>Fecha</th>
+                                <th>Tickets Vendidos</th>
+                                <th>Ingresos</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Fiesta Electrónica Vol. 5</td>
+                                <td>18 Oct, 2025</td>
+                                <td>350 / 400</td>
+                                <td>$ 1,750,000</td>
+                                <td class="acciones">
+                                    <button class="boton-editar"><i class="fas fa-pencil-alt"></i></button>
+                                    <button class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>Noche de Reggaetón Clásico</td>
+                                <td>25 Oct, 2025</td>
+                                <td>280 / 350</td>
+                                <td>$ 1,120,000</td>
+                                <td class="acciones">
+                                    <button class="boton-editar"><i class="fas fa-pencil-alt"></i></button>
+                                    <button class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                             <tr>
+                                <td>After Office Live Session</td>
+                                <td>31 Oct, 2025</td>
+                                <td>150 / 200</td>
+                                <td>$ 900,000</td>
+                                <td class="acciones">
+                                    <button class="boton-editar"><i class="fas fa-pencil-alt"></i></button>
+                                    <button class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="configuracion" class="seccion">
+                 <div class="encabezado-seccion">
+                    <h1><i class="fas fa-cog"></i> Configuración de la Cuenta</h1>
+                </div>
+                <p style="text-align: center; margin-top: 20px;">Próximamente... ✨</p>
+            </section>
+        </div>
+    </div>
+
+    <script src="js/Header/headerAdm.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.seccion');
+
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+
+                    // Gestionar clase 'active' en los links
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+
+                    // Mostrar la sección correspondiente
+                    const sectionId = link.getAttribute('data-section');
+                    sections.forEach(s => s.classList.remove('active'));
+                    document.getElementById(sectionId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>

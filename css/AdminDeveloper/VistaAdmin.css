@@ -1,366 +1,164 @@
-/* --- VARIABLES GLOBALES Y ESTILOS BASE --- */
+/* --- ESTILOS PARA EL NUEVO PANEL DE ADMIN GENERAL --- */
+
 :root {
-  /* Paleta de colores para el modo oscuro */
-  --color-fondo: #121212; /* Color de fondo general de la página */
-  --color-contenedor: #1e1e1e; /* Color de fondo para las cajas o paneles */
-  --color-letra: #e0e0e0; /* Color del texto principal */
-  --borde-contenedor: 15px; /* Variable para el radio de los bordes (no se usa actualmente) */
-  --color-verde: #00c851; /* Color verde para acentos o botones */
-  /* Paleta de colores para el modo claro */
-  --fondo-blanco: #f5f5f5;
-  --fondo-blanco-contenedor: #ffffff;
-  --fondo-blanco-color: #121212;
-
-  /* Tipografía y colores de acento */
-  --tipografia-general: "Arial", sans-serif; /* Fuente principal */
-  --color-acento: #ffffff; /* Color de acento para botones en modo oscuro (blanco) */
-  --color-acento-claro: #1e1e1e; /* Color de acento para botones en modo claro (gris oscuro) */
-  --color--border: #333333; /* Color para los bordes */
+  --color-fondo-panel: #1e1e1e;
+  --color-contenedor-panel: #2c2c2c;
+  --color-borde: #444;
+  --color-primario: #00c851;
+  --texto-principal: #e0e0e0;
+  --texto-secundario: #aaa;
 }
 
-/* Selector universal para resetear estilos */
-* {
-  margin: 0; /* Elimina todos los márgenes por defecto */
-  padding: 0; /* Elimina todos los rellenos por defecto */
-  box-sizing: border-box; /* Asegura que el padding y borde se incluyan en el tamaño total del elemento */
-  font-family: var(--tipografia-general); /* Aplica la fuente general a todos los elementos */
-}
-
-/* Estilos base para el cuerpo de la página */
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica,
-    Arial, sans-serif; /* Fuentes de sistema para mejor compatibilidad */
-  background-color: var(--color-fondo); /* Aplica el color de fondo oscuro */
-  color: var(--color-letra); /* Aplica el color de letra claro */
-  line-height: 1.6; /* Espaciado entre líneas para mejor legibilidad */
+  background-color: var(--color-fondo-panel);
+  color: var(--texto-principal);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  line-height: 1.6;
 }
 
-/* Estilos para el modo claro */
-body.claro {
-  background: var(--fondo-blanco); /* Cambia el fondo a claro */
-  color: var(--fondo-blanco-color); /* Cambia el texto a oscuro */
-  transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out; /* Transición suave al cambiar de modo */
-}
-
-
-/* --- ESTRUCTURA PRINCIPAL (LAYOUT) --- */
+/* --- ESTRUCTURA PRINCIPAL --- */
 .panel-principal {
-  width: 100%;
-  display: flex; /* Activa Flexbox para alinear el menú y el contenido */
-  align-items: flex-start; /* Alinea los elementos hijos al inicio del eje transversal */
-  gap: 2rem; /* Espacio entre el menú y el contenido */
-  padding: 2rem; /* Relleno alrededor del panel */
-}
-
-.contenedor-admin {
-  flex-grow: 1; /* Hace que el contenedor principal ocupe todo el espacio disponible */
-  max-width: 1200px; /* Ancho máximo para el contenido */
-  margin: 0;
-  padding: 2rem;
-  background-color: var(--color-contenedor); /* Color de fondo del panel */
-  border-radius: 12px; /* Esquinas redondeadas */
-  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5); /* Sombra para dar profundidad */
-}
-
-
-/* --- ESTILOS PARA EL MENÚ LATERAL --- */
-.Menu {
   display: flex;
-  flex-direction: column; /* Apila los botones del menú verticalmente */
-  gap: 1rem; /* Espacio entre los botones */
-  width: 260px; /* Ancho fijo para el menú */
-  background-color: var(--color-contenedor);
+  gap: 2rem;
   padding: 1.5rem;
+  min-height: calc(100vh - 70px);
+}
+
+/* --- MENÚ LATERAL --- */
+.menu-lateral {
+  width: 260px;
+  background-color: var(--color-contenedor-panel);
   border-radius: 12px;
-  flex-shrink: 0; /* Evita que el menú se encoja si no hay espacio */
-}
-
-.Menu .button {
+  padding: 1.5rem;
   display: flex;
-  justify-content: space-between; /* Espacia el texto y la flecha */
-  align-items: center; /* Centra verticalmente los elementos del botón */
-  width: 100%;
-  padding: 1rem 1.2rem;
-  background-color: transparent; /* Fondo transparente por defecto */
-  border: none; /* Sin borde */
-  border-radius: 10px;
-  color: var(--color-letra);
-  opacity: 0.7; /* Ligeramente transparente para que no destaque tanto */
-  font-size: 1rem;
+  flex-direction: column;
+  flex-shrink: 0;
+}
+
+.perfil-admin {
+  text-align: center;
+  margin-bottom: 2rem;
+  padding-bottom: 1.5rem;
+  border-bottom: 1px solid var(--color-borde);
+}
+
+.perfil-admin img {
+  width: 80px;
+  height: 80px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--color-borde);
+  margin-bottom: 1rem;
+}
+
+.perfil-admin h3 { font-size: 1.2rem; margin: 0; }
+.perfil-admin p { color: var(--texto-secundario); font-size: 0.9rem; }
+
+.navegacion-admin { display: flex; flex-direction: column; gap: 0.5rem; }
+
+.nav-link {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  padding: 0.8rem 1rem;
+  border-radius: 8px;
+  color: var(--texto-secundario);
+  text-decoration: none;
   font-weight: 500;
-  text-align: left;
-  cursor: pointer; /* Cursor de mano al pasar por encima */
-  transition: background-color 0.2s ease, opacity 0.2s ease; /* Transición suave */
+  transition: all 0.3s ease;
 }
 
-/* Efecto al pasar el ratón sobre los botones del menú */
-.Menu .button:hover {
-  background-color: rgba(255, 255, 255, 0.1); /* Fondo semitransparente blanco */
-  opacity: 1; /* Totalmente opaco */
+.nav-link:hover { background-color: rgba(255, 255, 255, 0.05); color: var(--texto-principal); }
+.nav-link.active { background-color: var(--color-primario); color: #fff; box-shadow: 0 4px 10px rgba(0, 200, 81, 0.3); }
+.nav-link i { width: 20px; text-align: center; }
+.footer-menu { margin-top: auto; }
+
+.volver-al-sitio {
+    color: var(--texto-secundario);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    padding: 0.8rem 1rem;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
-/* Estilo para el botón de la sección activa */
-.Menu .button.active {
-  background-color: #333; /* Fondo gris oscuro para destacar */
-  color: var(--color-acento); /* Texto blanco */
-  opacity: 1;
-  font-weight: 700; /* Texto en negrita */
-}
+.volver-al-sitio:hover { background-color: rgba(211, 79, 79, 0.1); color: #ff6b6b; }
 
-.icono-flecha {
-  transition: transform 0.3s ease;
-}
+/* --- CONTENIDO PRINCIPAL --- */
+.contenido-admin { flex-grow: 1; background-color: var(--color-contenedor-panel); border-radius: 12px; padding: 2rem; }
+.seccion { display: none; }
+.seccion.active { display: block; }
 
-
-
-/* --- SECCIONES DE CONTENIDO --- */
-.seccion {
-  display: none; /* Oculta todas las secciones por defecto */
-}
-
-.seccion.active {
-  display: block; /* Muestra solo la sección que tiene la clase "active" */
-}
-
-/* Encabezado dentro del panel de administración */
-.encabezado-admin {
+.encabezado-seccion {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  border-bottom: 1px solid var(--color--border); /* Línea divisoria inferior */
-  padding-bottom: 1.5rem;
   margin-bottom: 2rem;
+  border-bottom: 1px solid var(--color-borde);
+  padding-bottom: 1rem;
 }
 
-h1,
-h2 {
-  color: var(--color-letra);
+h1 { font-size: 1.8rem; }
+h2 { margin-bottom: 1rem; color: var(--texto-secundario); font-size: 1.2rem; }
+
+/* --- FORMULARIOS --- */
+.contenedor-formulario {
+    background-color: #3c3c3c;
+    padding: 2rem;
+    border-radius: 10px;
+    margin-bottom: 2.5rem;
+}
+.grilla-formulario { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-bottom: 1.5rem; }
+.grilla-formulario textarea,
+.grilla-formulario input[name="imagen-evento"] { grid-column: 1 / -1; }
+
+.grilla-formulario input, .grilla-formulario select, .grilla-formulario textarea {
+    width: 100%;
+    padding: 0.8rem 1rem;
+    background-color: #2c2c2c;
+    border: 1px solid var(--color-borde);
+    border-radius: 8px;
+    color: var(--texto-principal);
+    font-size: 1rem;
 }
 
-h1 i,
-h2 i {
-  color: var(--color-letra);
-  margin-right: 0.75rem;
+/* --- TABLAS --- */
+.tabla-container { overflow-x: auto; }
+table { width: 100%; border-collapse: collapse; }
+th, td { padding: 1rem; text-align: left; border-bottom: 1px solid var(--color-borde); vertical-align: middle; }
+thead { background-color: #3c3c3c; }
+tbody tr:hover { background-color: rgba(255, 255, 255, 0.03); }
+td img { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; }
+.acciones { display: flex; gap: 0.5rem; }
+
+/* --- ESTADÍSTICAS --- */
+.grid-estadisticas { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.5rem; }
+.tarjeta-estadistica { background-color: #3c3c3c; border-radius: 10px; padding: 1.5rem; display: flex; align-items: center; gap: 1.5rem; }
+.icono-tarjeta { width: 60px; height: 60px; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 1.5rem; color: #fff; }
+.info-tarjeta { display: flex; flex-direction: column; }
+.info-tarjeta .valor { font-size: 2rem; font-weight: bold; }
+.info-tarjeta .descripcion { color: var(--texto-secundario); font-size: 0.9rem; }
+
+/* --- BOTONES --- */
+.boton-primario { background-color: var(--color-primario); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.3s ease; display: flex; align-items: center; gap: 0.5rem; }
+.boton-primario:hover { background-color: #00a041; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 200, 81, 0.2); }
+.boton-editar, .boton-eliminar { background: none; border: 1px solid var(--color-borde); color: var(--texto-secundario); width: 35px; height: 35px; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
+.boton-editar:hover { background-color: #f4a261; color: #fff; border-color: #f4a261; }
+.boton-eliminar:hover { background-color: #e76f51; color: #fff; border-color: #e76f51; }
+
+/* --- RESPONSIVIDAD --- */
+@media (max-width: 1200px) {
+  .panel-principal { flex-direction: column; }
+  .menu-lateral { width: 100%; flex-direction: row; justify-content: space-between; }
+  .perfil-admin, .footer-menu { display: none; }
+  .navegacion-admin { flex-direction: row; }
+  .nav-link span { display: none; }
 }
 
-/* Enlace para "Volver al Sitio" */
-.volver-al-sitio {
-  color: var(--color-letra);
-
-  text-decoration: none; /* Sin subrayado */
-  font-weight: bold;
-  transition: opacity 0.3s ease;
-}
-
-.volver-al-sitio:hover {
-
-  color: var(--color-verde);
-}
-
-
-/* --- ESTILOS DEL FORMULARIO --- */
-.seccion-formulario,
-.seccion-tabla {
-  margin-bottom: 3rem;
-}
-
-/* Grilla para organizar los campos del formulario */
-.grilla-formulario {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); /* Columnas automáticas y responsivas */
-  gap: 1.5rem;
-  margin-top: 1.5rem;
-}
-
-/* Para elementos que ocupan todo el ancho de la grilla */
-.grupo-formulario-completo {
-  grid-column: 1 / -1;
-}
-
-.grupo-formulario label {
-  display: block;
-  margin-bottom: 0.5rem;
-  font-weight: 600;
-  color: #ffffff;
-}
-
-/* Estilo para los campos de entrada, áreas de texto y selectores */
-.grupo-formulario input,
-.grupo-formulario textarea,
-.grupo-formulario select {
-  width: 100%;
-  padding: 0.8rem 1rem;
-  background-color: #2c2c2c;
-  border: 1px solid var(--color--border);
-  border-radius: 8px;
-  color: var(--color-letra);
-  font-size: 1rem;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-/* Efecto al hacer clic en un campo del formulario */
-.grupo-formulario input:focus,
-.grupo-formulario textarea:focus,
-.grupo-formulario select:focus {
-  outline: none; /* Quita el borde por defecto del navegador */
-  border-color: var(--color-acento); /* Borde blanco */
-  box-shadow: 0 0 0 3px rgba(255, 255, 255, 0.2); /* Sombra exterior suave */
-}
-
-
-/* --- ESTILOS DE BOTONES --- */
-.boton {
-  padding: 0.75rem 1.5rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-  text-align: center;
-  transition: transform 0.2s ease, background-color 0.3s ease;
-  font-size: 1rem;
-}
-
-.boton:hover {
-  transform: translateY(-2px); /* Efecto de "levantarse" al pasar el ratón */
-}
-
-/* Botón de acción principal (ej. "Agregar") */
-.boton-primario {
-  background-color: var(--color-acento);
-  color: #000; /* Texto negro sobre fondo blanco */
-  display: block;
-  width: 100%;
-  margin-top: 1.5rem;
-}
-
-.boton-primario:hover {
-  background-color: #cccccc;
-}
-
-/* Botón de acción peligrosa (ej. "Eliminar") */
-.boton-eliminar {
-  background-color: #d83737;
-  color: #ffffff; /* Texto rojo */
-  padding: 0.5rem 1rem;
-  border: 1px solid #050505; /* Borde rojo */
-}
-
-.boton-eliminar:hover {
-  background-color: #ff0000cc; /* Fondo rojo oscuro */
-  color: #ffffff;
-}
-
-
-/* --- ESTILOS DE LA TABLA --- */
-.contenedor-tabla {
-  overflow-x: auto; /* Permite scroll horizontal en pantallas pequeñas si la tabla es muy ancha */
-}
-
-table {
-  width: 100%;
-  border-collapse: collapse; /* Une los bordes de las celdas */
-  margin-top: 1.5rem;
-}
-
-thead {
-  background-color: #252525; /* Fondo para la cabecera de la tabla */
-}
-
-th,
-td {
-  color: var(--color-acento);
-  padding: 1rem;
-  text-align: left;
-  border-bottom: 1px solid var(--color--border); /* Línea divisoria entre filas */
-  vertical-align: middle;
-}
-
-th {
-  font-weight: 600;
-}
-
-tbody tr:hover {
-  background-color: #2a2a2a; /* Color de fondo al pasar el ratón sobre una fila */
-}
-
-td img {
-  width: 70px;
-  height: 70px;
-  object-fit: cover; /* Asegura que la imagen cubra el espacio sin deformarse */
-  border-radius: 4px;
-}
-
-.acciones {
-  text-align: right;
-}
-
-
-/* --- ESTILOS PARA GRÁFICOS --- */
-.grid-graficos {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
-  margin-top: 2rem;
-}
-
-.tarjeta-grafico {
-  background-color: #2c2c2c;
-  padding: 1.5rem;
-  border-radius: 12px;
-  border: 1px solid var(--color--border);
-}
-
-.tarjeta-grafico h3 {
-  margin-bottom: 1rem;
-  color: var(--color-letra);
-}
-
-.estadistica {
-  font-size: 2.5rem;
-  font-weight: bold;
-  color: var(--color-letra);
-  margin: 1rem 0;
-}
-
-
-/* --- RESPONSIVIDAD (DISEÑO PARA MÓVILES) --- */
 @media (max-width: 768px) {
-  .panel-principal {
-    flex-direction: column; /* Apila los elementos verticalmente */
-    padding: 1;
-  }
-  .Menu {
-    width: 100%;
-    order: 1; /* Mueve el menú al final del flujo */
-  }
-  .contenedor-admin {
-    padding: 1rem;
-    order: 1; /* Coloca el contenido principal primero */
-    width: 100%;
-  }
-  .encabezado-admin {
-    flex-direction: column;
-    gap: 1rem;
-    text-align: center;
-  }
-  .grilla-formulario {
-    grid-template-columns: 1fr; /* Una sola columna en la grilla del formulario */
-  }
-}
-
-/* Mejoras en los botones del menú de admin */
-.Menu .button {
-  transition: all 0.3s ease;
-  border-left: 3px solid transparent; /* Borde izquierdo para indicar estado activo */
-}
-
-.Menu .button:hover {
-  background-color: rgba(255, 255, 255, 0.05);
-  border-left: 3px solid #555;
-}
-
-.Menu .button.active {
-  background-color: #333;
-  border-left: 3px solid #00c851; /* Verde para la pestaña activa */
-  font-weight: 700;
+    .grilla-formulario { grid-template-columns: 1fr; }
+    .navegacion-admin { gap: 0.2rem; }
+    .nav-link { padding: 0.8rem; }
 }

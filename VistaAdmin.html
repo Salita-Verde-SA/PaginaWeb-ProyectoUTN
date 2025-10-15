@@ -4,299 +4,215 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Panel de Administración</title>
+    <title>Panel de Administración General</title>
 
     <link rel="icon" type="image/png" href="img/paletaenverde.png" />
 
-    <link rel="stylesheet" href="css/AdminDeveloper/VistaAdmin.css">
-    <link rel="stylesheet" href="css/variables-globales.css">
+    <link rel="stylesheet" href="css/AdminDeveloper/vistaAdmin.css"> <link rel="stylesheet" href="css/variables-globales.css">
     <link rel="stylesheet" href="css/Header/headerAdminDeveloper.css" />
 
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
-    <link rel="stylesheet" href="https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.13.1/font/bootstrap-icons.min.css" />
-
 </head>
 
 <body>
     <header id="header"></header>
 
     <div class="panel-principal">
-        <div class="Menu">
-            <button class="button active" data-section="panel-admin">
-                <span class="contenido-button">Panel Admin</span>
-                <span class="icono-flecha">➜</span>
-            </button>
-            <button class="button" data-section="graficos">
-                <span class="contenido-button">Gráficos</span>
-                <span class="icono-flecha">➜</span>
-            </button>
-            <button class="button" data-section="usuarios">
-                <span class="contenido-button">Usuarios</span>
-                <span class="icono-flecha">➜</span>
-            </button>
-            <button class="button" data-section="configuracion">
-                <span class="contenido-button">Configuración</span>
-                <span class="icono-flecha">➜</span>
-            </button>
-        </div>
+        <aside class="menu-lateral">
+            <div class="perfil-admin">
+                <img src="img/profile.jpeg" alt="Avatar del Admin">
+                <h3>Admin General</h3>
+                <p>Control Total del Sitio</p>
+            </div>
+            <nav class="navegacion-admin">
+                <a href="#panel-control" class="nav-link active" data-section="panel-control">
+                    <i class="fas fa-tachometer-alt"></i>
+                    <span>Panel de Control</span>
+                </a>
+                <a href="#graficos" class="nav-link" data-section="graficos">
+                    <i class="fas fa-chart-line"></i>
+                    <span>Estadísticas</span>
+                </a>
+                <a href="#usuarios" class="nav-link" data-section="usuarios">
+                    <i class="fas fa-users-cog"></i>
+                    <span>Gestionar Usuarios</span>
+                </a>
+                <a href="#configuracion" class="nav-link" data-section="configuracion">
+                    <i class="fas fa-sliders-h"></i>
+                    <span>Configuración</span>
+                </a>
+            </nav>
+            <div class="footer-menu">
+                <a href="iniciar2-0.html" class="volver-al-sitio">
+                    <i class="fas fa-sign-out-alt"></i>
+                    <span>Volver al Sitio</span>
+                </a>
+            </div>
+        </aside>
 
-        <div class="contenedor-admin">
-            <div id="panel-admin" class="seccion active">
-                <div class="encabezado-admin">
-                    <h1><i class="fas fa-cogs"></i> Panel de Administración</h1>
-                    <a href="iniciar2-0.html" class="volver-al-sitio">Volver al Sitio <i
-                            class="fas fa-external-link-alt"></i></a>
+        <main class="contenido-admin">
+            <section id="panel-control" class="seccion active">
+                <div class="encabezado-seccion">
+                    <h1><i class="fas fa-calendar-alt"></i> Gestión de Eventos</h1>
                 </div>
-
-                <section class="seccion-formulario">
+                
+                <div class="contenedor-formulario">
                     <h2><i class="fas fa-plus-circle"></i> Agregar Nuevo Evento</h2>
                     <form id="formulario-agregar-evento">
                         <div class="grilla-formulario">
-                            <div class="grupo-formulario">
-                                <label for="nombre-evento">Nombre del Evento</label>
-                                <input type="text" id="nombre-evento" name="nombre-evento"
-                                    placeholder="Ej: Show de Nanuti..." required>
-                            </div>
-                            <div class="grupo-formulario">
-                                <label for="fecha-evento">Fecha</label>
-                                <input type="date" id="fecha-evento" name="fecha-evento" required>
-                            </div>
-                            <div class="grupo-formulario">
-                                <label for="lugar-evento">Lugar</label>
-                                <input type="text" id="lugar-evento" name="lugar-evento"
-                                    placeholder="Ej: Teatro Mendoza" required>
-                            </div>
-                            <div class="grupo-formulario">
-                                <label for="categoria-evento">Categoría</label>
-                                <select id="categoria-evento" name="categoria-evento" required>
-                                    <option value="">Selecciona una categoría</option>
-                                    <option value="concierto">Concierto</option>
-                                    <option value="stand-up">Stand Up</option>
-                                    <option value="teatro">Obra de Teatro</option>
-                                    <option value="festival">Festival</option>
-                                    <option value="bar">Bar</option>
-                                    <option value="boliche">Boliche</option>
-                                </select>
-                            </div>
-                            <div class="grupo-formulario grupo-formulario-completo">
-                                <label for="descripcion-evento">Descripción</label>
-                                <textarea id="descripcion-evento" name="descripcion-evento" rows="4"
-                                    placeholder="Describe brevemente el evento..."></textarea>
-                            </div>
-                            <div class="grupo-formulario grupo-formulario-completo">
-                                <label for="imagen-evento">Póster del Evento (URL)</label>
-                                <input type="text" id="imagen-evento" name="imagen-evento"
-                                    placeholder="https://ejemplo.com/imagen.jpg" required>
-                            </div>
+                            <input type="text" name="nombre-evento" placeholder="Nombre del Evento" required>
+                            <input type="date" name="fecha-evento" required>
+                            <input type="text" name="lugar-evento" placeholder="Lugar del Evento" required>
+                            <select name="categoria-evento" required>
+                                <option value="">Selecciona una categoría</option>
+                                <option value="concierto">Concierto</option>
+                                <option value="stand-up">Stand Up</option>
+                                <option value="teatro">Obra de Teatro</option>
+                                <option value="festival">Festival</option>
+                                <option value="bar">Bar</option>
+                                <option value="boliche">Boliche</option>
+                            </select>
+                            <textarea name="descripcion-evento" rows="3" placeholder="Descripción breve del evento..."></textarea>
+                            <input type="text" name="imagen-evento" placeholder="URL del Póster del Evento" required>
                         </div>
-                        <button type="submit" class="boton boton-primario">Agregar Evento</button>
+                        <button type="submit" class="boton-primario"><i class="fas fa-plus"></i> Agregar Evento</button>
                     </form>
-                </section>
-
-                <section class="seccion-tabla">
-                    <h2><i class="fas fa-list-ul"></i> Gestionar Eventos Existentes</h2>
-                    <div class="contenedor-tabla">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>Póster</th>
-                                    <th>Evento</th>
-                                    <th>Fecha</th>
-                                    <th>Categoría</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td><img src="img\img-eventos\image 24.png" alt="Poster Nanuti"></td>
-                                    <td>Show de Nanuti</td>
-                                    <td>2025-08-26</td>
-                                    <td>Stand Up</td>
-                                    <td class="acciones">
-                                        <button class="boton boton-eliminar"><i class="fas fa-trash-alt"></i>
-                                            Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img\img-eventos\image 26.png" alt="Poster Freud"></td>
-                                    <td>La Sesión de Freud</td>
-                                    <td>2025-09-01</td>
-                                    <td>Obra de Teatro</td>
-                                    <td class="acciones">
-                                        <button class="boton boton-eliminar"><i class="fas fa-trash-alt"></i>
-                                            Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td><img src="img\img-eventos\image 27.png" alt="Poster TED"></td>
-                                    <td>TED Talks Education</td>
-                                    <td>2025-09-14</td>
-                                    <td>Conferencia</td>
-                                    <td class="acciones">
-                                        <button class="boton boton-eliminar"><i class="fas fa-trash-alt"></i>
-                                            Eliminar</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </div>
-
-            <div id="graficos" class="seccion">
-                <div class="encabezado-admin">
-                    <h1><i class="fas fa-chart-line"></i> Estadísticas y Gráficos</h1>
-                    <a href="iniciar2-0.html" class="volver-al-sitio">Volver al Sitio <i
-                            class="fas fa-external-link-alt"></i></a>
                 </div>
 
-                <div class="grid-graficos">
-                    <div class="tarjeta-grafico">
-                        <h3><i class="fas fa-ticket-alt"></i> Total de Eventos</h3>
-                        <div class="estadistica">127</div>
-                        <p>Eventos registrados en el sistema</p>
+                <div class="tabla-container">
+                    <h2><i class="fas fa-list-ul"></i> Eventos Existentes</h2>
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>Póster</th>
+                                <th>Evento</th>
+                                <th>Fecha</th>
+                                <th>Categoría</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td><img src="img/img-eventos/image 24.png" alt="Poster Nanuti"></td>
+                                <td>Show de Nanuti</td>
+                                <td>2025-08-26</td>
+                                <td>Stand Up</td>
+                                <td class="acciones">
+                                    <button class="boton-editar"><i class="fas fa-pencil-alt"></i></button>
+                                    <button class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><img src="img/img-eventos/image 26.png" alt="Poster Freud"></td>
+                                <td>La Sesión de Freud</td>
+                                <td>2025-09-01</td>
+                                <td>Obra de Teatro</td>
+                                <td class="acciones">
+                                    <button class="boton-editar"><i class="fas fa-pencil-alt"></i></button>
+                                    <button class="boton-eliminar"><i class="fas fa-trash-alt"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </section>
+
+            <section id="graficos" class="seccion">
+                <div class="encabezado-seccion">
+                    <h1><i class="fas fa-chart-line"></i> Estadísticas Generales</h1>
+                </div>
+                 <div class="grid-estadisticas">
+                    <div class="tarjeta-estadistica">
+                        <div class="icono-tarjeta" style="background-color: #2a9d8f;"><i class="fas fa-calendar-check"></i></div>
+                        <div class="info-tarjeta"><span class="valor">127</span><span class="descripcion">Eventos Totales</span></div>
                     </div>
-                    <div class="tarjeta-grafico">
-                        <h3><i class="fas fa-users"></i> Usuarios Activos</h3>
-                        <div class="estadistica">3,456</div>
-                        <p>Usuarios registrados este mes</p>
+                    <div class="tarjeta-estadistica">
+                        <div class="icono-tarjeta" style="background-color: #e76f51;"><i class="fas fa-users"></i></div>
+                        <div class="info-tarjeta"><span class="valor">3,456</span><span class="descripcion">Usuarios Registrados</span></div>
                     </div>
-                    <div class="tarjeta-grafico">
-                        <h3><i class="fas fa-star"></i> Eventos Destacados</h3>
-                        <div class="estadistica">23</div>
-                        <p>Eventos con mayor popularidad</p>
-                    </div>
-                    <div class="tarjeta-grafico">
-                        <h3><i class="fas fa-calendar-check"></i> Próximos Eventos</h3>
-                        <div class="estadistica">45</div>
-                        <p>Eventos programados próximamente</p>
+                    <div class="tarjeta-estadistica">
+                        <div class="icono-tarjeta" style="background-color: #f4a261;"><i class="fas fa-building"></i></div>
+                        <div class="info-tarjeta"><span class="valor">42</span><span class="descripcion">Boliches Asociados</span></div>
                     </div>
                 </div>
-            </div>
+            </section>
 
-            <div id="usuarios" class="seccion">
-                <div class="encabezado-admin">
-                    <h1><i class="fas fa-users"></i> Gestión de Usuarios</h1>
-                    <a href="iniciar2-0.html" class="volver-al-sitio">Volver al Sitio <i
-                            class="fas fa-external-link-alt"></i></a>
+            <section id="usuarios" class="seccion">
+                 <div class="encabezado-seccion">
+                    <h1><i class="fas fa-users-cog"></i> Gestión de Usuarios</h1>
                 </div>
-
-                <section class="seccion-tabla">
-                    <h2><i class="fas fa-user-friends"></i> Lista de Usuarios</h2>
-                    <div class="contenedor-tabla">
-                        <table>
-                            <thead>
-                                <tr>
-                                    <th>ID</th>
-                                    <th>Nombre</th>
-                                    <th>Email</th>
-                                    <th>Rol</th>
-                                    <th>Acciones</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                <tr>
-                                    <td>#001</td>
-                                    <td>Juan Pérez</td>
-                                    <td>juan@example.com</td>
-                                    <td>Administrador</td>
-                                    <td class="acciones">
-                                        <button class="boton boton-eliminar"><i class="fas fa-trash-alt"></i>
-                                            Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#002</td>
-                                    <td>María González</td>
-                                    <td>maria@example.com</td>
-                                    <td>Usuario</td>
-                                    <td class="acciones">
-                                        <button class="boton boton-eliminar"><i class="fas fa-trash-alt"></i>
-                                            Eliminar</button>
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>#003</td>
-                                    <td>Carlos López</td>
-                                    <td>carlos@example.com</td>
-                                    <td>Usuario</td>
-                                    <td class="acciones">
-                                        <button class="boton boton-eliminar"><i class="fas fa-trash-alt"></i>
-                                            Eliminar</button>
-                                    </td>
-                                </tr>
-                            </tbody>
-                        </table>
-                    </div>
-                </section>
-            </div>
-
-            <div id="configuracion" class="seccion">
-                <div class="encabezado-admin">
-                    <h1><i class="fas fa-sliders-h"></i> Configuración</h1>
-                    <a href="iniciar2-0.html" class="volver-al-sitio">Volver al Sitio <i
-                            class="fas fa-external-link-alt"></i></a>
+                <div class="tabla-container">
+                    <table>
+                        <thead>
+                            <tr>
+                                <th>ID</th>
+                                <th>Nombre</th>
+                                <th>Email</th>
+                                <th>Rol</th>
+                                <th>Acciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>#001</td>
+                                <td>Juan Pérez</td>
+                                <td>juan@example.com</td>
+                                <td>Administrador</td>
+                                <td class="acciones">
+                                    <button class="boton-editar"><i class="fas fa-user-edit"></i></button>
+                                    <button class="boton-eliminar"><i class="fas fa-user-slash"></i></button>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>#002</td>
+                                <td>María González</td>
+                                <td>maria@example.com</td>
+                                <td>Usuario</td>
+                                <td class="acciones">
+                                    <button class="boton-editar"><i class="fas fa-user-edit"></i></button>
+                                    <button class="boton-eliminar"><i class="fas fa-user-slash"></i></button>
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
+            </section>
 
-                <section class="seccion-formulario">
-                    <h2><i class="fas fa-cog"></i> Configuración General</h2>
-                    <form>
+            <section id="configuracion" class="seccion">
+                <div class="encabezado-seccion">
+                    <h1><i class="fas fa-sliders-h"></i> Configuración General</h1>
+                </div>
+                <div class="contenedor-formulario">
+                     <form>
                         <div class="grilla-formulario">
-                            <div class="grupo-formulario">
-                                <label for="nombre-sitio">Nombre del Sitio</label>
-                                <input type="text" id="nombre-sitio" value="EventosMendoza"
-                                    placeholder="Nombre del sitio">
-                            </div>
-                            <div class="grupo-formulario">
-                                <label for="email-contacto">Email de Contacto</label>
-                                <input type="email" id="email-contacto" value="contacto@eventos.com"
-                                    placeholder="Email">
-                            </div>
-                            <div class="grupo-formulario grupo-formulario-completo">
-                                <label for="descripcion-sitio">Descripción del Sitio</label>
-                                <textarea id="descripcion-sitio" rows="4"
-                                    placeholder="Descripción...">Tu plataforma de eventos en Mendoza</textarea>
-                            </div>
+                            <input type="text" value="EventosMendoza" placeholder="Nombre del sitio">
+                            <input type="email" value="contacto@eventos.com" placeholder="Email de Contacto">
+                            <textarea rows="3" placeholder="Descripción del Sitio...">Tu plataforma de eventos en Mendoza</textarea>
                         </div>
-                        <button type="submit" class="boton boton-primario">Guardar Cambios</button>
+                        <button type="submit" class="boton-primario"><i class="fas fa-save"></i> Guardar Cambios</button>
                     </form>
-                </section>
-            </div>
-        </div>
+                </div>
+            </section>
+        </main>
     </div>
 
     <script src="js/Header/headerAdm.js"></script>
-    <script src="js/Header/Interruptor.js"></script>
     <script>
-        // Funcionalidad para cambiar entre secciones
-        const buttons = document.querySelectorAll('.Menu .button');
-        const sections = document.querySelectorAll('.seccion');
+        document.addEventListener('DOMContentLoaded', function () {
+            const navLinks = document.querySelectorAll('.nav-link');
+            const sections = document.querySelectorAll('.seccion');
 
-        buttons.forEach(button => {
-            button.addEventListener('click', () => {
-                // Remover clase active de todos los botones
-                buttons.forEach(btn => btn.classList.remove('active'));
-
-                // Agregar clase active al botón clickeado
-                button.classList.add('active');
-
-                // Obtener la sección correspondiente
-                const sectionId = button.getAttribute('data-section');
-
-                // Ocultar todas las secciones
-                sections.forEach(section => section.classList.remove('active'));
-
-                // Mostrar la sección seleccionada
-                document.getElementById(sectionId).classList.add('active');
+            navLinks.forEach(link => {
+                link.addEventListener('click', (e) => {
+                    e.preventDefault();
+                    navLinks.forEach(l => l.classList.remove('active'));
+                    link.classList.add('active');
+                    const sectionId = link.getAttribute('data-section');
+                    sections.forEach(s => s.classList.remove('active'));
+                    document.getElementById(sectionId).classList.add('active');
+                });
             });
-        });
-
-        // Funcionalidad del formulario
-        document.getElementById('formulario-agregar-evento').addEventListener('submit', (e) => {
-            e.preventDefault();
-            alert('Evento agregado correctamente!');
         });
     </script>
 </body>
