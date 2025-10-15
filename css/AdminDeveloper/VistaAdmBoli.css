@@ -99,7 +99,7 @@ body {
 .nav-link.active {
   background-color: var(--color-primario);
   color: #fff;
-  box-shadow: 0 4px 10px rgba(0, 200, 81, 0.3);
+
 }
 
 .nav-link i {
@@ -263,7 +263,7 @@ tbody tr:hover {
 .boton-primario:hover {
   background-color: #00a041;
   transform: translateY(-2px);
-  box-shadow: 0 4px 10px rgba(0, 200, 81, 0.2);
+
 }
 
 .boton-editar, .boton-eliminar {
