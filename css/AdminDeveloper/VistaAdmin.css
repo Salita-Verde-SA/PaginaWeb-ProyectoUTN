@@ -1,12 +1,12 @@
 /* --- ESTILOS PARA EL NUEVO PANEL DE ADMIN GENERAL --- */
 
 :root {
-  --color-fondo-panel: #1e1e1e;
-  --color-contenedor-panel: #2c2c2c;
+  --color-fondo-panel: #000000;
+  --color-contenedor-panel: #171717;
   --color-borde: #444;
   --color-primario: #00c851;
-  --texto-principal: #e0e0e0;
-  --texto-secundario: #aaa;
+  --texto-principal: #ffffff;
+  --texto-secundario: #ffffff;
 }
 
 body {
@@ -69,7 +69,7 @@ body {
 }
 
 .nav-link:hover { background-color: rgba(255, 255, 255, 0.05); color: var(--texto-principal); }
-.nav-link.active { background-color: var(--color-primario); color: #fff; box-shadow: 0 4px 10px rgba(0, 200, 81, 0.3); }
+.nav-link.active { background-color: var(--color-primario); color: #fff;  }
 .nav-link i { width: 20px; text-align: center; }
 .footer-menu { margin-top: auto; }
 
@@ -153,7 +153,7 @@ td img { width: 50px; height: 50px; object-fit: cover; border-radius: 4px; }
 
 /* --- BOTONES --- */
 .boton-primario { background-color: var(--color-primario); color: #fff; border: none; padding: 0.8rem 1.5rem; border-radius: 8px; cursor: pointer; font-weight: bold; transition: all 0.3s ease; display: flex; align-items: center; justify-content: center; gap: 0.5rem; margin-top: 15px; }
-.boton-primario:hover { background-color: #00a041; transform: translateY(-2px); box-shadow: 0 4px 10px rgba(0, 200, 81, 0.2); }
+.boton-primario:hover { background-color: #00a041; transform: translateY(-2px); }
 .boton-editar, .boton-eliminar { background: none; border: 1px solid var(--color-borde); color: var(--texto-secundario); width: 35px; height: 35px; border-radius: 8px; cursor: pointer; transition: all 0.3s ease; }
 .boton-editar:hover { background-color: #f4a261; color: #fff; border-color: #f4a261; }
 .boton-eliminar:hover { background-color: #e76f51; color: #fff; border-color: #e76f51; }
