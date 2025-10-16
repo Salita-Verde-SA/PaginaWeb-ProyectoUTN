@@ -1,11 +1,11 @@
 /* Contenedor de amigos que asisten */
 .Amigos-que-asistiran {
   display: flex;
-  gap: 0; /* Elimina el espacio entre imágenes */
+  gap: 0;
   justify-content: flex-start;
   align-items: center;
-  margin: 0.5px 0 0 0;
-  position: relative; /* Cambia a relative para que el círculo se posicione correctamente */
+  margin-top: 10px;
+  position: relative;
   z-index: 1;
 }
 
@@ -13,23 +13,21 @@
 .Amigos-que-asistiran img {
   width: 38px;
   height: 38px;
-  min-width: 38px;  /* CRÍTICO: Fija el ancho mínimo */
-  min-height: 38px; /* CRÍTICO: Fija la altura mínima */
-  flex-shrink: 0;   /* CRÍTICO: Impide que Flexbox encoja el elemento */
+  min-width: 38px;
+  min-height: 38px;
+  flex-shrink: 0;
   border-radius: 50%;
   object-fit: cover;
-  margin-left: -10px; /* Superposición de 10px */
-  border: 3px solid #171717; /* Borde blanco para mejor visualización */
+  margin-left: -10px;
+  border: 3px solid var(--color-borde-amigos, #171717);
   z-index: 1;
   transition: all 0.5s ease-in-out;
 }
 
 body.claro .Amigos-que-asistiran img {
-  border: 3px solid #cccccccc; /* Borde oscuro en modo claro */
-  transition: all 0.5s ease-in-out;
+  border: 3px solid var(--borde-amigos-claro, #cccccccc);
 }
 
-/* La primera imagen no tiene margen negativo */
 .Amigos-que-asistiran img:first-child {
   margin-left: 0;
 }
@@ -38,25 +36,24 @@ body.claro .Amigos-que-asistiran img {
 .circulo-amigos-adicionales {
   width: 38px;
   height: 38px;
-  min-width: 38px;  /* CRÍTICO: Fija el ancho mínimo */
-  min-height: 38px; /* CRÍTICO: Fija la altura mínima */
-  flex-shrink: 0;   /* CRÍTICO: Impide que Flexbox encoja el elemento */
+  min-width: 38px;
+  min-height: 38px;
+  flex-shrink: 0;
   border-radius: 50%;
-  border: 3px solid #171717; /* Borde blanco */
+  border: 3px solid var(--color-borde-amigos, #171717);
   background-color: #333;
   color: white;
   display: flex;
   justify-content: center;
   align-items: center;
   font-size: 12px;
-  margin-left: -10px; /* Superposición con la última imagen */
+  margin-left: -10px;
   z-index: 1;
   transition: all 0.5s ease-in-out;
 }
 
 body.claro .circulo-amigos-adicionales {
-  border: 3px solid #cccccccc; /* Borde oscuro en modo claro */
-  transition: all 0.5s ease-in-out;
+  border: 3px solid var(--borde-amigos-claro, #cccccccc);
 }
 
 /* --------- ESTILOS GLOBALES --------- */
@@ -99,33 +96,10 @@ body.claro {
   padding: 15px;
   position: sticky;
   top: 70px;
-  /* Ajusta este valor según la altura de tu barra de navegación */
   align-self: flex-start;
   max-height: calc(100vh - 80px);
-  /* Ajusta según la altura de tu barra de navegación */
   transition: all 0.5s ease-in-out;
-  /* Barra de desplazamiento */
   overflow-y: auto;
-  scrollbar-width: thin;
-  scrollbar-color: #333 transparent;
-  -ms-overflow-style: auto;
-  &::-webkit-scrollbar {
-    width: 8px;
-    height: 8px;
-  }
-  &::-webkit-scrollbar-track {
-    background: transparent;
-    border-radius: 4px;
-  }
-  &::-webkit-scrollbar-thumb {
-    background-color: #333;
-    border-radius: 4px;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-  }
-  body.claro &::-webkit-scrollbar-thumb {
-    background-color: #cccccccc;
-  }
 }
 
 .elemento-barra-lateral {
@@ -134,26 +108,16 @@ body.claro {
   text-align: center;
   color: var(--color-letra);
   text-decoration: none;
+  gap: 15px;
 }
 
 .elemento-barra-lateral img {
   width: 40px;
   height: 40px;
   border-radius: 8px;
-  margin-bottom: 5px;
-}
-
-.elemento-barra-lateral span {
-  font-size: 15px;
-  margin-left: 5%;
 }
 
 body.claro .elemento-barra-lateral span {
-  color: var(--fondo-blanco-color);
-  transition: all 0.5s ease-in-out;
-}
-
-body.claro .elemento-barra-lateral-derecha span {
   color: var(--fondo-blanco-color);
   transition: all 0.5s ease-in-out;
 }
@@ -170,17 +134,20 @@ body.claro .elemento-barra-lateral-derecha span {
   transition: all 0.5s ease-in-out;
 }
 
-.contenido-principal.claro,
-.barra-lateral-derecha.claro,
-.barra-lateral-izquierda.claro {
+body.claro .contenido-principal,
+body.claro .barra-lateral-derecha,
+body.claro .barra-lateral-izquierda {
   background-color: var(--fondo-blanco-contenedor);
   transition: all 0.5s ease-in-out;
 }
 
-h2.claro {
-  color: var(--fondo-blanco-color);
+body.claro .contenido-principal h2,
+body.claro .contenido-principal h6,
+body.claro .contenido-principal p {
   transition: all 0.5s ease-in-out;
 }
+
+
 
 /* --------- BANNER --------- */
 .banner {
@@ -188,12 +155,7 @@ h2.claro {
   border-radius: 15px;
   overflow: hidden;
   height: 180px;
-  background: radial-gradient(
-      circle at bottom right,
-      rgba(0, 0, 0, 0),
-      rgba(0, 0, 0, 0.5)
-    ),
-    url(../img/img-eventos/fiesta.jpg);
+  background: radial-gradient(circle at bottom right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.5)), url(../img/img-eventos/fiesta.jpg);
   background-size: cover;
   display: flex;
   flex-direction: column;
@@ -204,64 +166,35 @@ h2.claro {
 }
 
 .banner:hover {
-  transform: perspective(1000px) rotateX(3deg) translateY(-1px) scale(1.01); /* Efecto 3D sutil al pasar el mouse */
+  transform: perspective(1000px) rotateX(3deg) translateY(-1px) scale(1.01);
 }
 
 .banner h2 {
   font-size: 24px;
   margin-bottom: 5px;
+  transition: all 0.5s ease-in-out;
 }
 
 .banner p {
   font-size: 14px;
   opacity: 0.9;
+  transition: all 0.5s ease-in-out;
 }
 
-/* --------- EVENTOS DESTACADOS --------- */
-.eventos-destacados {
+body.claro h2,
+body.claro h6 {
+  color: var(--fondo-blanco-color);
+  transition: all 0.5s ease-in-out;
+}
+
+/* --------- EVENTOS Y TARJETAS --------- */
+.eventos-destacados,
+.eventos-recomendados {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
   gap: 20px;
 }
 
-.tarjeta-eventos {
-  min-width: 150px;
-  height: 200px;
-  border-radius: 15px;
-  overflow: hidden;
-  position: relative;
-  background-size: cover;
-  background-position: center;
-  transition: all 0.5s ease-in-out;
-}
-
-.tarjeta-eventos .informacion {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  right: 0;
-  background: linear-gradient(transparent, rgba(0, 0, 0, 0.8));
-  padding: 15px 10px 10px;
-  color: var(--color-letra);
-  transition: all 0.5s ease-in-out;
-}
-
-.tarjeta-eventos h3 {
-  font-size: 14px;
-  margin-bottom: 5px;
-}
-
-span {
-  transition: color 0.5s ease-in-out;
-}
-
-.tarjeta-eventos p {
-  font-size: 12px;
-  opacity: 0.9;
-  transition: all 0.5s ease-in-out;
-}
-
-/* --------- RECOMENDADOS --------- */
 .secciones {
   margin-top: 10px;
 }
@@ -269,54 +202,45 @@ span {
 .secciones h2 {
   font-size: 24px;
   margin-bottom: 15px;
-  transition: all 0.5s ease-in-out;
 }
 
-.eventos-recomendados {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(120px, 1fr));
-  gap: 20px;
+.secciones h6 {
+    color: var(--color-letra-secundario);
+    font-weight: normal;
 }
 
 .tarjeta-recomendado {
   overflow: hidden;
-  min-height: 200px;
   position: relative;
-  background-size: cover;
-  background-position: center;
   display: flex;
   flex-direction: column;
   justify-content: flex-end;
-}
-#Foto-event {
-  width: 100%;
-  height: 100%;
-  border-radius: 10px;
-  object-fit: cover; /* Hace que la imagen se ajuste sin deformarse */
-  display: block; /* Elimina espacios extra */
-}
-
-.tarjeta-recomendado {
   transition: transform 0.5s ease;
 }
 
+#Foto-event {
+  width: 100%;
+  height: 180px; /* Altura consistente para las imágenes */
+  border-radius: 10px;
+  object-fit: cover;
+  display: block;
+}
+
 .tarjeta-recomendado .informacion {
-  bottom: 0;
-  left: 0;
-  right: 0;
-  /* background: linear-gradient(transparent, rgba(0, 0, 0, 0.8)); */
-  padding: 10px;
-  color: var(--color-letra);
-  font-size: 12px;
-  transition: all 0.5s ease-in-out;
+  padding: 10px 0 0 0;
+  font-size: 14px;
 }
 
 body.claro .tarjeta-recomendado .informacion {
   color: var(--fondo-blanco-color);
-  transition: all 0.5s ease-in-out;
 }
 
-/* --------- BARRA LATERAL DERECHA CON FONDO --------- */
+/* LIKES */
+.Contador-de-likes {
+    margin-top: 10px;
+}
+
+/* --------- BARRA LATERAL DERECHA --------- */
 .barra-lateral-derecha {
   width: 20%;
   display: flex;
@@ -327,73 +251,146 @@ body.claro .tarjeta-recomendado .informacion {
   padding: 15px;
   position: sticky;
   top: 70px;
-  /* Ajusta este valor según la altura de tu barra de navegación */
   align-self: flex-start;
   max-height: calc(100vh - 80px);
-  /* Ajusta según la altura de tu barra de navegación */
   transition: all 0.5s ease-in-out;
-  /* Barra de desplazamiento */
   overflow-y: auto;
-  scrollbar-width: thin; /* Estándar CSS para ancho de scrollbar */
-  scrollbar-color: #333 transparent; /* Estándar CSS para color de scrollbar */
-  -ms-overflow-style: auto; /* Estilo específico para navegadores basados en Trident (IE/Edge) */
-  &::-webkit-scrollbar { /* Estilo específico para navegadores basados en WebKit (Chrome, Safari, Edge) */
-    width: 8px;
-    height: 8px;
-  }
-  &::-webkit-scrollbar-track { /* Estilo específico para navegadores basados en WebKit */
-    background: transparent;
-    border-radius: 4px;
-  }
-  &::-webkit-scrollbar-thumb { /* Estilo específico para navegadores basados en WebKit */
-    background-color: #333;
-    border-radius: 4px;
-    border: 2px solid transparent;
-    background-clip: padding-box;
-  }
-  body.claro &::-webkit-scrollbar-thumb { /* Estilo específico para navegadores basados en WebKit */
-    background-color: #cccccccc;
-  }
 }
 
 .elemento-barra-lateral-derecha {
   display: flex;
   align-items: center;
-  text-align: center;
   color: var(--color-letra);
   text-decoration: none;
-  transition: all 0.5s ease-in-out;
+  gap: 15px;
 }
 
 .elemento-barra-lateral-derecha img {
   width: 40px;
   height: 40px;
   border-radius: 8px;
-  margin-bottom: 5px;
-  /* box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.5); */
 }
 
-.elemento-barra-lateral-derecha span {
-  font-size: 15px;
-  margin-left: 5%;
+body.claro .elemento-barra-lateral-derecha span {
+    color: var(--fondo-blanco-color);
 }
 
-/* --------- MEDIA QUERIES PARA LA PANTALLA PRINCIPAL --------- */
 
-@media (max-width: 992px) {
-  .contenedor-principal-fondo {
-    flex-direction: column; /* Apila las columnas */
-    margin: 10px;
-  }
+/*
+================================================================
+   NUEVOS ESTILOS PARA FILTROS DESPLEGABLES (ACORDEÓN MÓVIL)
+================================================================
+*/
+.filtros-moviles {
+    display: none; /* Oculto por defecto en escritorio */
+    padding: 10px 20px;
+    gap: 10px;
+    flex-wrap: wrap;
+}
 
-  .barra-lateral-izquierda,
-  .barra-lateral-derecha {
+.acordeon-contenedor {
     width: 100%;
-    position: static; 
-    max-height: none; 
-    order: 2; 
+}
 
-  .contenido-principal {
-    order: 1;
-  }
-}}
+.acordeon-trigger {
+    background-color: #282828;
+    color: white;
+    cursor: pointer;
+    padding: 12px 18px;
+    width: 100%;
+    border: none;
+    text-align: left;
+    outline: none;
+    font-size: 16px;
+    border-radius: 25px; /* Botones redondeados */
+    transition: background-color 0.5s EA, border-radius 0.3s;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    
+}
+
+body.claro .acordeon-trigger {
+  background-color: #CCCCCCCC;
+  color: #333;
+  transition: all 0.5s ease-in-out;
+}
+
+.acordeon-trigger.active,
+.acordeon-trigger:hover {
+    background-color: #333;
+    transition: all 0.3s ease-in-out;
+}
+
+body.claro .acordeon-trigger.active,
+body.claro .acordeon-trigger:hover {
+    background-color: #CCCCCCCC;
+    transition: all 0.3s ease-in-out;
+}
+
+.acordeon-trigger.active {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0;
+    transition: all 0.3s ease-in-out;
+}
+
+.acordeon-trigger .bi-chevron-down {
+    transition: transform 0.3s ease;
+}
+
+.acordeon-trigger.active .bi-chevron-down {
+    transform: rotate(180deg);
+}
+
+.acordeon-panel {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease-out;
+    background-color: #282828;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+}
+
+body.claro .acordeon-contenido{
+  background-color: #CCCCCCBB;
+}
+
+.acordeon-contenido {
+    padding: 15px;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+    gap: 15px;
+    transition: all 0.5s ease-in-out;
+}
+
+
+/*
+================================================================
+   DISEÑO RESPONSIVE (MEDIA QUERIES)
+================================================================
+*/
+@media (max-width: 992px) {
+    /* 1. Ocultamos las barras laterales originales */
+    .barra-lateral-izquierda,
+    .barra-lateral-derecha {
+        display: none;
+    }
+    
+    /* 2. Mostramos los nuevos filtros desplegables */
+    .filtros-moviles {
+        display: flex;
+    }
+
+    /* 3. Ajustamos el layout principal */
+    .contenedor-principal-fondo {
+        flex-direction: column;
+        margin: 10px;
+        padding: 10px;
+        gap: 10px;
+    }
+
+    .contenido-principal {
+        width: 100%;
+        order: 2; /* Lo mandamos debajo de los filtros */
+    }
+}

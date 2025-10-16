@@ -10,6 +10,7 @@
     --color-botones-carrito: #121212;
     --color-botones-vp: #333;
     --color-botones-activos: #7772;
-
+    --color-degradado-azul: #0D203C; /* <-- AÑADE ESTA LÍNEA */
+    --color-degradado-azul-claro: #979797; /* <-- AÑADE ESTA LÍNEA */
 
 }
