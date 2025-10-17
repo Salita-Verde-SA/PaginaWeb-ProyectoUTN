@@ -25,9 +25,9 @@ services:
     image: mongo:7
     container_name: mongo_db
     environment:
-      MONGO_INITDB_ROOT_USERNAME: admin
-      MONGO_INITDB_ROOT_PASSWORD: admin123
-      MONGO_INITDB_DATABASE: publicaciones_db
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
     volumes:
       - mongo_data:/data/db
     networks:
@@ -81,18 +81,16 @@ services:
 
       N8N_HOST: localhost
       N8N_PORT: 5678
-
     volumes:
       - ./n8n/n8n_data:/home/node/.n8n
     depends_on:
       - postgres
-      - mongo
 
   # Backend Java Spring Boot
   backend:
     build:
       context: ./backend
-      dockerfile: Dockerfile
+      dockerfile: DOCKERFILE
     container_name: backend_java
     environment:
       SPRING_PROFILES_ACTIVE: prod
