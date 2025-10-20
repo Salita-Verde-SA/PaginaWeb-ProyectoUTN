@@ -1,391 +1,398 @@
-
-body {
-    background-color: #121212;
-    color: #ffffff;
-    font-family: "Arial", sans-serif;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-
-}
-
-
-body.claro {
-  background: #f5f5f5;
-  color: #000000;
-}
 /* --- Reseteo Básico y Estilos Globales --- */
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  font-family: var(--tipografia-general);
+  font-family: var(--tipografia-general, "Arial", sans-serif);
 }
 
 body {
-  background-color: var(--color-fondo);
-  color: var(--color-letra);
+  background-color: var(--color-fondo, #121212);
+  color: var(--color-letra, #ffffff);
   min-height: 100vh;
   transition: background-color 0.5s ease-in-out, color 0.5s ease-in-out;
 }
 
-body.claro {
-  background: var(--fondo-blanco);
-  color: var(--fondo-blanco-color);
-}
-
-/* Contenedor principal */
-
+/* --- Contenedor Principal --- */
 .contenedor-principal {
   display: flex;
-  flex-direction: column; /* Las secciones se apilan verticalmente */
-  gap: 20px; /* Espacio entre las secciones */
-  padding: 20px;
+  flex-direction: column;
+  gap: 3rem;
+  padding: 2rem;
   border-radius: 15px;
-  margin: 20px 100px 20px 100px;
-  background-color: var(--color-contenedor);
+  margin: 2rem auto;
+  background-color: var(--color-contenedor, #171717);
   transition: all 0.5s ease-in-out;
+  max-width: 1200px;
 }
 
-body.claro .contenedor-principal {
-  background-color: var(--fondo-blanco-contenedor);
-  color: var(--fondo-blanco-color);
-  transition: all 0.5s ease-in-out;
-}
-
+/* --- Contenedor de Detalles del Evento (Grid Layout) --- */
 .detalle-eventos {
-  display: flex;
-  flex-direction: row; /* Imagen y detalles en fila */
-  gap: 15px;
-  border-radius: 10px;
-  padding: 20px;
+  display: grid;
+  grid-template-columns: 450px 1fr;
+  gap: 40px;
+  align-items: start;
 }
 
-
-.contenedor-botones {
-  display: flex; /* Ajusta el valor para controlar la alineación de los botones */
-  gap: 5px; /* Ajusta el valor para controlar el espacio entre los botones */
-  align-items: center; /* Ajusta el valor para controlar la alineación vertical de los botones */
-  gap: 15px;
-  border-radius: 10px;
-  padding: 20px;
-}
-
-/* Boton FAVORITOOOO */
-
-.boton-fav {
-  background: none;
-  color: var(--color-letra); /* Ajusta el valor para controlar el color del texto */
-  border: none; /* Ajusta el valor para controlar el borde */
-  border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
-  padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
-  cursor: pointer; /* Ajusta el valor para controlar el cursor */
-  transition: 0.5s ease-in-out; /* Añade una transición suave */
-  font-size: 15px; /* Ajusta el valor para controlar el tamaño del texto */
-}
-
-.boton-fav:hover {
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo */ /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
-
-/* Boton FAVORITOOOO MODO CLAROOOO*/
-
-body.claro .boton-fav {
-  color: var(--fondo-blanco-color);
-  transition: all 0.5s ease-in-out;
-}
-
-body.claro .boton-fav :hover{
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
-
-/* Boton COMPARTIRR */
-
-.boton-comp {
-  background: none; /* Ajusta el valor para controlar el color de fondo */
-  color: var(--color-letra); /* Ajusta el valor para controlar el color del texto */
-  border: none; /* Ajusta el valor para controlar el borde */
-  border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
-  padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
-  cursor: pointer; /* Ajusta el valor para controlar el cursor */
-  transition: all 0.5s ease-in-out; /* Añade una transición suave */
-  font-size: 15px; /* Ajusta el valor para controlar el tamaño del texto */
-}
-
-.boton-comp:hover {
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
-
-/* Boton COMPARTIRR MODO CLAROOOOO*/
-
-body.claro .boton-comp {
-  color: var(--fondo-blanco-color);
-  transition: all 0.5s ease-in-out;
-}
-
-body.claro .boton-comp :hover{
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
-
-/* Boton ME GUSTAAAAA */
-
-.boton-megusta {
-  background: none; /* Ajusta el valor para controlar el color de fondo */
-  color: var(--color-letra); /* Ajusta el valor para controlar el color del texto */
-  border: none; /* Ajusta el valor para controlar el borde */
-  border-radius: 5px; /* Ajusta el valor para controlar el radio de las esquinas */
-  padding: 3px 6px; /* Ajusta el valor para controlar el relleno */
-  cursor: pointer; /* Ajusta el valor para controlar el cursor */
-  transition: all 0.5s ease-in-out; /* Añade una transición suave */
-  font-size: 15px; /* Ajusta el valor para controlar el tamaño del texto */
-}
-
-  .verde {
-    color: #00c851;/* Cuando está activado */
-    }
-
-
-.boton-megusta:hover {
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
-
-/* Boton ME GUSTAAAAA MODO CLAROOOO*/
-
-body.claro .boton-megusta {
-  color: var(--fondo-blanco-color);
-  transition: all 0.5s ease-in-out;
-}
-
-body.claro .boton-megusta:hover {
-  color: #00c851; /* Ajusta el valor para controlar el color de fondo al pasar el mouse */
-  transition: all 0.5s ease-in-out;
-}
-
-
-.ubicacion-boton{
-  background-color: var(--color-botones-vp); /* Fondo negro */
-  color: var(--color-letra); /* Texto blanco */
-  border: none; /* Sin borde */
-  border-radius: 25px; /* Bordes redondeados */
-  padding: 10px 20px; /* Espaciado interno */
-  font-size: 16px; /* Tamaño del texto */
-  cursor: pointer; /* Cambia el cursor al pasar por encima */
-  display: flex; /* Para alinear el icono y el texto */
-  align-items: center; /* Centrar verticalmente */
-  justify-content: center; /* Centrar horizontalmente */
-  gap: 8px; /* Espacio entre el texto y el icono */
+/* --- Columna Izquierda: Imagen --- */
+.banner-contenedor {
+  position: relative;
+  width: 450px;
+  height: 450px;
 }
 
 .banner-eventos {
-  width: 300px;
-  height: 300px;
+  width: 100%;
+  height: 100%;
   object-fit: cover;
-  border-radius: 5%;
+  border-radius: 10px;
 }
 
-.descripcion-eventos {
-  flex: 1; /* Ocupa el espacio restante */
+.imagen-overlay {
+  position: absolute;
+  bottom: 15px;
+  left: 15px;
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #fff;
+}
+
+.asistentes {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 5px 10px;
+  border-radius: 5px;
   font-size: 14px;
 }
-/* Estilo general del contenedor */
-.tipo-ticket select {
-  /* Estilo del texto y fondo */
-  background-color: transparent;
-  color: var(--color-letra);
-  font-size: 16px;
-  padding: 10px;
+
+.boton-asistir {
+  background-color: rgba(0, 0, 0, 0.5);
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 5px;
+  padding: 5px 12px;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+/* --- Columna Derecha: Información del Evento --- */
+.descripcion-eventos {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.bootones {
+  display: flex;
+  justify-content: flex-end;
+  gap: 15px;
+}
+
+.boton-accion {
+  background: none;
   border: none;
-  outline: none;
-  appearance: none; /* Oculta la flecha predeterminada en algunos navegadores */
-  -webkit-appearance: none; /* Para navegadores basados en WebKit */
-  -moz-appearance: none; /* Para navegadores basados en Mozilla */
-
-}
-.tipo-ticket select {
-  font-family: inherit;
-  font-size: inherit;
-  color: inherit;
+  color: #a0a0a0;
+  cursor: pointer;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  transition: color 0.3s ease;
 }
 
-
-
-/* Estilo de la flecha personalizada */
-.selector-ticket {
-  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
-  background-repeat: no-repeat;
-  background-position: right center;
-  background-size: 6px;
-  padding-right: 30px; /* Espacio para la flecha */
+.boton-accion:hover {
+  color: #ffffff;
 }
 
-/* Contenedor de opciones de tickets */
-/* Contenedor de opciones de tickets */
+.descripcion-eventos h1 {
+  font-size: 48px;
+  font-weight: bold;
+  margin: 0;
+}
+
+.info-horario p {
+  margin: 0;
+  font-size: 16px;
+  color: #dcdcdc;
+}
+
+.ubicacion-boton {
+  background-color: var(--color-botones-vp, #2a2a2a);
+  color: var(--color-letra, white);
+  border: none;
+  border-radius: 20px;
+  padding: 8px 16px;
+  font-size: 14px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  transition: background-color 0.3s ease;
+}
+
+.descripcion p {
+  margin: 0;
+  line-height: 1.5;
+}
+
+/* --- Sección de Selección de Tickets --- */
+.seleccion-tickets {
+  margin-top: 10px;
+}
+
+.seleccion-tickets h3 {
+  font-size: 18px;
+  margin-bottom: 20px;
+}
+
 .opciones-tickets {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
-.tipo-ticket select option {
-  background-color: var(--color-botones-vp); /* Fondo blanco */
-  color: var(--color-letra); /* Texto negro */
-}
-/* Estilo del selector de tickets */
+
 .selector-ticket {
   background-color: transparent;
-  color: var(--color-letra);
+  color: var(--color-letra, white);
   font-size: 16px;
-  padding: 10px;
+  padding: 10px 5px;
   border: none;
   outline: none;
-  appearance: none;
+  border-bottom: 2px solid var(--color-primario, #00c851);
+  width: 250px;
+  cursor: pointer;
   -webkit-appearance: none;
   -moz-appearance: none;
+  appearance: none;
   background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='white'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
   background-repeat: no-repeat;
-  background-position: right center;
+  background-position: right 10px center;
   background-size: 16px;
-  padding-right: 30px;
-  cursor: pointer;
-  width: 100%; 
-  max-width: 200px; /* Opcional: limita el ancho máximo */
+}
+.selector-ticket option {
+  background-color: #2a2a2a;
+  color: white;
 }
 
-/* Selector de cantidad */
 .cantidad-ticket {
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    color: #dcdcdc;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  color: #dcdcdc;
 }
 
 .contador {
   display: flex;
   align-items: center;
+  background-color: var(--color-botones-vp, #2a2a2a);
   border-radius: 5px;
   overflow: hidden;
 }
 
 .contador button {
-  background-color: var(--color-botones-vp);
-  color: var(--color-letra);
+  background-color: #333;
+  color: white;
   border: none;
-  padding: 5px 10px;
+  padding: 5px 12px;
   cursor: pointer;
-  font-size: 16px;
-  margin: 2px;
-  border-radius: 10px;
+  font-size: 18px;
+  font-weight: bold;
+  transition: background-color 0.3s ease;
 }
 
 .contador button:hover {
-    background-color: #444;
+  background-color: #444;
 }
 
 .contador .valor {
-  padding: 5px 10px;
-  background-color: var(--color-botones-vp);
-  color: var(--color-letra);
-  min-width: 30px;
+  padding: 5px 15px;
+  background-color: #1E1E1E;
+  color: white;
+  min-width: 40px;
   text-align: center;
-  border-radius: 13px;
+  font-size: 16px;
 }
 
-/* Botón de Agregar al Carrito */
 .agregar-carrito {
-  background-color: var(--color-botones-vp);
-  color: var(--color-letra);
-  border: none;
-  border-radius: 5px;
+  background-color: #000000;
+  color: white;
+  border: 1px solid #333;
+  border-radius: 8px;
   padding: 12px 20px;
   font-size: 16px;
   cursor: pointer;
-  width: 100%;
   display: flex;
   align-items: center;
   justify-content: center;
   gap: 10px;
+  margin-top: 30px;
+  margin-left: auto;
+  float: right;
+  transition: background-color 0.3s ease;
 }
 
 .agregar-carrito:hover {
-    background-color: #1a1a1a;
+  background-color: #1a1a1a;
 }
 
-/* Contenedor principal */
-
-body.claro .contenedor-principal {
-  background-color: #CCCCCCCC;
-  color: #000000cc;
-  transition: all 0.5s ease-in-out;
-}
-
-
-  .verde {
-    color: #00c851;/* Cuando está activado */
-    }
-
-
-
-
-/* Contenedor de eventos recomendados */
+/* --- Sección de Eventos Recomendados --- */
 .eventos-recomendados {
-  padding: 20px;
+  border-top: 1px solid #444;
+  padding-top: 2rem;
 }
 
-/* Cuadrícula de eventos */
+.eventos-recomendados h2 {
+  font-size: 1.8rem;
+  margin-bottom: 1.5rem;
+}
+
 .cuadrícula-eventos {
   display: grid;
-  grid-template-columns: repeat(4, 1fr); /* 4 columnas para que se vean más tarjetas en una fila */
-  gap: 20px; /* Espacio entre las tarjetas */
-  margin-bottom: 20px;
+  grid-template-columns: repeat(auto-fill, minmax(220px, 1fr));
+  gap: 1.5rem;
 }
 
-/* Tarjeta de evento */
 .tarjeta-evento {
-  background-color: transparent;
   border-radius: 10px;
   overflow: hidden;
-
-  transition: transform 0.3s ease;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  cursor: pointer;
 }
 
 .tarjeta-evento:hover {
-  transform: scale(1.03);
+  transform: translateY(-5px);
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.6);
 }
 
-/* Imagen de la tarjeta */
 .tarjeta-evento img {
   width: 100%;
-  height: 180px; /* Altura fija para mantener la consistencia */
-  object-fit: cover; /* Asegura que la imagen cubra todo el espacio */
+  height: 250px;
+  object-fit: cover;
 }
 
-/* Texto de la tarjeta */
-.tarjeta-evento p {
-  padding: 10px;
-  font-size: 14px;
-  text-align: center;
-  margin: 0;
+/*
+==========================================
+           MODO CLARO
+==========================================
+*/
 
-  color: var(--color-letra);
+body.claro {
+  background: var(--fondo-blanco, #f5f5f5);
+  color: var(--fondo-blanco-color, #333);
 }
-@media (max-width: 768px) {
-  .cuadrícula-eventos {
-    grid-template-columns: repeat(2, 1fr); /* 2 columnas en pantallas medianas */
+
+body.claro .contenedor-principal {
+  background-color: var(--fondo-blanco-contenedor, #cccccccc);
+}
+
+body.claro .boton-accion {
+  color: #777;
+}
+
+body.claro .boton-accion:hover {
+  color: var(--fondo-blanco-color, #333);
+}
+
+body.claro .info-horario p {
+  color: #555;
+}
+
+body.claro .ubicacion-boton {
+  background-color: #e0e0e0;
+  color: var(--fondo-blanco-color, #333);
+}
+
+body.claro .ubicacion-boton:hover {
+  background-color: #d1d1d1;
+}
+
+body.claro .selector-ticket {
+  color: var(--fondo-blanco-color, #333);
+  background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='black'%3e%3cpath d='M7 10l5 5 5-5z'/%3e%3c/svg%3e");
+}
+
+body.claro .selector-ticket option {
+    background-color: var(--fondo-blanco, #f5f5f5);
+    color: var(--fondo-blanco-color, #333);
+}
+
+body.claro .cantidad-ticket,
+body.claro .contador button {
+  color: var(--fondo-blanco-color, #333);
+}
+
+body.claro .contador {
+    background-color: #e9e9e9;
+}
+
+body.claro .contador button {
+  background-color: #f0f0f0;
+}
+body.claro .contador button:hover {
+  background-color: #dcdcdc;
+}
+body.claro .contador .valor {
+    background-color: #e0e0e0;
+}
+
+body.claro .agregar-carrito {
+    background-color: #f0f0f0;
+    color: var(--fondo-blanco-color, #333);
+    border-color: #ccc;
+}
+body.claro .agregar-carrito:hover {
+    background-color: #e0e0e0;
+}
+
+body.claro .eventos-recomendados {
+  border-top-color: #ddd;
+}
+
+
+/* --- Responsividad --- */
+@media (max-width: 992px) {
+  .detalle-eventos {
+    grid-template-columns: 1fr; /* Una sola columna */
+    align-items: center;
+    text-align: center;
   }
-   .detalle-eventos {    flex-direction: column;   }  .banner-eventos {    width: 100%;     height: 250px;  }  
-   .descripcion-eventos {    width: 100%;   }
-   
+  .banner-contenedor, .banner-eventos {
+    width: 100%;
+    max-width: 450px;
+    height: auto;
+    margin: 0 auto;
+  }
+  .descripcion-eventos {
+    align-items: center;
+  }
+  .bootones {
+    justify-content: center;
+  }
+  .agregar-carrito {
+      float: none;
+      margin: 30px auto 0 auto;
+  }
 }
 
 @media (max-width: 480px) {
-  .cuadrícula-eventos {
-    grid-template-columns: 1fr; /* 1 columna en pantallas pequeñas */
+  .contenedor-principal {
+    margin: 1rem;
+    padding: 1rem;
+  }
+  .descripcion-eventos h1 {
+    font-size: 2.2rem;
+  }
+  .opciones-tickets {
+    flex-direction: column;
+    gap: 1.5rem;
+    align-items: stretch;
+  }
+  .selector-ticket {
+      width: 100%;
   }
 }
-
