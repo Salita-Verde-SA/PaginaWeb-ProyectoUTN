@@ -1,21 +1,28 @@
 #!/bin/bash
+
+# Test backend connection
+echo "Testing backend connection..."
+curl -X GET http://localhost:8090/actuator/health
+
 # Add a user
-curl -X POST http://localhost/api/usuarios -H "Content-Type: application/json" -d '{"dni":"12345678","nombre": "John","apellido":"Doe","email": "john@example.com","username":"johnd","password":"secreto"}'
+curl -X POST http://localhost:8090/api/usuarios -H "Content-Type: application/json" -d '{"dni":"12345678","nombre": "John","apellido":"Doe","email": "john@example.com","username":"johnd","password":"secreto"}'
 
 # List users
-curl -X GET http://localhost/api/usuarios
+curl -X GET http://localhost:8090/api/usuarios
 
 # Create a publication (nota: ahora usuarioId es string/dni)
-curl -X POST http://localhost/api/publicaciones -H "Content-Type: application/json" -d '{"titulo": "My First Post", "contenido": "Hello World!", "usuarioId": "12345678"}'
+curl -X POST http://localhost:8090/api/publicaciones -H "Content-Type: application/json" -d '{"titulo": "My First Post", "contenido": "Hello World!", "usuarioId": "12345678"}'
 
 # Get publications by user
-curl -X GET http://localhost/api/publicaciones/usuario/12345678
+curl -X GET http://localhost:8090/api/publicaciones/usuario/12345678
 
 # Upload an image
-curl -X POST -F "archivo=@/path/to/image.jpg" http://localhost/api/imagenes/subir
+curl -X POST -F "archivo=@/path/to/image.jpg" http://localhost:8090/api/imagenes/subir
 
 # Get an image
-curl -X GET http://localhost/api/imagenes/image.jpg
+curl -X GET http://localhost:8090/api/imagenes/image.jpg
+
+
 
 # ---------------------------
 # EJEMPLOS (comentados) de actualización de SETTINGS mediante PATCH

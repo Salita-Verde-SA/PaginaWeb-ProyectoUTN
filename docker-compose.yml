@@ -29,11 +29,12 @@ services:
       MINIO_ROOT_USER: minioadmin
       MINIO_ROOT_PASSWORD: minioadmin
     volumes:
-      - minio_data:/data
+      - ./minio_data:/data:Z
     networks:
       - backend_network
     ports:
       - "9000:9000"
+      - "9001:9001"
     restart: unless-stopped
 
   # n8n para automatización y chatbot con IA
@@ -113,41 +114,8 @@ services:
       timeout: 5s
       retries: 3
 
-networks:
-  backend_network:
-    driver: bridge
-
-volumes:
-  mongo_data:
-    driver: local
-  minio_data:
-    driver: local
-  n8n_data:
-    driver: local
-    build:
-      context: ./frontend
-      dockerfile: DOCKERFILE
-    container_name: frontend_web
-    networks:
-      - backend_network
-    ports:
-      - "8081:8081"
-    restart: unless-stopped
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "wget",
-          "--quiet",
-          "--tries=1",
-          "--spider",
-          "http://localhost:8081/index.html",
-        ]
-      interval: 10s
-      timeout: 5s
-      retries: 3
-
-  # Nginx como proxy inverso (no incluye frontend) No se usará para presentar en local, pero es necesario para eliminar el uso de tantos puertos
+  # Nginx como proxy inverso (no incluye frontend) 
+  # No se usará para presentar en local, pero es necesario para eliminar el uso de tantos puertos
   # nginx:
   #   build:
   #     context: ./nginx
@@ -184,8 +152,4 @@ volumes:
   postgres_data:
     driver: local
   mongo_data:
-    driver: local
-  minio_data:
-    driver: local
-  n8n_data:
     driver: local

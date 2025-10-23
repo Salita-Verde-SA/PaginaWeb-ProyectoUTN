@@ -5,6 +5,8 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+import com.salitaverde.backend.backend.config.MinioConfig;
+
 import java.io.InputStream;
 import java.util.UUID;
 
@@ -13,16 +15,17 @@ import java.util.UUID;
 public class ImagenService {
     
     private final MinioClient minioClient;
-    private static final String BUCKET_NAME = "imagenes";
+    private final MinioConfig minioConfig;
     
     public void crearBucketSiNoExiste() {
         try {
+            String bucketName = minioConfig.getBucketName();
             boolean exists = minioClient.bucketExists(
-                BucketExistsArgs.builder().bucket(BUCKET_NAME).build()
+                BucketExistsArgs.builder().bucket(bucketName).build()
             );
             if (!exists) {
                 minioClient.makeBucket(
-                    MakeBucketArgs.builder().bucket(BUCKET_NAME).build()
+                    MakeBucketArgs.builder().bucket(bucketName).build()
                 );
             }
         } catch (Exception e) {
@@ -33,18 +36,16 @@ public class ImagenService {
     public String subirImagen(MultipartFile archivo) {
         try {
             crearBucketSiNoExiste();
-            
+            String bucketName = minioConfig.getBucketName();
             String nombreArchivo = UUID.randomUUID() + "_" + archivo.getOriginalFilename();
-            
             minioClient.putObject(
                 PutObjectArgs.builder()
-                    .bucket(BUCKET_NAME)
+                    .bucket(bucketName)
                     .object(nombreArchivo)
                     .stream(archivo.getInputStream(), archivo.getSize(), -1)
                     .contentType(archivo.getContentType())
                     .build()
             );
-            
             return nombreArchivo;
         } catch (Exception e) {
             throw new RuntimeException("Error al subir imagen: " + e.getMessage());
@@ -53,9 +54,10 @@ public class ImagenService {
     
     public InputStream obtenerImagen(String nombreArchivo) {
         try {
+            String bucketName = minioConfig.getBucketName();
             return minioClient.getObject(
                 GetObjectArgs.builder()
-                    .bucket(BUCKET_NAME)
+                    .bucket(bucketName)
                     .object(nombreArchivo)
                     .build()
             );
@@ -66,9 +68,10 @@ public class ImagenService {
     
     public void eliminarImagen(String nombreArchivo) {
         try {
+            String bucketName = minioConfig.getBucketName();
             minioClient.removeObject(
                 RemoveObjectArgs.builder()
-                    .bucket(BUCKET_NAME)
+                    .bucket(bucketName)
                     .object(nombreArchivo)
                     .build()
             );
