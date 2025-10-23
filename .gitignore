@@ -3,3 +3,5 @@
 #n8n/n8n_data/
 *.log
 backend/target
+frontend/node_modules
+minio_data/.minio.sys/buckets
