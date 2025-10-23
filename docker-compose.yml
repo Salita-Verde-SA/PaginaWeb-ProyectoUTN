@@ -1,30 +1,7 @@
 version: '3.8'
 
 services:
-  # Base de datos PostgreSQL para usuarios
-  postgres:
-    image: postgres:15-alpine
-    container_name: postgres_db
-    environment:
-      POSTGRES_DB: ${POSTGRES_DATABASE}
-      POSTGRES_USER: ${POSTGRES_USER}
-      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
-      POSTGRES_SCHEMA: ${POSTGRES_SCHEMA}
-    volumes:
-      - postgres_data:/var/lib/postgresql/data
-    networks:
-      - backend_network
-    ports:
-      - "5432:5432"
-    healthcheck:
-      # Usar variables de entorno en pg_isready
-      test: ["CMD-SHELL", "pg_isready -U ${POSTGRES_USER} -d ${POSTGRES_DATABASE}"]
-      interval: 10s
-      timeout: 5s
-      retries: 5
-    restart: unless-stopped
-
-  # Base de datos MongoDB para publicaciones
+  # Base de datos MongoDB para toda la data (publicaciones + usuarios)
   mongo:
     image: mongo:7
     container_name: mongo_db
@@ -37,7 +14,6 @@ services:
     networks:
       - backend_network
     healthcheck:
-      # Ejecutar un ping mediante mongosh (si la imagen lo incluye)
       test: ["CMD-SHELL", "mongosh --quiet --eval 'db.adminCommand({ ping: 1 })' || exit 1"]
       interval: 10s
       timeout: 5s
@@ -58,7 +34,6 @@ services:
       - backend_network
     ports:
       - "9000:9000"
-    # Eliminado healthcheck para evitar fallos por falta de curl/wget en la imagen
     restart: unless-stopped
 
   # n8n para automatización y chatbot con IA
@@ -79,8 +54,6 @@ services:
       N8N_PORT: 5678
     volumes:
       - "./n8n/n8n_data:/home/node/.n8n:Z"
-    depends_on:
-      - postgres
     networks:
       - backend_network
 
@@ -92,12 +65,7 @@ services:
     container_name: backend_java
     environment:
       SPRING_PROFILES_ACTIVE: prod
-      SPRING_DATASOURCE_URL: jdbc:postgresql://postgres:5432/${POSTGRES_DATABASE}
-      SPRING_DATASOURCE_USERNAME: ${POSTGRES_USER}
-      SPRING_DATASOURCE_PASSWORD: ${POSTGRES_PASSWORD}
-      SPRING_DATA_MONGODB_HOST: mongo
-      SPRING_DATA_MONGODB_PORT: 27017
-      SPRING_DATA_MONGODB_DATABASE: ${MONGO_DATABASE}
+      SPRING_DATA_MONGODB_URI: "mongodb://mongo:27017/${MONGO_DATABASE}"
       SPRING_DATA_MONGODB_USERNAME: ${MONGO_USERNAME}
       SPRING_DATA_MONGODB_PASSWORD: ${MONGO_PASSWORD}
       MINIO_ENDPOINT: http://minio:9000
@@ -108,8 +76,6 @@ services:
     ports:
       - "8090:8090"
     depends_on:
-      postgres:
-        condition: service_healthy
       mongo:
         condition: service_healthy
       minio:
@@ -124,6 +90,40 @@ services:
 
   # Nginx como Frontend (servidor web separado)
   frontend:
+    build:
+      context: ./frontend
+      dockerfile: DOCKERFILE
+    container_name: frontend_web
+    networks:
+      - backend_network
+    ports:
+      - "8081:8081"
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--tries=1",
+          "--spider",
+          "http://localhost:8081/index.html",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+networks:
+  backend_network:
+    driver: bridge
+
+volumes:
+  mongo_data:
+    driver: local
+  minio_data:
+    driver: local
+  n8n_data:
+    driver: local
     build:
       context: ./frontend
       dockerfile: DOCKERFILE
