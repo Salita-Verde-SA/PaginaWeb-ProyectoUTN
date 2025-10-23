@@ -6,7 +6,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import com.salitaverde.backend.backend.model.postgresql.Usuario;
+import com.salitaverde.backend.backend.model.mongo.Usuario;
 import com.salitaverde.backend.backend.service.UsuarioService;
 
 import java.util.List;
@@ -24,7 +24,7 @@ public class UsuarioController {
     }
 
     @GetMapping("/{id}")
-    public ResponseEntity<Usuario> obtenerPorId(@PathVariable Long id) {
+    public ResponseEntity<Usuario> obtenerPorId(@PathVariable String id) {
         return ResponseEntity.ok(usuarioService.obtenerPorId(id));
     }
 
@@ -36,14 +36,33 @@ public class UsuarioController {
 
     @PutMapping("/{id}")
     public ResponseEntity<Usuario> actualizar(
-            @PathVariable Long id,
+            @PathVariable String id,
             @Valid @RequestBody Usuario usuario) {
         return ResponseEntity.ok(usuarioService.actualizar(id, usuario));
     }
 
     @DeleteMapping("/{id}")
-    public ResponseEntity<Void> eliminar(@PathVariable Long id) {
+    public ResponseEntity<Void> eliminar(@PathVariable String id) {
         usuarioService.eliminar(id);
         return ResponseEntity.noContent().build();
     }
+
+    // Endpoint para actualizar solo las configuraciones del usuario
+    @PatchMapping("/{id}/settings")
+    public ResponseEntity<Usuario> actualizarSettings(
+            @PathVariable String id,
+            @RequestBody Usuario.Settings settings) {
+        Usuario actualizado = usuarioService.actualizarSettings(id, settings);
+        return ResponseEntity.ok(actualizado);
+    }
+
+    /*
+      Ejemplo de payload para PATCH /api/usuarios/{id}/settings
+      {
+        "temaOscuro": true
+        // "notificaciones": true,      // ejemplo: activar notificaciones
+        // "idioma": "es",              // ejemplo: preferencia de idioma
+        // "mostrarEmail": false        // ejemplo: preferencia de privacidad
+      }
+    */
 }

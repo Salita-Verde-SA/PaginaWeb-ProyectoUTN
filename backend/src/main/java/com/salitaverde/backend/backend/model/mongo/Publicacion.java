@@ -20,7 +20,7 @@ public class Publicacion {
     private String id;
     
     @Field("usuario_id")
-    private Long usuarioId;
+    private String usuarioId;
     
     @Field("username")
     private String username;
@@ -57,7 +57,7 @@ public class Publicacion {
     @AllArgsConstructor
     public static class Comentario {
         private String id;
-        private Long usuarioId;
+        private String usuarioId;
         private String username;
         private String texto;
         private LocalDateTime fecha = LocalDateTime.now();

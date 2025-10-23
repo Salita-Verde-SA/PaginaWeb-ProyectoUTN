@@ -5,7 +5,7 @@ import org.springframework.data.mongodb.config.EnableMongoAuditing;
 import org.springframework.data.mongodb.repository.config.EnableMongoRepositories;
 
 @Configuration
-@EnableMongoRepositories(basePackages = "com.proyecto.repository")
+@EnableMongoRepositories(basePackages = "com.salitaverde.backend.backend.repository")
 @EnableMongoAuditing
 public class MongoConfig {
     // Configuración adicional si es necesaria
