@@ -5,3 +5,4 @@
 backend/target
 frontend/node_modules
 minio_data/.minio.sys/buckets
+minio_data/.minio.sys/tmp
