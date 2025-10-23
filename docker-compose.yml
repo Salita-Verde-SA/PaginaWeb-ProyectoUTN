@@ -1,3 +1,5 @@
+version: '3.8'
+
 services:
   # Base de datos PostgreSQL para usuarios
   postgres:
@@ -71,7 +73,8 @@ services:
       NODE_ENV: production
       WEBHOOK_URL: http://localhost/n8n/
       GENERIC_TIMEZONE: America/Argentina/Buenos_Aires
-      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: true
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: false
+      N8N_BLOCK_ENV_ACCESS_IN_NODE: false
       N8N_HOST: localhost
       N8N_PORT: 5678
     volumes:
@@ -103,7 +106,7 @@ services:
     networks:
       - backend_network
     ports:
-      - "8090:8080"
+      - "8090:8090"
     depends_on:
       postgres:
         condition: service_healthy
@@ -113,7 +116,7 @@ services:
         condition: service_started
     restart: "no"
     healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost:8080/actuator/health"]
+      test: ["CMD", "curl", "-f", "http://localhost:8090/actuator/health"]
       interval: 30s
       timeout: 10s
       retries: 3
@@ -144,28 +147,28 @@ services:
       timeout: 5s
       retries: 3
 
-  # Nginx como proxy inverso (no incluye frontend)
-  nginx:
-    build:
-      context: ./nginx
-      dockerfile: DOCKERFILE
-    container_name: nginx_proxy
-    ports:
-      - "80:80"
-      - "443:443"
-    networks:
-      - backend_network
-    depends_on:
-      - backend
-      - frontend
-      - n8n
-      - minio
-    restart: unless-stopped
-    healthcheck:
-      test: ["CMD", "curl", "-f", "http://localhost/health"]
-      interval: 10s
-      timeout: 5s
-      retries: 3
+  # Nginx como proxy inverso (no incluye frontend) No se usará para presentar en local, pero es necesario para eliminar el uso de tantos puertos
+  # nginx:
+  #   build:
+  #     context: ./nginx
+  #     dockerfile: DOCKERFILE
+  #   container_name: nginx_proxy
+  #   ports:
+  #     - "80:80"
+  #     - "443:443"
+  #   networks:
+  #     - backend_network
+  #   depends_on:
+  #     - backend
+  #     - frontend
+  #     - n8n
+  #     - minio
+  #   restart: unless-stopped
+  #   healthcheck:
+  #     test: ["CMD", "curl", "-f", "http://localhost/health"]
+  #     interval: 10s
+  #     timeout: 5s
+  #     retries: 3
 
 # Definición de redes
 networks:
