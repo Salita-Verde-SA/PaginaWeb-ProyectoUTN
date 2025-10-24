@@ -1,14 +1,14 @@
 #!/bin/bash
 
-# Test backend connection
-echo "Testing backend connection..."
+# Probar conexión al backend
+echo "Probando conexión al backend..."
 curl -X GET http://localhost:8090/actuator/health
 
-# Add a user
+# Añadir un usuario
 echo -e "\n\nCreando usuario..."
 curl -X POST http://localhost:8090/api/usuarios \
-  -H "Content-Type: application/json" \
-  -d '{
+	-H "Content-Type: application/json" \
+	-d '{
     "dni":"123456789",
     "nombre":"John",
     "apellido":"Doe",
@@ -17,19 +17,19 @@ curl -X POST http://localhost:8090/api/usuarios \
     "password":"secreto"
   }'
 
-# List users
+# Listar usuarios
 echo -e "\n\nListando usuarios..."
 curl -X GET http://localhost:8090/api/usuarios
 
-# Get user by ID
+# Obtener usuario por ID
 echo -e "\n\nObteniendo usuario por ID..."
 curl -X GET http://localhost:8090/api/usuarios/123456789
 
-# Update user (PUT)
+# Actualizar usuario (PUT)
 echo -e "\n\nActualizando usuario completo..."
 curl -X PUT http://localhost:8090/api/usuarios/123456789 \
-  -H "Content-Type: application/json" \
-  -d '{
+	-H "Content-Type: application/json" \
+	-d '{
     "dni":"123456789",
     "nombre":"John",
     "apellido":"Doe Updated",
@@ -39,7 +39,7 @@ curl -X PUT http://localhost:8090/api/usuarios/123456789 \
     "localidad":"GUAYMALLEN"
   }'
 
-# Delete user
+# Eliminar usuario
 # echo -e "\n\nEliminando usuario..."
 # curl -X DELETE http://localhost:8090/api/usuarios/123456789
 
@@ -72,6 +72,19 @@ curl -X GET http://localhost:8090/api/usuarios/123456789/sigue-a/12345678
 echo -e "\n\nUsuario 123456789 deja de seguir a 12345678..."
 curl -X POST http://localhost:8090/api/usuarios/123456789/dejar-seguir/12345678
 
+# Crear tercer usuario distinto
+echo -e "\n\nCreando tercer usuario..."
+curl -X POST http://localhost:8090/api/usuarios \
+	-H "Content-Type: application/json" \
+	-d '{
+    "dni":"98765432",
+    "nombre":"Carlos",
+    "apellido":"Rodriguez",
+    "email":"carlos.rodriguez@example.com",
+    "username":"carlosr",
+    "password":"mipassword456"
+  }'
+
 # ---------------------------
 # ACTUALIZAR SETTINGS (PATCH)
 # ---------------------------
@@ -79,8 +92,8 @@ curl -X POST http://localhost:8090/api/usuarios/123456789/dejar-seguir/12345678
 # Cambiar sólo el tema oscuro
 echo -e "\n\nActualizando settings - tema oscuro..."
 curl -X PATCH http://localhost:8090/api/usuarios/123456789/settings \
-  -H "Content-Type: application/json" \
-  -d '{"temaOscuro": true}'
+	-H "Content-Type: application/json" \
+	-d '{"temaOscuro": true}'
 
 # Si añades más campos a Settings, puedes enviar múltiples:
 # curl -X PATCH http://localhost:8090/api/usuarios/123456789/settings \
@@ -95,21 +108,21 @@ curl -X PATCH http://localhost:8090/api/usuarios/123456789/settings \
 # PUBLICACIONES
 # ---------------------------
 
-# Create a publication (usuarioId es String/dni)
+# Crear una publicación (usuarioId es String/dni)
 echo -e "\n\nCreando publicación..."
 curl -X POST http://localhost:8090/api/publicaciones \
-  -H "Content-Type: application/json" \
-  -d '{
+	-H "Content-Type: application/json" \
+	-d '{
     "titulo": "My First Post",
     "contenido": "Hello World!",
     "usuarioId": "123456789"
   }'
 
-# Get publications by user
+# Obtener publicaciones por usuario
 echo -e "\n\nObteniendo publicaciones del usuario..."
 curl -X GET http://localhost:8090/api/publicaciones/usuario/123456789
 
-# Get all publications
+# Obtener todas las publicaciones
 echo -e "\n\nObteniendo todas las publicaciones..."
 curl -X GET http://localhost:8090/api/publicaciones
 
@@ -117,15 +130,15 @@ curl -X GET http://localhost:8090/api/publicaciones
 # IMÁGENES
 # ---------------------------
 
-# Upload an image (actualiza la ruta de la imagen)
+# Subir una imagen (actualiza la ruta de la imagen)
 # echo -e "\n\nSubiendo imagen..."
 # curl -X POST -F "archivo=@/path/to/image.jpg" http://localhost:8090/api/imagenes/subir
 
-# Get an image
+# Obtener una imagen
 # echo -e "\n\nObteniendo imagen..."
 # curl -X GET http://localhost:8090/api/imagenes/image.jpg
 
-# Delete an image
+# Eliminar una imagen
 # echo -e "\n\nEliminando imagen..."
 # curl -X DELETE http://localhost:8090/api/imagenes/image.jpg
 
