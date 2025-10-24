@@ -13,6 +13,7 @@ import com.salitaverde.backend.backend.service.ImagenService;
 import java.io.InputStream;
 import java.util.HashMap;
 import java.util.Map;
+import org.springframework.http.HttpStatus;
 
 @RestController
 @RequestMapping("/api/imagenes")
@@ -22,13 +23,53 @@ public class ImagenController {
     private final ImagenService imagenService;
     
     @PostMapping("/subir")
-    public ResponseEntity<Map<String, String>> subirImagen(
-            @RequestParam("archivo") MultipartFile archivo) {
-        String nombreArchivo = imagenService.subirImagen(archivo);
-        Map<String, String> respuesta = new HashMap<>();
-        respuesta.put("nombreArchivo", nombreArchivo);
-        respuesta.put("url", "/api/imagenes/" + nombreArchivo);
-        return ResponseEntity.ok(respuesta);
+    public ResponseEntity<?> subirImagen(
+            @RequestParam("archivo") MultipartFile archivo,
+            @RequestParam(value = "nombre", required = false) String nombrePersonalizado) {
+        try {
+            if (archivo.isEmpty()) {
+                throw new IllegalArgumentException("El archivo está vacío");
+            }
+            
+            String nombreArchivo;
+            if (nombrePersonalizado != null && !nombrePersonalizado.trim().isEmpty()) {
+                nombreArchivo = imagenService.subirImagenConNombre(archivo, nombrePersonalizado);
+            } else {
+                nombreArchivo = imagenService.subirImagen(archivo);
+            }
+            
+            Map<String, String> respuesta = new HashMap<>();
+            respuesta.put("nombreArchivo", nombreArchivo);
+            respuesta.put("url", "/api/imagenes/" + nombreArchivo);
+            return ResponseEntity.ok(respuesta);
+        } catch (RuntimeException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+        }
+    }
+    
+    @PutMapping("/{nombreAntiguo}/renombrar")
+    public ResponseEntity<?> renombrarImagen(
+            @PathVariable String nombreAntiguo,
+            @RequestBody Map<String, String> body) {
+        try {
+            String nombreNuevo = body.get("nombreNuevo");
+            if (nombreNuevo == null || nombreNuevo.trim().isEmpty()) {
+                throw new IllegalArgumentException("El nombre nuevo es requerido");
+            }
+            
+            String nombreFinal = imagenService.renombrarImagen(nombreAntiguo, nombreNuevo);
+            Map<String, String> respuesta = new HashMap<>();
+            respuesta.put("nombreArchivo", nombreFinal);
+            respuesta.put("url", "/api/imagenes/" + nombreFinal);
+            respuesta.put("mensaje", "Imagen renombrada exitosamente");
+            return ResponseEntity.ok(respuesta);
+        } catch (RuntimeException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.status(HttpStatus.CONFLICT).body(error);
+        }
     }
     
     @GetMapping("/{nombreArchivo}")
@@ -43,8 +84,14 @@ public class ImagenController {
     }
     
     @DeleteMapping("/{nombreArchivo}")
-    public ResponseEntity<Void> eliminarImagen(@PathVariable String nombreArchivo) {
-        imagenService.eliminarImagen(nombreArchivo);
-        return ResponseEntity.noContent().build();
+    public ResponseEntity<?> eliminarImagen(@PathVariable String nombreArchivo) {
+        try {
+            imagenService.eliminarImagen(nombreArchivo);
+            return ResponseEntity.noContent().build();
+        } catch (RuntimeException e) {
+            Map<String, String> error = new HashMap<>();
+            error.put("error", e.getMessage());
+            return ResponseEntity.status(HttpStatus.NOT_FOUND).body(error);
+        }
     }
 }

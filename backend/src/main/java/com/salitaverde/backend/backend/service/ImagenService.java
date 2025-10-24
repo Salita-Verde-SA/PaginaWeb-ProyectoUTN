@@ -66,7 +66,87 @@ public class ImagenService {
         }
     }
     
+    public boolean existeImagen(String nombreArchivo) {
+        try {
+            String bucketName = minioConfig.getBucketName();
+            minioClient.statObject(
+                StatObjectArgs.builder()
+                    .bucket(bucketName)
+                    .object(nombreArchivo)
+                    .build()
+            );
+            return true;
+        } catch (Exception e) {
+            return false;
+        }
+    }
+    
+    public String subirImagenConNombre(MultipartFile archivo, String nombrePersonalizado) {
+        if (existeImagen(nombrePersonalizado)) {
+            throw new RuntimeException("Ya existe una imagen con el nombre: " + nombrePersonalizado);
+        }
+        
+        try {
+            crearBucketSiNoExiste();
+            String bucketName = minioConfig.getBucketName();
+            minioClient.putObject(
+                PutObjectArgs.builder()
+                    .bucket(bucketName)
+                    .object(nombrePersonalizado)
+                    .stream(archivo.getInputStream(), archivo.getSize(), -1)
+                    .contentType(archivo.getContentType())
+                    .build()
+            );
+            return nombrePersonalizado;
+        } catch (Exception e) {
+            throw new RuntimeException("Error al subir imagen: " + e.getMessage());
+        }
+    }
+    
+    public String renombrarImagen(String nombreAntiguo, String nombreNuevo) {
+        if (!existeImagen(nombreAntiguo)) {
+            throw new RuntimeException("La imagen '" + nombreAntiguo + "' no existe");
+        }
+        
+        if (existeImagen(nombreNuevo)) {
+            throw new RuntimeException("Ya existe una imagen con el nombre: " + nombreNuevo);
+        }
+        
+        try {
+            String bucketName = minioConfig.getBucketName();
+            // Copiar el objeto con el nuevo nombre
+            minioClient.copyObject(
+                CopyObjectArgs.builder()
+                    .bucket(bucketName)
+                    .object(nombreNuevo)
+                    .source(
+                        CopySource.builder()
+                            .bucket(bucketName)
+                            .object(nombreAntiguo)
+                            .build()
+                    )
+                    .build()
+            );
+            
+            // Eliminar el objeto antiguo
+            minioClient.removeObject(
+                RemoveObjectArgs.builder()
+                    .bucket(bucketName)
+                    .object(nombreAntiguo)
+                    .build()
+            );
+            
+            return nombreNuevo;
+        } catch (Exception e) {
+            throw new RuntimeException("Error al renombrar imagen: " + e.getMessage());
+        }
+    }
+    
     public void eliminarImagen(String nombreArchivo) {
+        if (!existeImagen(nombreArchivo)) {
+            throw new RuntimeException("La imagen '" + nombreArchivo + "' no existe");
+        }
+        
         try {
             String bucketName = minioConfig.getBucketName();
             minioClient.removeObject(
