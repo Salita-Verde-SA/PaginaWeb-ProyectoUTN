@@ -9,7 +9,6 @@ services:
     environment:
       N8N_PROTOCOL: http
       NODE_ENV: production
-      WEBHOOK_URL: http://localhost/n8n/
       GENERIC_TIMEZONE: America/Argentina/Buenos_Aires
       N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: false
       N8N_BLOCK_ENV_ACCESS_IN_NODE: false
