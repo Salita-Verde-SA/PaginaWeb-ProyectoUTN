@@ -1,0 +1,30 @@
+services:
+  # n8n para automatización y chatbot con IA
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: n8n
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      N8N_PROTOCOL: http
+      NODE_ENV: production
+      WEBHOOK_URL: http://localhost/n8n/
+      GENERIC_TIMEZONE: America/Argentina/Buenos_Aires
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: false
+      N8N_BLOCK_ENV_ACCESS_IN_NODE: false
+      N8N_HOST: localhost
+      N8N_PORT: 5678
+    volumes:
+      - "./n8n/n8n_data:/home/node/.n8n:Z"
+    networks:
+      - backend_network
+
+# Definición de redes
+networks:
+  backend_network:
+    driver: bridge
+    ipam:
+      config:
+        #     - subnet: 10.89.0.0/32
+        - subnet: 172.20.0.0/16 # En docker normal debería servir esto
