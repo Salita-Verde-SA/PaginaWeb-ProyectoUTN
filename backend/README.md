@@ -1,6 +1,7 @@
 # API REST - Salita Verde Backend
 
 ## Índice
+
 - [Usuarios](#usuarios)
 - [Publicaciones](#publicaciones)
 - [Imágenes](#imágenes)
@@ -11,14 +12,17 @@
 ## Usuarios
 
 ### GET /api/usuarios
+
 Lista todos los usuarios.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X GET http://localhost:8090/api/usuarios
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const obtenerUsuarios = async () => {
   try {
@@ -34,14 +38,17 @@ const obtenerUsuarios = async () => {
 ---
 
 ### GET /api/usuarios/{id}
+
 Obtiene usuario por ID.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X GET http://localhost:8090/api/usuarios/123456789
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const obtenerUsuario = async (id) => {
   try {
@@ -57,9 +64,11 @@ const obtenerUsuario = async (id) => {
 ---
 
 ### POST /api/usuarios
+
 Crea un usuario.
 
 **Payload ejemplo:**
+
 ```json
 {
   "dni": "12345678",
@@ -73,6 +82,7 @@ Crea un usuario.
 ```
 
 **Ejemplo curl:**
+
 ```bash
 curl -X POST http://localhost:8090/api/usuarios \
   -H "Content-Type: application/json" \
@@ -88,6 +98,7 @@ curl -X POST http://localhost:8090/api/usuarios \
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const crearUsuario = async (datosUsuario) => {
   try {
@@ -109,9 +120,11 @@ const crearUsuario = async (datosUsuario) => {
 ---
 
 ### PUT /api/usuarios/{id}
+
 Actualiza usuario por ID.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X PUT http://localhost:8090/api/usuarios/123456789 \
   -H "Content-Type: application/json" \
@@ -126,6 +139,7 @@ curl -X PUT http://localhost:8090/api/usuarios/123456789 \
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const actualizarUsuario = async (id, datosActualizados) => {
   try {
@@ -147,14 +161,17 @@ const actualizarUsuario = async (id, datosActualizados) => {
 ---
 
 ### DELETE /api/usuarios/{id}
+
 Elimina usuario por ID.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X DELETE http://localhost:8090/api/usuarios/123456789
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const eliminarUsuario = async (id) => {
   try {
@@ -171,14 +188,17 @@ const eliminarUsuario = async (id) => {
 ---
 
 ### POST /api/usuarios/{id}/seguir/{seguidoId}
+
 El usuario `{id}` sigue al usuario `{seguidoId}`.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X POST http://localhost:8090/api/usuarios/123456789/seguir/12345678
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const seguirUsuario = async (usuarioId, seguidoId) => {
   try {
@@ -197,14 +217,17 @@ const seguirUsuario = async (usuarioId, seguidoId) => {
 ---
 
 ### POST /api/usuarios/{id}/dejar-seguir/{seguidoId}
+
 El usuario `{id}` deja de seguir a `{seguidoId}`.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X POST http://localhost:8090/api/usuarios/123456789/dejar-seguir/12345678
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const dejarDeSeguir = async (usuarioId, seguidoId) => {
   try {
@@ -223,14 +246,17 @@ const dejarDeSeguir = async (usuarioId, seguidoId) => {
 ---
 
 ### GET /api/usuarios/{id}/sigue-a/{seguidoId}
+
 Devuelve `true` si `{id}` sigue a `{seguidoId}`.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X GET http://localhost:8090/api/usuarios/123456789/sigue-a/12345678
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const verificarSiSigue = async (usuarioId, seguidoId) => {
   try {
@@ -248,9 +274,11 @@ const verificarSiSigue = async (usuarioId, seguidoId) => {
 ---
 
 ### PATCH /api/usuarios/{id}/settings
+
 Actualiza solo la configuración del usuario.
 
 **Payload ejemplo:**
+
 ```json
 {
   "temaOscuro": true
@@ -258,6 +286,7 @@ Actualiza solo la configuración del usuario.
 ```
 
 **Ejemplo curl:**
+
 ```bash
 curl -X PATCH http://localhost:8090/api/usuarios/123456789/settings \
   -H "Content-Type: application/json" \
@@ -265,6 +294,7 @@ curl -X PATCH http://localhost:8090/api/usuarios/123456789/settings \
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const actualizarSettings = async (usuarioId, settings) => {
   try {
@@ -291,14 +321,17 @@ const actualizarSettings = async (usuarioId, settings) => {
 ## Publicaciones
 
 ### GET /api/publicaciones
+
 Lista todas las publicaciones visibles.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X GET http://localhost:8090/api/publicaciones
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const obtenerPublicaciones = async () => {
   try {
@@ -314,14 +347,17 @@ const obtenerPublicaciones = async () => {
 ---
 
 ### GET /api/publicaciones/{id}
+
 Obtiene publicación por ID.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X GET http://localhost:8090/api/publicaciones/507f1f77bcf86cd799439011
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const obtenerPublicacion = async (id) => {
   try {
@@ -337,14 +373,17 @@ const obtenerPublicacion = async (id) => {
 ---
 
 ### GET /api/publicaciones/usuario/{usuarioId}
+
 Lista publicaciones de un usuario.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X GET http://localhost:8090/api/publicaciones/usuario/123456789
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const obtenerPublicacionesUsuario = async (usuarioId) => {
   try {
@@ -362,9 +401,11 @@ const obtenerPublicacionesUsuario = async (usuarioId) => {
 ---
 
 ### POST /api/publicaciones
+
 Crea una publicación.
 
 **Payload ejemplo:**
+
 ```json
 {
   "usuarioId": "123456789",
@@ -379,6 +420,7 @@ Crea una publicación.
 ```
 
 **Ejemplo curl:**
+
 ```bash
 curl -X POST http://localhost:8090/api/publicaciones \
   -H "Content-Type: application/json" \
@@ -395,6 +437,7 @@ curl -X POST http://localhost:8090/api/publicaciones \
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const crearPublicacion = async (datosPublicacion) => {
   try {
@@ -416,9 +459,11 @@ const crearPublicacion = async (datosPublicacion) => {
 ---
 
 ### PUT /api/publicaciones/{id}
+
 Actualiza publicación.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X PUT http://localhost:8090/api/publicaciones/507f1f77bcf86cd799439011 \
   -H "Content-Type: application/json" \
@@ -431,6 +476,7 @@ curl -X PUT http://localhost:8090/api/publicaciones/507f1f77bcf86cd799439011 \
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const actualizarPublicacion = async (id, datosActualizados) => {
   try {
@@ -452,14 +498,17 @@ const actualizarPublicacion = async (id, datosActualizados) => {
 ---
 
 ### DELETE /api/publicaciones/{id}
+
 Elimina (oculta) publicación.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X DELETE http://localhost:8090/api/publicaciones/507f1f77bcf86cd799439011
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const eliminarPublicacion = async (id) => {
   try {
@@ -478,13 +527,16 @@ const eliminarPublicacion = async (id) => {
 ## Imágenes
 
 ### POST /api/imagenes/subir
+
 Sube una imagen con nombre automático (UUID) o personalizado.
 
 **Form-data:**
+
 - `archivo`: archivo de imagen (requerido)
 - `nombre`: nombre personalizado para la imagen (opcional)
 
 **Respuesta exitosa:**
+
 ```json
 {
   "nombreArchivo": "uuid_img.jpg",
@@ -493,6 +545,7 @@ Sube una imagen con nombre automático (UUID) o personalizado.
 ```
 
 **Respuesta de error (409 Conflict):**
+
 ```json
 {
   "error": "Ya existe una imagen con el nombre: imagen.jpg"
@@ -500,12 +553,14 @@ Sube una imagen con nombre automático (UUID) o personalizado.
 ```
 
 **Ejemplo curl (nombre automático):**
+
 ```bash
 curl -X POST http://localhost:8090/api/imagenes/subir \
   -F "archivo=@/ruta/a/imagen.jpg"
 ```
 
 **Ejemplo curl (nombre personalizado):**
+
 ```bash
 curl -X POST http://localhost:8090/api/imagenes/subir \
   -F "archivo=@/ruta/a/imagen.jpg" \
@@ -513,6 +568,7 @@ curl -X POST http://localhost:8090/api/imagenes/subir \
 ```
 
 **Ejemplo React (con nombre automático):**
+
 ```jsx
 const subirImagen = async (archivo) => {
   const formData = new FormData();
@@ -541,6 +597,7 @@ const handleFileChange = (e) => {
 ```
 
 **Ejemplo React (con nombre personalizado):**
+
 ```jsx
 const subirImagenConNombre = async (archivo, nombrePersonalizado) => {
   const formData = new FormData();
@@ -571,9 +628,11 @@ const subirImagenConNombre = async (archivo, nombrePersonalizado) => {
 ---
 
 ### PUT /api/imagenes/{nombreAntiguo}/renombrar
+
 Renombra una imagen existente.
 
 **Payload:**
+
 ```json
 {
   "nombreNuevo": "nuevo-nombre.jpg"
@@ -581,6 +640,7 @@ Renombra una imagen existente.
 ```
 
 **Respuesta exitosa:**
+
 ```json
 {
   "nombreArchivo": "nuevo-nombre.jpg",
@@ -590,6 +650,7 @@ Renombra una imagen existente.
 ```
 
 **Respuesta de error (409 Conflict):**
+
 ```json
 {
   "error": "Ya existe una imagen con el nombre: nuevo-nombre.jpg"
@@ -597,6 +658,7 @@ Renombra una imagen existente.
 ```
 
 **Ejemplo curl:**
+
 ```bash
 curl -X PUT http://localhost:8090/api/imagenes/perfil-juan.jpg/renombrar \
   -H "Content-Type: application/json" \
@@ -604,6 +666,7 @@ curl -X PUT http://localhost:8090/api/imagenes/perfil-juan.jpg/renombrar \
 ```
 
 **Ejemplo React:**
+
 ```jsx
 const renombrarImagen = async (nombreAntiguo, nombreNuevo) => {
   try {
@@ -636,14 +699,17 @@ const renombrarImagen = async (nombreAntiguo, nombreNuevo) => {
 ---
 
 ### GET /api/imagenes/{nombreArchivo}
+
 Descarga/visualiza la imagen.
 
 **Ejemplo curl:**
+
 ```bash
 curl -X GET http://localhost:8090/api/imagenes/perfil-juan.jpg --output imagen.jpg
 ```
 
 **Ejemplo React (mostrar imagen):**
+
 ```jsx
 // Simplemente usa la URL en el atributo src
 const MostrarImagen = ({ nombreArchivo }) => {
