@@ -1,4 +1,4 @@
-version: '3.8'
+version: "3.8"
 
 services:
   # Base de datos MongoDB para toda la data (publicaciones + usuarios)
@@ -13,8 +13,14 @@ services:
       - mongo_data:/data/db
     networks:
       - backend_network
+    ports:
+      - "27017:27017"
     healthcheck:
-      test: ["CMD-SHELL", "mongosh --quiet --eval 'db.adminCommand({ ping: 1 })' || exit 1"]
+      test:
+        [
+          "CMD-SHELL",
+          "mongosh --quiet --eval 'db.adminCommand({ ping: 1 })' || exit 1",
+        ]
       interval: 10s
       timeout: 5s
       retries: 5
@@ -66,9 +72,12 @@ services:
     container_name: backend_java
     environment:
       SPRING_PROFILES_ACTIVE: prod
-      SPRING_DATA_MONGODB_URI: "mongodb://mongo:27017/${MONGO_DATABASE}"
+      SPRING_DATA_MONGODB_HOST: mongo
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_DATABASE: ${MONGO_DATABASE}
       SPRING_DATA_MONGODB_USERNAME: ${MONGO_USERNAME}
       SPRING_DATA_MONGODB_PASSWORD: ${MONGO_PASSWORD}
+      SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE: admin
       MINIO_ENDPOINT: http://minio:9000
       MINIO_ACCESS_KEY: minioadmin
       MINIO_SECRET_KEY: minioadmin
@@ -114,7 +123,7 @@ services:
       timeout: 5s
       retries: 3
 
-  # Nginx como proxy inverso (no incluye frontend) 
+  # Nginx como proxy inverso (no incluye frontend)
   # No se usará para presentar en local, pero es necesario para eliminar el uso de tantos puertos
   # nginx:
   #   build:
