@@ -52,6 +52,12 @@ public class Publicacion {
     @Field("visible")
     private Boolean visible = true;
     
+    @Field("entradas_totales")
+    private Integer entradasTotales = 0;
+    
+    @Field("entradas_disponibles")
+    private Integer entradasDisponibles = 0;
+    
     @Data
     @NoArgsConstructor
     @AllArgsConstructor

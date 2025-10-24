@@ -47,6 +47,34 @@ public class UsuarioController {
         return ResponseEntity.noContent().build();
     }
 
+
+    // Seguir usuario
+    @PostMapping("/{id}/seguir/{seguidoId}")
+    public ResponseEntity<Usuario> seguirUsuario(
+            @PathVariable String id,
+            @PathVariable String seguidoId) {
+        Usuario actualizado = usuarioService.seguirUsuario(id, seguidoId);
+        return ResponseEntity.ok(actualizado);
+    }
+
+    // Dejar de seguir usuario
+    @PostMapping("/{id}/dejar-seguir/{seguidoId}")
+    public ResponseEntity<Usuario> dejarDeSeguirUsuario(
+            @PathVariable String id,
+            @PathVariable String seguidoId) {
+        Usuario actualizado = usuarioService.dejarDeSeguirUsuario(id, seguidoId);
+        return ResponseEntity.ok(actualizado);
+    }
+
+    // Consultar si un usuario sigue a otro
+    @GetMapping("/{id}/sigue-a/{seguidoId}")
+    public ResponseEntity<Boolean> sigueA(
+            @PathVariable String id,
+            @PathVariable String seguidoId) {
+        boolean sigue = usuarioService.sigueA(id, seguidoId);
+        return ResponseEntity.ok(sigue);
+    }
+
     // Endpoint para actualizar solo las configuraciones del usuario
     @PatchMapping("/{id}/settings")
     public ResponseEntity<Usuario> actualizarSettings(
@@ -65,4 +93,5 @@ public class UsuarioController {
         // "mostrarEmail": false        // ejemplo: preferencia de privacidad
       }
     */
+
 }
