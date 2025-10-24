@@ -130,17 +130,41 @@ curl -X GET http://localhost:8090/api/publicaciones
 # IMÁGENES
 # ---------------------------
 
-# Subir una imagen (actualiza la ruta de la imagen)
-# echo -e "\n\nSubiendo imagen..."
+# Subir una imagen con nombre automático (UUID)
+echo -e "\n\nSubiendo imagen con nombre automático..."
 # curl -X POST -F "archivo=@/path/to/image.jpg" http://localhost:8090/api/imagenes/subir
 
+# Subir una imagen con nombre personalizado
+echo -e "\n\nSubiendo imagen con nombre personalizado..."
+# curl -X POST -F "archivo=@/path/to/image.jpg" -F "nombre=perfil-john.jpg" http://localhost:8090/api/imagenes/subir
+
+# Intentar subir imagen con nombre duplicado (debe fallar)
+echo -e "\n\nIntentando subir imagen con nombre duplicado..."
+# curl -X POST -F "archivo=@/path/to/image.jpg" -F "nombre=perfil-john.jpg" http://localhost:8090/api/imagenes/subir
+
+# Renombrar una imagen
+echo -e "\n\nRenombrando imagen..."
+# curl -X PUT http://localhost:8090/api/imagenes/perfil-john.jpg/renombrar \
+#   -H "Content-Type: application/json" \
+#   -d '{"nombreNuevo": "avatar-john.jpg"}'
+
+# Intentar renombrar a un nombre que ya existe (debe fallar)
+echo -e "\n\nIntentando renombrar a nombre existente..."
+# curl -X PUT http://localhost:8090/api/imagenes/avatar-john.jpg/renombrar \
+#   -H "Content-Type: application/json" \
+#   -d '{"nombreNuevo": "otro-nombre-existente.jpg"}'
+
 # Obtener una imagen
-# echo -e "\n\nObteniendo imagen..."
-# curl -X GET http://localhost:8090/api/imagenes/image.jpg
+echo -e "\n\nObteniendo imagen..."
+# curl -X GET http://localhost:8090/api/imagenes/avatar-john.jpg
 
 # Eliminar una imagen
-# echo -e "\n\nEliminando imagen..."
-# curl -X DELETE http://localhost:8090/api/imagenes/image.jpg
+echo -e "\n\nEliminando imagen..."
+# curl -X DELETE http://localhost:8090/api/imagenes/avatar-john.jpg
+
+# Intentar eliminar una imagen que no existe (debe fallar)
+echo -e "\n\nIntentando eliminar imagen inexistente..."
+# curl -X DELETE http://localhost:8090/api/imagenes/imagen-inexistente.jpg
 
 echo -e "\n\nScript completado!"
 # ---------------------------
