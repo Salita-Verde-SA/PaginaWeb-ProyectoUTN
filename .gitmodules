@@ -1,3 +1,4 @@
 [submodule "frontend"]
 	path = frontend
-	url = git@github.com:Salita-Verde-SA/ReactPagina.git
+	# url = git@github.com:Salita-Verde-SA/ReactPagina.git
+	url = https://github.com/Salita-Verde-SA/ReactPagina.git
