@@ -6,6 +6,7 @@
 - [Publicaciones](#publicaciones)
 - [Imágenes](#imágenes)
 - [Acceso a Imágenes desde Frontend](#acceso-a-imágenes-desde-frontend)
+- [Pedidos](#pedidos)
 
 ---
 
@@ -716,3 +717,357 @@ const MostrarImagen = ({ nombreArchivo }) => {
   return (
     <img 
       src={`http://localhost:8090/api/imagenes/${nombreArchivo}`}
+      alt="Imagen de usuario"
+    />
+  );
+};
+```
+
+---
+
+## Pedidos
+
+### GET /api/pedidos
+
+Lista todos los pedidos.
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/pedidos
+```
+
+**Ejemplo React:**
+
+```jsx
+const obtenerPedidos = async () => {
+  try {
+    const response = await fetch('http://localhost:8090/api/pedidos');
+    const pedidos = await response.json();
+    console.log(pedidos);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### GET /api/pedidos/{id}
+
+Obtiene pedido por ID.
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/pedidos/507f1f77bcf86cd799439011
+```
+
+**Ejemplo React:**
+
+```jsx
+const obtenerPedido = async (id) => {
+  try {
+    const response = await fetch(`http://localhost:8090/api/pedidos/${id}`);
+    const pedido = await response.json();
+    console.log(pedido);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### GET /api/pedidos/codigo/{codigo}
+
+Obtiene pedido por código de confirmación.
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/pedidos/codigo/A1B2C3D4
+```
+
+**Ejemplo React:**
+
+```jsx
+const obtenerPedidoPorCodigo = async (codigo) => {
+  try {
+    const response = await fetch(`http://localhost:8090/api/pedidos/codigo/${codigo}`);
+    const pedido = await response.json();
+    console.log(pedido);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### GET /api/pedidos/usuario/{usuarioId}
+
+Lista pedidos de un usuario.
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/pedidos/usuario/123456789
+```
+
+**Ejemplo React:**
+
+```jsx
+const obtenerPedidosUsuario = async (usuarioId) => {
+  try {
+    const response = await fetch(`http://localhost:8090/api/pedidos/usuario/${usuarioId}`);
+    const pedidos = await response.json();
+    console.log(pedidos);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### GET /api/pedidos/publicador/{publicadorId}
+
+Lista pedidos recibidos por un publicador.
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/pedidos/publicador/20123456789
+```
+
+**Ejemplo React:**
+
+```jsx
+const obtenerPedidosPublicador = async (publicadorId) => {
+  try {
+    const response = await fetch(`http://localhost:8090/api/pedidos/publicador/${publicadorId}`);
+    const pedidos = await response.json();
+    console.log(pedidos);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### GET /api/pedidos/publicacion/{publicacionId}
+
+Lista pedidos de una publicación específica.
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/pedidos/publicacion/507f1f77bcf86cd799439011
+```
+
+**Ejemplo React:**
+
+```jsx
+const obtenerPedidosPublicacion = async (publicacionId) => {
+  try {
+    const response = await fetch(`http://localhost:8090/api/pedidos/publicacion/${publicacionId}`);
+    const pedidos = await response.json();
+    console.log(pedidos);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### GET /api/pedidos/estado/{estado}
+
+Lista pedidos por estado (PENDIENTE, CONFIRMADO, ENTREGADO, CANCELADO, REEMBOLSADO).
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/pedidos/estado/CONFIRMADO
+```
+
+**Ejemplo React:**
+
+```jsx
+const obtenerPedidosPorEstado = async (estado) => {
+  try {
+    const response = await fetch(`http://localhost:8090/api/pedidos/estado/${estado}`);
+    const pedidos = await response.json();
+    console.log(pedidos);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### GET /api/pedidos/usuario/{usuarioId}/estado/{estado}
+
+Lista pedidos de un usuario filtrados por estado.
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/pedidos/usuario/123456789/estado/CONFIRMADO
+```
+
+**Ejemplo React:**
+
+```jsx
+const obtenerPedidosUsuarioPorEstado = async (usuarioId, estado) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8090/api/pedidos/usuario/${usuarioId}/estado/${estado}`
+    );
+    const pedidos = await response.json();
+    console.log(pedidos);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### POST /api/pedidos
+
+Crea un nuevo pedido.
+
+**Payload ejemplo:**
+
+```json
+{
+  "usuarioId": "123456789",
+  "usernameComprador": "juanp",
+  "publicadorId": "20123456789",
+  "nombrePublicador": "Complejo Art Media",
+  "publicacionId": "507f1f77bcf86cd799439011",
+  "tituloEvento": "WABI",
+  "cantidad": 2,
+  "precioUnitario": 20000.00,
+  "metodoPago": "tarjeta",
+  "correoEnvio": "juan@example.com",
+  "esRegalo": false
+}
+```
+
+**Ejemplo curl:**
+
+```bash
+curl -X POST http://localhost:8090/api/pedidos \
+  -H "Content-Type: application/json" \
+  -d '{
+    "usuarioId": "123456789",
+    "usernameComprador": "juanp",
+    "publicadorId": "20123456789",
+    "nombrePublicador": "Complejo Art Media",
+    "publicacionId": "507f1f77bcf86cd799439011",
+    "tituloEvento": "WABI",
+    "cantidad": 2,
+    "precioUnitario": 20000.00,
+    "metodoPago": "tarjeta",
+    "correoEnvio": "juan@example.com",
+    "esRegalo": false
+  }'
+```
+
+**Ejemplo React:**
+
+```jsx
+const crearPedido = async (datosPedido) => {
+  try {
+    const response = await fetch('http://localhost:8090/api/pedidos', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(datosPedido)
+    });
+    const nuevoPedido = await response.json();
+    console.log('Pedido creado:', nuevoPedido);
+    return nuevoPedido;
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### PATCH /api/pedidos/{id}/estado
+
+Actualiza el estado de un pedido.
+
+**Payload ejemplo:**
+
+```json
+"CONFIRMADO"
+```
+
+**Ejemplo curl:**
+
+```bash
+curl -X PATCH http://localhost:8090/api/pedidos/507f1f77bcf86cd799439011/estado \
+  -H "Content-Type: application/json" \
+  -d '"CONFIRMADO"'
+```
+
+**Ejemplo React:**
+
+```jsx
+const actualizarEstadoPedido = async (pedidoId, nuevoEstado) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8090/api/pedidos/${pedidoId}/estado`,
+      {
+        method: 'PATCH',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify(nuevoEstado)
+      }
+    );
+    const pedidoActualizado = await response.json();
+    console.log('Estado actualizado:', pedidoActualizado);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### DELETE /api/pedidos/{id}
+
+Elimina un pedido (solo si está en estado PENDIENTE).
+
+**Ejemplo curl:**
+
+```bash
+curl -X DELETE http://localhost:8090/api/pedidos/507f1f77bcf86cd799439011
+```
+
+**Ejemplo React:**
+
+```jsx
+const eliminarPedido = async (id) => {
+  try {
+    await fetch(`http://localhost:8090/api/pedidos/${id}`, {
+      method: 'DELETE'
+    });
+    console.log('Pedido eliminado');
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
