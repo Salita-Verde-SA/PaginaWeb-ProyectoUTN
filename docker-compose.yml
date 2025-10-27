@@ -21,8 +21,15 @@ services:
     healthcheck:
       test:
         [
-          "CMD-SHELL",
-          "mongosh --quiet --eval 'db.adminCommand({ ping: 1 })' || exit 1",
+          "CMD",
+          "mongosh",
+          "--quiet",
+          "--host",
+          "localhost",
+          "--port",
+          "27017",
+          "--eval",
+          "db.adminCommand('ping')"
         ]
       interval: 10s
       timeout: 5s
