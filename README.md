@@ -242,9 +242,15 @@ alias docker-compose=podman-compose
 PaginaWeb-ProyectoUTN/
 ├── frontend/          # Aplicación cliente (HTML, CSS, JS)
 ├── backend/           # API y lógica de negocio
-├── database/          # Scripts y configuración de BD(todavía no se crea)
+├── scripts/           # Scripts de utilidad y configuración
+│   ├── init-mongo.js  # Script de inicialización de MongoDB
+│   └── create_and_list_users.sh  # Script de prueba de endpoints
+├── mongo_data/        # Datos persistentes de MongoDB (generado automáticamente)
+├── minio_data/        # Almacenamiento de imágenes (generado automáticamente)
+├── n8n/               # Configuración de n8n
+│   └── n8n_data/      # Datos de n8n (generado automáticamente)
 ├── docker-compose.yml # Configuración de contenedores
-├── .env.example       # Variables de entorno de ejemplo
+├── .env               # Variables de entorno
 └── README.md          # Este archivo
 ```
 
