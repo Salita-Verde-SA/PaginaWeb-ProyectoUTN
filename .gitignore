@@ -1,8 +1,19 @@
-.vscode/
+# Carpetas de datos generados por Docker
+# mongo_data/
+# minio_data/
+# n8n/n8n_data/
+
+# Variables de entorno
 .env
-#n8n/n8n_data/
+
+# Logs
 *.log
-backend/target
-frontend/node_modules
-minio_data/.minio.sys/buckets
-minio_data/.minio.sys/tmp
+
+# IDE
+.vscode/
+.idea/
+*.iml
+
+# OS
+.DS_Store
+Thumbs.db
