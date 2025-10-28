@@ -11,7 +11,7 @@ services:
       MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
       MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
     volumes:
-      - ./mongo_data:/data/db:Z
+      - mongo_data:/data/db
     networks:
       backend_network:
         aliases:
@@ -32,7 +32,7 @@ services:
           "db.adminCommand('ping')"
         ]
       interval: 10s
-      timeout: 5s
+      timeout: 10s
       retries: 5
     restart: unless-stopped
 
@@ -150,3 +150,8 @@ networks:
   backend_network:
     driver: bridge
     # Remover ipam para que Podman asigne automáticamente
+
+# Definición de volúmenes
+volumes:
+  mongo_data:
+    driver: local
