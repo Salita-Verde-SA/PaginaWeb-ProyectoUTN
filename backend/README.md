@@ -13,6 +13,8 @@
 
 ## Usuarios
 
+**IMPORTANTE:** Todos los endpoints de usuarios utilizan el **ID de MongoDB** (24 caracteres) como identificador, no el DNI.
+
 ### GET /api/usuarios
 
 Lista todos los usuarios.
@@ -41,12 +43,12 @@ const obtenerUsuarios = async () => {
 
 ### GET /api/usuarios/{id}
 
-Obtiene usuario por ID.
+Obtiene usuario por ID de MongoDB.
 
 **Ejemplo curl:**
 
 ```bash
-curl -X GET http://localhost:8090/api/usuarios/123456789
+curl -X GET http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011
 ```
 
 **Ejemplo React:**
@@ -123,12 +125,12 @@ const crearUsuario = async (datosUsuario) => {
 
 ### PUT /api/usuarios/{id}
 
-Actualiza usuario por ID.
+Actualiza usuario por ID de MongoDB.
 
 **Ejemplo curl:**
 
 ```bash
-curl -X PUT http://localhost:8090/api/usuarios/123456789 \
+curl -X PUT http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011 \
   -H "Content-Type: application/json" \
   -d '{
     "dni": "123456789",
@@ -164,12 +166,12 @@ const actualizarUsuario = async (id, datosActualizados) => {
 
 ### DELETE /api/usuarios/{id}
 
-Elimina usuario por ID.
+Elimina usuario por ID de MongoDB.
 
 **Ejemplo curl:**
 
 ```bash
-curl -X DELETE http://localhost:8090/api/usuarios/123456789
+curl -X DELETE http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011
 ```
 
 **Ejemplo React:**
@@ -191,12 +193,12 @@ const eliminarUsuario = async (id) => {
 
 ### POST /api/usuarios/{id}/seguir/{seguidoId}
 
-El usuario `{id}` sigue al usuario `{seguidoId}`.
+El usuario `{id}` sigue al usuario `{seguidoId}`. Ambos son IDs de MongoDB.
 
 **Ejemplo curl:**
 
 ```bash
-curl -X POST http://localhost:8090/api/usuarios/123456789/seguir/12345678
+curl -X POST http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011/seguir/507f1f77bcf86cd799439012
 ```
 
 **Ejemplo React:**
@@ -220,12 +222,12 @@ const seguirUsuario = async (usuarioId, seguidoId) => {
 
 ### POST /api/usuarios/{id}/dejar-seguir/{seguidoId}
 
-El usuario `{id}` deja de seguir a `{seguidoId}`.
+El usuario `{id}` deja de seguir a `{seguidoId}`. Ambos son IDs de MongoDB.
 
 **Ejemplo curl:**
 
 ```bash
-curl -X POST http://localhost:8090/api/usuarios/123456789/dejar-seguir/12345678
+curl -X POST http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011/dejar-seguir/507f1f77bcf86cd799439012
 ```
 
 **Ejemplo React:**
@@ -249,12 +251,12 @@ const dejarDeSeguir = async (usuarioId, seguidoId) => {
 
 ### GET /api/usuarios/{id}/sigue-a/{seguidoId}
 
-Devuelve `true` si `{id}` sigue a `{seguidoId}`.
+Devuelve `true` si `{id}` sigue a `{seguidoId}`. Ambos son IDs de MongoDB.
 
 **Ejemplo curl:**
 
 ```bash
-curl -X GET http://localhost:8090/api/usuarios/123456789/sigue-a/12345678
+curl -X GET http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011/sigue-a/507f1f77bcf86cd799439012
 ```
 
 **Ejemplo React:**
@@ -277,22 +279,22 @@ const verificarSiSigue = async (usuarioId, seguidoId) => {
 
 ### PATCH /api/usuarios/{id}/settings
 
-Actualiza solo la configuración del usuario.
+Actualiza solo la configuración del usuario (por ejemplo, el tema oscuro). Usa el ID de MongoDB.
 
 **Payload ejemplo:**
 
 ```json
 {
-  "temaOscuro": true
+  "temaOscuro": false
 }
 ```
 
 **Ejemplo curl:**
 
 ```bash
-curl -X PATCH http://localhost:8090/api/usuarios/123456789/settings \
+curl -X PATCH http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011/settings \
   -H "Content-Type: application/json" \
-  -d '{"temaOscuro": true}'
+  -d '{"temaOscuro": false}'
 ```
 
 **Ejemplo React:**
@@ -307,16 +309,24 @@ const actualizarSettings = async (usuarioId, settings) => {
         headers: {
           'Content-Type': 'application/json',
         },
+        credentials: 'include', // Importante para cookies de sesión
         body: JSON.stringify(settings)
       }
     );
     const resultado = await response.json();
     console.log('Settings actualizados:', resultado);
+    return resultado;
   } catch (error) {
     console.error('Error:', error);
+    throw error;
   }
 };
+
+// Uso para cambiar tema (usando el ID del usuario autenticado)
+actualizarSettings(usuario.id, { temaOscuro: true });
 ```
+
+**Nota:** El endpoint actualiza solo los campos enviados en el payload, preservando el resto de la configuración.
 
 ---
 

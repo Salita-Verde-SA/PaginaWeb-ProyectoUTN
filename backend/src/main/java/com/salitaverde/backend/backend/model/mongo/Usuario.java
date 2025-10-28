@@ -85,7 +85,7 @@ public class Usuario {
     @NoArgsConstructor
     @AllArgsConstructor
     public static class Settings {
-        private Boolean temaOscuro = false;
+        private Boolean temaOscuro = true; // Cambiar a true por defecto (modo oscuro)
 
         // Ejemplos de otros parámetros útiles (descomentar/usar si se añaden al frontend/backend):
         // private Boolean notificaciones = true;   // recibir notificaciones push/email

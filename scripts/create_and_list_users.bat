@@ -73,7 +73,13 @@ REM ---------------------------
 REM ACTUALIZAR SETTINGS (PATCH)
 REM ---------------------------
 
-REM Cambiar sólo el tema oscuro
+REM Cambiar tema a claro
+echo.
+echo.
+echo Actualizando settings - tema claro...
+curl -X PATCH http://localhost:8090/api/usuarios/123456789/settings -H "Content-Type: application/json" -d "{\"temaOscuro\": false}"
+
+REM Cambiar tema a oscuro
 echo.
 echo.
 echo Actualizando settings - tema oscuro...

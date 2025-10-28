@@ -6,7 +6,7 @@ curl -X GET http://localhost:8090/actuator/health
 
 # Añadir un usuario
 echo -e "\n\nCreando usuario..."
-curl -X POST http://localhost:8090/api/usuarios \
+RESPONSE=$(curl -s -X POST http://localhost:8090/api/usuarios \
 	-H "Content-Type: application/json" \
 	-d '{
     "dni":"123456789",
@@ -15,19 +15,26 @@ curl -X POST http://localhost:8090/api/usuarios \
     "email":"john@example.com",
     "username":"johnd",
     "password":"secreto"
-  }'
+  }')
+
+echo "$RESPONSE"
+
+# Extraer el ID del usuario creado (requiere jq)
+# Si no tienes jq instalado: sudo apt-get install jq
+USER_ID=$(echo "$RESPONSE" | jq -r '.id')
+echo -e "\n\nID del usuario creado: $USER_ID"
 
 # Listar usuarios
 echo -e "\n\nListando usuarios..."
 curl -X GET http://localhost:8090/api/usuarios
 
-# Obtener usuario por ID
+# Obtener usuario por ID (usando el ID de MongoDB)
 echo -e "\n\nObteniendo usuario por ID..."
-curl -X GET http://localhost:8090/api/usuarios/123456789
+curl -X GET "http://localhost:8090/api/usuarios/$USER_ID"
 
-# Actualizar usuario (PUT)
+# Actualizar usuario (PUT) usando el ID de MongoDB
 echo -e "\n\nActualizando usuario completo..."
-curl -X PUT http://localhost:8090/api/usuarios/123456789 \
+curl -X PUT "http://localhost:8090/api/usuarios/$USER_ID" \
 	-H "Content-Type: application/json" \
 	-d '{
     "dni":"123456789",
@@ -74,7 +81,7 @@ curl -X POST http://localhost:8090/api/usuarios/123456789/dejar-seguir/12345678
 
 # Crear tercer usuario distinto
 echo -e "\n\nCreando tercer usuario..."
-curl -X POST http://localhost:8090/api/usuarios \
+RESPONSE_USER3=$(curl -s -X POST http://localhost:8090/api/usuarios \
 	-H "Content-Type: application/json" \
 	-d '{
     "dni":"98765432",
@@ -83,15 +90,24 @@ curl -X POST http://localhost:8090/api/usuarios \
     "email":"carlos.rodriguez@example.com",
     "username":"carlosr",
     "password":"mipassword456"
-  }'
+  }')
+
+echo "$RESPONSE_USER3"
+USER3_ID=$(echo "$RESPONSE_USER3" | jq -r '.id')
 
 # ---------------------------
-# ACTUALIZAR SETTINGS (PATCH)
+# ACTUALIZAR SETTINGS (PATCH) - Usando ID de MongoDB
 # ---------------------------
 
-# Cambiar sólo el tema oscuro
+# Cambiar el tema oscuro a false (modo claro)
+echo -e "\n\nActualizando settings - tema claro..."
+curl -X PATCH "http://localhost:8090/api/usuarios/$USER_ID/settings" \
+	-H "Content-Type: application/json" \
+	-d '{"temaOscuro": false}'
+
+# Cambiar el tema oscuro a true (modo oscuro - valor por defecto)
 echo -e "\n\nActualizando settings - tema oscuro..."
-curl -X PATCH http://localhost:8090/api/usuarios/123456789/settings \
+curl -X PATCH "http://localhost:8090/api/usuarios/$USER_ID/settings" \
 	-H "Content-Type: application/json" \
 	-d '{"temaOscuro": true}'
 
