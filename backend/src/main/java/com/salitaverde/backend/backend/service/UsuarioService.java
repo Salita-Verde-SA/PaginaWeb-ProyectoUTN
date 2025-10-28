@@ -131,4 +131,23 @@ public class UsuarioService {
         }
         return agregado;
     }
+
+    // Incrementar contador de eventos asistidos
+    @Transactional
+    public Usuario registrarAsistenciaEvento(String usuarioId) {
+        Usuario usuario = obtenerPorId(usuarioId);
+        Integer cantidadActual = usuario.getCantidadEventosAsistidos();
+        if (cantidadActual == null) {
+            cantidadActual = 0;
+        }
+        usuario.setCantidadEventosAsistidos(cantidadActual + 1);
+        return usuarioRepository.save(usuario);
+    }
+
+    // Obtener cantidad de eventos asistidos
+    public Integer obtenerCantidadEventosAsistidos(String usuarioId) {
+        Usuario usuario = obtenerPorId(usuarioId);
+        Integer cantidad = usuario.getCantidadEventosAsistidos();
+        return cantidad != null ? cantidad : 0;
+    }
 }

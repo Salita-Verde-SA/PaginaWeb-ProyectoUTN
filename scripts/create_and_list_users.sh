@@ -167,4 +167,52 @@ echo -e "\n\nIntentando eliminar imagen inexistente..."
 # curl -X DELETE http://localhost:8090/api/imagenes/imagen-inexistente.jpg
 
 echo -e "\n\nScript completado!"
+
 # ---------------------------
+# AUTENTICACIÓN
+# ---------------------------
+
+echo -e "\n\n=== PROBANDO AUTENTICACIÓN ==="
+
+# Registrar un nuevo usuario
+echo -e "\n\nRegistrando nuevo usuario..."
+curl -X POST http://localhost:8090/api/auth/register \
+	-H "Content-Type: application/json" \
+	-d '{
+    "dni":"87654321",
+    "nombre":"Maria",
+    "apellido":"Garcia",
+    "email":"maria@example.com",
+    "username":"mariag",
+    "password":"password123",
+    "localidad":"CAPITAL"
+  }' \
+	-c cookies.txt
+
+# Login
+echo -e "\n\nIniciando sesión..."
+curl -X POST http://localhost:8090/api/auth/login \
+	-H "Content-Type: application/json" \
+	-d '{
+    "username":"mariag",
+    "password":"password123"
+  }' \
+	-c cookies.txt
+
+# Validar token
+echo -e "\n\nValidando token..."
+curl -X GET http://localhost:8090/api/auth/validate \
+	-b cookies.txt
+
+# Logout
+echo -e "\n\nCerrando sesión..."
+curl -X POST http://localhost:8090/api/auth/logout \
+	-b cookies.txt \
+	-c cookies.txt
+
+# Intentar validar después del logout (debería fallar)
+echo -e "\n\nIntentando validar después del logout..."
+curl -X GET http://localhost:8090/api/auth/validate \
+	-b cookies.txt
+
+echo -e "\n\n=== FIN DE PRUEBAS DE AUTENTICACIÓN ==="

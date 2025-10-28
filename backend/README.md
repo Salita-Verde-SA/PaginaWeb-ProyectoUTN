@@ -7,6 +7,7 @@
 - [Imágenes](#imágenes)
 - [Acceso a Imágenes desde Frontend](#acceso-a-imágenes-desde-frontend)
 - [Pedidos](#pedidos)
+- [Autenticación](#autenticación)
 
 ---
 
@@ -1064,6 +1065,176 @@ const eliminarPedido = async (id) => {
       method: 'DELETE'
     });
     console.log('Pedido eliminado');
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+## Autenticación
+
+### POST /api/auth/register
+
+Registra un nuevo usuario y establece una cookie de sesión.
+
+**Payload ejemplo:**
+
+```json
+{
+  "dni": "12345678",
+  "nombre": "Juan",
+  "apellido": "Pérez",
+  "email": "juan@example.com",
+  "username": "juanp",
+  "password": "secreto123",
+  "localidad": "CAPITAL"
+}
+```
+
+**Ejemplo curl:**
+
+```bash
+curl -X POST http://localhost:8090/api/auth/register \
+  -H "Content-Type: application/json" \
+  -d '{
+    "dni": "12345678",
+    "nombre": "Juan",
+    "apellido": "Pérez",
+    "email": "juan@example.com",
+    "username": "juanp",
+    "password": "secreto123",
+    "localidad": "CAPITAL"
+  }' \
+  -c cookies.txt
+```
+
+**Ejemplo React:**
+
+```jsx
+const registrarse = async (datosUsuario) => {
+  try {
+    const response = await fetch('http://localhost:8090/api/auth/register', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include', // Importante para recibir cookies
+      body: JSON.stringify(datosUsuario)
+    });
+    const data = await response.json();
+    console.log('Usuario registrado:', data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### POST /api/auth/login
+
+Inicia sesión y establece una cookie de sesión con duración de 30 días.
+
+**Payload ejemplo:**
+
+```json
+{
+  "username": "juanp",
+  "password": "secreto123"
+}
+```
+
+**Ejemplo curl:**
+
+```bash
+curl -X POST http://localhost:8090/api/auth/login \
+  -H "Content-Type: application/json" \
+  -d '{
+    "username": "juanp",
+    "password": "secreto123"
+  }' \
+  -c cookies.txt
+```
+
+**Ejemplo React:**
+
+```jsx
+const iniciarSesion = async (username, password) => {
+  try {
+    const response = await fetch('http://localhost:8090/api/auth/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      credentials: 'include',
+      body: JSON.stringify({ username, password })
+    });
+    const data = await response.json();
+    console.log('Login exitoso:', data);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### GET /api/auth/validate
+
+Valida la cookie de sesión actual y devuelve los datos del usuario.
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/auth/validate \
+  -b cookies.txt
+```
+
+**Ejemplo React:**
+
+```jsx
+const validarSesion = async () => {
+  try {
+    const response = await fetch('http://localhost:8090/api/auth/validate', {
+      credentials: 'include'
+    });
+    const data = await response.json();
+    if (data.valido) {
+      console.log('Sesión válida:', data.usuario);
+    } else {
+      console.log('Sesión inválida');
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### POST /api/auth/logout
+
+Cierra la sesión del usuario y elimina la cookie.
+
+**Ejemplo curl:**
+
+```bash
+curl -X POST http://localhost:8090/api/auth/logout \
+  -b cookies.txt
+```
+
+**Ejemplo React:**
+
+```jsx
+const cerrarSesion = async () => {
+  try {
+    await fetch('http://localhost:8090/api/auth/logout', {
+      method: 'POST',
+      credentials: 'include'
+    });
+    console.log('Sesión cerrada');
   } catch (error) {
     console.error('Error:', error);
   }

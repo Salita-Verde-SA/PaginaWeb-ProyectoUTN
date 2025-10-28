@@ -84,6 +84,20 @@ public class UsuarioController {
         return ResponseEntity.ok(actualizado);
     }
 
+    // Registrar asistencia a un evento
+    @PostMapping("/{id}/registrar-asistencia")
+    public ResponseEntity<Usuario> registrarAsistenciaEvento(@PathVariable String id) {
+        Usuario actualizado = usuarioService.registrarAsistenciaEvento(id);
+        return ResponseEntity.ok(actualizado);
+    }
+
+    // Obtener cantidad de eventos asistidos
+    @GetMapping("/{id}/eventos-asistidos")
+    public ResponseEntity<Integer> obtenerCantidadEventosAsistidos(@PathVariable String id) {
+        Integer cantidad = usuarioService.obtenerCantidadEventosAsistidos(id);
+        return ResponseEntity.ok(cantidad);
+    }
+
     /*
       Ejemplo de payload para PATCH /api/usuarios/{id}/settings
       {

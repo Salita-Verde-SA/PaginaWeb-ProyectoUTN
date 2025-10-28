@@ -64,6 +64,15 @@ public class Usuario {
     @Field("carrito")
     private Carrito carrito = new Carrito();
 
+    @Field("cantidad_eventos_asistidos")
+    private Integer cantidadEventosAsistidos = 0;
+
+    @Field("ultima_sesion")
+    private LocalDateTime ultimaSesion;
+
+    @Field("token_version")
+    private Integer tokenVersion = 0; // Para invalidar tokens al cambiar contraseña
+
     @CreatedDate
     @Field("fecha_creacion")
     private LocalDateTime fechaCreacion;
