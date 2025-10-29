@@ -1,6 +1,6 @@
 # Carpetas de datos generados por Docker
 mongo_data/
-minio_data/
+minio_data
 # n8n/n8n_data/
 
 # Variables de entorno
