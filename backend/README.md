@@ -330,6 +330,57 @@ actualizarSettings(usuario.id, { temaOscuro: true });
 
 ---
 
+### PUT /api/usuarios/{id}/username
+
+Actualiza el nombre de usuario y regenera el token de autenticación automáticamente.
+
+**IMPORTANTE:** Este endpoint actualiza la cookie de sesión con un nuevo token JWT que contiene el username actualizado.
+
+**Payload ejemplo:**
+
+```json
+{
+  "username": "nuevoUsername"
+}
+```
+
+**Ejemplo curl:**
+
+```bash
+curl -X PUT http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011/username \
+  -H "Content-Type: application/json" \
+  -b cookies.txt \
+  -c cookies.txt \
+  -d '{"username": "nuevoUsername"}'
+```
+
+**Ejemplo React:**
+
+```jsx
+const actualizarUsername = async (usuarioId, nuevoUsername) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8090/api/usuarios/${usuarioId}/username`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include', // Importante para cookies
+        body: JSON.stringify({ username: nuevoUsername })
+      }
+    );
+    const data = await response.json();
+    console.log('Username actualizado:', data);
+    // El nuevo token se establece automáticamente en la cookie
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
 ## Publicaciones
 
 ### GET /api/publicaciones

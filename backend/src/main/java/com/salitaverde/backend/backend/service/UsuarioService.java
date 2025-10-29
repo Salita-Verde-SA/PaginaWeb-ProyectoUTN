@@ -70,9 +70,12 @@ public class UsuarioService {
         }
         
         Usuario existente = obtenerPorId(id);
-        if (usuarioRepository.existsByUsername(nuevoUsername)) {
+        
+        // Verificar que el nuevo username no esté en uso por otro usuario
+        if (!existente.getUsername().equals(nuevoUsername) && usuarioRepository.existsByUsername(nuevoUsername)) {
             throw new RuntimeException("El username ya está en uso");
         }
+        
         existente.setUsername(nuevoUsername);
         return usuarioRepository.save(existente);
     }

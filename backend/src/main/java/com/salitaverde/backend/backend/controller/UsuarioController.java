@@ -2,6 +2,7 @@ package com.salitaverde.backend.backend.controller;
 
 import com.salitaverde.backend.backend.model.mongo.Usuario;
 import com.salitaverde.backend.backend.service.UsuarioService;
+import com.salitaverde.backend.backend.service.AuthService;
 import com.salitaverde.backend.backend.service.ImagenService;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -11,8 +12,11 @@ import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
+import jakarta.servlet.http.Cookie;
+import jakarta.servlet.http.HttpServletResponse;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
@@ -22,6 +26,7 @@ import java.util.Map;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
+    private final AuthService authService;
     private final ImagenService imagenService;
 
     @GetMapping
@@ -53,8 +58,6 @@ public class UsuarioController {
         return ResponseEntity.noContent().build();
     }
 
-
-    // Seguir usuario
     @PostMapping("/{id}/seguir/{seguidoId}")
     public ResponseEntity<Usuario> seguirUsuario(
             @PathVariable String id,
@@ -63,7 +66,6 @@ public class UsuarioController {
         return ResponseEntity.ok(actualizado);
     }
 
-    // Dejar de seguir usuario
     @PostMapping("/{id}/dejar-seguir/{seguidoId}")
     public ResponseEntity<Usuario> dejarDeSeguirUsuario(
             @PathVariable String id,
@@ -72,7 +74,6 @@ public class UsuarioController {
         return ResponseEntity.ok(actualizado);
     }
 
-    // Consultar si un usuario sigue a otro
     @GetMapping("/{id}/sigue-a/{seguidoId}")
     public ResponseEntity<Boolean> sigueA(
             @PathVariable String id,
@@ -81,7 +82,6 @@ public class UsuarioController {
         return ResponseEntity.ok(sigue);
     }
 
-    // Endpoint para actualizar solo las configuraciones del usuario
     @PatchMapping("/{id}/settings")
     public ResponseEntity<Usuario> actualizarSettings(
             @PathVariable String id,
@@ -90,26 +90,49 @@ public class UsuarioController {
         return ResponseEntity.ok(actualizado);
     }
 
-    // Registrar asistencia a un evento
     @PostMapping("/{id}/registrar-asistencia")
     public ResponseEntity<Usuario> registrarAsistenciaEvento(@PathVariable String id) {
         Usuario actualizado = usuarioService.registrarAsistenciaEvento(id);
         return ResponseEntity.ok(actualizado);
     }
 
-    // Obtener cantidad de eventos asistidos
     @GetMapping("/{id}/eventos-asistidos")
     public ResponseEntity<Integer> obtenerCantidadEventosAsistidos(@PathVariable String id) {
         Integer cantidad = usuarioService.obtenerCantidadEventosAsistidos(id);
         return ResponseEntity.ok(cantidad);
     }
 
-    @PatchMapping("/{id}/username")
-    public ResponseEntity<Usuario> actualizarNombreUsuario(
-            @PathVariable String id,
-            @RequestBody Map<String, String> body) {
-        String nuevoUsername = body.get("username");
-        return ResponseEntity.ok(usuarioService.actualizarNombreUsuario(id, nuevoUsername));
+    @PutMapping("/{id}/username")
+    public ResponseEntity<?> actualizarUsername(
+            @PathVariable String id, 
+            @RequestBody Map<String, String> body,
+            HttpServletResponse response) {
+        try {
+            String nuevoUsername = body.get("username");
+            if (nuevoUsername == null || nuevoUsername.trim().isEmpty()) {
+                return ResponseEntity.badRequest().body(Map.of("mensaje", "El username no puede estar vacío"));
+            }
+            
+            Usuario usuario = usuarioService.actualizarNombreUsuario(id, nuevoUsername);
+            
+            String nuevoToken = authService.regenerarToken(id);
+            
+            Cookie cookie = new Cookie("authToken", nuevoToken);
+            cookie.setHttpOnly(true);
+            cookie.setSecure(false);
+            cookie.setPath("/");
+            cookie.setMaxAge(30 * 24 * 60 * 60);
+            response.addCookie(cookie);
+            
+            Map<String, Object> responseBody = new HashMap<>();
+            responseBody.put("mensaje", "Username actualizado correctamente");
+            responseBody.put("token", nuevoToken);
+            responseBody.put("usuario", usuario);
+            
+            return ResponseEntity.ok(responseBody);
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(Map.of("mensaje", e.getMessage()));
+        }
     }
 
     @PostMapping("/{id}/foto-perfil")
@@ -140,13 +163,3 @@ public class UsuarioController {
         }
     }
 }
-
-    /*
-      Ejemplo de payload para PATCH /api/usuarios/{id}/settings
-      {
-        "temaOscuro": true
-        // "notificaciones": true,      // ejemplo: activar notificaciones
-        // "idioma": "es",              // ejemplo: preferencia de idioma
-        // "mostrarEmail": false        // ejemplo: preferencia de privacidad
-      }
-    */

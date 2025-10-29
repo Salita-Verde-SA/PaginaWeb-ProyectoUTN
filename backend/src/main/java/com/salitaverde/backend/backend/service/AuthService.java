@@ -117,4 +117,16 @@ public class AuthService {
         usuario.setTokenVersion(usuario.getTokenVersion() + 1);
         usuarioRepository.save(usuario);
     }
+
+    // Nuevo método para regenerar token después de actualizar username
+    public String regenerarToken(String userId) {
+        Usuario usuario = usuarioRepository.findById(userId)
+            .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        
+        return jwtConfig.generateToken(
+            usuario.getId(), 
+            usuario.getUsername(), 
+            usuario.getTokenVersion()
+        );
+    }
 }
