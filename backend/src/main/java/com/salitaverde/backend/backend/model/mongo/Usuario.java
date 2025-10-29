@@ -44,10 +44,13 @@ public class Usuario {
     private String password;
 
     @Field("foto_perfil")
-    private String fotoPerfil;
+    private String fotoPerfil; // Ahora guarda el nombre del archivo en MinIO: {id}_profile.extension
 
     @Field("activo")
     private Boolean activo = true;
+
+    @Field("admin")
+    private Boolean admin = false; // Campo para permisos de moderación
 
     @Field("localidad")
     private Localidad localidad;

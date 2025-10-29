@@ -82,8 +82,13 @@ public class ImagenService {
     }
     
     public String subirImagenConNombre(MultipartFile archivo, String nombrePersonalizado) {
+        // Eliminar imagen existente si ya existe (para sobrescribir)
         if (existeImagen(nombrePersonalizado)) {
-            throw new RuntimeException("Ya existe una imagen con el nombre: " + nombrePersonalizado);
+            try {
+                eliminarImagen(nombrePersonalizado);
+            } catch (Exception e) {
+                // Ignorar error
+            }
         }
         
         try {
@@ -143,10 +148,6 @@ public class ImagenService {
     }
     
     public void eliminarImagen(String nombreArchivo) {
-        if (!existeImagen(nombreArchivo)) {
-            throw new RuntimeException("La imagen '" + nombreArchivo + "' no existe");
-        }
-        
         try {
             String bucketName = minioConfig.getBucketName();
             minioClient.removeObject(

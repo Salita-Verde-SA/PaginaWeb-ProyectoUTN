@@ -6,6 +6,7 @@ import com.salitaverde.backend.backend.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -14,6 +15,7 @@ import java.util.List;
 public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
+    private final ImagenService imagenService;
 
     public List<Usuario> obtenerTodos() {
         try {
@@ -46,10 +48,62 @@ public class UsuarioService {
         existente.setNombre(usuario.getNombre());
         existente.setApellido(usuario.getApellido());
         existente.setEmail(usuario.getEmail());
-        existente.setFotoPerfil(usuario.getFotoPerfil());
-        existente.setUsername(usuario.getUsername());
+        // No actualizar fotoPerfil aquí, usar actualizarFotoPerfil
+        if (usuario.getUsername() != null && !usuario.getUsername().equals(existente.getUsername())) {
+            if (usuarioRepository.existsByUsername(usuario.getUsername())) {
+                throw new RuntimeException("El username ya está en uso");
+            }
+            existente.setUsername(usuario.getUsername());
+        }
         existente.setLocalidad(usuario.getLocalidad());
         existente.setSettings(usuario.getSettings());
+        return usuarioRepository.save(existente);
+    }
+
+    @Transactional
+    public Usuario actualizarNombreUsuario(String id, String nuevoUsername) {
+        if (nuevoUsername == null || nuevoUsername.trim().isEmpty()) {
+            throw new RuntimeException("El nombre de usuario no puede estar vacío");
+        }
+        if (nuevoUsername.length() > 11) {
+            throw new RuntimeException("El nombre de usuario no puede tener más de 11 caracteres");
+        }
+        
+        Usuario existente = obtenerPorId(id);
+        if (usuarioRepository.existsByUsername(nuevoUsername)) {
+            throw new RuntimeException("El username ya está en uso");
+        }
+        existente.setUsername(nuevoUsername);
+        return usuarioRepository.save(existente);
+    }
+
+    @Transactional
+    public Usuario actualizarFotoPerfil(String id, MultipartFile archivo) {
+        Usuario existente = obtenerPorId(id);
+        
+        // Obtener extensión del archivo
+        String originalFilename = archivo.getOriginalFilename();
+        String extension = "";
+        if (originalFilename != null && originalFilename.contains(".")) {
+            extension = originalFilename.substring(originalFilename.lastIndexOf("."));
+        }
+        
+        // Nombre del archivo: {id}_profile.extension
+        String nombreArchivo = id + "_profile" + extension;
+        
+        // Eliminar foto anterior si existe
+        if (existente.getFotoPerfil() != null && !existente.getFotoPerfil().isEmpty()) {
+            try {
+                imagenService.eliminarImagen(existente.getFotoPerfil());
+            } catch (Exception e) {
+                // Ignorar error si la imagen no existe
+            }
+        }
+        
+        // Subir nueva foto
+        imagenService.subirImagenConNombre(archivo, nombreArchivo);
+        
+        existente.setFotoPerfil(nombreArchivo);
         return usuarioRepository.save(existente);
     }
 

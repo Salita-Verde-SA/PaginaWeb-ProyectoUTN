@@ -1,15 +1,20 @@
 package com.salitaverde.backend.backend.controller;
 
-import jakarta.validation.Valid;
-import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
-
 import com.salitaverde.backend.backend.model.mongo.Usuario;
 import com.salitaverde.backend.backend.service.UsuarioService;
+import com.salitaverde.backend.backend.service.ImagenService;
+import jakarta.validation.Valid;
+import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
+import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.InputStream;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/usuarios")
@@ -17,6 +22,7 @@ import java.util.List;
 public class UsuarioController {
 
     private final UsuarioService usuarioService;
+    private final ImagenService imagenService;
 
     @GetMapping
     public ResponseEntity<List<Usuario>> obtenerTodos() {
@@ -98,6 +104,43 @@ public class UsuarioController {
         return ResponseEntity.ok(cantidad);
     }
 
+    @PatchMapping("/{id}/username")
+    public ResponseEntity<Usuario> actualizarNombreUsuario(
+            @PathVariable String id,
+            @RequestBody Map<String, String> body) {
+        String nuevoUsername = body.get("username");
+        return ResponseEntity.ok(usuarioService.actualizarNombreUsuario(id, nuevoUsername));
+    }
+
+    @PostMapping("/{id}/foto-perfil")
+    public ResponseEntity<Usuario> actualizarFotoPerfil(
+            @PathVariable String id,
+            @RequestParam("archivo") MultipartFile archivo) {
+        return ResponseEntity.ok(usuarioService.actualizarFotoPerfil(id, archivo));
+    }
+
+    @GetMapping("/{id}/foto-perfil")
+    public ResponseEntity<byte[]> obtenerFotoPerfil(@PathVariable String id) {
+        Usuario usuario = usuarioService.obtenerPorId(id);
+        if (usuario.getFotoPerfil() == null || usuario.getFotoPerfil().isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+
+        try {
+            InputStream imagen = imagenService.obtenerImagen(usuario.getFotoPerfil());
+            byte[] bytes = imagen.readAllBytes();
+            
+            HttpHeaders headers = new HttpHeaders();
+            String extension = usuario.getFotoPerfil().substring(usuario.getFotoPerfil().lastIndexOf(".") + 1);
+            headers.setContentType(MediaType.parseMediaType("image/" + extension));
+
+            return ResponseEntity.ok().headers(headers).body(bytes);
+        } catch (Exception e) {
+            return ResponseEntity.notFound().build();
+        }
+    }
+}
+
     /*
       Ejemplo de payload para PATCH /api/usuarios/{id}/settings
       {
@@ -107,5 +150,3 @@ public class UsuarioController {
         // "mostrarEmail": false        // ejemplo: preferencia de privacidad
       }
     */
-
-}
