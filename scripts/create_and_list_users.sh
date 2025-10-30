@@ -33,6 +33,10 @@ curl -X GET http://localhost:8090/api/usuarios
 echo -e "\n\nObteniendo usuario por ID..."
 curl -X GET "http://localhost:8090/api/usuarios/$USER_ID"
 
+# Obtener usuario por username
+echo -e "\n\nObteniendo usuario por username..."
+curl -X GET "http://localhost:8090/api/usuarios/username/johnd"
+
 # Actualizar usuario (PUT) usando el ID de MongoDB
 echo -e "\n\nActualizando usuario completo..."
 curl -X PUT "http://localhost:8090/api/usuarios/$USER_ID" \
@@ -95,7 +99,6 @@ RESPONSE_USER3=$(curl -s -X POST http://localhost:8090/api/usuarios \
   }')
 
 echo "$RESPONSE_USER3"
-USER3_ID=$(echo "$RESPONSE_USER3" | jq -r '.id')
 
 # ---------------------------
 # ACTUALIZAR SETTINGS (PATCH) - Usando ID de MongoDB
@@ -233,4 +236,5 @@ echo -e "\n\nIntentando validar después del logout..."
 curl -X GET http://localhost:8090/api/auth/validate \
 	-b cookies.txt
 
+echo -e "\n\n=== FIN DE PRUEBAS DE AUTENTICACIÓN ==="
 echo -e "\n\n=== FIN DE PRUEBAS DE AUTENTICACIÓN ==="

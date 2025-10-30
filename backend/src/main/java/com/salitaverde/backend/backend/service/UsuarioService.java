@@ -8,6 +8,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Service
@@ -28,6 +29,11 @@ public class UsuarioService {
 
     public Usuario obtenerPorId(String id) {
         return usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+    }
+
+    public Usuario obtenerPorUsername(String username) {
+        return usuarioRepository.findByUsername(username)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
     }
 
@@ -207,5 +213,11 @@ public class UsuarioService {
         Usuario usuario = obtenerPorId(usuarioId);
         Integer cantidad = usuario.getCantidadEventosAsistidos();
         return cantidad != null ? cantidad : 0;
+    }
+
+    @Transactional
+    public Usuario guardar(Usuario usuario) {
+        usuario.setFechaActualizacion(LocalDateTime.now());
+        return usuarioRepository.save(usuario);
     }
 }

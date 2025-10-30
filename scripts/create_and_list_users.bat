@@ -23,6 +23,12 @@ echo.
 echo Obteniendo usuario por ID...
 curl -X GET http://localhost:8090/api/usuarios/123456789
 
+REM Obtener usuario por username
+echo.
+echo.
+echo Obteniendo usuario por username...
+curl -X GET http://localhost:8090/api/usuarios/username/johnd
+
 REM Actualizar usuario (PUT)
 echo.
 echo.

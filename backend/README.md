@@ -67,6 +67,32 @@ const obtenerUsuario = async (id) => {
 
 ---
 
+### GET /api/usuarios/username/{username}
+
+Obtiene usuario por nombre de usuario.
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/usuarios/username/juanp
+```
+
+**Ejemplo React:**
+
+```jsx
+const obtenerUsuarioPorUsername = async (username) => {
+  try {
+    const response = await fetch(`http://localhost:8090/api/usuarios/username/${username}`);
+    const usuario = await response.json();
+    console.log(usuario);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
 ### POST /api/usuarios
 
 Crea un usuario.

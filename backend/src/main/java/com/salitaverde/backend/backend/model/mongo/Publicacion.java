@@ -19,11 +19,11 @@ public class Publicacion {
     @Id
     private String id;
     
-    @Field("usuario_id")
-    private String usuarioId;
+    @Field("publicador_id")
+    private String publicadorId;
     
-    @Field("username")
-    private String username;
+    @Field("imagen_portada")
+    private String imagenPortada = ""; // Nueva imagen de portada
     
     @Field("titulo")
     private String titulo;
@@ -36,6 +36,12 @@ public class Publicacion {
     
     @Field("etiquetas")
     private List<String> etiquetas;
+    
+    @Field("fecha_evento")
+    private LocalDateTime fechaEvento;
+    
+    @Field("hora_evento")
+    private String horaEvento; // Formato "HH:mm" (ej: "21:00")
     
     @Field("likes")
     private Integer likes = 0;

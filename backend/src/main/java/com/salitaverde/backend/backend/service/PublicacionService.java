@@ -5,6 +5,8 @@ import com.salitaverde.backend.backend.model.mongo.Publicacion;
 import com.salitaverde.backend.backend.repository.PublicacionRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -14,6 +16,7 @@ import java.util.List;
 public class PublicacionService {
     
     private final PublicacionRepository publicacionRepository;
+    private final ImagenService imagenService;
     
     public List<Publicacion> obtenerTodas() {
         return publicacionRepository.findByVisibleTrue();
@@ -24,8 +27,8 @@ public class PublicacionService {
                 .orElseThrow(() -> new RuntimeException("Publicación no encontrada"));
     }
     
-    public List<Publicacion> obtenerPorUsuario(Long usuarioId) {
-        return publicacionRepository.findByUsuarioIdAndVisibleTrue(usuarioId);
+    public List<Publicacion> obtenerPorPublicador(String publicadorId) {
+        return publicacionRepository.findByPublicadorIdAndVisibleTrue(publicadorId);
     }
     
     public Publicacion crear(Publicacion publicacion) {
@@ -40,6 +43,8 @@ public class PublicacionService {
         existente.setContenido(publicacion.getContenido());
         existente.setImagenes(publicacion.getImagenes());
         existente.setEtiquetas(publicacion.getEtiquetas());
+        existente.setFechaEvento(publicacion.getFechaEvento());
+        existente.setHoraEvento(publicacion.getHoraEvento());
         existente.setFechaActualizacion(LocalDateTime.now());
         return publicacionRepository.save(existente);
     }
@@ -48,5 +53,36 @@ public class PublicacionService {
         Publicacion publicacion = obtenerPorId(id);
         publicacion.setVisible(false);
         publicacionRepository.save(publicacion);
+    }
+    
+    @Transactional
+    public Publicacion actualizarPortada(String id, MultipartFile archivo) {
+        Publicacion existente = obtenerPorId(id);
+        
+        // Obtener extensión del archivo
+        String originalFilename = archivo.getOriginalFilename();
+        String extension = "";
+        if (originalFilename != null && originalFilename.contains(".")) {
+            extension = originalFilename.substring(originalFilename.lastIndexOf("."));
+        }
+        
+        // Nombre del archivo: {id}_portada.extension
+        String nombreArchivo = id + "_portada.jpg"; // Siempre JPG
+        
+        // Eliminar portada anterior si existe
+        if (existente.getImagenPortada() != null && !existente.getImagenPortada().trim().isEmpty()) {
+            try {
+                imagenService.eliminarImagen(existente.getImagenPortada());
+            } catch (Exception e) {
+                System.out.println("No se pudo eliminar la portada anterior: " + e.getMessage());
+            }
+        }
+        
+        // Subir nueva portada
+        imagenService.subirImagenConNombre(archivo, nombreArchivo);
+        
+        existente.setImagenPortada(nombreArchivo);
+        existente.setFechaActualizacion(LocalDateTime.now());
+        return publicacionRepository.save(existente);
     }
 }

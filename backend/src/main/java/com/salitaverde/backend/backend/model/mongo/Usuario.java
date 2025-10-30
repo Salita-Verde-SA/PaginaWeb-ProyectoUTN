@@ -137,7 +137,7 @@ public class Usuario {
         @NoArgsConstructor
         @AllArgsConstructor
         public static class ItemCarrito {
-            private String publicacionId;
+            private String publicacionId; // ID de la publicación (que ahora tiene publicador_id en vez de usuario_id)
             private int cantidad;
         }
     }

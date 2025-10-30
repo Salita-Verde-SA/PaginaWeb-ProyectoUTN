@@ -1,5 +1,6 @@
 package com.salitaverde.backend.backend.controller;
 
+import com.salitaverde.backend.backend.model.mongo.Localidad;
 import com.salitaverde.backend.backend.model.mongo.Usuario;
 import com.salitaverde.backend.backend.service.UsuarioService;
 import com.salitaverde.backend.backend.service.AuthService;
@@ -37,6 +38,11 @@ public class UsuarioController {
     @GetMapping("/{id}")
     public ResponseEntity<Usuario> obtenerPorId(@PathVariable String id) {
         return ResponseEntity.ok(usuarioService.obtenerPorId(id));
+    }
+
+    @GetMapping("/username/{username}")
+    public ResponseEntity<Usuario> obtenerPorUsername(@PathVariable String username) {
+        return ResponseEntity.ok(usuarioService.obtenerPorUsername(username));
     }
 
     @PostMapping
@@ -104,7 +110,7 @@ public class UsuarioController {
 
     @PutMapping("/{id}/username")
     public ResponseEntity<?> actualizarUsername(
-            @PathVariable String id, 
+            @PathVariable String id,
             @RequestBody Map<String, String> body,
             HttpServletResponse response) {
         try {
@@ -112,23 +118,23 @@ public class UsuarioController {
             if (nuevoUsername == null || nuevoUsername.trim().isEmpty()) {
                 return ResponseEntity.badRequest().body(Map.of("mensaje", "El username no puede estar vacío"));
             }
-            
+
             Usuario usuario = usuarioService.actualizarNombreUsuario(id, nuevoUsername);
-            
+
             String nuevoToken = authService.regenerarToken(id);
-            
+
             Cookie cookie = new Cookie("authToken", nuevoToken);
             cookie.setHttpOnly(true);
             cookie.setSecure(false);
             cookie.setPath("/");
             cookie.setMaxAge(30 * 24 * 60 * 60);
             response.addCookie(cookie);
-            
+
             Map<String, Object> responseBody = new HashMap<>();
             responseBody.put("mensaje", "Username actualizado correctamente");
             responseBody.put("token", nuevoToken);
             responseBody.put("usuario", usuario);
-            
+
             return ResponseEntity.ok(responseBody);
         } catch (RuntimeException e) {
             return ResponseEntity.badRequest().body(Map.of("mensaje", e.getMessage()));
@@ -145,7 +151,7 @@ public class UsuarioController {
     @GetMapping("/{id}/foto-perfil")
     public ResponseEntity<byte[]> obtenerFotoPerfil(@PathVariable String id) {
         Usuario usuario = usuarioService.obtenerPorId(id);
-        
+
         // Verificar si el usuario tiene foto de perfil
         if (usuario.getFotoPerfil() == null || usuario.getFotoPerfil().trim().isEmpty()) {
             return ResponseEntity.notFound().build();
@@ -154,7 +160,7 @@ public class UsuarioController {
         try {
             InputStream imagen = imagenService.obtenerImagen(usuario.getFotoPerfil());
             byte[] bytes = imagen.readAllBytes();
-            
+
             HttpHeaders headers = new HttpHeaders();
             String extension = usuario.getFotoPerfil().substring(usuario.getFotoPerfil().lastIndexOf(".") + 1);
             headers.setContentType(MediaType.parseMediaType("image/" + extension));
@@ -166,6 +172,80 @@ public class UsuarioController {
         } catch (Exception e) {
             System.out.println("Error al obtener foto de perfil: " + e.getMessage());
             return ResponseEntity.notFound().build();
+        }
+    }
+
+    @GetMapping("/localidad-actual")
+    public ResponseEntity<?> obtenerLocalidadActual(
+            @CookieValue(value = "authToken", required = false) String token) {
+        
+        if (token == null || token.trim().isEmpty()) {
+            return ResponseEntity.status(401).body(Map.of("mensaje", "No autenticado"));
+        }
+
+        try {
+            String usuarioId = authService.validarToken(token);
+            if (usuarioId == null) {
+                return ResponseEntity.status(401).body(Map.of("mensaje", "Token inválido"));
+            }
+
+            Usuario usuario = usuarioService.obtenerPorId(usuarioId);
+            if (usuario == null) {
+                return ResponseEntity.status(404).body(Map.of("mensaje", "Usuario no encontrado"));
+            }
+
+            Localidad localidad = usuario.getLocalidad() != null ? usuario.getLocalidad() : Localidad.CAPITAL;
+            
+            return ResponseEntity.ok(Map.of(
+                "localidad", localidad.name(),
+                "nombre", localidad.getNombre()
+            ));
+        } catch (Exception e) {
+            System.out.println("Error al obtener localidad: " + e.getMessage());
+            return ResponseEntity.status(500).body(Map.of("mensaje", "Error al obtener localidad"));
+        }
+    }
+
+    @PutMapping("/actualizar-localidad")
+    public ResponseEntity<?> actualizarLocalidad(
+            @RequestBody Map<String, String> requestBody,
+            @CookieValue(value = "authToken", required = false) String token) {
+
+        if (token == null || token.trim().isEmpty()) {
+            return ResponseEntity.status(401).body(Map.of("mensaje", "No autenticado"));
+        }
+
+        try {
+            String usuarioId = authService.validarToken(token);
+            if (usuarioId == null) {
+                return ResponseEntity.status(401).body(Map.of("mensaje", "Token inválido"));
+            }
+
+            String localidadStr = requestBody.get("localidad");
+            if (localidadStr == null || localidadStr.trim().isEmpty()) {
+                return ResponseEntity.badRequest().body(Map.of("mensaje", "Localidad no puede estar vacía"));
+            }
+
+            Localidad localidad = Localidad.valueOf(localidadStr);
+
+            Usuario usuario = usuarioService.obtenerPorId(usuarioId);
+            if (usuario == null) {
+                return ResponseEntity.status(404).body(Map.of("mensaje", "Usuario no encontrado"));
+            }
+
+            usuario.setLocalidad(localidad);
+            usuarioService.guardar(usuario);
+
+            return ResponseEntity.ok(Map.of(
+                    "mensaje", "Localidad actualizada exitosamente",
+                    "localidad", localidad.name()
+            ));
+        } catch (IllegalArgumentException e) {
+            return ResponseEntity.badRequest().body(Map.of("mensaje", "Localidad no válida: " + e.getMessage()));
+        } catch (Exception e) {
+            System.out.println("Error al actualizar localidad: " + e.getMessage());
+            e.printStackTrace();
+            return ResponseEntity.status(500).body(Map.of("mensaje", "Error al actualizar localidad: " + e.getMessage()));
         }
     }
 }
