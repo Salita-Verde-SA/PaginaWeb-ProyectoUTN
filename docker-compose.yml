@@ -95,12 +95,15 @@ services:
     environment:
       N8N_PROTOCOL: http
       NODE_ENV: production
-      WEBHOOK_URL: http://localhost:5678/
+
+
       GENERIC_TIMEZONE: America/Argentina/Buenos_Aires
       N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: false
       N8N_BLOCK_ENV_ACCESS_IN_NODE: false
       N8N_HOST: 0.0.0.0
       N8N_PORT: 5678
+      WEBHOOK_URL: http://localhost:5678/
+
       # --- INICIO DE BLOQUE CORS ---
       # Asegúrate de que estas tres líneas estén así:
       N8N_CORS_ALLOW_ORIGIN: '*'
