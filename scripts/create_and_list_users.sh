@@ -14,7 +14,8 @@ RESPONSE=$(curl -s -X POST http://localhost:8090/api/usuarios \
     "apellido":"Doe",
     "email":"john@example.com",
     "username":"johnd",
-    "password":"secreto"
+    "password":"secreto",
+    "localidad":"CAPITAL"
   }')
 
 echo "$RESPONSE"
@@ -89,7 +90,8 @@ RESPONSE_USER3=$(curl -s -X POST http://localhost:8090/api/usuarios \
     "apellido":"Rodriguez",
     "email":"carlos.rodriguez@example.com",
     "username":"carlosr",
-    "password":"mipassword456"
+    "password":"mipassword456",
+    "localidad":"GUAYMALLEN"
   }')
 
 echo "$RESPONSE_USER3"
@@ -201,7 +203,7 @@ curl -X POST http://localhost:8090/api/auth/register \
     "email":"maria@example.com",
     "username":"mariag",
     "password":"password123",
-    "localidad":"CAPITAL"
+    "localidad":"GODOY_CRUZ"
   }' \
 	-c cookies.txt
 

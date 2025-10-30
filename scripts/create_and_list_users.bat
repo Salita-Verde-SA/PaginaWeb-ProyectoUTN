@@ -9,7 +9,7 @@ REM Añadir un usuario
 echo.
 echo.
 echo Creando usuario...
-curl -X POST http://localhost:8090/api/usuarios -H "Content-Type: application/json" -d "{\"dni\":\"123456789\",\"nombre\":\"John\",\"apellido\":\"Doe\",\"email\":\"john@example.com\",\"username\":\"johnd\",\"password\":\"secreto\"}"
+curl -X POST http://localhost:8090/api/usuarios -H "Content-Type: application/json" -d "{\"dni\":\"123456789\",\"nombre\":\"John\",\"apellido\":\"Doe\",\"email\":\"john@example.com\",\"username\":\"johnd\",\"password\":\"secreto\",\"localidad\":\"CAPITAL\"}"
 
 REM Listar usuarios
 echo.
@@ -27,7 +27,13 @@ REM Actualizar usuario (PUT)
 echo.
 echo.
 echo Actualizando usuario completo...
-curl -X PUT http://localhost:8090/api/usuarios/123456789 -H "Content-Type: application/json" -d "{\"dni\":\"123456789\",\"nombre\":\"John\",\"apellido\":\"Doe Updated\",\"email\":\"john.updated@example.com\",\"username\":\"johnd\",\"fotoPerfil\":\"/img/usuarios/john.jpg\",\"localidad\":\"GUAYMALLEN\"}"
+curl -X PUT http://localhost:8090/api/usuarios/123456789 -H "Content-Type: application/json" -d "{\"dni\":\"123456789\",\"nombre\":\"John\",\"apellido\":\"Doe Updated\",\"email\":\"john.updated@example.com\",\"username\":\"johnd\",\"localidad\":\"GUAYMALLEN\"}"
+
+REM Prueba de subida de foto de perfil (ajusta la ruta de la imagen)
+echo.
+echo.
+echo Probando subida de foto de perfil...
+REM curl -X POST -F "archivo=@C:\ruta\a\tu\imagen.jpg" http://localhost:8090/api/usuarios/123456789/foto-perfil
 
 REM Eliminar usuario
 REM echo.
@@ -67,7 +73,7 @@ REM Crear tercer usuario distinto
 echo.
 echo.
 echo Creando tercer usuario...
-curl -X POST http://localhost:8090/api/usuarios -H "Content-Type: application/json" -d "{\"dni\":\"98765432\",\"nombre\":\"Carlos\",\"apellido\":\"Rodriguez\",\"email\":\"carlos.rodriguez@example.com\",\"username\":\"carlosr\",\"password\":\"mipassword456\"}"
+curl -X POST http://localhost:8090/api/usuarios -H "Content-Type: application/json" -d "{\"dni\":\"98765432\",\"nombre\":\"Carlos\",\"apellido\":\"Rodriguez\",\"email\":\"carlos.rodriguez@example.com\",\"username\":\"carlosr\",\"password\":\"mipassword456\",\"localidad\":\"GUAYMALLEN\"}"
 
 REM ---------------------------
 REM ACTUALIZAR SETTINGS (PATCH)

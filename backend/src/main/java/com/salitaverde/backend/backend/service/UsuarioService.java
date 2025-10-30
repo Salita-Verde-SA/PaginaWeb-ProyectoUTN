@@ -95,11 +95,12 @@ public class UsuarioService {
         String nombreArchivo = id + "_profile" + extension;
         
         // Eliminar foto anterior si existe
-        if (existente.getFotoPerfil() != null && !existente.getFotoPerfil().isEmpty()) {
+        if (existente.getFotoPerfil() != null && !existente.getFotoPerfil().trim().isEmpty()) {
             try {
                 imagenService.eliminarImagen(existente.getFotoPerfil());
             } catch (Exception e) {
                 // Ignorar error si la imagen no existe
+                System.out.println("No se pudo eliminar la imagen anterior: " + e.getMessage());
             }
         }
         

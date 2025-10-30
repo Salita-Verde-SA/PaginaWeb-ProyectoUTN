@@ -1,6 +1,6 @@
 # Carpetas de datos generados por Docker
 mongo_data/
-minio_data
+minio_data/
 # n8n/n8n_data/
 
 # Variables de entorno
@@ -17,3 +17,7 @@ minio_data
 # OS
 .DS_Store
 Thumbs.db
+
+# No ignorar workflows de GitHub Actions
+!.github/
+!.github/workflows/

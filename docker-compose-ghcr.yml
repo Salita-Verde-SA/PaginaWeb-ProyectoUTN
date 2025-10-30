@@ -1,0 +1,157 @@
+version: "3.8"
+
+services:
+  # Base de datos MongoDB para toda la data (publicaciones + usuarios)
+  mongo:
+    image: mongo:7
+    container_name: mongo_db
+    hostname: mongo  # Añadir hostname explícito
+    environment:
+      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+    volumes:
+      - mongo_data:/data/db
+    networks:
+      backend_network:
+        aliases:
+          - mongo  # Añadir alias de red
+    ports:
+      - "27017:27017"
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "mongosh",
+          "--quiet",
+          "--host",
+          "localhost",
+          "--port",
+          "27017",
+          "--eval",
+          "db.adminCommand('ping')"
+        ]
+      interval: 2s
+      timeout: 10s
+      retries: 5
+    restart: unless-stopped
+
+  # MinIO para almacenamiento de imágenes
+  minio:
+    image: minio/minio:latest
+    container_name: minio_storage
+    hostname: minio  # Añadir hostname explícito
+    command: server /data --console-address ":9001"
+    environment:
+      MINIO_ROOT_USER: minioadmin
+      MINIO_ROOT_PASSWORD: minioadmin
+    volumes:
+      - ./minio_data:/data:Z
+    networks:
+      backend_network:
+        aliases:
+          - minio  # Añadir alias de red
+    ports:
+      - "9000:9000"
+      - "9001:9001"
+    restart: unless-stopped
+
+  # n8n para automatización y chatbot con IA
+  n8n:
+    image: docker.n8n.io/n8nio/n8n
+    container_name: n8n
+    hostname: n8n  # Añadir hostname explícito
+    restart: unless-stopped
+    ports:
+      - "5678:5678"
+    environment:
+      N8N_PROTOCOL: http
+      NODE_ENV: production
+      WEBHOOK_URL: http://localhost/n8n/
+      GENERIC_TIMEZONE: America/Argentina/Buenos_Aires
+      N8N_ENFORCE_SETTINGS_FILE_PERMISSIONS: false
+      N8N_BLOCK_ENV_ACCESS_IN_NODE: false
+      N8N_HOST: localhost
+      N8N_PORT: 5678
+    volumes:
+      - "./n8n/n8n_data:/home/node/.n8n:Z"
+    networks:
+      backend_network:
+        aliases:
+          - n8n
+
+  # Backend Java Spring Boot
+  backend:
+    build:
+      context: ./backend
+      dockerfile: DOCKERFILE
+    container_name: backend_java
+    hostname: backend  # Añadir hostname explícito
+    environment:
+      SPRING_PROFILES_ACTIVE: prod
+      SPRING_DATA_MONGODB_HOST: mongo
+      SPRING_DATA_MONGODB_PORT: 27017
+      SPRING_DATA_MONGODB_DATABASE: ${MONGO_DATABASE}
+      SPRING_DATA_MONGODB_USERNAME: ${MONGO_USERNAME}
+      SPRING_DATA_MONGODB_PASSWORD: ${MONGO_PASSWORD}
+      SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE: admin
+      MINIO_ENDPOINT: http://minio:9000
+      MINIO_ACCESS_KEY: minioadmin
+      MINIO_SECRET_KEY: minioadmin
+    networks:
+      backend_network:
+        aliases:
+          - backend
+    ports:
+      - "8090:8090"
+    depends_on:
+      mongo:
+        condition: service_healthy
+      minio:
+        condition: service_started
+    restart: "no"
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8090/actuator/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Frontend con React
+  frontend:
+    build:
+      context: ./frontend
+      dockerfile: DOCKERFILE
+    container_name: frontend_web
+    hostname: frontend  # Añadir hostname explícito
+    networks:
+      backend_network:
+        aliases:
+          - frontend
+    ports:
+      - "5173:5173"
+    restart: unless-stopped
+    healthcheck:
+      test:
+        [
+          "CMD",
+          "wget",
+          "--quiet",
+          "--tries=1",
+          "--spider",
+          "http://localhost:5173",
+        ]
+      interval: 10s
+      timeout: 5s
+      retries: 3
+
+# Definición de redes
+networks:
+  backend_network:
+    driver: bridge
+    # Remover ipam para que Podman asigne automáticamente
+
+# Definición de volúmenes
+volumes:
+  mongo_data:
+    driver: local

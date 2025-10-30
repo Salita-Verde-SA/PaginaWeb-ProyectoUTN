@@ -66,6 +66,11 @@ public class AuthService {
             throw new RuntimeException("El username ya está en uso");
         }
         
+        // Validar que la localidad no sea null y sea válida
+        if (usuario.getLocalidad() == null) {
+            throw new RuntimeException("La localidad es requerida");
+        }
+        
         // Encriptar contraseña
         usuario.setPassword(passwordEncoder.encode(usuario.getPassword()));
         usuario.setActivo(true);
