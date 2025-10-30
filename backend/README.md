@@ -220,6 +220,64 @@ const eliminarUsuario = async (id) => {
 
 ---
 
+### GET /api/usuarios/{id}/seguidores
+
+Obtiene la lista de seguidores de un usuario (IDs).
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011/seguidores
+```
+
+**Ejemplo React:**
+
+```jsx
+const obtenerSeguidores = async (usuarioId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8090/api/usuarios/${usuarioId}/seguidores`,
+      { credentials: 'include' }
+    );
+    const seguidoresIds = await response.json();
+    console.log('IDs de seguidores:', seguidoresIds);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### GET /api/usuarios/{id}/seguidos
+
+Obtiene la lista de usuarios que sigue un usuario (IDs).
+
+**Ejemplo curl:**
+
+```bash
+curl -X GET http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011/seguidos
+```
+
+**Ejemplo React:**
+
+```jsx
+const obtenerSeguidos = async (usuarioId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8090/api/usuarios/${usuarioId}/seguidos`,
+      { credentials: 'include' }
+    );
+    const seguidosIds = await response.json();
+    console.log('IDs de seguidos:', seguidosIds);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
 ### POST /api/usuarios/{id}/seguir/{seguidoId}
 
 El usuario `{id}` sigue al usuario `{seguidoId}`. Ambos son IDs de MongoDB.

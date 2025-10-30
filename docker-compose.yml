@@ -2,39 +2,39 @@ version: "3.8"
 
 services:
   # Base de datos MongoDB para toda la data (publicaciones + usuarios)
-  mongo:
-    image: mongo:7
-    container_name: mongo_db
-    hostname: mongo  # Añadir hostname explícito
-    environment:
-      MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
-      MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
-      MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
-    volumes:
-      - mongo_data:/data/db
-    networks:
-      backend_network:
-        aliases:
-          - mongo  # Añadir alias de red
-    ports:
-      - "27017:27017"
-    healthcheck:
-      test:
-        [
-          "CMD",
-          "mongosh",
-          "--quiet",
-          "--host",
-          "localhost",
-          "--port",
-          "27017",
-          "--eval",
-          "db.adminCommand('ping')"
-        ]
-      interval: 2s
-      timeout: 10s
-      retries: 5
-    restart: unless-stopped
+  # mongo:
+  #   image: mongo:7
+  #   container_name: mongo_db
+  #   hostname: mongo  # Añadir hostname explícito
+  #   environment:
+  #     MONGO_INITDB_ROOT_USERNAME: ${MONGO_USERNAME}
+  #     MONGO_INITDB_ROOT_PASSWORD: ${MONGO_PASSWORD}
+  #     MONGO_INITDB_DATABASE: ${MONGO_DATABASE}
+  #   volumes:
+  #     - mongo_data:/data/db
+  #   networks:
+  #     backend_network:
+  #       aliases:
+  #         - mongo  # Añadir alias de red
+  #   ports:
+  #     - "27017:27017"
+  #   healthcheck:
+  #     test:
+  #       [
+  #         "CMD",
+  #         "mongosh",
+  #         "--quiet",
+  #         "--host",
+  #         "localhost",
+  #         "--port",
+  #         "27017",
+  #         "--eval",
+  #         "db.adminCommand('ping')"
+  #       ]
+  #     interval: 2s
+  #     timeout: 10s
+  #     retries: 5
+  #   restart: unless-stopped
 
   # MinIO para almacenamiento de imágenes
   minio:
@@ -70,7 +70,7 @@ services:
       MINIO_ROOT_USER: minioadmin
       MINIO_ROOT_PASSWORD: minioadmin
     volumes:
-      - minio_data:/data
+      - minio_verification_data:/data
     networks:
       - backend_network  # Asegúrate de que esté en esta red
     ports:
@@ -125,12 +125,13 @@ services:
     hostname: backend  # Añadir hostname explícito
     environment:
       SPRING_PROFILES_ACTIVE: prod
-      SPRING_DATA_MONGODB_HOST: mongo
-      SPRING_DATA_MONGODB_PORT: 27017
-      SPRING_DATA_MONGODB_DATABASE: ${MONGO_DATABASE}
-      SPRING_DATA_MONGODB_USERNAME: ${MONGO_USERNAME}
-      SPRING_DATA_MONGODB_PASSWORD: ${MONGO_PASSWORD}
-      SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE: admin
+      SPRING_DATA_MONGODB_URI: ${MONGODB_ATLAS_URI}
+      # SPRING_DATA_MONGODB_HOST: mongo
+      # SPRING_DATA_MONGODB_PORT: 27017
+      # SPRING_DATA_MONGODB_DATABASE: ${MONGO_DATABASE}
+      # SPRING_DATA_MONGODB_USERNAME: ${MONGO_USERNAME}
+      # SPRING_DATA_MONGODB_PASSWORD: ${MONGO_PASSWORD}
+      # SPRING_DATA_MONGODB_AUTHENTICATION_DATABASE: admin
       MINIO_ENDPOINT: http://minio:9000  # Debe usar el hostname 'minio'
       MINIO_ACCESS_KEY: minioadmin
       MINIO_SECRET_KEY: minioadmin
@@ -139,8 +140,8 @@ services:
     ports:
       - "8090:8090"
     depends_on:
-      mongo:
-        condition: service_healthy
+      # mongo:
+      #   condition: service_healthy
       minio:
         condition: service_healthy  # Esperar a que MinIO esté healthy
     restart: "no"
@@ -186,7 +187,9 @@ networks:
 
 # Definición de volúmenes
 volumes:
-  mongo_data:
-    driver: local
+  # mongo_data:
+  #   driver: local
   minio_data:
+    driver: local
+  minio_verification_data:
     driver: local
