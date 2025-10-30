@@ -145,7 +145,9 @@ public class UsuarioController {
     @GetMapping("/{id}/foto-perfil")
     public ResponseEntity<byte[]> obtenerFotoPerfil(@PathVariable String id) {
         Usuario usuario = usuarioService.obtenerPorId(id);
-        if (usuario.getFotoPerfil() == null || usuario.getFotoPerfil().isEmpty()) {
+        
+        // Verificar si el usuario tiene foto de perfil
+        if (usuario.getFotoPerfil() == null || usuario.getFotoPerfil().trim().isEmpty()) {
             return ResponseEntity.notFound().build();
         }
 
@@ -156,9 +158,13 @@ public class UsuarioController {
             HttpHeaders headers = new HttpHeaders();
             String extension = usuario.getFotoPerfil().substring(usuario.getFotoPerfil().lastIndexOf(".") + 1);
             headers.setContentType(MediaType.parseMediaType("image/" + extension));
+            headers.setCacheControl("no-cache, no-store, must-revalidate");
+            headers.setPragma("no-cache");
+            headers.setExpires(0);
 
             return ResponseEntity.ok().headers(headers).body(bytes);
         } catch (Exception e) {
+            System.out.println("Error al obtener foto de perfil: " + e.getMessage());
             return ResponseEntity.notFound().build();
         }
     }

@@ -6,6 +6,8 @@ Aplicación web completa desarrollada como trabajo integrador final de la materi
 
 - [Despliegue con Docker](#-despliegue-con-docker)
 - [Despliegue con Podman](#-despliegue-con-podman)
+- [Uso de Imágenes Pre-construidas](#-uso-de-imágenes-pre-construidas)
+- [CI/CD con GitHub Actions](#-cicd-con-github-actions)
 - [Estructura del Proyecto](#-estructura-del-proyecto)
 - [Tecnologías Utilizadas](#-tecnologías-utilizadas)
 - [Documentación Adicional](#-documentación-adicional)
@@ -70,6 +72,26 @@ Aplicación web completa desarrollada como trabajo integrador final de la materi
    ```
 
 ### Despliegue del Proyecto
+
+#### Usando Imágenes Pre-construidas (Recomendado)
+
+```bash
+# Clonar el repositorio
+git clone <url-del-repositorio>
+cd PaginaWeb-ProyectoUTN
+
+# Configurar usuario de GitHub
+export GITHUB_REPOSITORY_OWNER=your-github-username
+
+# Descargar y ejecutar imágenes
+docker-compose pull
+docker-compose up -d
+
+# Verificar que los contenedores estén corriendo
+docker ps
+```
+
+#### Construyendo Localmente
 
 #### En Windows (PowerShell o CMD)
 
@@ -236,13 +258,78 @@ alias docker-compose=podman-compose
 - **Podman** es compatible con comandos de Docker (sintaxis similar)
 - Los archivos `docker-compose.yml` funcionan con `podman-compose`
 
+## 🚀 CI/CD con GitHub Actions
+
+El proyecto utiliza GitHub Actions para construir automáticamente imágenes Docker en cada push.
+
+### Imágenes Disponibles
+
+Las siguientes imágenes están disponibles en GitHub Container Registry:
+
+- `ghcr.io/salita-verde-sa/salitaverde-backend:latest` - API Backend (Java Spring Boot)
+- `ghcr.io/salita-verde-sa/salitaverde-frontend:latest` - Frontend (React)
+- `ghcr.io/salita-verde-sa/salitaverde-nginx:latest` - Reverse Proxy (Nginx)
+
+### Etiquetas de Imágenes
+
+Las imágenes se etiquetan automáticamente con:
+
+- `latest` - Última versión de la rama principal
+- `main` / `develop` - Nombre de la rama
+- `main-<sha>` / `develop-<sha>` - Commit SHA de la rama
+- `pr-<number>` - Pull request number
+- `v<version>` - Etiquetas semánticas de versión (ej: `v1.0.0`, `v1.0`, `v1`)
+
+### Configuración del Workflow
+
+El workflow se ejecuta automáticamente en:
+- Push a las ramas `main` y `develop`
+- Pull requests hacia `main`
+
+### Uso de Imágenes Pre-construidas
+
+Para usar las imágenes pre-construidas de la organización:
+
+```bash
+# Las imágenes ya están configuradas con el nombre correcto de la organización
+# Solo necesitas ejecutar:
+docker-compose pull
+docker-compose up -d
+```
+
+### Construcción Local (Desarrollo)
+
+Si prefieres construir las imágenes localmente durante el desarrollo:
+
+```bash
+# Construir sin usar las imágenes remotas
+docker-compose build --no-cache
+docker-compose up -d
+```
+
+### Permisos de GHCR
+
+**Nota para colaboradores:** Para que las imágenes se publiquen correctamente, asegúrate de que:
+
+1. El repositorio tenga permisos de escritura en GitHub Packages
+2. Las GitHub Actions tengan permisos de `packages: write`
+3. Las imágenes sean públicas en la configuración de la organización (o configures tokens de acceso)
+
 ## 📁 Estructura del Proyecto
 
 ```
 PaginaWeb-ProyectoUTN/
-├── frontend/          # Aplicación cliente (HTML, CSS, JS)
-├── backend/           # API y lógica de negocio
-├── scripts/           # Scripts de utilidad y configuración
+├── .github/
+│   └── workflows/
+│       └── docker-build.yml  # Workflow de CI/CD
+├── frontend/          # Aplicación cliente (React)
+│   └── DOCKERFILE
+├── backend/           # API y lógica de negocio (Spring Boot)
+│   └── DOCKERFILE
+├── nginx/            # Reverse Proxy
+│   ├── nginx.conf
+│   └── DOCKERFILE
+├── scripts/           # Scripts de utilidad
 │   ├── init-mongo.js  # Script de inicialización de MongoDB
 │   └── create_and_list_users.sh  # Script de prueba de endpoints
 ├── mongo_data/        # Datos persistentes de MongoDB (generado automáticamente)

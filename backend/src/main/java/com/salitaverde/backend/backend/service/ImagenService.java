@@ -20,15 +20,24 @@ public class ImagenService {
     public void crearBucketSiNoExiste() {
         try {
             String bucketName = minioConfig.getBucketName();
+            System.out.println("Verificando bucket: " + bucketName);
+            
             boolean exists = minioClient.bucketExists(
                 BucketExistsArgs.builder().bucket(bucketName).build()
             );
+            
             if (!exists) {
+                System.out.println("Bucket no existe. Creando: " + bucketName);
                 minioClient.makeBucket(
                     MakeBucketArgs.builder().bucket(bucketName).build()
                 );
+                System.out.println("Bucket creado exitosamente: " + bucketName);
+            } else {
+                System.out.println("Bucket ya existe: " + bucketName);
             }
         } catch (Exception e) {
+            System.err.println("Error al crear/verificar bucket: " + e.getMessage());
+            e.printStackTrace();
             throw new RuntimeException("Error al crear bucket: " + e.getMessage());
         }
     }
@@ -82,18 +91,12 @@ public class ImagenService {
     }
     
     public String subirImagenConNombre(MultipartFile archivo, String nombrePersonalizado) {
-        // Eliminar imagen existente si ya existe (para sobrescribir)
-        if (existeImagen(nombrePersonalizado)) {
-            try {
-                eliminarImagen(nombrePersonalizado);
-            } catch (Exception e) {
-                // Ignorar error
-            }
-        }
-        
         try {
+            System.out.println("Iniciando subida de imagen: " + nombrePersonalizado);
             crearBucketSiNoExiste();
             String bucketName = minioConfig.getBucketName();
+            
+            System.out.println("Subiendo archivo a bucket: " + bucketName);
             minioClient.putObject(
                 PutObjectArgs.builder()
                     .bucket(bucketName)
@@ -102,8 +105,11 @@ public class ImagenService {
                     .contentType(archivo.getContentType())
                     .build()
             );
+            System.out.println("Imagen subida exitosamente: " + nombrePersonalizado);
             return nombrePersonalizado;
         } catch (Exception e) {
+            System.err.println("Error al subir imagen: " + e.getMessage());
+            e.printStackTrace();
             throw new RuntimeException("Error al subir imagen: " + e.getMessage());
         }
     }

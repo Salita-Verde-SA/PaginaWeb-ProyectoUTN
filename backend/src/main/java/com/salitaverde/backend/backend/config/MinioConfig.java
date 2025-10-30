@@ -36,4 +36,8 @@ public class MinioConfig {
     public String getBucketName() {
         return bucketName;
     }
+    
+    public String getUrl() {
+        return endpoint;
+    }
 }

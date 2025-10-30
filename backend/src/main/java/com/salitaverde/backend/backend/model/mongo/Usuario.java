@@ -44,7 +44,7 @@ public class Usuario {
     private String password;
 
     @Field("foto_perfil")
-    private String fotoPerfil; // Ahora guarda el nombre del archivo en MinIO: {id}_profile.extension
+    private String fotoPerfil = "";
 
     @Field("activo")
     private Boolean activo = true;
