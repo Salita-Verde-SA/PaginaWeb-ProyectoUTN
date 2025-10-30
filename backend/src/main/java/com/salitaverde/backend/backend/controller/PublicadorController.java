@@ -2,11 +2,16 @@ package com.salitaverde.backend.backend.controller;
 
 import com.salitaverde.backend.backend.model.mongo.Publicador;
 import com.salitaverde.backend.backend.service.PublicadorService;
+import com.salitaverde.backend.backend.service.ImagenService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
+import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.multipart.MultipartFile;
 
+import java.io.InputStream;
 import java.util.List;
 
 @RestController
@@ -15,6 +20,7 @@ import java.util.List;
 public class PublicadorController {
     
     private final PublicadorService publicadorService;
+    private final ImagenService imagenService;
     
     @GetMapping
     public ResponseEntity<List<Publicador>> obtenerTodos() {
@@ -111,5 +117,37 @@ public class PublicadorController {
             @PathVariable String id,
             @PathVariable String usuarioId) {
         return ResponseEntity.ok(publicadorService.quitarSeguidor(id, usuarioId));
+    }
+    
+    @PostMapping("/{id}/logo")
+    public ResponseEntity<Publicador> actualizarLogo(
+            @PathVariable String id,
+            @RequestParam("archivo") MultipartFile archivo) {
+        return ResponseEntity.ok(publicadorService.actualizarLogo(id, archivo));
+    }
+    
+    @GetMapping("/{id}/logo")
+    public ResponseEntity<byte[]> obtenerLogo(@PathVariable String id) {
+        Publicador publicador = publicadorService.obtenerPorId(id);
+        
+        if (publicador.getLogoBoliche() == null || publicador.getLogoBoliche().trim().isEmpty()) {
+            return ResponseEntity.notFound().build();
+        }
+        
+        try {
+            InputStream imagen = imagenService.obtenerImagen(publicador.getLogoBoliche());
+            byte[] bytes = imagen.readAllBytes();
+            
+            HttpHeaders headers = new HttpHeaders();
+            headers.setContentType(MediaType.IMAGE_JPEG);
+            headers.setCacheControl("no-cache, no-store, must-revalidate");
+            headers.setPragma("no-cache");
+            headers.setExpires(0);
+            
+            return ResponseEntity.ok().headers(headers).body(bytes);
+        } catch (Exception e) {
+            System.out.println("Error al obtener logo: " + e.getMessage());
+            return ResponseEntity.notFound().build();
+        }
     }
 }

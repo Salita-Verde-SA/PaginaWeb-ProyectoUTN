@@ -8,8 +8,6 @@ import java.util.List;
 
 @Repository
 public interface PublicacionRepository extends MongoRepository<Publicacion, String> {
-    List<Publicacion> findByUsuarioId(String usuarioId);
     List<Publicacion> findByVisibleTrue();
-    List<Publicacion> findByEtiquetasContaining(String etiqueta);
-    List<Publicacion> findByUsuarioIdAndVisibleTrue(Long usuarioId);
+    List<Publicacion> findByPublicadorIdAndVisibleTrue(String publicadorId);
 }

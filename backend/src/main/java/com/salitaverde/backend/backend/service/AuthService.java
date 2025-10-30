@@ -5,6 +5,9 @@ import com.salitaverde.backend.backend.dto.AuthResponse;
 import com.salitaverde.backend.backend.dto.LoginRequest;
 import com.salitaverde.backend.backend.model.mongo.Usuario;
 import com.salitaverde.backend.backend.repository.UsuarioRepository;
+import io.jsonwebtoken.Claims;
+import io.jsonwebtoken.Jwts;
+import io.jsonwebtoken.JwtException;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
@@ -133,5 +136,44 @@ public class AuthService {
             usuario.getUsername(), 
             usuario.getTokenVersion()
         );
+    }
+
+    /**
+     * Valida un token y retorna el ID del usuario si es válido
+     * @param token El token JWT a validar
+     * @return El ID del usuario si el token es válido, null en caso contrario
+     */
+    public String validarToken(String token) {
+        try {
+            if (token == null || token.trim().isEmpty()) {
+                return null;
+            }
+            
+            // Usar jwtConfig para extraer el username
+            String username = jwtConfig.extractUsername(token);
+            
+            if (username == null) {
+                return null;
+            }
+            
+            // Buscar el usuario por username
+            Optional<Usuario> usuarioValidacion = usuarioRepository.findByUsername(username);
+            
+            if (usuarioValidacion.isEmpty()) {
+                return null;
+            }
+            
+            Usuario usuario = usuarioValidacion.get();
+            
+            // Validar el token con la versión actual
+            if (!jwtConfig.validateToken(token, usuario.getUsername(), usuario.getTokenVersion())) {
+                return null;
+            }
+            
+            return usuario.getId();
+        } catch (JwtException | IllegalArgumentException e) {
+            System.out.println("Token inválido: " + e.getMessage());
+            return null;
+        }
     }
 }

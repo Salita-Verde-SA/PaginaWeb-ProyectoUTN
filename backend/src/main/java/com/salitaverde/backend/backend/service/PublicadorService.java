@@ -5,6 +5,7 @@ import com.salitaverde.backend.backend.repository.PublicadorRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.multipart.MultipartFile;
 
 import java.util.List;
 
@@ -13,6 +14,7 @@ import java.util.List;
 public class PublicadorService {
     
     private final PublicadorRepository publicadorRepository;
+    private final ImagenService imagenService;
     
     public List<Publicador> obtenerTodos() {
         return publicadorRepository.findAll();
@@ -142,5 +144,28 @@ public class PublicadorService {
             publicador.getSeguidores().size()
         );
         return publicadorRepository.save(publicador);
+    }
+    
+    @Transactional
+    public Publicador actualizarLogo(String id, MultipartFile archivo) {
+        Publicador existente = obtenerPorId(id);
+        
+        // Nombre del archivo: {id}_logo.jpg (siempre JPG)
+        String nombreArchivo = id + "_logo.jpg";
+        
+        // Eliminar logo anterior si existe
+        if (existente.getLogoBoliche() != null && !existente.getLogoBoliche().trim().isEmpty()) {
+            try {
+                imagenService.eliminarImagen(existente.getLogoBoliche());
+            } catch (Exception e) {
+                System.out.println("No se pudo eliminar el logo anterior: " + e.getMessage());
+            }
+        }
+        
+        // Subir nuevo logo
+        imagenService.subirImagenConNombre(archivo, nombreArchivo);
+        
+        existente.setLogoBoliche(nombreArchivo);
+        return publicadorRepository.save(existente);
     }
 }
