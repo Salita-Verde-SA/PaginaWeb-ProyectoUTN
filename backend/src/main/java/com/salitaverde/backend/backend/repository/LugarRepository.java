@@ -11,7 +11,6 @@ import java.util.Optional;
 public interface LugarRepository extends MongoRepository<Lugar, String> {
     List<Lugar> findByAdministradorId(String administradorId);
     List<Lugar> findByVerificadoTrue();
-    List<Lugar> findByActivoTrue();
     List<Lugar> findByLocalidad(String localidad);
     Optional<Lugar> findByAdministradorIdAndEsPrincipalTrue(String administradorId);
 }

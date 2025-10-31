@@ -197,4 +197,12 @@ public class AuthService {
         usuario.setUltimaSesion(LocalDateTime.now());
         return usuarioRepository.save(usuario);
     }
+
+    public String generateToken(Usuario usuario) {
+        return jwtConfig.generateToken(
+            usuario.getId(),
+            usuario.getUsername(),
+            usuario.getTokenVersion()
+        );
+    }
 }

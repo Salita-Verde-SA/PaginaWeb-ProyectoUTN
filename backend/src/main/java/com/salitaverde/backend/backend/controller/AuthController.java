@@ -130,8 +130,11 @@ public class AuthController {
             adminCreado.getLugaresAdministrados().add(lugarCreado.getId());
             administradorService.guardar(adminCreado);
             
-            // 5. Crear cookie de sesión
-            Cookie cookie = new Cookie("authToken", "admin_" + adminCreado.getId());
+            // 5. Crear token JWT
+            String token = authService.generateToken(usuarioCreado);
+            
+            // 6. Crear cookie de sesión
+            Cookie cookie = new Cookie("authToken", token);
             cookie.setHttpOnly(true);
             cookie.setSecure(false);
             cookie.setPath("/");
@@ -139,15 +142,22 @@ public class AuthController {
             response.addCookie(cookie);
             
             return ResponseEntity.ok(Map.of(
-                "usuario", usuarioCreado,
-                "administrador", adminCreado,
-                "lugarPrincipal", lugarCreado
+                "exito", true,
+                "mensaje", "Registro exitoso",
+                "usuario", Map.of(
+                    "id", usuarioCreado.getId(),
+                    "administradorId", adminCreado.getId(),
+                    "lugarPrincipalId", lugarCreado.getId()
+                )
             ));
                     
         } catch (Exception e) {
             e.printStackTrace();
             return ResponseEntity.status(HttpStatus.BAD_REQUEST)
-                    .body(Map.of("error", e.getMessage()));
+                    .body(Map.of(
+                        "exito", false,
+                        "mensaje", e.getMessage()
+                    ));
         }
     }
 

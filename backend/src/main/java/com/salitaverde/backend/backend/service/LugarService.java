@@ -3,6 +3,7 @@ package com.salitaverde.backend.backend.service;
 import com.salitaverde.backend.backend.model.mongo.Lugar;
 import com.salitaverde.backend.backend.repository.LugarRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,14 +12,22 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class LugarService {
     
     private final LugarRepository lugarRepository;
-    private final ImagenService imagenService;
-    private final DocumentoVerificacionService documentoVerificacionService;
+    private final VerificacionService verificacionService;
     
     public List<Lugar> obtenerTodos() {
         return lugarRepository.findAll();
+    }
+    
+    public List<Lugar> obtenerVerificados() {
+        return lugarRepository.findByVerificadoTrue();
+    }
+    
+    public List<Lugar> obtenerPorAdministrador(String administradorId) {
+        return lugarRepository.findByAdministradorId(administradorId);
     }
     
     public Lugar obtenerPorId(String id) {
@@ -26,17 +35,24 @@ public class LugarService {
                 .orElseThrow(() -> new RuntimeException("Lugar no encontrado"));
     }
     
-    public List<Lugar> obtenerPorAdministrador(String administradorId) {
-        return lugarRepository.findByAdministradorId(administradorId);
-    }
-    
-    public List<Lugar> obtenerVerificados() {
-        return lugarRepository.findByVerificadoTrue();
+    @Transactional
+    public Lugar crear(Lugar lugar) {
+        lugar.setVerificado(false);
+        lugar.setActivo(true);
+        return lugarRepository.save(lugar);
     }
     
     @Transactional
-    public Lugar crear(Lugar lugar) {
-        return lugarRepository.save(lugar);
+    public Lugar actualizar(String id, Lugar lugar) {
+        Lugar existente = obtenerPorId(id);
+        existente.setNombre(lugar.getNombre());
+        existente.setDireccion(lugar.getDireccion());
+        existente.setLocalidad(lugar.getLocalidad());
+        existente.setDescripcion(lugar.getDescripcion());
+        existente.setTelefono(lugar.getTelefono());
+        existente.setEmail(lugar.getEmail());
+        existente.setSitioWeb(lugar.getSitioWeb());
+        return lugarRepository.save(existente);
     }
     
     @Transactional
@@ -47,52 +63,31 @@ public class LugarService {
     }
     
     @Transactional
-    public Lugar subirComprobante(String id, MultipartFile archivo) {
+    public void eliminar(String id) {
         Lugar lugar = obtenerPorId(id);
-        
-        String extension = "";
-        String originalFilename = archivo.getOriginalFilename();
-        if (originalFilename != null && originalFilename.contains(".")) {
-            extension = originalFilename.substring(originalFilename.lastIndexOf("."));
+        if (lugar.getEsPrincipal()) {
+            throw new RuntimeException("No se puede eliminar el lugar principal");
         }
-        
-        String nombreArchivo = id + "_comprobante" + extension;
-        
-        if (lugar.getComprobanteDomicilio() != null && !lugar.getComprobanteDomicilio().trim().isEmpty()) {
-            try {
-                documentoVerificacionService.eliminarDocumento(lugar.getComprobanteDomicilio());
-            } catch (Exception e) {
-                System.out.println("No se pudo eliminar comprobante anterior: " + e.getMessage());
-            }
-        }
-        
-        documentoVerificacionService.subirDocumento(archivo, nombreArchivo);
-        lugar.setComprobanteDomicilio(nombreArchivo);
-        
-        return lugarRepository.save(lugar);
+        lugarRepository.deleteById(id);
     }
     
     @Transactional
-    public Lugar actualizarLogo(String id, MultipartFile archivo) {
+    public Lugar subirComprobanteDomicilio(String id, MultipartFile archivo) {
         Lugar lugar = obtenerPorId(id);
         
-        String nombreArchivo = id + "_logo.jpg";
+        String extension = archivo.getContentType().contains("pdf") ? ".pdf" : ".jpg";
+        String nombreArchivo = id + "_comprobante_domicilio" + extension;
         
-        if (lugar.getLogo() != null && !lugar.getLogo().trim().isEmpty()) {
+        if (lugar.getComprobanteDomicilio() != null) {
             try {
-                imagenService.eliminarImagen(lugar.getLogo());
+                verificacionService.eliminarDocumento(lugar.getComprobanteDomicilio());
             } catch (Exception e) {
-                System.out.println("No se pudo eliminar logo anterior: " + e.getMessage());
+                log.warn("No se pudo eliminar comprobante anterior: {}", e.getMessage());
             }
         }
         
-        imagenService.subirImagenConNombre(archivo, nombreArchivo);
-        lugar.setLogo(nombreArchivo);
-        
+        verificacionService.subirDocumentoConNombre(archivo, nombreArchivo);
+        lugar.setComprobanteDomicilio(nombreArchivo);
         return lugarRepository.save(lugar);
-    }
-    
-    public void guardar(Lugar lugar) {
-        lugarRepository.save(lugar);
     }
 }
