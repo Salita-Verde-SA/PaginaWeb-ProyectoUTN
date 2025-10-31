@@ -12,15 +12,93 @@ import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 @RestController
 @RequestMapping("/api/publicadores")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class PublicadorController {
     
     private final PublicadorService publicadorService;
     private final ImagenService imagenService;
+    
+    @PostMapping("/registro")
+    public ResponseEntity<?> registrar(@RequestBody Publicador publicador) {
+        try {
+            // Encriptar contraseña
+            publicador.setPassword(passwordEncoder.encode(publicador.getPassword()));
+            
+            Publicador nuevo = publicadorService.crear(publicador);
+            
+            Map<String, Object> response = new HashMap<>();
+            response.put("exito", true);
+            response.put("mensaje", "Solicitud de registro enviada. Pendiente de verificación.");
+            response.put("publicador", Map.of("id", nuevo.getId()));
+            
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+            
+        } catch (RuntimeException e) {
+            Map<String, Object> error = new HashMap<>();
+            error.put("exito", false);
+            error.put("mensaje", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
+        }
+    }
+    
+    @PostMapping("/{id}/dni-frente")
+    public ResponseEntity<?> subirDniFrente(
+            @PathVariable String id,
+            @RequestParam("archivo") MultipartFile archivo
+    ) {
+        try {
+            publicadorService.subirDniFrente(id, archivo);
+            return ResponseEntity.ok(Map.of("mensaje", "DNI frente subido correctamente"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+    
+    @PostMapping("/{id}/dni-dorso")
+    public ResponseEntity<?> subirDniDorso(
+            @PathVariable String id,
+            @RequestParam("archivo") MultipartFile archivo
+    ) {
+        try {
+            publicadorService.subirDniDorso(id, archivo);
+            return ResponseEntity.ok(Map.of("mensaje", "DNI dorso subido correctamente"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+    
+    @PostMapping("/{id}/constancia-afip")
+    public ResponseEntity<?> subirConstanciaAfip(
+            @PathVariable String id,
+            @RequestParam("archivo") MultipartFile archivo
+    ) {
+        try {
+            publicadorService.subirConstanciaAfip(id, archivo);
+            return ResponseEntity.ok(Map.of("mensaje", "Constancia AFIP subida correctamente"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
+    
+    @PostMapping("/{id}/comprobante-lugar")
+    public ResponseEntity<?> subirComprobanteLugar(
+            @PathVariable String id,
+            @RequestParam("archivo") MultipartFile archivo
+    ) {
+        try {
+            publicadorService.subirComprobanteLugar(id, archivo);
+            return ResponseEntity.ok(Map.of("mensaje", "Comprobante de lugar subido correctamente"));
+        } catch (Exception e) {
+            return ResponseEntity.badRequest().body(Map.of("error", e.getMessage()));
+        }
+    }
     
     @GetMapping
     public ResponseEntity<List<Publicador>> obtenerTodos() {

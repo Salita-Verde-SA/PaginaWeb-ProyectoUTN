@@ -9,13 +9,16 @@ import java.util.Optional;
 
 @Repository
 public interface PublicadorRepository extends MongoRepository<Publicador, String> {
+    
     Optional<Publicador> findByCuit(String cuit);
     Optional<Publicador> findByUsername(String username);
     Optional<Publicador> findByEmail(String email);
+    
+    List<Publicador> findByLocalidad(String localidad);
+    List<Publicador> findByVerificadoTrue();
+    List<Publicador> findByActivoTrue();
+    
     boolean existsByEmail(String email);
     boolean existsByUsername(String username);
     boolean existsByCuit(String cuit);
-    List<Publicador> findByVerificadoTrue();
-    List<Publicador> findByActivoTrue();
-    List<Publicador> findByLocalidad(String localidad);
 }

@@ -373,9 +373,13 @@ Para más detalles sobre cada módulo, consulta los README específicos en cada 
 
 - **MongoDB** 6.0+ - Base de datos NoSQL
   - Colecciones: `usuarios`, `publicaciones`, `lugares`, `administradores`, `pedidos`
-  - Sistema dual de almacenamiento de archivos:
-    - **MinIO Principal** (puerto 9000): Imágenes públicas (eventos, perfiles)
-    - **MinIO Verificación** (puerto 9002): Documentos privados de verificación
+  
+- **MinIO** - Almacenamiento de objetos S3-compatible
+  - **MinIO Principal** (puerto interno 9000, expuesto en 9000): Imágenes públicas de eventos, perfiles, logos
+    - Bucket: `imagenes`
+  - **MinIO Verificación** (puerto interno 9000, expuesto en 9001): Documentos privados de verificación
+    - Bucket: `verificacion-documentos`
+    - Almacena: DNI, comprobantes AFIP, comprobantes de domicilio
 
 ### DevOps
 

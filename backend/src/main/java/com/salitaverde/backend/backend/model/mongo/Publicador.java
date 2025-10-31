@@ -20,7 +20,7 @@ import java.util.List;
 public class Publicador {
     
     @Id
-    private String id; // CUIT del boliche
+    private String id; // Se generará automáticamente
     
     @Field("nombre_responsable")
     private String nombreResponsable;
@@ -28,32 +28,50 @@ public class Publicador {
     @Field("apellido_responsable")
     private String apellidoResponsable;
     
+    @Field("dni_responsable")
+    private String dniResponsable;
+    
+    @Field("fecha_nacimiento_responsable")
+    private String fechaNacimientoResponsable;
+    
+    @Field("dni_frente")
+    private String dniFrente; // Nombre del archivo en MinIO verificación
+    
+    @Field("dni_dorso")
+    private String dniDorso; // Nombre del archivo en MinIO verificación
+    
     @Field("email")
     private String email;
     
     @Field("celular")
     private String celular;
     
-    @Field("nombre_fantasia")
-    private String nombreFantasia;
+    @Field("sitio_web")
+    private String sitioWeb;
+    
+    @Field("nombre_organizacion")
+    private String nombreOrganizacion; // antes nombreFantasia
     
     @Field("razon_social")
-    private String razonSocial;
+    private String razonSocial; // Se puede derivar del nombre organización
     
     @Field("cuit")
     private String cuit;
     
-    @Field("direccion")
-    private String direccion;
+    @Field("rubro")
+    private String rubro;
+    
+    @Field("constancia_afip_img")
+    private String constanciaAfipImg; // Nombre del archivo en MinIO verificación
+    
+    @Field("direccion_lugar")
+    private String direccionLugar; // Dirección del establecimiento principal
+    
+    @Field("comprobante_lugar")
+    private String comprobanteLugar; // Comprobante de domicilio en MinIO verificación
     
     @Field("localidad")
     private String localidad;
-    
-    @Field("tipo_documento")
-    private String tipoDocumento; // 'habilitacion', 'afip', 'servicio', 'otro'
-    
-    @Field("documento_verificacion")
-    private String documentoVerificacion; // URL del documento
     
     @Field("username")
     private String username;
@@ -62,19 +80,19 @@ public class Publicador {
     private String password;
     
     @Field("logo_boliche")
-    private String logoBoliche; // URL del logo
+    private String logoBoliche; // URL del logo (MinIO público)
     
     @Field("verificado")
     private Boolean verificado = false;
     
     @Field("activo")
-    private Boolean activo = true;
+    private Boolean activo = false; // Inactivo hasta aprobación
     
     @Field("publicaciones")
-    private List<String> publicaciones = new ArrayList<>(); // IDs de publicaciones
+    private List<String> publicaciones = new ArrayList<>();
     
     @Field("seguidores")
-    private List<String> seguidores = new ArrayList<>(); // IDs de usuarios que siguen al boliche
+    private List<String> seguidores = new ArrayList<>();
     
     @CreatedDate
     @Field("fecha_creacion")
