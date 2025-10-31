@@ -242,3 +242,41 @@ curl -X GET http://localhost:8090/api/auth/validate \
 
 echo -e "\n\n=== FIN DE PRUEBAS DE AUTENTICACIÓN ==="
 echo -e "\n\n=== FIN DE PRUEBAS DE AUTENTICACIÓN ==="
+
+echo -e "\n\n=== PROBANDO ADMINISTRADORES ==="
+
+# Registrar un nuevo administrador
+echo -e "\n\nRegistrando nuevo administrador..."
+ADMIN_RESPONSE=$(curl -s -X POST http://localhost:8090/api/auth/register-admin \
+  -H "Content-Type: application/json" \
+  -d '{
+    "dni":"87654321",
+    "nombre":"Carlos",
+    "apellido":"Mendez",
+    "fechaNacimiento":"1985-05-15",
+    "nombreOrganizacion":"Eventos Premium SRL",
+    "cuit":"20876543219",
+    "rubro":"Entretenimiento",
+    "direccionLugar":"Av. Principal 1000, Mendoza",
+    "sitioWeb":"www.eventospremium.com",
+    "email":"carlos@eventospremium.com",
+    "celular":"+54 261 555-1234",
+    "username":"carlospremium",
+    "password":"admin123",
+    "localidad":"CAPITAL"
+  }' \
+  -c admin_cookies.txt \
+  -w "\nHTTP Status: %{http_code}\n")
+
+echo "$ADMIN_RESPONSE"
+
+ADMIN_ID=$(echo "$ADMIN_RESPONSE" | jq -r '.id')
+echo -e "\n\nID del administrador creado: $ADMIN_ID"
+
+# Subir documentos
+echo -e "\n\nSimulando subida de documentos..."
+# curl -X POST http://localhost:8090/api/administradores/$ADMIN_ID/dni-frente \
+#   -F "archivo=@/path/to/dni-frente.jpg" \
+#   -b admin_cookies.txt
+
+echo -e "\n\n=== FIN DE PRUEBAS DE ADMINISTRADORES ==="

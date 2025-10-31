@@ -372,8 +372,10 @@ Para más detalles sobre cada módulo, consulta los README específicos en cada 
 ### Base de Datos
 
 - **MongoDB** 6.0+ - Base de datos NoSQL
-  - Colecciones: `usuarios`, `publicaciones`, `publicadores`
-  - Almacenamiento de imágenes en sistema de archivos
+  - Colecciones: `usuarios`, `publicaciones`, `lugares`, `administradores`, `pedidos`
+  - Sistema dual de almacenamiento de archivos:
+    - **MinIO Principal** (puerto 9000): Imágenes públicas (eventos, perfiles)
+    - **MinIO Verificación** (puerto 9002): Documentos privados de verificación
 
 ### DevOps
 

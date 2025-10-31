@@ -52,7 +52,7 @@ public class MongoConfig {
                 }
                 
                 // Definir colecciones a crear
-                String[] collections = {"usuarios", "publicaciones", "publicadores", "pedidos"};
+                String[] collections = {"usuarios", "publicaciones", "lugares", "pedidos", "administradores"};
                 
                 // Crear colecciones
                 for (String collectionName : collections) {
@@ -118,6 +118,30 @@ public class MongoConfig {
                 );
                 log.info("✓ Índices de 'pedidos' creados");
                 
+                // Índices para administradores
+                mongoTemplate.indexOps("administradores").ensureIndex(
+                    new Index().on("email", Direction.ASC).unique()
+                );
+                mongoTemplate.indexOps("administradores").ensureIndex(
+                    new Index().on("username", Direction.ASC).unique()
+                );
+                mongoTemplate.indexOps("administradores").ensureIndex(
+                    new Index().on("dni", Direction.ASC).unique()
+                );
+                mongoTemplate.indexOps("administradores").ensureIndex(
+                    new Index().on("cuit", Direction.ASC).unique()
+                );
+                log.info("✓ Índices de 'administradores' creados");
+                
+                // Índices para lugares
+                mongoTemplate.indexOps("lugares").ensureIndex(
+                    new Index().on("administrador_id", Direction.ASC)
+                );
+                mongoTemplate.indexOps("lugares").ensureIndex(
+                    new Index().on("verificado", Direction.ASC)
+                );
+                log.info("✓ Índices de 'lugares' creados");
+                
                 // Forzar la creación física de la base de datos
                 if (!dbExists) {
                     log.info("\nForzando creación física de la base de datos...");
@@ -143,7 +167,7 @@ public class MongoConfig {
                 }
                 log.info("Colecciones disponibles: {}", String.join(", ", collections));
                 log.info("Total de índices creados: {}", 
-                    4 + 4 + 4 + 4); // usuarios + publicadores + publicaciones + pedidos
+                    4 + 4 + 4 + 4 + 4); // usuarios + publicadores + publicaciones + pedidos + administradores
                 log.info("======================================\n");
                 
             } catch (Exception e) {

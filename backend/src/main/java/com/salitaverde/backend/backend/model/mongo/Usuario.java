@@ -52,6 +52,10 @@ public class Usuario {
     @Field("admin")
     private Boolean admin = false; // Campo para permisos de moderación
 
+    // NUEVO: Si es administrador de lugares, aquí va el ID
+    @Field("administrador_id")
+    private String administradorId;
+
     @Field("localidad")
     private Localidad localidad;
 
