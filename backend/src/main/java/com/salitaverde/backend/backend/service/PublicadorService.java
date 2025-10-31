@@ -84,9 +84,9 @@ public class PublicadorService {
         existente.setApellidoResponsable(publicador.getApellidoResponsable());
         existente.setEmail(publicador.getEmail());
         existente.setCelular(publicador.getCelular());
-        existente.setNombreFantasia(publicador.getNombreFantasia());
+        existente.setNombreOrganizacion(publicador.getNombreOrganizacion());
         existente.setRazonSocial(publicador.getRazonSocial());
-        existente.setDireccion(publicador.getDireccion());
+        existente.setDireccionLugar(publicador.getDireccionLugar());
         existente.setLocalidad(publicador.getLocalidad());
         existente.setLogoBoliche(publicador.getLogoBoliche());
         return publicadorRepository.save(existente);
