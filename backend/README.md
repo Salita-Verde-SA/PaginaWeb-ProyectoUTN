@@ -195,7 +195,7 @@ const actualizarUsuario = async (id, datosActualizados) => {
 
 ### DELETE /api/usuarios/{id}
 
-Elimina usuario por ID de MongoDB.
+Deshabilita la cuenta del usuario (no la elimina permanentemente).
 
 **Ejemplo curl:**
 
@@ -211,7 +211,7 @@ const eliminarUsuario = async (id) => {
     await fetch(`http://localhost:8090/api/usuarios/${id}`, {
       method: 'DELETE'
     });
-    console.log('Usuario eliminado');
+    console.log('Usuario deshabilitado');
   } catch (error) {
     console.error('Error:', error);
   }
@@ -336,6 +336,35 @@ const dejarDeSeguir = async (usuarioId, seguidoId) => {
 
 ---
 
+### POST /api/usuarios/{id}/eliminar-seguidor/{seguidorId}
+
+El usuario `{id}` elimina a `{seguidorId}` de su lista de seguidores. Ambos son IDs de MongoDB.
+
+**Ejemplo curl:**
+
+```bash
+curl -X POST http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011/eliminar-seguidor/507f1f77bcf86cd799439012
+```
+
+**Ejemplo React:**
+
+```jsx
+const eliminarSeguidor = async (usuarioId, seguidorId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8090/api/usuarios/${usuarioId}/eliminar-seguidor/${seguidorId}`,
+      { method: 'POST', credentials: 'include' }
+    );
+    const resultado = await response.json();
+    console.log('Seguidor eliminado:', resultado);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
 ### GET /api/usuarios/{id}/sigue-a/{seguidoId}
 
 Devuelve `true` si `{id}` sigue a `{seguidoId}`. Ambos son IDs de MongoDB.
@@ -396,7 +425,7 @@ const actualizarSettings = async (usuarioId, settings) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include', // Importante para cookies de sesión
+        credentials: 'include' // Importante para cookies de sesión
         body: JSON.stringify(settings)
       }
     );
@@ -453,13 +482,138 @@ const actualizarUsername = async (usuarioId, nuevoUsername) => {
         headers: {
           'Content-Type': 'application/json',
         },
-        credentials: 'include', // Importante para cookies
+        credentials: 'include',
         body: JSON.stringify({ username: nuevoUsername })
       }
     );
     const data = await response.json();
     console.log('Username actualizado:', data);
-    // El nuevo token se establece automáticamente en la cookie
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### PUT /api/usuarios/{id}/cambiar-contrasena
+
+Cambia la contraseña del usuario. Requiere la contraseña actual para verificación.
+
+**Payload ejemplo:**
+
+```json
+{
+  "contrasenaActual": "miPasswordViejo123",
+  "contrasenaNueva": "miPasswordNuevo456"
+}
+```
+
+**Validaciones:**
+- La contraseña actual debe ser correcta
+- La nueva contraseña debe tener al menos 8 caracteres
+- La nueva contraseña debe ser diferente a la actual
+
+**Ejemplo curl:**
+
+```bash
+curl -X PUT http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011/cambiar-contrasena \
+  -H "Content-Type: application/json" \
+  -b cookies.txt \
+  -d '{
+    "contrasenaActual": "miPasswordViejo123",
+    "contrasenaNueva": "miPasswordNuevo456"
+  }'
+```
+
+**Ejemplo React:**
+
+```jsx
+const cambiarContrasena = async (usuarioId, contrasenaActual, contrasenaNueva) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8090/api/usuarios/${usuarioId}/cambiar-contrasena`,
+      {
+        method: 'PUT',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        credentials: 'include',
+        body: JSON.stringify({ contrasenaActual, contrasenaNueva })
+      }
+    );
+    const data = await response.json();
+    if (response.ok) {
+      console.log('Contraseña actualizada:', data.mensaje);
+    } else {
+      console.error('Error:', data.mensaje);
+    }
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### PATCH /api/usuarios/{id}/deshabilitar
+
+Deshabilita la cuenta de un usuario. El usuario no podrá iniciar sesión hasta que sea habilitado nuevamente por un administrador.
+
+**Ejemplo curl:**
+
+```bash
+curl -X PATCH http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011/deshabilitar \
+  -b cookies.txt
+```
+
+**Ejemplo React:**
+
+```jsx
+const deshabilitarCuenta = async (usuarioId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8090/api/usuarios/${usuarioId}/deshabilitar`,
+      {
+        method: 'PATCH',
+        credentials: 'include'
+      }
+    );
+    const data = await response.json();
+    console.log(data.mensaje);
+  } catch (error) {
+    console.error('Error:', error);
+  }
+};
+```
+
+---
+
+### PATCH /api/usuarios/{id}/habilitar
+
+Habilita una cuenta de usuario previamente deshabilitada.
+
+**Ejemplo curl:**
+
+```bash
+curl -X PATCH http://localhost:8090/api/usuarios/507f1f77bcf86cd799439011/habilitar \
+  -b cookies.txt
+```
+
+**Ejemplo React:**
+
+```jsx
+const habilitarCuenta = async (usuarioId) => {
+  try {
+    const response = await fetch(
+      `http://localhost:8090/api/usuarios/${usuarioId}/habilitar`,
+      {
+        method: 'PATCH',
+        credentials: 'include'
+      }
+    );
+    const data = await response.json();
+    console.log(data.mensaje);
   } catch (error) {
     console.error('Error:', error);
   }

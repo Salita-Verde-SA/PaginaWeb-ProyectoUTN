@@ -4,6 +4,7 @@ import com.salitaverde.backend.backend.model.mongo.Publicacion;
 import com.salitaverde.backend.backend.model.mongo.Usuario;
 import com.salitaverde.backend.backend.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -17,6 +18,7 @@ public class UsuarioService {
 
     private final UsuarioRepository usuarioRepository;
     private final ImagenService imagenService;
+    private final PasswordEncoder passwordEncoder;
 
     public List<Usuario> obtenerTodos() {
         try {
@@ -117,22 +119,36 @@ public class UsuarioService {
         return usuarioRepository.save(existente);
     }
 
+    public void cambiarContrasena(String id, String contrasenaActual, String contrasenaNueva) {
+        Usuario usuario = obtenerPorId(id);
+        
+        if (!passwordEncoder.matches(contrasenaActual, usuario.getPassword())) {
+            throw new RuntimeException("La contraseña actual es incorrecta");
+        }
+        
+        usuario.setPassword(passwordEncoder.encode(contrasenaNueva));
+        usuario.setTokenVersion(usuario.getTokenVersion() + 1);
+        usuarioRepository.save(usuario);
+    }
+
     @Transactional
     public void eliminar(String id) {
-        usuarioRepository.deleteById(id);
+        // Deshabilitar en lugar de eliminar permanentemente
+        Usuario usuario = obtenerPorId(id);
+        usuario.setActivo(false);
+        usuarioRepository.save(usuario);
     }
 
     @Transactional
     public Usuario actualizarSettings(String id, Usuario.Settings settings) {
         Usuario existente = obtenerPorId(id);
-        
-        // Actualizar solo los campos no nulos del settings recibido
         Usuario.Settings settingsActuales = existente.getSettings();
+        
         if (settingsActuales == null) {
             settingsActuales = new Usuario.Settings();
         }
         
-        // Actualizar solo si el valor viene en el request
+        // Actualizar solo los campos que vienen en el objeto settings
         if (settings.getTemaOscuro() != null) {
             settingsActuales.setTemaOscuro(settings.getTemaOscuro());
         }
@@ -149,6 +165,25 @@ public class UsuarioService {
         return usuarioRepository.save(existente);
     }
 
+    @Transactional
+    public void deshabilitarCuenta(String id) {
+        Usuario usuario = obtenerPorId(id);
+        usuario.setActivo(false);
+        usuarioRepository.save(usuario);
+    }
+
+    @Transactional
+    public void habilitarCuenta(String id) {
+        Usuario usuario = obtenerPorId(id);
+        usuario.setActivo(true);
+        usuarioRepository.save(usuario);
+    }
+
+    public void guardar(Usuario usuario) {
+        usuarioRepository.save(usuario);
+    }
+
+    @Transactional
     public Usuario seguirUsuario(String id, String seguidoId) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -166,6 +201,7 @@ public class UsuarioService {
         return usuarioRepository.save(usuario);
     }
 
+    @Transactional
     public Usuario dejarDeSeguirUsuario(String id, String seguidoId) {
         Usuario usuario = usuarioRepository.findById(id)
                 .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
@@ -176,6 +212,22 @@ public class UsuarioService {
         seguido.getSeguidores().remove(id);
 
         usuarioRepository.save(seguido);
+        return usuarioRepository.save(usuario);
+    }
+
+    @Transactional
+    public Usuario eliminarSeguidor(String id, String seguidorId) {
+        Usuario usuario = usuarioRepository.findById(id)
+                .orElseThrow(() -> new RuntimeException("Usuario no encontrado"));
+        Usuario seguidor = usuarioRepository.findById(seguidorId)
+                .orElseThrow(() -> new RuntimeException("Seguidor no encontrado"));
+
+        // Remover de la lista de seguidores del usuario
+        usuario.getSeguidores().remove(seguidorId);
+        // Remover de la lista de seguidos del seguidor
+        seguidor.getSeguidos().remove(id);
+
+        usuarioRepository.save(seguidor);
         return usuarioRepository.save(usuario);
     }
 
@@ -215,9 +267,32 @@ public class UsuarioService {
         return cantidad != null ? cantidad : 0;
     }
 
-    @Transactional
-    public Usuario guardar(Usuario usuario) {
-        usuario.setFechaActualizacion(LocalDateTime.now());
-        return usuarioRepository.save(usuario);
+    // NUEVOS MÉTODOS: Obtener datos completos de seguidores/seguidos
+    public List<Usuario> obtenerSeguidoresDetalles(String id) {
+        Usuario usuario = obtenerPorId(id);
+        return usuario.getSeguidores().stream()
+                .map(seguidorId -> {
+                    try {
+                        return obtenerPorId(seguidorId);
+                    } catch (Exception e) {
+                        return null;
+                    }
+                })
+                .filter(u -> u != null)
+                .toList();
+    }
+
+    public List<Usuario> obtenerSeguidosDetalles(String id) {
+        Usuario usuario = obtenerPorId(id);
+        return usuario.getSeguidos().stream()
+                .map(seguidoId -> {
+                    try {
+                        return obtenerPorId(seguidoId);
+                    } catch (Exception e) {
+                        return null;
+                    }
+                })
+                .filter(u -> u != null)
+                .toList();
     }
 }

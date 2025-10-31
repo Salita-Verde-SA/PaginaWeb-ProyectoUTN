@@ -80,6 +80,14 @@ public class UsuarioController {
         return ResponseEntity.ok(actualizado);
     }
 
+    @PostMapping("/{id}/eliminar-seguidor/{seguidorId}")
+    public ResponseEntity<Usuario> eliminarSeguidor(
+            @PathVariable String id,
+            @PathVariable String seguidorId) {
+        Usuario actualizado = usuarioService.eliminarSeguidor(id, seguidorId);
+        return ResponseEntity.ok(actualizado);
+    }
+
     @GetMapping("/{id}/sigue-a/{seguidoId}")
     public ResponseEntity<Boolean> sigueA(
             @PathVariable String id,
@@ -146,6 +154,52 @@ public class UsuarioController {
             @PathVariable String id,
             @RequestParam("archivo") MultipartFile archivo) {
         return ResponseEntity.ok(usuarioService.actualizarFotoPerfil(id, archivo));
+    }
+
+    @PutMapping("/{id}/cambiar-contrasena")
+    public ResponseEntity<?> cambiarContrasena(
+            @PathVariable String id,
+            @RequestBody Map<String, String> body) {
+        try {
+            String contrasenaActual = body.get("contrasenaActual");
+            String contrasenaNueva = body.get("contrasenaNueva");
+            
+            if (contrasenaActual == null || contrasenaActual.trim().isEmpty()) {
+                return ResponseEntity.badRequest().body(Map.of("mensaje", "La contraseña actual es requerida"));
+            }
+            if (contrasenaNueva == null || contrasenaNueva.trim().isEmpty()) {
+                return ResponseEntity.badRequest().body(Map.of("mensaje", "La nueva contraseña es requerida"));
+            }
+            if (contrasenaNueva.length() < 8) {
+                return ResponseEntity.badRequest().body(Map.of("mensaje", "La nueva contraseña debe tener al menos 8 caracteres"));
+            }
+            
+            usuarioService.cambiarContrasena(id, contrasenaActual, contrasenaNueva);
+            
+            return ResponseEntity.ok(Map.of("mensaje", "Contraseña actualizada correctamente"));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(Map.of("mensaje", e.getMessage()));
+        }
+    }
+
+    @PatchMapping("/{id}/deshabilitar")
+    public ResponseEntity<?> deshabilitarCuenta(@PathVariable String id) {
+        try {
+            usuarioService.deshabilitarCuenta(id);
+            return ResponseEntity.ok(Map.of("mensaje", "Cuenta deshabilitada correctamente"));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(Map.of("mensaje", e.getMessage()));
+        }
+    }
+
+    @PatchMapping("/{id}/habilitar")
+    public ResponseEntity<?> habilitarCuenta(@PathVariable String id) {
+        try {
+            usuarioService.habilitarCuenta(id);
+            return ResponseEntity.ok(Map.of("mensaje", "Cuenta habilitada correctamente"));
+        } catch (RuntimeException e) {
+            return ResponseEntity.badRequest().body(Map.of("mensaje", e.getMessage()));
+        }
     }
 
     @GetMapping("/{id}/foto-perfil")
@@ -247,5 +301,30 @@ public class UsuarioController {
             e.printStackTrace();
             return ResponseEntity.status(500).body(Map.of("mensaje", "Error al actualizar localidad: " + e.getMessage()));
         }
+    }
+
+    @GetMapping("/{id}/seguidores")
+    public ResponseEntity<List<String>> obtenerSeguidores(@PathVariable String id) {
+        Usuario usuario = usuarioService.obtenerPorId(id);
+        return ResponseEntity.ok(usuario.getSeguidores());
+    }
+
+    @GetMapping("/{id}/seguidos")
+    public ResponseEntity<List<String>> obtenerSeguidos(@PathVariable String id) {
+        Usuario usuario = usuarioService.obtenerPorId(id);
+        return ResponseEntity.ok(usuario.getSeguidos());
+    }
+
+    // NUEVOS ENDPOINTS: Obtener datos completos de seguidores/seguidos
+    @GetMapping("/{id}/seguidores/detalles")
+    public ResponseEntity<List<Usuario>> obtenerSeguidoresDetalles(@PathVariable String id) {
+        List<Usuario> seguidores = usuarioService.obtenerSeguidoresDetalles(id);
+        return ResponseEntity.ok(seguidores);
+    }
+
+    @GetMapping("/{id}/seguidos/detalles")
+    public ResponseEntity<List<Usuario>> obtenerSeguidosDetalles(@PathVariable String id) {
+        List<Usuario> seguidos = usuarioService.obtenerSeguidosDetalles(id);
+        return ResponseEntity.ok(seguidos);
     }
 }

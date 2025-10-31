@@ -24,6 +24,11 @@ public class AuthService {
     private final PasswordEncoder passwordEncoder;
     private final JwtConfig jwtConfig;
 
+    // Método auxiliar para verificar contraseña (ya existe passwordEncoder)
+    public boolean verificarContrasena(String contrasenaPlana, String contrasenaEncriptada) {
+        return passwordEncoder.matches(contrasenaPlana, contrasenaEncriptada);
+    }
+
     @Transactional
     public AuthResponse login(LoginRequest request) {
         Optional<Usuario> usuarioOpt = usuarioRepository.findByUsername(request.getUsername());
@@ -175,5 +180,21 @@ public class AuthService {
             System.out.println("Token inválido: " + e.getMessage());
             return null;
         }
+    }
+
+    public Usuario login(String username, String password) {
+        Usuario usuario = usuarioRepository.findByUsername(username)
+                .orElseThrow(() -> new RuntimeException("Credenciales inválidas"));
+
+        if (!passwordEncoder.matches(password, usuario.getPassword())) {
+            throw new RuntimeException("Credenciales inválidas");
+        }
+
+        if (!usuario.getActivo()) {
+            throw new RuntimeException("CUENTA_DESHABILITADA");
+        }
+
+        usuario.setUltimaSesion(LocalDateTime.now());
+        return usuarioRepository.save(usuario);
     }
 }

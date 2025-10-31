@@ -69,6 +69,12 @@ echo.
 echo Consultando si 123456789 sigue a 12345678...
 curl -X GET http://localhost:8090/api/usuarios/123456789/sigue-a/12345678
 
+REM Eliminar seguidor
+echo.
+echo.
+echo Usuario 123456789 elimina a 12345678 de sus seguidores...
+curl -X POST http://localhost:8090/api/usuarios/123456789/eliminar-seguidor/12345678
+
 REM Dejar de seguir
 echo.
 echo.

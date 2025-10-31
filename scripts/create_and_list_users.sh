@@ -80,6 +80,10 @@ curl -X POST http://localhost:8090/api/usuarios/123456789/seguir/12345678
 echo -e "\n\nConsultando si 123456789 sigue a 12345678..."
 curl -X GET http://localhost:8090/api/usuarios/123456789/sigue-a/12345678
 
+# Eliminar seguidor (12345678 deja de seguir a 123456789)
+echo -e "\n\nUsuario 123456789 elimina a 12345678 de sus seguidores..."
+curl -X POST http://localhost:8090/api/usuarios/123456789/eliminar-seguidor/12345678
+
 # Dejar de seguir
 echo -e "\n\nUsuario 123456789 deja de seguir a 12345678..."
 curl -X POST http://localhost:8090/api/usuarios/123456789/dejar-seguir/12345678
