@@ -5,18 +5,21 @@ import com.salitaverde.backend.backend.service.AdministradorService;
 import com.salitaverde.backend.backend.service.DocumentoVerificacionService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpHeaders;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.MediaType;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
+import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
 @RestController
 @RequestMapping("/api/administradores")
 @RequiredArgsConstructor
+@CrossOrigin(origins = "http://localhost:5173", allowCredentials = "true")
 public class AdministradorController {
     
     private final AdministradorService administradorService;
@@ -95,6 +98,26 @@ public class AdministradorController {
         } catch (Exception e) {
             System.out.println("Error al obtener documento: " + e.getMessage());
             return ResponseEntity.notFound().build();
+        }
+    }
+    
+    @PostMapping("/registro")
+    public ResponseEntity<?> registrar(@RequestBody Administrador administrador) {
+        try {
+            Administrador nuevo = administradorService.crear(administrador);
+            
+            Map<String, Object> response = new HashMap<>();
+            response.put("exito", true);
+            response.put("mensaje", "Solicitud de registro enviada. Pendiente de verificación.");
+            response.put("administrador", Map.of("id", nuevo.getId()));
+            
+            return ResponseEntity.status(HttpStatus.CREATED).body(response);
+            
+        } catch (RuntimeException e) {
+            Map<String, Object> error = new HashMap<>();
+            error.put("exito", false);
+            error.put("mensaje", e.getMessage());
+            return ResponseEntity.badRequest().body(error);
         }
     }
 }

@@ -32,8 +32,13 @@ public class SecurityConfig {
             .sessionManagement()
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
             .and()
-            .authorizeHttpRequests()
-                .anyRequest().permitAll(); // Por ahora permitimos todo, luego se puede restringir
+            .authorizeHttpRequests(auth -> auth
+                .requestMatchers("/api/auth/**").permitAll()
+                .requestMatchers("/api/publicadores/registro").permitAll()
+                .requestMatchers("/api/administradores/registro").permitAll()
+                .requestMatchers("/api/usuarios/registro").permitAll()
+                .requestMatchers("/api/localidades/**").permitAll()
+                .anyRequest().permitAll()); // Por ahora permitimos todo, luego se puede restringir
 
         return http.build();
     }

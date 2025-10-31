@@ -52,10 +52,12 @@ public class AdministradorService {
             throw new RuntimeException("El CUIT ya está registrado");
         }
         
-        // Encriptar contraseña SI NO está encriptada ya
-        if (!administrador.getPassword().startsWith("$2a$")) {
-            administrador.setPassword(passwordEncoder.encode(administrador.getPassword()));
-        }
+        // Encriptar contraseña
+        administrador.setPassword(passwordEncoder.encode(administrador.getPassword()));
+        
+        // Establecer valores por defecto
+        administrador.setVerificado(false);
+        administrador.setActivo(false);
         
         return administradorRepository.save(administrador);
     }
