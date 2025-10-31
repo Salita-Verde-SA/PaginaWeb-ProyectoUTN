@@ -327,4 +327,24 @@ public class UsuarioController {
         List<Usuario> seguidos = usuarioService.obtenerSeguidosDetalles(id);
         return ResponseEntity.ok(seguidos);
     }
+
+    @PatchMapping("/{id}/toggle-gerente")
+    public ResponseEntity<Usuario> toggleGerente(@PathVariable String id) {
+        Usuario usuario = usuarioService.toggleGerente(id);
+        return ResponseEntity.ok(usuario);
+    }
+
+    @PatchMapping("/{id}/set-gerente")
+    public ResponseEntity<Usuario> setGerente(
+            @PathVariable String id,
+            @RequestBody Map<String, Boolean> body) {
+        boolean esGerente = body.getOrDefault("gerente", false);
+        Usuario usuario = usuarioService.setGerente(id, esGerente);
+        return ResponseEntity.ok(usuario);
+    }
+
+    @GetMapping("/gerentes")
+    public ResponseEntity<List<Usuario>> obtenerGerentes() {
+        return ResponseEntity.ok(usuarioService.obtenerGerentes());
+    }
 }

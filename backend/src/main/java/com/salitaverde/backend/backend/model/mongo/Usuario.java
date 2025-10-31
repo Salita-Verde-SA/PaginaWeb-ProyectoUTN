@@ -52,6 +52,9 @@ public class Usuario {
     @Field("admin")
     private Boolean admin = false; // Campo para permisos de moderación
 
+    @Field("gerente")
+    private Boolean gerente = false; // Gerentes de la página (moderadores superiores)
+
     // NUEVO: Si es administrador de lugares, aquí va el ID
     @Field("administrador_id")
     private String administradorId;
@@ -62,6 +65,7 @@ public class Usuario {
     @Field("seguidores")
     private List<String> seguidores = new ArrayList<>();
 
+    // NUEVO: usuarios a los que este usuario sigue
     @Field("seguidos")
     private List<String> seguidos = new ArrayList<>();
 

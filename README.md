@@ -317,7 +317,7 @@ docker-compose up -d
 
 ## 📁 Estructura del Proyecto
 
-```
+```plaintext
 PaginaWeb-ProyectoUTN/
 ├── .github/
 │   └── workflows/

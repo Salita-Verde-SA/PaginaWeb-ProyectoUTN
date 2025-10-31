@@ -295,4 +295,22 @@ public class UsuarioService {
                 .filter(u -> u != null)
                 .toList();
     }
+
+    @Transactional
+    public Usuario toggleGerente(String id) {
+        Usuario usuario = obtenerPorId(id);
+        usuario.setGerente(!usuario.getGerente());
+        return usuarioRepository.save(usuario);
+    }
+
+    @Transactional
+    public Usuario setGerente(String id, boolean esGerente) {
+        Usuario usuario = obtenerPorId(id);
+        usuario.setGerente(esGerente);
+        return usuarioRepository.save(usuario);
+    }
+
+    public List<Usuario> obtenerGerentes() {
+        return usuarioRepository.findByGerenteTrue();
+    }
 }
