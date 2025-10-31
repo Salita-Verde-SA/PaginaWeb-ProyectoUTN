@@ -373,7 +373,10 @@ Para más detalles sobre cada módulo, consulta los README específicos en cada 
 
 - **MongoDB** 6.0+ - Base de datos NoSQL
   - Colecciones: `usuarios`, `publicaciones`, `publicadores`
-  - Almacenamiento de imágenes en sistema de archivos
+  
+- **MinIO** - Almacenamiento de objetos
+  - Bucket público: Imágenes de eventos, logos
+  - Bucket verificación: Documentos de identidad y verificación
 
 ### DevOps
 

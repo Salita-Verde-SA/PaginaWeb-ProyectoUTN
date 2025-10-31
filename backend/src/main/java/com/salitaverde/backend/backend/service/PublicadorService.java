@@ -3,6 +3,8 @@ package com.salitaverde.backend.backend.service;
 import com.salitaverde.backend.backend.model.mongo.Publicador;
 import com.salitaverde.backend.backend.repository.PublicadorRepository;
 import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
@@ -11,10 +13,13 @@ import java.util.List;
 
 @Service
 @RequiredArgsConstructor
+@Slf4j
 public class PublicadorService {
     
     private final PublicadorRepository publicadorRepository;
     private final ImagenService imagenService;
+    private final VerificacionService verificacionService;
+    private final PasswordEncoder passwordEncoder; // Añadir este campo
     
     public List<Publicador> obtenerTodos() {
         return publicadorRepository.findAll();
@@ -58,6 +63,17 @@ public class PublicadorService {
         if (publicadorRepository.existsByCuit(publicador.getCuit())) {
             throw new RuntimeException("El CUIT ya está registrado");
         }
+        
+        // Encriptar contraseña AQUÍ
+        publicador.setPassword(passwordEncoder.encode(publicador.getPassword()));
+        
+        // Establecer valores por defecto
+        publicador.setVerificado(false);
+        publicador.setActivo(false);
+        if (publicador.getRazonSocial() == null || publicador.getRazonSocial().isEmpty()) {
+            publicador.setRazonSocial(publicador.getNombreOrganizacion());
+        }
+        
         return publicadorRepository.save(publicador);
     }
     
@@ -167,5 +183,81 @@ public class PublicadorService {
         
         existente.setLogoBoliche(nombreArchivo);
         return publicadorRepository.save(existente);
+    }
+    
+    @Transactional
+    public Publicador subirDniFrente(String id, MultipartFile archivo) {
+        Publicador publicador = obtenerPorId(id);
+        String nombreArchivo = id + "_dni_frente.jpg";
+        
+        // Eliminar anterior si existe
+        if (publicador.getDniFrente() != null) {
+            try {
+                verificacionService.eliminarDocumento(publicador.getDniFrente());
+            } catch (Exception e) {
+                log.warn("No se pudo eliminar DNI frente anterior: {}", e.getMessage());
+            }
+        }
+        
+        verificacionService.subirDocumentoConNombre(archivo, nombreArchivo);
+        publicador.setDniFrente(nombreArchivo);
+        return publicadorRepository.save(publicador);
+    }
+    
+    @Transactional
+    public Publicador subirDniDorso(String id, MultipartFile archivo) {
+        Publicador publicador = obtenerPorId(id);
+        String nombreArchivo = id + "_dni_dorso.jpg";
+        
+        if (publicador.getDniDorso() != null) {
+            try {
+                verificacionService.eliminarDocumento(publicador.getDniDorso());
+            } catch (Exception e) {
+                log.warn("No se pudo eliminar DNI dorso anterior: {}", e.getMessage());
+            }
+        }
+        
+        verificacionService.subirDocumentoConNombre(archivo, nombreArchivo);
+        publicador.setDniDorso(nombreArchivo);
+        return publicadorRepository.save(publicador);
+    }
+    
+    @Transactional
+    public Publicador subirConstanciaAfip(String id, MultipartFile archivo) {
+        Publicador publicador = obtenerPorId(id);
+        String nombreArchivo = id + "_constancia_afip.jpg";
+        
+        if (publicador.getConstanciaAfipImg() != null) {
+            try {
+                verificacionService.eliminarDocumento(publicador.getConstanciaAfipImg());
+            } catch (Exception e) {
+                log.warn("No se pudo eliminar constancia anterior: {}", e.getMessage());
+            }
+        }
+        
+        verificacionService.subirDocumentoConNombre(archivo, nombreArchivo);
+        publicador.setConstanciaAfipImg(nombreArchivo);
+        return publicadorRepository.save(publicador);
+    }
+    
+    @Transactional
+    public Publicador subirComprobanteLugar(String id, MultipartFile archivo) {
+        Publicador publicador = obtenerPorId(id);
+        
+        // Determinar extensión según tipo de archivo
+        String extension = archivo.getContentType().contains("pdf") ? ".pdf" : ".jpg";
+        String nombreArchivo = id + "_comprobante_lugar" + extension;
+        
+        if (publicador.getComprobanteLugar() != null) {
+            try {
+                verificacionService.eliminarDocumento(publicador.getComprobanteLugar());
+            } catch (Exception e) {
+                log.warn("No se pudo eliminar comprobante anterior: {}", e.getMessage());
+            }
+        }
+        
+        verificacionService.subirDocumentoConNombre(archivo, nombreArchivo);
+        publicador.setComprobanteLugar(nombreArchivo);
+        return publicadorRepository.save(publicador);
     }
 }
