@@ -19,6 +19,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.Map;
+import java.util.List;
 
 @RestController
 @RequestMapping("/api/auth")
@@ -183,7 +184,6 @@ public class AuthController {
             HttpServletResponse response) {
         try {
             if (token != null) {
-                String username = authService.validateToken(token).getUsername();
                 Usuario usuario = authService.validateToken(token);
                 authService.logout(usuario.getId());
             }
@@ -199,6 +199,32 @@ public class AuthController {
             return ResponseEntity.ok(Map.of("mensaje", "Logout exitoso"));
         } catch (Exception e) {
             return ResponseEntity.ok(Map.of("mensaje", "Sesión cerrada"));
+        }
+    }
+
+    // --- NUEVO: Devuelve el usuario autenticado (para frontend) ---
+    @GetMapping("/me")
+    public ResponseEntity<?> me(@CookieValue(value = "authToken", required = false) String token) {
+        if (token == null) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("mensaje", "No autenticado"));
+        }
+        try {
+            Usuario usuario = authService.validateToken(token);
+            boolean isAdmin = Boolean.TRUE.equals(usuario.getAdmin());
+            String rol = isAdmin ? "ADMIN" : "USER";
+            List<String> roles = isAdmin ? List.of("ADMIN") : List.of("USER");
+            return ResponseEntity.ok(Map.of(
+                "id", usuario.getId(),
+                "username", usuario.getUsername(),
+                "email", usuario.getEmail(),
+                "admin", isAdmin,
+                "rol", rol,
+                "roles", roles
+            ));
+        } catch (RuntimeException e) {
+            return ResponseEntity.status(HttpStatus.UNAUTHORIZED)
+                    .body(Map.of("mensaje", e.getMessage()));
         }
     }
 }
