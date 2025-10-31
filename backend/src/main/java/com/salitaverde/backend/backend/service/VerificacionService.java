@@ -16,9 +16,9 @@ public class VerificacionService {
     private String bucketName;
 
     public VerificacionService(
-            @Value("${minio.verificacion.url}") String url,
-            @Value("${minio.verificacion.access-key}") String accessKey,
-            @Value("${minio.verificacion.secret-key}") String secretKey
+            @Value("${MINIO_VERIFICACION_ENDPOINT:http://minio-verification:9000}") String url,
+            @Value("${MINIO_VERIFICACION_ACCESS_KEY:minioadmin}") String accessKey,
+            @Value("${MINIO_VERIFICACION_SECRET_KEY:minioadmin}") String secretKey
     ) {
         this.minioClient = MinioClient.builder()
                 .endpoint(url)
@@ -61,13 +61,6 @@ public class VerificacionService {
                             .object(nombreArchivo)
                             .build()
             );
-            log.info("Documento de verificación eliminado: {}", nombreArchivo);
-        } catch (Exception e) {
-            log.error("Error al eliminar documento: {}", e.getMessage());
-            throw new RuntimeException("Error al eliminar documento: " + e.getMessage(), e);
-        }
-    }
-}
             log.info("Documento de verificación eliminado: {}", nombreArchivo);
         } catch (Exception e) {
             log.error("Error al eliminar documento: {}", e.getMessage());

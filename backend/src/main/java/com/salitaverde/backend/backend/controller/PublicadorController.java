@@ -28,9 +28,7 @@ public class PublicadorController {
     @PostMapping("/registro")
     public ResponseEntity<?> registrar(@RequestBody Publicador publicador) {
         try {
-            // Encriptar contraseña
-            publicador.setPassword(passwordEncoder.encode(publicador.getPassword()));
-            
+            // La encriptación se hace en PublicadorService.crear()
             Publicador nuevo = publicadorService.crear(publicador);
             
             Map<String, Object> response = new HashMap<>();
